@@ -41,3 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: MapGrid
+    uniqueID: 3818777791
+    locked: 0
+  - name: Bots
+    uniqueID: 1426352943
+    locked: 0
