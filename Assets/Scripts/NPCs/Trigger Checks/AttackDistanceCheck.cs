@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StrikingDistanceCheck : MonoBehaviour
+public class AttackDistanceCheck : MonoBehaviour
 {
     public GameObject PlayerTarget { get; set; }
     private Npc _npc;
@@ -18,7 +18,7 @@ public class StrikingDistanceCheck : MonoBehaviour
     {
         if (collision.gameObject == PlayerTarget)
         {
-            _npc.SetStrikingDistanceBool(true);
+            _npc.SetAttackDistanceBool(true);
         }
     }
 
@@ -26,7 +26,7 @@ public class StrikingDistanceCheck : MonoBehaviour
     {
         if (collision.gameObject == PlayerTarget)
         {
-            _npc.SetStrikingDistanceBool(false);
+            _npc.SetAttackDistanceBool(false);
         }
     }
 }

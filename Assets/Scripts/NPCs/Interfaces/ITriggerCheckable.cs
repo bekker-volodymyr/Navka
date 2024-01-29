@@ -5,7 +5,7 @@ using UnityEngine;
 public interface ITriggerCheckable 
 {
     bool IsPlayerNoticed { get; set; }
-    bool IsWithinStrikingDistance { get; set; }
+    bool IsWithinAttackDistance { get; set; }
     void SetPlayerNoticedStatus(bool isPlayerNoticed);
-    void SetStrikingDistanceBool(bool isWithinStrikingDistance);
+    void SetAttackDistanceBool(bool isWithinAttackDistance);
 }

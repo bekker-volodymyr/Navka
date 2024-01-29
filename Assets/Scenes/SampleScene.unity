@@ -4757,8 +4757,8 @@ GameObject:
   m_Component:
   - component: {fileID: 304970908}
   - component: {fileID: 304970907}
-  - component: {fileID: 304970906}
   - component: {fileID: 304970909}
+  - component: {fileID: 304970910}
   m_Layer: 0
   m_Name: Fellow
   m_TagString: Untagged
@@ -4766,21 +4766,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &304970906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 304970905}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fbb88d314acfcc41a76f791a524179b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <MaxHealth>k__BackingField: 20
-  RandomMovementRange: 5
-  RandomMovementSpeed: 1
 --- !u!212 &304970907
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4877,6 +4862,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &304970910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 304970905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fbb88d314acfcc41a76f791a524179b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <MaxHealth>k__BackingField: 5
+  idleBase: {fileID: 11400000, guid: 6c1bb018be1494848a221bc6b552dd06, type: 2}
+  playerNoticedBase: {fileID: 11400000, guid: 20208490b18d66f4092168cbd5bd6b92, type: 2}
 --- !u!1 &370248424
 GameObject:
   m_ObjectHideFlags: 0

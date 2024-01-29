@@ -9,31 +9,34 @@ public class Npc : MonoBehaviour, IDamageable, IMoveable, ITriggerCheckable
     public Rigidbody2D Rigidbody { get; set; }
     public bool IsFacingRight { get; set; } = true;
     public bool IsPlayerNoticed { get; set; }
-    public bool IsWithinStrikingDistance { get; set; }
+    public bool IsWithinAttackDistance { get; set; }
 
     #region State Machine Fields
 
     public NPCStateMachine StateMachine { get; set; }
-    public NpcIdleState IdleState { get; set; }
-    public NpcPlayerNoticedState PlayerNoticedState { get; set; }
-    public FellowRunawayState FellowRunawayState { get; set; }
+    public NPCIdleState IdleState { get; set; }
+    public NPCPlayerNoticedState PlayerNoticedState { get; set; }
 
     #endregion
 
-    #region Idle Fields
+    #region Scriptable Object Fields
 
-    public float RandomMovementRange = 5f;
-    public float RandomMovementSpeed = 1f;
+    [SerializeField] private NPCIdleSOBase idleBase;
+    [SerializeField] private PlayerNoticedSOBase playerNoticedBase;
+
+    public NPCIdleSOBase IdleBaseInstance { get; set; }
+    public PlayerNoticedSOBase PlayerNoticedBaseInstance { get; set; }
 
     #endregion
 
     private void Awake()
     {
-        StateMachine = new NPCStateMachine();
-        IdleState = new NpcIdleState(this, StateMachine);
-        PlayerNoticedState = new NpcPlayerNoticedState(this, StateMachine);
-        FellowRunawayState = new FellowRunawayState(this, StateMachine);
+        IdleBaseInstance = Instantiate(idleBase);
+        PlayerNoticedBaseInstance = Instantiate(playerNoticedBase);
 
+        StateMachine = new NPCStateMachine();
+        IdleState = new NPCIdleState(this, StateMachine);
+        PlayerNoticedState = new NPCPlayerNoticedState(this, StateMachine);
     }
 
     private void Start()
@@ -41,6 +44,9 @@ public class Npc : MonoBehaviour, IDamageable, IMoveable, ITriggerCheckable
         CurrentHealth = MaxHealth;
 
         Rigidbody = GetComponent<Rigidbody2D>();
+
+        IdleBaseInstance.Initialize(gameObject, this);
+        PlayerNoticedBaseInstance.Initialize(gameObject, this);
 
         StateMachine.Initialize(IdleState);
     }
@@ -72,6 +78,7 @@ public class Npc : MonoBehaviour, IDamageable, IMoveable, ITriggerCheckable
     #endregion
 
     #region Movement
+
     public void Move(Vector2 velocity)
     {
         Rigidbody.velocity = velocity;
@@ -93,6 +100,7 @@ public class Npc : MonoBehaviour, IDamageable, IMoveable, ITriggerCheckable
             IsFacingRight = !IsFacingRight;
         }
     }
+
     #endregion
 
     #region Animation Triggers
@@ -116,9 +124,9 @@ public class Npc : MonoBehaviour, IDamageable, IMoveable, ITriggerCheckable
         IsPlayerNoticed = isPlayerNoticed;
     }
 
-    public void SetStrikingDistanceBool(bool isWithinStrikingDistance)
+    public void SetAttackDistanceBool(bool isWithinAttackDistance)
     {
-        IsWithinStrikingDistance = isWithinStrikingDistance;
+        IsWithinAttackDistance = isWithinAttackDistance;
     }
 
     #endregion
