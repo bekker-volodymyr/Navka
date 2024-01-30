@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Npc : MonoBehaviour, IDamageable, IMoveable, ITriggerCheckable
+public class Npc : MonoBehaviour, IDamageable, IAttack, IMoveable, ITriggerCheckable
 {
     public float CurrentHealth { get; set; }
     [field: SerializeField] public float MaxHealth { get; set; }
@@ -16,6 +16,7 @@ public class Npc : MonoBehaviour, IDamageable, IMoveable, ITriggerCheckable
     public NPCStateMachine StateMachine { get; set; }
     public NPCIdleState IdleState { get; set; }
     public NPCPlayerNoticedState PlayerNoticedState { get; set; }
+    public NPCAttackState AttackState { get; set; }
 
     #endregion
 
@@ -23,20 +24,45 @@ public class Npc : MonoBehaviour, IDamageable, IMoveable, ITriggerCheckable
 
     [SerializeField] private NPCIdleSOBase idleBase;
     [SerializeField] private PlayerNoticedSOBase playerNoticedBase;
+    [SerializeField] private NPCAttackSOBase attackBase;
 
     public NPCIdleSOBase IdleBaseInstance { get; set; }
     public PlayerNoticedSOBase PlayerNoticedBaseInstance { get; set; }
+    public NPCAttackSOBase AttackBaseInstance { get; set; }
+
+    #endregion
+
+    #region Attack Logic
+
+    public float damage { get; set; }
+    public float cooldown { get; set; }
+    public float delayBeforeDamage { get; set; }
+
+    public void Attack(IDamageable target)
+    {
+        Invoke("ApplyDamage", delayBeforeDamage);
+    }
+
+    public void ApplyDamage(IDamageable target)
+    {
+        if(IsWithinAttackDistance)
+        {
+            target.GetDamage(damage);
+        }
+    }
 
     #endregion
 
     private void Awake()
     {
-        IdleBaseInstance = Instantiate(idleBase);
-        PlayerNoticedBaseInstance = Instantiate(playerNoticedBase);
+        IdleBaseInstance            = Instantiate(idleBase);
+        PlayerNoticedBaseInstance   = Instantiate(playerNoticedBase);
+        AttackBaseInstance          = Instantiate(attackBase);
 
-        StateMachine = new NPCStateMachine();
-        IdleState = new NPCIdleState(this, StateMachine);
-        PlayerNoticedState = new NPCPlayerNoticedState(this, StateMachine);
+        StateMachine                = new NPCStateMachine();
+        IdleState                   = new NPCIdleState(this, StateMachine);
+        PlayerNoticedState          = new NPCPlayerNoticedState(this, StateMachine);
+        AttackState                 = new NPCAttackState(this, StateMachine);
     }
 
     private void Start()
@@ -47,6 +73,7 @@ public class Npc : MonoBehaviour, IDamageable, IMoveable, ITriggerCheckable
 
         IdleBaseInstance.Initialize(gameObject, this);
         PlayerNoticedBaseInstance.Initialize(gameObject, this);
+        AttackBaseInstance.Initialize(gameObject, this);
 
         StateMachine.Initialize(IdleState);
     }

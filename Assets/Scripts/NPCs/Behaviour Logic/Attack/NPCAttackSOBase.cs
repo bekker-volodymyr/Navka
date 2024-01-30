@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerNoticedSOBase : ScriptableObject
+public class NPCAttackSOBase : ScriptableObject
 {
     protected Npc npc;
     protected Transform transform;
     protected GameObject gameObject;
 
     protected Transform playerTransform;
+    protected PlayerScript playerScript;
 
     public virtual void Initialize(GameObject gameObject, Npc npc)
     {
@@ -16,22 +17,17 @@ public class PlayerNoticedSOBase : ScriptableObject
         transform = gameObject.transform;
         this.npc = npc;
 
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        GameObject playerGameObject = GameObject.FindGameObjectWithTag("Player");
+
+        playerTransform = playerGameObject.transform;
+        playerScript = playerGameObject.GetComponent<PlayerScript>();
     }
 
     public virtual void DoEnterLogic() { }
     public virtual void DoExitLogic() { ResetValues(); }
     public virtual void DoFrameUpdateLogic()
     {
-        if (!npc.IsPlayerNoticed)
-        {
-            npc.StateMachine.ChangeState(npc.IdleState);
-        }
-
-        if(npc.IsWithinAttackDistance)
-        {
-            npc.StateMachine.ChangeState(npc.AttackState);
-        }
+        npc.Attack(playerScript);
     }
     public virtual void DoPhysicsLogic() { }
     public virtual void DoAnimationTriggerEventLogic(Npc.AnimationTriggerType triggerType) { }
