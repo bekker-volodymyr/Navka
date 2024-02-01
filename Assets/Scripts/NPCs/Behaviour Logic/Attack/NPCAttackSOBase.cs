@@ -27,7 +27,7 @@ public class NPCAttackSOBase : ScriptableObject
     public virtual void DoExitLogic() { ResetValues(); }
     public virtual void DoFrameUpdateLogic()
     {
-        npc.Attack(playerScript);
+        //npc.Attack(playerScript);
     }
     public virtual void DoPhysicsLogic() { }
     public virtual void DoAnimationTriggerEventLogic(Npc.AnimationTriggerType triggerType) { }
