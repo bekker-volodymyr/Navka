@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class PauseMenuScript : MonoBehaviour
+public class PauseMenu : MonoBehaviour
 {
     [SerializeField]
     private GameObject content;
@@ -37,13 +37,13 @@ public class PauseMenuScript : MonoBehaviour
     {
         content.SetActive(true);
         Time.timeScale = 0f;
-        GameStateScript.isPaused = true;
+        GameState.isPaused = true;
     }
     private void HideMenu()
     {
         content.SetActive(false);
         Time.timeScale = 1.0f;
-        GameStateScript.isPaused = false;
+        GameState.isPaused = false;
     }
 
     public void OnMenuButtonClick(int value)

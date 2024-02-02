@@ -34,21 +34,41 @@ public class Npc : MonoBehaviour, IDamageable, IAttack, IMoveable, ITriggerCheck
 
     #region Attack Logic
 
-    public float damage { get; set; }
-    public float cooldown { get; set; }
-    public float delayBeforeDamage { get; set; }
+    public float damage { get; set; } = 5f;
+    public float cooldown { get; set; } = 5f;
+    public float delayBeforeDamage { get; set; } = 3f;
+
+    private bool isOnCooldown = false;
 
     public void Attack(IDamageable target)
     {
-        Invoke("ApplyDamage", delayBeforeDamage);
+        if (!isOnCooldown)
+        {
+            StartCoroutine(DelayedAttack(target));
+        }
+    }
+
+    private IEnumerator DelayedAttack(IDamageable target)
+    {
+        isOnCooldown = true;
+        Debug.Log("Attack started");
+
+        yield return new WaitForSeconds(delayBeforeDamage);
+
+        if (IsWithinAttackDistance)
+        {
+            ApplyDamage(target);
+        }
+
+        yield return new WaitForSeconds(cooldown - delayBeforeDamage);
+
+        isOnCooldown = false;
+        Debug.Log("Attack ended");
     }
 
     public void ApplyDamage(IDamageable target)
     {
-        if(IsWithinAttackDistance)
-        {
-            target.GetDamage(damage);
-        }
+        target.GetDamage(damage);
     }
 
     #endregion
@@ -71,9 +91,23 @@ public class Npc : MonoBehaviour, IDamageable, IAttack, IMoveable, ITriggerCheck
 
         Rigidbody = GetComponent<Rigidbody2D>();
 
+        if (IdleBaseInstance is null)
+        {
+            Debug.Log("Idle Base Instance is null");
+        }
+        else
+        {
+            Debug.Log("IdleBaseInstance OK");
+        }
+
         IdleBaseInstance.Initialize(gameObject, this);
         PlayerNoticedBaseInstance.Initialize(gameObject, this);
         AttackBaseInstance.Initialize(gameObject, this);
+
+        if(IdleState is null)
+        {
+            Debug.Log("Idle state is null");
+        }
 
         StateMachine.Initialize(IdleState);
     }

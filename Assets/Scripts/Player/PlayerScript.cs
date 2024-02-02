@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class PlayerScript : MonoBehaviour //, IAttack, IDamageable
+public class PlayerScript : MonoBehaviour, IDamageable//, IAttack, 
 {
    private float HungerPoints;
     private float ManaPoints;
@@ -13,8 +13,8 @@ public class PlayerScript : MonoBehaviour //, IAttack, IDamageable
     public float damage = 10;
     public float cooldown = 2;
     public float delayBeforeDamage = 1;
-    public float CurrentHealth = 50;
-    public float MaxHealth = 100;
+    public float CurrentHealth { get; set; } = 50;
+    public float MaxHealth { get; set; } = 100;
 
     private float MoveSpeed = 5f;
     [SerializeField] private Rigidbody2D body;
@@ -26,8 +26,6 @@ public class PlayerScript : MonoBehaviour //, IAttack, IDamageable
     //float IAttack.damage { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
     //float IAttack.cooldown { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
     //float IAttack.delayBeforeDamage { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-    //float IDamageable.CurrentHealth { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-    //float IDamageable.MaxHealth { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
     void Start()
     {
@@ -85,13 +83,14 @@ public class PlayerScript : MonoBehaviour //, IAttack, IDamageable
     public void GetDamage(float damage)
     {
         CurrentHealth -= damage;
+        Debug.Log(CurrentHealth);
     }
 
     public void Death()
     {
         if (CurrentHealth <= 0)
         {
-            GameStateScript.isDead = true;
+            GameState.isDead = true;
         }
     }
 }
