@@ -38,7 +38,7 @@ public class Npc : MonoBehaviour, IDamageable, IAttack, IMoveable, ITriggerCheck
     public float cooldown { get; set; } = 5f;
     public float delayBeforeDamage { get; set; } = 3f;
 
-    private bool isOnCooldown = false;
+    public bool isOnCooldown = false;
 
     public void Attack(IDamageable target)
     {
@@ -91,23 +91,9 @@ public class Npc : MonoBehaviour, IDamageable, IAttack, IMoveable, ITriggerCheck
 
         Rigidbody = GetComponent<Rigidbody2D>();
 
-        if (IdleBaseInstance is null)
-        {
-            Debug.Log("Idle Base Instance is null");
-        }
-        else
-        {
-            Debug.Log("IdleBaseInstance OK");
-        }
-
         IdleBaseInstance.Initialize(gameObject, this);
         PlayerNoticedBaseInstance.Initialize(gameObject, this);
         AttackBaseInstance.Initialize(gameObject, this);
-
-        if(IdleState is null)
-        {
-            Debug.Log("Idle state is null");
-        }
 
         StateMachine.Initialize(IdleState);
     }

@@ -8,6 +8,7 @@ public class NPCAttackSOBase : ScriptableObject
     protected Transform transform;
     protected GameObject gameObject;
 
+    protected GameObject playerGameObject;
     protected Transform playerTransform;
     protected PlayerScript playerScript;
 
@@ -17,7 +18,7 @@ public class NPCAttackSOBase : ScriptableObject
         transform = gameObject.transform;
         this.npc = npc;
 
-        GameObject playerGameObject = GameObject.FindGameObjectWithTag("Player");
+        playerGameObject = GameObject.FindGameObjectWithTag("Player");
 
         playerTransform = playerGameObject.transform;
         playerScript = playerGameObject.GetComponent<PlayerScript>();
@@ -27,7 +28,10 @@ public class NPCAttackSOBase : ScriptableObject
     public virtual void DoExitLogic() { ResetValues(); }
     public virtual void DoFrameUpdateLogic()
     {
-        //npc.Attack(playerScript);
+        if (!npc.IsWithinAttackDistance && !npc.isOnCooldown)
+        {
+            npc.StateMachine.ChangeState(npc.PlayerNoticedState);
+        }
     }
     public virtual void DoPhysicsLogic() { }
     public virtual void DoAnimationTriggerEventLogic(Npc.AnimationTriggerType triggerType) { }

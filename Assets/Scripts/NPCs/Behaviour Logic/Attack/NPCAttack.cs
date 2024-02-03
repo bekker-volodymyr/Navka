@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Player Noticed-Runaway", menuName = "NPC Logic/Player Noticed Logic/Runaway")]
-public class PlayerNoticedRunaway : PlayerNoticedSOBase
+[CreateAssetMenu(fileName = "Attack-NPC Attack", menuName = "NPC Logic/Attack Logic/NPC Attack")]
+public class NPCAttack : NPCAttackSOBase
 {
-    [SerializeField] private float _movementSpeed = 1.75f;
     public override void DoAnimationTriggerEventLogic(Npc.AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);
@@ -25,9 +24,7 @@ public class PlayerNoticedRunaway : PlayerNoticedSOBase
     {
         base.DoFrameUpdateLogic();
 
-        Vector2 moveDirection = -(playerTransform.position - npc.transform.position).normalized;
-
-        npc.Move(moveDirection * _movementSpeed);
+        npc.Attack(playerScript);
     }
 
     public override void DoPhysicsLogic()
