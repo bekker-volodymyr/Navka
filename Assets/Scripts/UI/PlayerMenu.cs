@@ -8,8 +8,6 @@ public class PlayerMenu : MonoBehaviour
     [SerializeField]
     private GameObject content;
 
-
-
     void Start()
     {
         if (content.activeInHierarchy)
