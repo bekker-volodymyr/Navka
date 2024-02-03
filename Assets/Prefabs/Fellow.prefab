@@ -130,7 +130,8 @@ MonoBehaviour:
   <MaxHealth>k__BackingField: 5
   idleBase: {fileID: 11400000, guid: 6c1bb018be1494848a221bc6b552dd06, type: 2}
   playerNoticedBase: {fileID: 11400000, guid: 20208490b18d66f4092168cbd5bd6b92, type: 2}
-  attackBase: {fileID: 0}
+  attackBase: {fileID: 11400000, guid: 87018f31f04b2d447a61608a5d845e99, type: 2}
+  isOnCooldown: 0
 --- !u!1 &2332890435390745885
 GameObject:
   m_ObjectHideFlags: 0
