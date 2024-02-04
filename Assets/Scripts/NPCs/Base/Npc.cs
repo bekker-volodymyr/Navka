@@ -32,6 +32,41 @@ public class Npc : MonoBehaviour, IDamageable, IAttack, IMoveable, ITriggerCheck
 
     #endregion
 
+    private void Awake()
+    {
+        IdleBaseInstance            = Instantiate(idleBase);
+        PlayerNoticedBaseInstance   = Instantiate(playerNoticedBase);
+        AttackBaseInstance          = Instantiate(attackBase);
+
+        StateMachine                = new NPCStateMachine();
+        IdleState                   = new NPCIdleState(this, StateMachine);
+        PlayerNoticedState          = new NPCPlayerNoticedState(this, StateMachine);
+        AttackState                 = new NPCAttackState(this, StateMachine);
+    }
+
+    private void Start()
+    {
+        CurrentHealth = MaxHealth;
+
+        Rigidbody = GetComponent<Rigidbody2D>();
+
+        IdleBaseInstance.Initialize(gameObject, this);
+        PlayerNoticedBaseInstance.Initialize(gameObject, this);
+        AttackBaseInstance.Initialize(gameObject, this);
+
+        StateMachine.Initialize(IdleState);
+    }
+
+    private void Update()
+    {
+        StateMachine.CurrentState.FrameUpdate();
+    }
+
+    private void FixedUpdate()
+    {
+        StateMachine.CurrentState.PhysicsUpdate();
+    }
+
     #region Attack Logic
 
     public float damage { get; set; } = 5f;
@@ -72,41 +107,6 @@ public class Npc : MonoBehaviour, IDamageable, IAttack, IMoveable, ITriggerCheck
     }
 
     #endregion
-
-    private void Awake()
-    {
-        IdleBaseInstance            = Instantiate(idleBase);
-        PlayerNoticedBaseInstance   = Instantiate(playerNoticedBase);
-        AttackBaseInstance          = Instantiate(attackBase);
-
-        StateMachine                = new NPCStateMachine();
-        IdleState                   = new NPCIdleState(this, StateMachine);
-        PlayerNoticedState          = new NPCPlayerNoticedState(this, StateMachine);
-        AttackState                 = new NPCAttackState(this, StateMachine);
-    }
-
-    private void Start()
-    {
-        CurrentHealth = MaxHealth;
-
-        Rigidbody = GetComponent<Rigidbody2D>();
-
-        IdleBaseInstance.Initialize(gameObject, this);
-        PlayerNoticedBaseInstance.Initialize(gameObject, this);
-        AttackBaseInstance.Initialize(gameObject, this);
-
-        StateMachine.Initialize(IdleState);
-    }
-
-    private void Update()
-    {
-        StateMachine.CurrentState.FrameUpdate();
-    }
-
-    private void FixedUpdate()
-    {
-        StateMachine.CurrentState.PhysicsUpdate();
-    }
 
     #region Health / Death
 
