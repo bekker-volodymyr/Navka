@@ -69,14 +69,15 @@ public class Npc : MonoBehaviour, IDamageable, IAttack, IMoveable, ITriggerCheck
 
     #region Attack Logic
 
-    public float damage { get; set; } = 5f;
-    public float cooldown { get; set; } = 5f;
-    public float delayBeforeDamage { get; set; } = 3f;
+    [field: SerializeField] public float damage { get; set; } = 5f;
+    [field: SerializeField] public float cooldown { get; set; } = 5f;
+    [field: SerializeField] public float delayBeforeDamage { get; set; } = 3f;
 
     public bool isOnCooldown = false;
 
     public void Attack(IDamageable target)
     {
+        Rigidbody.velocity = Vector2.zero;
         if (!isOnCooldown)
         {
             StartCoroutine(DelayedAttack(target));
@@ -90,6 +91,8 @@ public class Npc : MonoBehaviour, IDamageable, IAttack, IMoveable, ITriggerCheck
 
         yield return new WaitForSeconds(delayBeforeDamage);
 
+        Debug.Log("IsWithinAttackDistance " + IsWithinAttackDistance.ToString());
+        Debug.Log("isOnCooldown " + isOnCooldown.ToString());
         if (IsWithinAttackDistance)
         {
             ApplyDamage(target);
