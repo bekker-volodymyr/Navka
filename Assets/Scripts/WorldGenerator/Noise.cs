@@ -28,10 +28,8 @@ public class Noise
 
                 if (y >= height) break;
 
-                if(x == fieldPoint.x - biomePointRadiusRange || 
-                    x == fieldPoint.x - biomePointRadiusRange + 1 ||
-                    x == fieldPoint.x + biomePointRadiusRange || 
-                    x == fieldPoint.x + biomePointRadiusRange - 1)
+                if(x < fieldPoint.x - biomePointRadiusRange + 6 || 
+                    x > fieldPoint.x + biomePointRadiusRange - 6)
                 {
                     noise[x, y] = Random.value > 0.7 ? 1 : 0;
                 }
