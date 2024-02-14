@@ -1,137 +1,40 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-
-[System.Serializable]
-public class WorldPrefab
-{
-    public GameObject prefab;
-    public float spawnWeight;
-    public float minHeight;
-    public float maxHeight;
-}
-
-[System.Serializable]
-public class Biome
-{
-    public string name;
-    public WorldPrefab[] biomePrefabs;
-}
+using UnityEngine.Tilemaps;
+using UnityEngine.WSA;
 
 public class WorldGenerator : MonoBehaviour
 {
-    [Header("World Settings")]
-    public int width = 10;
-    public int height = 10;
+    [SerializeField] BiomeSO fieldBiomeSO;
 
-    [Header("Biomes")]
-    public Biome[] biomes;
+    [SerializeField] Tilemap baseLayer;
+    [SerializeField] Tilemap decorLayer;
 
-    [Header("Random Seed")]
-    public bool useRandomSeed = true;
-    public string seed;
-    public InputField customSeedInput;
+    [SerializeField] int worldWidth;
+    [SerializeField] int worldHeight;
 
-    void Start()
+    private void Start()
     {
-        if (useRandomSeed)
-        {
-            seed = Time.time.ToString();
-            customSeedInput.interactable = false;
-        }
-        else
-        {
-            customSeedInput.interactable = true;
-        }
+        int[,] noise = Noise.Generate(worldWidth, worldHeight);
 
-        GenerateWorld();
-    }
+        baseLayer.ClearAllTiles();
+        decorLayer.ClearAllTiles();
 
-    void Update()
-    {
-        if (!useRandomSeed && customSeedInput.isFocused && Input.GetKeyDown(KeyCode.Return))
+        for (int x = 0; x < worldWidth; x++)
         {
-            seed = customSeedInput.text;
-            GenerateWorld();
-        }
-    }
-
-    void GenerateWorld()
-    {
-        Random.InitState(seed.GetHashCode());
-
-        for (int x = 0; x < width; x++)
-        {
-            for (int y = 0; y < height; y++)
+            for (int y = 0; y < worldHeight; y++)
             {
-                Vector3 tilePosition = new Vector3(x, 0, y);
-                Biome selectedBiome = ChooseRandomBiome();
-                WorldPrefab[] biomePrefabs = GenerateBiome(selectedBiome, width, height);
-
-                foreach (var prefab in biomePrefabs)
+                if (noise[x, y] == 1)
                 {
-                    float heightOffset = Random.Range(prefab.minHeight, prefab.maxHeight);
-                    tilePosition.y = heightOffset;
-                    Instantiate(prefab.prefab, tilePosition, Quaternion.identity);
+                    baseLayer.SetTile(new Vector3Int(x - (worldWidth / 2), y - worldHeight / 2, 0), fieldBiomeSO.baseLayer[Random.Range(0, fieldBiomeSO.baseLayer.Length)]);
+
+                    if (Random.Range(0, 50) == 0)
+                    {
+                        decorLayer.SetTile(new Vector3Int(x - (worldWidth / 2), y - worldHeight / 2, 0), fieldBiomeSO.decorLayer[Random.Range(0, fieldBiomeSO.decorLayer.Length)]);
+                    }
                 }
             }
         }
-    }
-
-    Biome ChooseRandomBiome()
-    {
-        return biomes[Random.Range(0, biomes.Length)];
-    }
-
-    WorldPrefab[] GenerateBiome(Biome biome, int width, int height)
-    {
-
-        WorldPrefab[] biomePrefabs = new WorldPrefab[biome.biomePrefabs.Length];
-
-        for (int i = 0; i < biome.biomePrefabs.Length; i++)
-        {
-            biomePrefabs[i] = new WorldPrefab
-            {
-                //prefab = GetRandomPrefab(biome.biomePrefabs[i].prefab),
-                spawnWeight = biome.biomePrefabs[i].spawnWeight,
-                minHeight = biome.biomePrefabs[i].minHeight,
-                maxHeight = biome.biomePrefabs[i].maxHeight
-            };
-        }
-
-        float saturation = CalculateSaturation(biomePrefabs);
-        //AddPointsOfInterest(biomePrefabs, saturation);
-
-        return biomePrefabs;
-    }
-
-    private GameObject GetRandomPrefab(GameObject[] prefabs)
-    {
-        return prefabs[Random.Range(0, prefabs.Length)];
-    }
-
-    float CalculateSaturation(WorldPrefab[] biomePrefabs)
-    {
-        float saturation = 0f;
-
-        foreach (var prefab in biomePrefabs)
-        {
-            saturation += prefab.spawnWeight;
-        }
-
-        return saturation;
-    }
-
-    void OnValidate()
-    {
-
-        width = Mathf.Max(1, width);
-        height = Mathf.Max(1, height);
-    }
-
-    void OnDrawGizmos()
-    {
-
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireCube(new Vector3(width * 0.5f, 0.5f, height * 0.5f), new Vector3(width, 1, height));
     }
 }
