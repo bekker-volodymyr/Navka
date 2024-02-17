@@ -1,38 +1,75 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using UnityEngine.WSA;
 
 public class WorldGenerator : MonoBehaviour
 {
-    [SerializeField] BiomeSO fieldBiomeSO;
+    [SerializeField] private PerlinNoise perlinNoise;
+    [SerializeField] private CelluralAutomata celluralAutomata;
 
-    [SerializeField] Tilemap baseLayer;
-    [SerializeField] Tilemap decorLayer;
+    [SerializeField] private BiomeSO fieldBiomeSO;
 
-    [SerializeField] int worldWidth;
-    [SerializeField] int worldHeight;
+    [SerializeField] private Tilemap biomLayer;
+    [SerializeField] private Tilemap baseLayer;
+    [SerializeField] private Tilemap decorLayer;
+
+    [SerializeField] private int worldWidth;
+    [SerializeField] private int worldHeight;
+
+    [SerializeField] private TileBase[] biomTiles;
+
+    public bool generatePerlin = true;
+
+    private BiomsEnum[,] biomsGrid;
 
     private void Start()
     {
-        int[,] noise = Noise.Generate(worldWidth, worldHeight);
+        perlinNoise = GetComponent<PerlinNoise>();
+        celluralAutomata = GetComponent<CelluralAutomata>();
 
+        biomsGrid = new BiomsEnum[worldWidth, worldHeight];
+
+        biomLayer.ClearAllTiles();
         baseLayer.ClearAllTiles();
         decorLayer.ClearAllTiles();
+    }
 
+    public void ChangeAlgorithm(bool toPerlin)
+    {
+        generatePerlin = toPerlin;
+        if (generatePerlin)
+        {
+            perlinNoise.GenerateOffset();
+            biomsGrid = perlinNoise.GeneratePerlinNoise(biomsGrid, worldWidth, worldHeight);
+        }
+        else
+        {
+            // biomsGrid = celluralAutomata.MakeNoiseGrid(worldWidth, worldHeight);
+            perlinNoise.GenerateOffset();
+            biomsGrid = perlinNoise.GeneratePerlinNoise(biomsGrid, worldWidth, worldHeight);
+            biomsGrid = celluralAutomata.ApplyCelluralAutomaton(biomsGrid, worldWidth, worldHeight);
+        }
+        RegenerateGrid();
+    }
+
+    private void RegenerateGrid()
+    {
         for (int x = 0; x < worldWidth; x++)
         {
             for (int y = 0; y < worldHeight; y++)
             {
-                if (noise[x, y] == 1)
-                {
-                    baseLayer.SetTile(new Vector3Int(x - (worldWidth / 2), y - worldHeight / 2, 0), fieldBiomeSO.baseLayer[Random.Range(0, fieldBiomeSO.baseLayer.Length)]);
+                Vector3Int tilePos = new Vector3Int(x - (worldWidth / 2), y - worldHeight / 2, 0);
 
-                    if (Random.Range(0, 50) == 0)
-                    {
-                        decorLayer.SetTile(new Vector3Int(x - (worldWidth / 2), y - worldHeight / 2, 0), fieldBiomeSO.decorLayer[Random.Range(0, fieldBiomeSO.decorLayer.Length)]);
-                    }
+                biomLayer.SetTile(tilePos, biomsGrid[x, y] == BiomsEnum.Field ? biomTiles[0] : biomTiles[1]);
+
+                if (biomsGrid[x, y] == BiomsEnum.Field)
+                {
+                    baseLayer.SetTile(tilePos, fieldBiomeSO.baseLayer[UnityEngine.Random.Range(0, fieldBiomeSO.baseLayer.Length)]);
+                    decorLayer.SetTile(tilePos, fieldBiomeSO.decorLayer[UnityEngine.Random.Range(0, fieldBiomeSO.decorLayer.Length)]);
+                }
+                else
+                {
+                    baseLayer.SetTile(tilePos, biomsGrid[x, y] == BiomsEnum.Field ? biomTiles[0] : biomTiles[1]);
                 }
             }
         }

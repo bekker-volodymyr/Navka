@@ -1,45 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
-public class Noise
+public class Noise: MonoBehaviour
 {
-    static private int[,] noise;
+    public int width = 256;
+    public int height = 128;
+    
+    public float scale = 4f;
+    
+    public float offsetX = 100f;
+    public float offsetY = 100f;
 
-    static private int biomePointRadiusRange = 20;
+    public bool useRandomOffset = false;
 
-    static public int[,] Generate(int width, int height)
+    public float GetRawPerlin(int x, int y)
     {
-        //Vector2Int villagePoint = new (Random.Range(0, width), Random.Range(0,height));
+        float xCoord, yCoord;
 
-        noise = new int[width, height];
-
-        Vector2Int fieldPoint = new Vector2Int(Random.Range(0, width), Random.Range(0, height));
-
-        for (int x = fieldPoint.x - biomePointRadiusRange; x < fieldPoint.x + biomePointRadiusRange; x++)
+        if (useRandomOffset)
         {
-            if (x < 0) continue;
-
-            if (x >= width) break;
-
-            for (int y = fieldPoint.y - Random.Range(biomePointRadiusRange - 6, biomePointRadiusRange + 6); y < fieldPoint.y + Random.Range(biomePointRadiusRange - 6, biomePointRadiusRange + 6); y++)
-            {
-                if (y < 0) continue;
-
-                if (y >= height) break;
-
-                if(x < fieldPoint.x - biomePointRadiusRange + 6 || 
-                    x > fieldPoint.x + biomePointRadiusRange - 6)
-                {
-                    noise[x, y] = Random.value > 0.7 ? 1 : 0;
-                }
-                else
-                {
-                    noise[x, y] = 1;
-                }
-            }
+            xCoord = ((float)x / width * scale) + (float)Random.Range(0, 101);
+            yCoord = ((float)y / height * scale) + (float)Random.Range(0, 101);
+        }
+        else
+        {
+            xCoord = (float)x / width * scale + offsetX;
+            yCoord = (float)y / height * scale + offsetY;
         }
 
-        return noise;
+        return Mathf.PerlinNoise(xCoord, yCoord);
     }
 }
