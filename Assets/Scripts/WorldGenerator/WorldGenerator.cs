@@ -5,9 +5,9 @@ using UnityEngine.Tilemaps;
 public class WorldGenerator : MonoBehaviour
 {
     [SerializeField] private PerlinNoise perlinNoise;
-    [SerializeField] private CelluralAutomata celluralAutomata;
 
     [SerializeField] private BiomeSO fieldBiomeSO;
+    [SerializeField] private BiomeSO forestBiomeSO;
 
     [SerializeField] private Tilemap biomLayer;
     [SerializeField] private Tilemap baseLayer;
@@ -18,14 +18,11 @@ public class WorldGenerator : MonoBehaviour
 
     [SerializeField] private TileBase[] biomTiles;
 
-    public bool generatePerlin = true;
-
     private BiomsEnum[,] biomsGrid;
 
     private void Start()
     {
         perlinNoise = GetComponent<PerlinNoise>();
-        celluralAutomata = GetComponent<CelluralAutomata>();
 
         biomsGrid = new BiomsEnum[worldWidth, worldHeight];
 
@@ -34,25 +31,14 @@ public class WorldGenerator : MonoBehaviour
         decorLayer.ClearAllTiles();
     }
 
-    public void ChangeAlgorithm(bool toPerlin)
+    public void Generate()
     {
-        generatePerlin = toPerlin;
-        if (generatePerlin)
-        {
-            perlinNoise.GenerateOffset();
-            biomsGrid = perlinNoise.GeneratePerlinNoise(biomsGrid, worldWidth, worldHeight);
-        }
-        else
-        {
-            // biomsGrid = celluralAutomata.MakeNoiseGrid(worldWidth, worldHeight);
-            perlinNoise.GenerateOffset();
-            biomsGrid = perlinNoise.GeneratePerlinNoise(biomsGrid, worldWidth, worldHeight);
-            biomsGrid = celluralAutomata.ApplyCelluralAutomaton(biomsGrid, worldWidth, worldHeight);
-        }
-        RegenerateGrid();
+        perlinNoise.GenerateOffset();
+        biomsGrid = perlinNoise.GeneratePerlinNoise(biomsGrid, worldWidth, worldHeight);
+        UpdateGrid();
     }
 
-    private void RegenerateGrid()
+    private void UpdateGrid()
     {
         for (int x = 0; x < worldWidth; x++)
         {
@@ -61,15 +47,19 @@ public class WorldGenerator : MonoBehaviour
                 Vector3Int tilePos = new Vector3Int(x - (worldWidth / 2), y - worldHeight / 2, 0);
 
                 biomLayer.SetTile(tilePos, biomsGrid[x, y] == BiomsEnum.Field ? biomTiles[0] : biomTiles[1]);
+                
+                if (UnityEngine.Random.Range(0, 500) == 0)
+                {
+                    decorLayer.SetTile(tilePos, fieldBiomeSO.decorLayer[UnityEngine.Random.Range(0, fieldBiomeSO.decorLayer.Length)]);
+                }
 
                 if (biomsGrid[x, y] == BiomsEnum.Field)
                 {
                     baseLayer.SetTile(tilePos, fieldBiomeSO.baseLayer[UnityEngine.Random.Range(0, fieldBiomeSO.baseLayer.Length)]);
-                    decorLayer.SetTile(tilePos, fieldBiomeSO.decorLayer[UnityEngine.Random.Range(0, fieldBiomeSO.decorLayer.Length)]);
                 }
                 else
                 {
-                    baseLayer.SetTile(tilePos, biomsGrid[x, y] == BiomsEnum.Field ? biomTiles[0] : biomTiles[1]);
+                    baseLayer.SetTile(tilePos, forestBiomeSO.baseLayer[UnityEngine.Random.Range(0, forestBiomeSO.baseLayer.Length)]);
                 }
             }
         }
