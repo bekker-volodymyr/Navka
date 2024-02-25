@@ -6,7 +6,7 @@ public class Npc : MonoBehaviour, IDamageable, IAttack, IMoveable, ITriggerCheck
 {
     public float CurrentHealth { get; set; }
     [field: SerializeField] public float MaxHealth { get; set; }
-    public Rigidbody2D Rigidbody { get; set; }
+    public Rigidbody2D objectRB { get; set; }
     public bool IsFacingRight { get; set; } = true;
     public bool IsPlayerNoticed { get; set; }
     public bool IsWithinAttackDistance { get; set; }
@@ -48,7 +48,7 @@ public class Npc : MonoBehaviour, IDamageable, IAttack, IMoveable, ITriggerCheck
     {
         CurrentHealth = MaxHealth;
 
-        Rigidbody = GetComponent<Rigidbody2D>();
+        objectRB = GetComponent<Rigidbody2D>();
 
         IdleBaseInstance.Initialize(gameObject, this);
         PlayerNoticedBaseInstance.Initialize(gameObject, this);
@@ -69,7 +69,7 @@ public class Npc : MonoBehaviour, IDamageable, IAttack, IMoveable, ITriggerCheck
 
     #region Attack Logic
 
-    [field: SerializeField] public float damage { get; set; } = 5f;
+    [field: SerializeField] public float Damage { get; set; } = 5f;
     [field: SerializeField] public float cooldown { get; set; } = 5f;
     [field: SerializeField] public float delayBeforeDamage { get; set; } = 3f;
 
@@ -77,7 +77,7 @@ public class Npc : MonoBehaviour, IDamageable, IAttack, IMoveable, ITriggerCheck
 
     public void Attack(IDamageable target)
     {
-        Rigidbody.velocity = Vector2.zero;
+        objectRB.velocity = Vector2.zero;
         if (!isOnCooldown)
         {
             StartCoroutine(DelayedAttack(target));
@@ -106,7 +106,7 @@ public class Npc : MonoBehaviour, IDamageable, IAttack, IMoveable, ITriggerCheck
 
     public void ApplyDamage(IDamageable target)
     {
-        target.GetDamage(damage);
+        target.GetDamage(Damage);
     }
 
     #endregion
@@ -131,7 +131,7 @@ public class Npc : MonoBehaviour, IDamageable, IAttack, IMoveable, ITriggerCheck
 
     public void Move(Vector2 velocity)
     {
-        Rigidbody.velocity = velocity;
+        objectRB.velocity = velocity;
         CheckFacing(velocity);
     }
 

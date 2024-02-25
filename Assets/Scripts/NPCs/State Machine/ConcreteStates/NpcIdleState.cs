@@ -44,6 +44,4 @@ public class NPCIdleState : NPCState
 
         npc.IdleBaseInstance.DoPhysicsLogic();
     }
-
-    
 }
