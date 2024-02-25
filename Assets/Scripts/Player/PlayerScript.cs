@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour, IDamageable//, IAttack, 
 {
-   private float HungerPoints;
+    [SerializeField]
+    private float HungerPoints;
+    [SerializeField]
     private float ManaPoints;
 
     private bool AttackAllowed;
@@ -15,7 +17,9 @@ public class PlayerScript : MonoBehaviour, IDamageable//, IAttack,
     public float delayBeforeDamage = 1;
     public float CurrentHealth { get; set; } = 50;
     public float MaxHealth { get; set; } = 100;
-
+    public HealthBarScript HealthBar;
+    public HealthBarScript ManaBar;
+    public HealthBarScript HungerBar;
     private float MoveSpeed = 5f;
     [SerializeField] private Rigidbody2D body;
 
@@ -31,17 +35,32 @@ public class PlayerScript : MonoBehaviour, IDamageable//, IAttack,
     {
         HungerPoints = 50f;
         ManaPoints = 50f;
-
+        HealthBar.SetMaxHealth(MaxHealth);
+        HealthBar.SetHealth(CurrentHealth);
+        HungerBar.SetMaxHealth(HungerPoints);
+        ManaBar.SetMaxHealth(ManaPoints);
     }
 
     // Update is called once per frame
     void Update()
     {
         ProcessInput();
-
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            TakeDamage(5);
+        }
         
     }
+    void TakeDamage(int damage)
+    {
+        CurrentHealth -= damage;
+        HungerPoints -= damage;
+        ManaPoints -= damage;
 
+        HealthBar.SetHealth(CurrentHealth);
+        HungerBar.SetHealth(HungerPoints);
+        ManaBar.SetHealth(ManaPoints);
+    }
     public void FixedUpdate()
     {
         Move();
