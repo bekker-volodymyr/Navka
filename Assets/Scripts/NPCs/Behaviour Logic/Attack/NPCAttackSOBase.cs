@@ -10,7 +10,7 @@ public class NPCAttackSOBase : ScriptableObject
 
     protected GameObject playerGameObject;
     protected Transform playerTransform;
-    protected PlayerScript playerScript;
+    protected Player playerScript;
 
     public virtual void Initialize(GameObject gameObject, Npc npc)
     {
@@ -21,7 +21,7 @@ public class NPCAttackSOBase : ScriptableObject
         playerGameObject = GameObject.FindGameObjectWithTag("Player");
 
         playerTransform = playerGameObject.transform;
-        playerScript = playerGameObject.GetComponent<PlayerScript>();
+        playerScript = playerGameObject.GetComponent<Player>();
     }
 
     public virtual void DoEnterLogic() { }

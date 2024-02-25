@@ -24,6 +24,8 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
 
     private void Start()
     {
+        CurrentHealth = MaxHealth;
+
         objectRB = GetComponent<Rigidbody2D>();
 
         StateMachine.Initialize(IdleState);
@@ -75,6 +77,8 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
         // TODO: застосування підсилень та послаблень показника шкоди
 
         float newHealth = CurrentHealth - damage;
+
+        Debug.Log(newHealth);
 
         if(newHealth <= 0)
         {

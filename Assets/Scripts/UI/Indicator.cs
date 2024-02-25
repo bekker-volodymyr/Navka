@@ -8,6 +8,6 @@ public class Indicator : MonoBehaviour
     [SerializeField] private Slider slider;
     public void SetValue(float currentValue, float maxValue)
     {
-        slider.value = currentValue / maxValue;
+        slider.value = currentValue * 100 / maxValue;
     }
 }

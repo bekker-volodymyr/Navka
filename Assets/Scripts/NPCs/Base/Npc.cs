@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Npc : MonoBehaviour, IDamageable, IAttack, IMoveable, ITriggerCheckable
 {
+    [SerializeField] Indicator healthIndicator;
     public float CurrentHealth { get; set; }
     [field: SerializeField] public float MaxHealth { get; set; }
     public Rigidbody2D objectRB { get; set; }
@@ -121,6 +122,8 @@ public class Npc : MonoBehaviour, IDamageable, IAttack, IMoveable, ITriggerCheck
     public void GetDamage(float damage)
     {
         CurrentHealth -= damage;
+
+        healthIndicator.SetValue(CurrentHealth, MaxHealth);
 
         if (CurrentHealth < 0f) Death();
     }
