@@ -33,7 +33,6 @@ public class WorldGenerator : MonoBehaviour
 
     public void Generate()
     {
-        perlinNoise.GenerateOffset();
         biomsGrid = perlinNoise.GeneratePerlinNoise(biomsGrid, worldWidth, worldHeight);
         UpdateGrid();
     }

@@ -18,11 +18,6 @@ public class PerlinNoise : MonoBehaviour
     {
         float xCoord, yCoord;
 
-        //if (useRandomOffset)
-        //{
-        //    GenerateOffset();
-        //}
-
         xCoord = (float)x / worldWidth * scale;
         yCoord = (float)y / worldHeight * scale;
 
@@ -37,6 +32,7 @@ public class PerlinNoise : MonoBehaviour
 
     public BiomsEnum[,] GeneratePerlinNoise(BiomsEnum[,] biomsGrid, int worldWidth, int worldHeight)
     {
+        GenerateOffset();
         for (int x = 0; x < worldWidth; x++)
         {
             for (int y = 0; y < worldHeight; y++)
