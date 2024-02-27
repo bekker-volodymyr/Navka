@@ -1,13 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class PlayerIdleState : PlayerState
+public class PlayerLockToInteractState : PlayerState
 {
+    public PlayerLockToInteractState(Player player, StateMachine playerStateMachine) : base(player, playerStateMachine) { }
 
-    public PlayerIdleState(Player player, StateMachine playerStateMachine) : base(player, playerStateMachine) { }
-    private float moveSpeed = 5f;
     public override void EnterState()
     {
         base.EnterState();
@@ -20,12 +18,6 @@ public class PlayerIdleState : PlayerState
 
     public override void FrameUpdate()
     {
-        base.FrameUpdate();
-
-        float MoveX = Input.GetAxisRaw("Horizontal");
-        float MoveY = Input.GetAxisRaw("Vertical");
-
-        player.Move((new Vector2(MoveX, MoveY).normalized)*moveSpeed);
 
     }
 

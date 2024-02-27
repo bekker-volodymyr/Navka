@@ -13,6 +13,10 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
 
     public StateMachine StateMachine { get; set; }
     public PlayerIdleState IdleState { get; set; }
+    public PlayerLockToInteractState LockToInteractState { get; set; }
+    public PlayerLockToTargetState LockToTargetState { get; set; }
+    public PlayerMoveToPointState MoveToPointState { get; set; }
+    public PlayerUnderCoverState UnderCoverState { get; set; }
 
     #endregion
 
@@ -20,6 +24,10 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
     {
         StateMachine = new StateMachine();
         IdleState    = new PlayerIdleState(this, StateMachine);
+        MoveToPointState = new PlayerMoveToPointState(this, StateMachine);
+        LockToInteractState = new PlayerLockToInteractState(this, StateMachine);
+        LockToTargetState = new PlayerLockToTargetState(this, StateMachine);
+        UnderCoverState = new PlayerUnderCoverState(this, StateMachine);
     }
 
     private void Start()
@@ -116,8 +124,11 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
 
     public void Move(Vector2 velocity)
     {
-        objectRB.velocity = new Vector2(velocity.x * moveSpeed, velocity.y * moveSpeed); ;
+        //objectRB.velocity = new Vector2(velocity.x * moveSpeed, velocity.y * moveSpeed); ;
+        objectRB.velocity = velocity;
     }
+
+
 
     public void CheckFacing(Vector2 velocity)
     {
