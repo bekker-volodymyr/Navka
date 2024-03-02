@@ -16,11 +16,22 @@ public class PlayerState
     public virtual void EnterState() { }
     public virtual void ExitState() { }
     public virtual void FrameUpdate() {
-
-        if (Input.GetMouseButtonDown(0))
         //TODO: sensor input abstraction
+
+        if (Input.GetMouseButtonDown(0)) // move with mouse
         {
             player.StateMachine.ChangeState(player.MoveToPointState);
+        }
+
+        if (Input.GetKeyDown(KeyCode.F)) // attack
+        // TODO: left mouse click - avoid conflick with "move"
+        {
+            player.StateMachine.ChangeState(player.LockToTargetState);
+        }
+
+        if (Input.GetKeyDown(KeyCode.R) || Input.GetMouseButtonDown(1)) //interact
+        {
+            player.StateMachine.ChangeState(player.LockToTargetState);
         }
 
     }

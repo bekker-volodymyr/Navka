@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 5306664295161530725}
   m_Layer: 0
   m_Name: AttackRadius
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 5799468912586277688}
   m_Layer: 0
   m_Name: Bear
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -319,11 +319,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ffca2e8a8ad7984e8ef8543ad8457bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthIndicator: {fileID: 0}
   <MaxHealth>k__BackingField: 25
   idleBase: {fileID: 11400000, guid: 6c1bb018be1494848a221bc6b552dd06, type: 2}
   playerNoticedBase: {fileID: 11400000, guid: a7bc4b255038b1f49acb21a8eb26c072, type: 2}
   attackBase: {fileID: 11400000, guid: 87018f31f04b2d447a61608a5d845e99, type: 2}
-  <damage>k__BackingField: 5
+  <Damage>k__BackingField: 5
   <cooldown>k__BackingField: 5
   <delayBeforeDamage>k__BackingField: 3
   isOnCooldown: 0

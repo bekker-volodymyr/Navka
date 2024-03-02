@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 7191215432801975100}
   m_Layer: 0
   m_Name: Fellow
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 3079920937511619486}
   m_Layer: 0
   m_Name: AttackRadius
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

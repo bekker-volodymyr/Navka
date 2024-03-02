@@ -9,6 +9,9 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
 
     [SerializeField] private float moveSpeed = 5f;
 
+    [SerializeField] public CircleCollider2D AttackRadius;
+    [SerializeField] public CircleCollider2D TargetNoticeRadius;
+
     #region State Machine Fields
 
     public StateMachine StateMachine { get; set; }
@@ -67,8 +70,8 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
     #region IAttack Fields
 
     [field: SerializeField] public float Damage { get; set; }
-    public float cooldown { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-    public float delayBeforeDamage { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+    public float cooldown { get; set ; }
+    public float delayBeforeDamage { get ; set; }
 
     #endregion
 
@@ -116,6 +119,16 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
     public void ApplyDamage(IDamageable target)
     {
         throw new System.NotImplementedException();
+    }
+
+    public Collider2D[] GetAllItemsInCollisionRadius()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, TargetNoticeRadius.radius);
+        //foreach (Collider2D collider in colliders)
+        //{
+        //    Debug.Log(collider.gameObject.name);
+        //}
+        return colliders;
     }
 
     #endregion

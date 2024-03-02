@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class PlayerUnderCoverState : PlayerState
 {
@@ -18,7 +19,7 @@ public class PlayerUnderCoverState : PlayerState
 
     public override void FrameUpdate()
     {
-        
+        base.FrameUpdate();
     }
 
     public override void PhysicsUpdate()
