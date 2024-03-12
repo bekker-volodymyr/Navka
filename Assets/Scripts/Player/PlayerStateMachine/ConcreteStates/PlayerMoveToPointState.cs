@@ -27,22 +27,20 @@ public class PlayerMoveToPointState : PlayerState
 
     public override void FrameUpdate()
     {
-            base.FrameUpdate();
-            //Debug.Log()
-            _direction = (_targetPos - player.transform.position).normalized;
-            player.Move(_direction * moveSpeed);
+        base.FrameUpdate();
 
-            if ((player.transform.position - _targetPos).sqrMagnitude < 0.01f)
-            {
-                
-                player.StateMachine.ChangeState(player.IdleState);
-            }
+        _direction = (_targetPos - player.transform.position).normalized;
+        player.Move(_direction * moveSpeed);
 
-            if(Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
-            {
-                player.StateMachine.ChangeState(player.IdleState);
-            }
-        
+        if ((player.transform.position - _targetPos).sqrMagnitude < 0.01f)
+        {
+            player.StateMachine.ChangeState(player.IdleState);
+        }
+
+        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        {
+            player.StateMachine.ChangeState(player.IdleState);
+        }
     }
 
     public override void PhysicsUpdate()
@@ -64,7 +62,7 @@ public class PlayerMoveToPointState : PlayerState
         float distanceToPlane = 10f;
 
         // Use the camera to convert the screen coordinates to world coordinates
-         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, distanceToPlane));
+        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, distanceToPlane));
 
         return worldPosition;
     }

@@ -16,7 +16,6 @@ public class PlayerLockToTargetState : PlayerState
     private float moveSpeed = 5f;
 
 
-
     public override void EnterState()
     {
        
@@ -59,13 +58,16 @@ public class PlayerLockToTargetState : PlayerState
 
                 _targetPos = collider.transform.position;
 
-                _direction = (_targetPos - player.transform.position).normalized;
-                player.Move(_direction * moveSpeed);
-
                 if ((player.transform.position - _targetPos).sqrMagnitude < player.AttackRadius.radius) // NOTE: player attack radius
                 {
                     //player.Attack(collider.gameObject);
-                    player.StateMachine.ChangeState(player.IdleState);
+                    //player.StateMachine.ChangeState(player.IdleState);
+                    player.Attack(collider.GetComponentInParent<Npc>());
+                }
+                else
+                {
+                    _direction = (_targetPos - player.transform.position).normalized;
+                    player.Move(_direction * moveSpeed);
                 }
 
                 if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -79,35 +80,36 @@ public class Npc : MonoBehaviour, IDamageable, IAttack, IMoveable, ITriggerCheck
     public void Attack(IDamageable target)
     {
         objectRB.velocity = Vector2.zero;
-        if (!isOnCooldown)
-        {
-            StartCoroutine(DelayedAttack(target));
-        }
+        target.GetDamage(Damage);
+        //if (!isOnCooldown)
+        //{
+        //    //StartCoroutine(DelayedAttack(target));
+        //}
     }
 
     private IEnumerator DelayedAttack(IDamageable target)
     {
-        isOnCooldown = true;
-        Debug.Log("Attack started");
+        //isOnCooldown = true;
+        //Debug.Log("Attack started");
 
-        yield return new WaitForSeconds(delayBeforeDamage);
+        //yield return new WaitForSeconds(delayBeforeDamage);
 
-        Debug.Log("IsWithinAttackDistance " + IsWithinAttackDistance.ToString());
-        Debug.Log("isOnCooldown " + isOnCooldown.ToString());
-        if (IsWithinAttackDistance)
-        {
-            ApplyDamage(target);
-        }
+        //if (IsWithinAttackDistance)
+        //{
+        //    ApplyDamage(target);
+        //}
 
-        yield return new WaitForSeconds(cooldown - delayBeforeDamage);
+        //yield return new WaitForSeconds(cooldown - delayBeforeDamage);
 
-        isOnCooldown = false;
-        Debug.Log("Attack ended");
+        //isOnCooldown = false;
+        //Debug.Log("Attack ended");
+        throw new System.NotImplementedException();
     }
 
     public void ApplyDamage(IDamageable target)
     {
-        target.GetDamage(Damage);
+        //target.GetDamage(Damage);
+        throw new System.NotImplementedException();
     }
 
     #endregion

@@ -25,7 +25,7 @@ public class PlayerIdleState : PlayerState
         float MoveX = Input.GetAxisRaw("Horizontal");
         float MoveY = Input.GetAxisRaw("Vertical");
 
-        player.Move((new Vector2(MoveX, MoveY).normalized)*moveSpeed);
+        player.Move((new Vector2(MoveX, MoveY).normalized) * moveSpeed);
 
     }
 
