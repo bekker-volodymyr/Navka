@@ -10,8 +10,6 @@ public class PauseMenu : MonoBehaviour
     [SerializeField]
     private GameObject content;
 
-
-  
     void Start()
     {
         if (content.activeInHierarchy)
