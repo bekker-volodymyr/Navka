@@ -7,8 +7,6 @@ public class PerlinNoise : MonoBehaviour
     public float offsetX = 100f;
     public float offsetY = 100f;
 
-    public bool useRandomOffset = false;
-
     private void Start()
     {
         GenerateOffset();
