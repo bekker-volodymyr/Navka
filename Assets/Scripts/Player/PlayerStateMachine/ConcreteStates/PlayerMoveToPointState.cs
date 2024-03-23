@@ -1,7 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
+
 
 public class PlayerMoveToPointState : PlayerState
 {
@@ -10,8 +15,12 @@ public class PlayerMoveToPointState : PlayerState
     private Vector3 _targetPos;
     private Vector3 _direction;
 
+    private UnityEngine.UI.Button inventoryBtn = GameObject.Find("PlayerMenu_Btn").GetComponent<UnityEngine.UI.Button>();
+    private UnityEngine.UI.Button pauseBtn = GameObject.Find("PauseMenu_Btn").GetComponent<UnityEngine.UI.Button>();
+
     private float moveSpeed = 5f;
 
+   
 
     public override void EnterState()
     {
@@ -29,6 +38,12 @@ public class PlayerMoveToPointState : PlayerState
     {
         base.FrameUpdate();
 
+        if (GameState.isPausedByUI)
+        {
+            Debug.Log("click paused by ui");
+            _targetPos = player.transform.position;
+        }
+
         _direction = (_targetPos - player.transform.position).normalized;
         player.Move(_direction * moveSpeed);
 
@@ -41,6 +56,8 @@ public class PlayerMoveToPointState : PlayerState
         {
             player.StateMachine.ChangeState(player.IdleState);
         }
+
+        
     }
 
     public override void PhysicsUpdate()
@@ -55,15 +72,20 @@ public class PlayerMoveToPointState : PlayerState
 
     private Vector3 GetEndPoint()
     {
-        // Get the mouse position in screen coordinates
+        if(GameState.isInPlayerMenu || GameState.isPaused)
+        {
+            Debug.Log("click while paused");
+            return player.transform.position;
+        } 
+
         Vector3 mousePosition = Input.mousePosition;
-
-        // Set the distance from the camera to the desired plane
         float distanceToPlane = 10f;
-
-        // Use the camera to convert the screen coordinates to world coordinates
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, distanceToPlane));
 
         return worldPosition;
+        
     }
+
+
+
 }
