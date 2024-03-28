@@ -158,4 +158,5 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
     }
 
     #endregion
+
 }

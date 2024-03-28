@@ -7,4 +7,6 @@ public class GameState : MonoBehaviour
     public static bool isPaused = false;
     public static bool isInPlayerMenu = false;
     public static bool isDead = false;
+
+    public static bool isPausedByUI = false;
 }
