@@ -871,6 +871,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1570322189965475520, guid: 10262515c51564c4a97019ace17f309f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -50.99997
+      objectReference: {fileID: 0}
     - target: {fileID: 1914877209284383285, guid: 10262515c51564c4a97019ace17f309f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1412,6 +1416,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2290389838962689895, guid: 12cdba18c9918f34cbeda969e198b45e, type: 3}
+      propertyPath: description
+      value: 
+      objectReference: {fileID: 11400000, guid: 0df55425f86f2d24aa359f1b1af5422a, type: 2}
     - target: {fileID: 4914262827462957956, guid: 12cdba18c9918f34cbeda969e198b45e, type: 3}
       propertyPath: m_Name
       value: Wolf
@@ -1748,6 +1756,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5799468912586277688, guid: dccdbfb0a27c0ca4b815282c7e324f51, type: 3}
+      propertyPath: description
+      value: 
+      objectReference: {fileID: 11400000, guid: 0df55425f86f2d24aa359f1b1af5422a, type: 2}
     - target: {fileID: 9120763661888451869, guid: dccdbfb0a27c0ca4b815282c7e324f51, type: 3}
       propertyPath: m_Name
       value: Bear
