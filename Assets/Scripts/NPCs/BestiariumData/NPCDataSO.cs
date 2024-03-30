@@ -3,16 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NPCDescriptionSO", menuName = "NPCLogic/Description/NPCDescriptionSO")]
+[CreateAssetMenu(fileName = "NPCDescriptionSO", menuName = "NPC Description/NPCDescriptionSO")]
 public class NPCDataSO : ScriptableObject
 {
-    public int HealthPoints { get; set; }
-    public Enums.NPCType Type { get; set; }
-    public Enums.NPCApproach approach { get; set; }
-    public Item[] Loot { get; set; }
-    public string Name { get; set; }
-    public string Weaknesses { get; set; }
-    public string Behaviour { get; set; }
-    public string Lore { get; set; }
-    public Sprite Picture { get; set; }
+    [SerializeField] public int HealthPoints;
+    [SerializeField] public Enums.NPCType Type;
+    [SerializeField] public Enums.NPCApproach approach;
+    [SerializeField] public Item[] Loot;
+    [SerializeField] public string Name;
+    [SerializeField] public string Weaknesses;
+    [SerializeField] public string Behaviour;
+    [SerializeField] public string Lore;
+    [SerializeField] public Sprite Picture;
 }

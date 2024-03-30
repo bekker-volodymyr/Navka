@@ -7,11 +7,13 @@ public class Npc : MonoBehaviour, IDamageable, IAttack, IMoveable, ITriggerCheck
 {
     [SerializeField] Indicator healthIndicator;
     public float CurrentHealth { get; set; }
-    [field: SerializeField] public float MaxHealth { get; set; }
+    public float MaxHealth { get; set; }
     public Rigidbody2D objectRB { get; set; }
     public bool IsFacingRight { get; set; } = true;
     public bool IsPlayerNoticed { get; set; }
     public bool IsWithinAttackDistance { get; set; }
+
+    [SerializeField] private NPCDataSO description;
 
     #region State Machine Fields
 
@@ -48,6 +50,7 @@ public class Npc : MonoBehaviour, IDamageable, IAttack, IMoveable, ITriggerCheck
 
     private void Start()
     {
+        MaxHealth = description.HealthPoints;
         CurrentHealth = MaxHealth;
 
         objectRB = GetComponent<Rigidbody2D>();
