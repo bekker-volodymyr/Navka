@@ -2,22 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BestiariumManager
+public class BestiariumManager: MonoBehaviour 
 {
-    [SerializeField] NPCDescriptionStorageSO NPCStorage;
-    [SerializeField] GameObject buttonsHumanNPC;
-    [SerializeField] GameObject buttonsUnholyEntityNPC;
-    [SerializeField] GameObject buttonsAnimalNPC;
-    [SerializeField] GameObject buttonsGodNPC;
+    [SerializeField] private NPCDescriptionStorageSO NPCStorage;
+    [SerializeField] private GameObject buttonsHumanNPC;
+    [SerializeField] private GameObject buttonsUnholyEntityNPC;
+    [SerializeField] private GameObject buttonsAnimalNPC;
+    [SerializeField] private GameObject buttonsGodNPC;
     void Initialize()
     {
 
     }
-    void SwitchButtonList(Enums.NPCTypes type)
+    void SwitchButtonList(Enums.NPCType type)
     {
 
     }
-    void SwitchNPC(string Name)
+    public void SwitchNPC(NPCDescriptionSO Name)
     {
         
     }

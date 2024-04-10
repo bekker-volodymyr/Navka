@@ -1,12 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class NPCBestiariumButton
+public class NPCBestiariumButton: MonoBehaviour
 {
-    NPCDescriptionSO NPCDescription;
+    [SerializeField] private NPCDescriptionSO NPCDescription;
+
+    private BestiariumManager bestiariumManager;
+
+    private void Start()
+    {
+        bestiariumManager = FindObjectOfType<BestiariumManager>();
+    }
+
     void OnClick()
     {
-        BestiariumManager.SwitchNPC(NPCDescription);
+        bestiariumManager.SwitchNPC(NPCDescription);
     } 
 }
