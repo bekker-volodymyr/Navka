@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NPCDescriptionSO", menuName = "NPC Description/NPCDescriptionSO")]
-public class NPCDataSO : ScriptableObject
+public class NPCDescriptionSO : ScriptableObject
 {
     [SerializeField] public int HealthPoints;
     [SerializeField] public Enums.NPCType Type;

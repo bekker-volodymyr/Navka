@@ -13,7 +13,7 @@ public class Npc : MonoBehaviour, IDamageable, IAttack, IMoveable, ITriggerCheck
     public bool IsPlayerNoticed { get; set; }
     public bool IsWithinAttackDistance { get; set; }
 
-    [SerializeField] private NPCDataSO description;
+    [SerializeField] private NPCDescriptionSO description;
 
     #region State Machine Fields
 
