@@ -15,16 +15,10 @@ public class PlayerMoveToPointState : PlayerState
     private Vector3 _targetPos;
     private Vector3 _direction;
 
-    private UnityEngine.UI.Button inventoryBtn = GameObject.Find("PlayerMenu_Btn").GetComponent<UnityEngine.UI.Button>();
-    private UnityEngine.UI.Button pauseBtn = GameObject.Find("PauseMenu_Btn").GetComponent<UnityEngine.UI.Button>();
-
     private float moveSpeed = 5f;
-
-   
 
     public override void EnterState()
     {
-
         base.EnterState();
         _targetPos = GetEndPoint();
     }
@@ -38,12 +32,6 @@ public class PlayerMoveToPointState : PlayerState
     {
         base.FrameUpdate();
 
-        if (GameState.isPausedByUI)
-        {
-            Debug.Log("click paused by ui");
-            _targetPos = player.transform.position;
-        }
-
         _direction = (_targetPos - player.transform.position).normalized;
         player.Move(_direction * moveSpeed);
 
@@ -56,8 +44,6 @@ public class PlayerMoveToPointState : PlayerState
         {
             player.StateMachine.ChangeState(player.IdleState);
         }
-
-        
     }
 
     public override void PhysicsUpdate()
@@ -72,20 +58,10 @@ public class PlayerMoveToPointState : PlayerState
 
     private Vector3 GetEndPoint()
     {
-        if(GameState.isInPlayerMenu || GameState.isPaused)
-        {
-            Debug.Log("click while paused");
-            return player.transform.position;
-        } 
-
         Vector3 mousePosition = Input.mousePosition;
         float distanceToPlane = 10f;
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, distanceToPlane));
 
         return worldPosition;
-        
     }
-
-
-
 }

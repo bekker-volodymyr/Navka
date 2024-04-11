@@ -39,8 +39,6 @@ public class InGameUIManager : MonoBehaviour
         pauseBtn.SetActive(!GameState.isPaused);
         playerMenuBtn.SetActive(!GameState.isPaused);
 
-        GameState.isPausedByUI = !GameState.isPausedByUI;
-
         Time.timeScale = GameState.isPaused ? 0f : 1f;
     }
 
@@ -52,11 +50,7 @@ public class InGameUIManager : MonoBehaviour
         pauseBtn.SetActive(!GameState.isInPlayerMenu);
         playerMenuBtn.SetActive(!GameState.isInPlayerMenu);
 
-        GameState.isPausedByUI = !GameState.isPausedByUI;
-
         Time.timeScale = GameState.isInPlayerMenu ? 0f : 1f;
-
-
     }
 
 }
