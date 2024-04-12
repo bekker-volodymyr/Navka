@@ -19,6 +19,7 @@ public class InventoryCell : MonoBehaviour
         count = countOfNewItem;
         countText.text = count.ToString();
         image.sprite = item.Sprite;
+        image.gameObject.SetActive(true);
     }
 
 }

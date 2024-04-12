@@ -19,13 +19,13 @@ public class Item : MonoBehaviour, IInteractable
     {
         pickUpText.gameObject.SetActive(false);
 
-        inventoryManager = FindObjectOfType<InventoryManager>();
+        // inventoryManager = FindObjectOfType<InventoryManager>();
     }
 
     private void Update()
     {
-        if (pickUpAllowed && Input.GetKeyDown(KeyCode.R))
-            PickUp();
+        //if (pickUpAllowed && Input.GetKeyDown(KeyCode.R))
+        //    PickUp();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
