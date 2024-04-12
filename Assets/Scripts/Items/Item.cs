@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Item : MonoBehaviour
+public class Item : MonoBehaviour, IInteractable
 {
+    [SerializeField] ItemSO itemDescription;
+    [SerializeField] int count;
+
+    [SerializeField] private InventoryManager inventoryManager;
 
     [SerializeField]
     private TMPro.TextMeshProUGUI pickUpText;
@@ -14,11 +18,13 @@ public class Item : MonoBehaviour
     private void Start()
     {
         pickUpText.gameObject.SetActive(false);
+
+        inventoryManager = FindObjectOfType<InventoryManager>();
     }
 
     private void Update()
     {
-        if (pickUpAllowed && Input.GetKeyDown(KeyCode.F))
+        if (pickUpAllowed && Input.GetKeyDown(KeyCode.R))
             PickUp();
     }
 
@@ -42,6 +48,12 @@ public class Item : MonoBehaviour
 
     private void PickUp()
     {
+        inventoryManager.AddItem(itemDescription, count);
         Destroy(gameObject);
+    }
+
+    public void OnInteraction()
+    {
+        PickUp();
     }
 }

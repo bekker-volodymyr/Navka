@@ -17,4 +17,12 @@ public class Enums
         Agressive = 1,
         Neutral = 2
     }
+
+    public enum ItemType
+    {
+        Food = 1,
+        Amulet = 2,
+        Potion = 3,
+        Component = 4
+    }
 }

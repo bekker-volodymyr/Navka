@@ -34,7 +34,7 @@ public class PlayerState
 
             if (Input.GetKeyDown(KeyCode.R) || Input.GetMouseButtonDown(1)) //interact
             {
-                player.StateMachine.ChangeState(player.LockToTargetState);
+                player.StateMachine.ChangeState(player.LockToInteractState);
             }
         }
 

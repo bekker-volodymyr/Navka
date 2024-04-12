@@ -18,7 +18,6 @@ public class PlayerLockToTargetState : PlayerState
 
     public override void EnterState()
     {
-       
         base.EnterState();
     }
 
