@@ -7,12 +7,7 @@ public class NPCBestiariumButton: MonoBehaviour
 {
     [SerializeField] private NPCDescriptionSO NPCDescription;
 
-    private BestiariumManager bestiariumManager;
-
-    private void Start()
-    {
-        bestiariumManager = FindObjectOfType<BestiariumManager>();
-    }
+    public BestiariumManager bestiariumManager;
 
     void OnClick()
     {
