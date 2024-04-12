@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33444820b1076934da9e621d903e0ca7, type: 3}
   m_Name: WolfSO
   m_EditorClassIdentifier: 
-  HealthPoints: 0
-  Type: 0
-  approach: 0
+  HealthPoints: 10
+  Type: 3
+  approach: 2
   Loot: []
-  Name: 
-  Weaknesses: 
-  Behaviour: 
-  Lore: 
-  Picture: {fileID: 0}
+  Name: Wolf
+  Weaknesses: Loves meat
+  Behaviour: Walking around. Attacks if being attacked
+  Lore: Just a wolf
+  Picture: {fileID: 21300000, guid: aec773d83603acb439c3abfd5ea9a03a, type: 3}
