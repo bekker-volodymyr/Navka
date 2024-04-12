@@ -35,6 +35,14 @@ public class InventoryManager : MonoBehaviour
         {
             InitCells();
         }
-        cells[0].PutItems(item, count);
+        int left = count;
+        for (int i = 0; i < cellsCount; i++)
+        {
+            left = cells[i].TryPutItems(item, left);
+            if (left == 0)
+            {
+                break;
+            }
+        }
     }
 }

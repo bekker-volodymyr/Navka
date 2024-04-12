@@ -13,11 +13,30 @@ public class InventoryCell : MonoBehaviour
     [SerializeField] private TextMeshProUGUI countText;
     [SerializeField] private Image image;
 
-    public void PutItems(ItemSO newItem, int countOfNewItem)
+    public int TryPutItems(ItemSO newItem, int countOfNewItem)
+    {
+        if(item is null)
+        {
+            PutItem(newItem, countOfNewItem);
+            return 0;
+        }
+
+        if(item.Name == newItem.Name)
+        {
+            count += countOfNewItem;
+            countText.text = count.ToString();
+            return 0;
+        }
+
+        return countOfNewItem;
+    }
+
+    public void PutItem(ItemSO newItem, int countOfNewItem)
     {
         item = newItem;
         count = countOfNewItem;
         countText.text = count.ToString();
+        countText.gameObject.SetActive(true);
         image.sprite = item.Sprite;
         image.gameObject.SetActive(true);
     }
