@@ -41,22 +41,22 @@ public class ItemsPageManager: MonoBehaviour
                 case Enums.ItemType.Food:
                     newButton = Instantiate(buttonPrefab);
                     newButton.transform.SetParent(buttonsFood.transform, false);
-                    newButton.GetComponent<ItemsPageButton>().InitButton(item);
+                    newButton.GetComponent<ItemsPageButton>().InitButton(item, this);
                     break;
                 case Enums.ItemType.Amulet:
                     newButton = Instantiate(buttonPrefab);
                     newButton.transform.SetParent(buttonsAmulets.transform, false);
-                    newButton.GetComponent<ItemsPageButton>().InitButton(item);
+                    newButton.GetComponent<ItemsPageButton>().InitButton(item, this);
                     break;
                 case Enums.ItemType.Potion:
                     newButton = Instantiate(buttonPrefab);
                     newButton.transform.SetParent(buttonsPotions.transform, false);
-                    newButton.GetComponent<ItemsPageButton>().InitButton(item);
+                    newButton.GetComponent<ItemsPageButton>().InitButton(item, this);
                     break;
                 case Enums.ItemType.Component:
                     newButton = Instantiate(buttonPrefab);
                     newButton.transform.SetParent(buttonsComponents.transform, false);
-                    newButton.GetComponent<ItemsPageButton>().InitButton(item);
+                    newButton.GetComponent<ItemsPageButton>().InitButton(item, this);
                     break;
                 default:
                     throw new Exception("uknown type exception");
@@ -89,7 +89,7 @@ public class ItemsPageManager: MonoBehaviour
     public void SwitchItem(ItemSO item)
     {
         Item_Image.sprite= item.Sprite;
-        Item_Name.SetText(item.Name);
+        Item_Name.SetText(item._Name);
         Item_Description.SetText(item.Lore); //?
         //Item_Recepies.textComponent.SetText(item.); -- missing
         Item_Sources.SetText(item.Sources.ToString());
