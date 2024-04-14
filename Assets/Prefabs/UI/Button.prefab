@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 5606682199716227692}
   - component: {fileID: 9019807439556736329}
   - component: {fileID: 3526639031683939183}
+  - component: {fileID: 6661569751396755548}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -254,4 +255,30 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9019807439556736329}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6661569751396755548}
+        m_TargetAssemblyTypeName: ItemsPageButton, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6661569751396755548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8834730913558337021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1db9ef0c46fc06844bec2b29bf3c3028, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pageManager: {fileID: 0}
+  item: {fileID: 0}
