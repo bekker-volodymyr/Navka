@@ -2,14 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using TMPro;
 
 public class NPCBestiariumButton: MonoBehaviour
 {
-    [SerializeField] private NPCDescriptionSO NPCDescription;
+    private NPCDescriptionSO NPCDescription;
 
-    public BestiariumManager bestiariumManager;
-
-    void OnClick()
+    private BestiariumManager bestiariumManager;
+    public void InitButton(NPCDescriptionSO item, BestiariumManager manager)
+    {
+        this.NPCDescription = item;
+        bestiariumManager = manager;
+        TextMeshProUGUI text = GetComponentInChildren<TextMeshProUGUI>();
+        text.SetText(item.name);
+    }
+    public void OnClick()
     {
         bestiariumManager.SwitchNPC(NPCDescription);
     } 

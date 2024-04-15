@@ -89,7 +89,7 @@ public class ItemsPageManager: MonoBehaviour
 
     public void SwitchItem(ItemSO item)
     {
-        Item_Image.sprite= item.Sprite;
+        Item_Image.sprite = item.Sprite;
         Item_Name.SetText(item.Title);
         Item_Description.SetText(item.Lore); //?
         //Item_Recepies.textComponent.SetText(item.); -- missing
