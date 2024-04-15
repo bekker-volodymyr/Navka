@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc59ad142cfb7364ca399ddddc978a15, type: 3}
   m_Name: DefaultItemSO
   m_EditorClassIdentifier: 
-  Name: Default
+  Title: Default Item
   Lore: Lorem ipsum had created this item
   Recipes: []
   Sources: []

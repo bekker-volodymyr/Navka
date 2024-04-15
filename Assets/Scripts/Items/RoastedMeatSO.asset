@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc59ad142cfb7364ca399ddddc978a15, type: 3}
-  m_Name: MeatSO
+  m_Name: RoastedMeatSO
   m_EditorClassIdentifier: 
-  Title: Meat
-  Lore: tasty fellow meat
+  Title: Roasted Meat
+  Lore: guy who have been cooked
   Recipes: []
   Sources:
-  - kill the fellow
+  - cook
   Type: 1
-  Effect: refills hunger
-  Sprite: {fileID: 21300000, guid: bc4a0cbc06293234291557c83d94ed79, type: 3}
+  Effect: tastes nice
+  Sprite: {fileID: 0}

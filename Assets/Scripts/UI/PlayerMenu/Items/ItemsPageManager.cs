@@ -65,31 +65,32 @@ public class ItemsPageManager: MonoBehaviour
         }
     }
 
-
     public void SwitchButtonList(int type)
     {
-        if(type == 1)
+        buttonsAmulets.SetActive(false);
+        buttonsComponents.SetActive(false);
+        buttonsFood.SetActive(false);
+        buttonsPotions.SetActive(false);
+
+        switch (type)
         {
-            buttonsAmulets.SetActive(true);
+            case 1:
+                buttonsComponents.SetActive(true); break;
+            case 2:
+                buttonsFood.SetActive(true); break;
+            case 3:
+                buttonsAmulets.SetActive(true); break;
+            case 4:
+                buttonsPotions.SetActive(true); break;
+            default:
+                throw new Exception("uknown type exception");
         }
-        else if (type == 2)
-        {
-            buttonsComponents.SetActive(true);
-        }
-        else if (type == 3)
-        {
-            buttonsFood.SetActive(true);
-        }
-        else if (type == 4)
-        {
-            buttonsPotions.SetActive(true);
-        }
-    } 
+    }
 
     public void SwitchItem(ItemSO item)
     {
         Item_Image.sprite= item.Sprite;
-        Item_Name.SetText(item._Name);
+        Item_Name.SetText(item.Title);
         Item_Description.SetText(item.Lore); //?
         //Item_Recepies.textComponent.SetText(item.); -- missing
         Item_Sources.SetText(item.Sources.ToString());

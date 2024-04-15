@@ -21,7 +21,7 @@ public class InventoryCell : MonoBehaviour
             return 0;
         }
 
-        if(item._Name == newItem._Name)
+        if(item.Title == newItem.Title)
         {
             count += countOfNewItem;
             countText.text = count.ToString();
