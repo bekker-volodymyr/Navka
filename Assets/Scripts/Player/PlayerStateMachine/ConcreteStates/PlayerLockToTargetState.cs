@@ -87,9 +87,14 @@ public class PlayerLockToTargetState : PlayerState
         }
         else
         {
-            _targetPos = closestCollider.transform.position;
-            _targetEnemy = closestCollider.GetComponentInParent<Npc>();
+            SetTarget(closestCollider);
             return true;
         }
+    }
+
+    private void SetTarget(Collider2D targetCollider)
+    {
+        _targetPos = targetCollider.transform.position;
+        _targetEnemy = targetCollider.GetComponentInParent<Npc>();
     }
 }

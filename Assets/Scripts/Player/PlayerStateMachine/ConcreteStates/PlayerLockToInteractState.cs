@@ -80,9 +80,15 @@ public class PlayerLockToInteractState : PlayerState
         }
         else
         {
-            _targetPos = closestCollider.transform.position;
-            _targetItem = closestCollider.GetComponent<Item>();
+            SetTarget(closestCollider);
             return true;
         }
+    }
+
+    private void SetTarget(Collider2D targetCollider)
+    {
+
+        _targetPos = targetCollider.transform.position;
+        _targetItem = targetCollider.GetComponent<Item>();
     }
 }
