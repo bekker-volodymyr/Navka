@@ -11,6 +11,13 @@ public class InGameUIManager : MonoBehaviour
     [SerializeField] private GameObject pauseBtn;
     [SerializeField] private GameObject playerMenuBtn;
 
+    [SerializeField] private InventoryManager inventoryManager;
+
+    private void Start()
+    {
+        inventoryManager.Initialize();
+    }
+
     private void Update()
     {
         if (Input.GetKeyUp(KeyCode.Escape))

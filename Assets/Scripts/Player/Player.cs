@@ -124,10 +124,6 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
     public Collider2D[] GetAllItemsInCollisionRadius()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, TargetNoticeRadius.radius);
-        //foreach (Collider2D collider in colliders)
-        //{
-        //    Debug.Log(collider.gameObject.name);
-        //}
         return colliders;
     }
 
@@ -137,12 +133,8 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
 
     public void Move(Vector2 velocity)
     {
-        //objectRB.velocity = new Vector2(velocity.x * moveSpeed, velocity.y * moveSpeed); ;
         objectRB.velocity = velocity;
     }
-
-
-
     public void CheckFacing(Vector2 velocity)
     {
         // TODO: повертання відповідно до напрямку руху

@@ -11,19 +11,17 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private GameObject cellPrefab;
     [SerializeField] private GameObject cellsParent;
 
-    [SerializeField] private GameObject toolsBarParent;
+    [SerializeField] private GameObject toolsBarParentInGame;
+    [SerializeField] private GameObject toolsBarParentInMenu;
 
-    private void Awake()
+    public void Initialize()
     {
         if (toolsBar is null)
         {
             InitToolsBar();
         }
-    }
 
-    private void Start()
-    {
-        if(cells is null)
+        if (cells is null)
         {
             InitCells();
         }
@@ -34,7 +32,7 @@ public class InventoryManager : MonoBehaviour
         toolsBar = new List<InventoryCell>();
         for(int i = 0; i < toolsBarCount; i++) 
         {
-            InitCell(toolsBarParent);
+            toolsBar.Add(InitCell(toolsBarParentInGame));
         }
     }
 
@@ -44,7 +42,7 @@ public class InventoryManager : MonoBehaviour
 
         for (int i = 0; i < cellsCount; i++)
         {
-            InitCell(cellsParent);
+            cells.Add(InitCell(cellsParent));
         }
     }
 
@@ -54,10 +52,13 @@ public class InventoryManager : MonoBehaviour
         {
             InitCells();
         }
+
         int left = count;
+
         for (int i = 0; i < cellsCount; i++)
         {
             left = cells[i].TryPutItems(item, left);
+
             if (left == 0)
             {
                 break;
@@ -65,10 +66,27 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    private void InitCell(GameObject parent)
+    private InventoryCell InitCell(GameObject parent)
     {
         GameObject cell = Instantiate(cellPrefab);
         cell.transform.SetParent(parent.transform, false);
-        cells.Add(cell.GetComponent<InventoryCell>());
+        return cell.GetComponent<InventoryCell>();
+        //cells.Add(cell.GetComponent<InventoryCell>());
+    }
+
+    private void OnEnable()
+    {
+        for(int i = 0; i < toolsBar.Count; i++)
+        {
+            toolsBar[i].gameObject.transform.parent = toolsBarParentInMenu.transform;
+        }
+    }
+
+    private void OnDisable()
+    {
+        for (int i = 0; i < toolsBar.Count; i++)
+        {
+            toolsBar[i].gameObject.transform.parent = toolsBarParentInGame.transform;
+        }
     }
 }

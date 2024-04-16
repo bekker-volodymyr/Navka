@@ -21,6 +21,11 @@ public class PlayerState
 
         if (!GameState.isPaused && !GameState.isInPlayerMenu)
         {
+            if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+            {
+                player.StateMachine.ChangeState(player.IdleState);
+            }
+
             if (Input.GetMouseButtonDown(0) && !IsPointerOverUIObject()) // move with mouse
             {
                 player.StateMachine.ChangeState(player.MoveToPointState);
@@ -32,8 +37,9 @@ public class PlayerState
                 player.StateMachine.ChangeState(player.LockToTargetState);
             }
 
-            if (Input.GetKeyDown(KeyCode.R) || Input.GetMouseButtonDown(1)) //interact
+            if (Input.GetKeyDown(KeyCode.R) /*|| Input.GetMouseButtonDown(1)*/) //interact
             {
+                Debug.Log("R pressed");
                 player.StateMachine.ChangeState(player.LockToInteractState);
             }
         }
@@ -44,7 +50,6 @@ public class PlayerState
 
     private bool IsPointerOverUIObject()
     {
-        // Check if the mouse pointer is over a UI element
         PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
         eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
         var results = new System.Collections.Generic.List<RaycastResult>();
