@@ -5,9 +5,21 @@ using UnityEngine;
 public class InventoryManager : MonoBehaviour
 {
     private List<InventoryCell> cells;
+    private List<InventoryCell> toolsBar;
     [SerializeField] private int cellsCount = 16;
+    [SerializeField] private int toolsBarCount = 5;
     [SerializeField] private GameObject cellPrefab;
     [SerializeField] private GameObject cellsParent;
+
+    [SerializeField] private GameObject toolsBarParent;
+
+    private void Awake()
+    {
+        if (toolsBar is null)
+        {
+            InitToolsBar();
+        }
+    }
 
     private void Start()
     {
@@ -17,15 +29,22 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    private void InitToolsBar()
+    {
+        toolsBar = new List<InventoryCell>();
+        for(int i = 0; i < toolsBarCount; i++) 
+        {
+            InitCell(toolsBarParent);
+        }
+    }
+
     private void InitCells()
     {
         cells = new List<InventoryCell>();
 
         for (int i = 0; i < cellsCount; i++)
         {
-            GameObject cell = Instantiate(cellPrefab);
-            cell.transform.SetParent(cellsParent.transform, false);
-            cells.Add(cell.GetComponent<InventoryCell>());
+            InitCell(cellsParent);
         }
     }
 
@@ -44,5 +63,12 @@ public class InventoryManager : MonoBehaviour
                 break;
             }
         }
+    }
+
+    private void InitCell(GameObject parent)
+    {
+        GameObject cell = Instantiate(cellPrefab);
+        cell.transform.SetParent(parent.transform, false);
+        cells.Add(cell.GetComponent<InventoryCell>());
     }
 }

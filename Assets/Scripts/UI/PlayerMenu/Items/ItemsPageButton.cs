@@ -14,7 +14,7 @@ public class ItemsPageButton : MonoBehaviour
         this.item = item;
         pageManager = manager;
         TextMeshProUGUI text = GetComponentInChildren<TextMeshProUGUI>();
-        text.SetText(item.name);
+        text.SetText(item.Title);
     }
 
     public void OnClick()
