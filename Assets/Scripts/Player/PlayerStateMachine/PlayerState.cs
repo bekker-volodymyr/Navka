@@ -31,15 +31,14 @@ public class PlayerState
                 player.StateMachine.ChangeState(player.MoveToPointState);
             }
 
-            if (Input.GetKeyDown(KeyCode.F)) // attack
+            if (Input.GetKeyDown(KeyCode.F) && player.StateMachine.CurrentState != player.LockToTargetState) // attack
                                              // TODO: left mouse click - avoid conflick with "move"
             {
                 player.StateMachine.ChangeState(player.LockToTargetState);
             }
 
-            if (Input.GetKeyDown(KeyCode.R) /*|| Input.GetMouseButtonDown(1)*/) //interact
+            if (Input.GetKeyDown(KeyCode.R) && player.StateMachine.CurrentState != player.LockToInteractState) /*|| Input.GetMouseButtonDown(1)*/ //interact
             {
-                Debug.Log("R pressed");
                 player.StateMachine.ChangeState(player.LockToInteractState);
             }
         }

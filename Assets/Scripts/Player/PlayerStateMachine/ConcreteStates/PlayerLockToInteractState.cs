@@ -77,7 +77,6 @@ public class PlayerLockToInteractState : PlayerState
         if (closestCollider == null)
         {
             return false;
-            player.StateMachine.ChangeState(player.IdleState);
         }
         else
         {

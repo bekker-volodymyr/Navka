@@ -12,6 +12,7 @@ public class PlayerLockToTargetState : PlayerState
 
     private Vector3 _targetPos;
     private Vector3 _direction;
+    private Npc _targetEnemy;
 
     private float moveSpeed = 5f;
 
@@ -19,6 +20,11 @@ public class PlayerLockToTargetState : PlayerState
     public override void EnterState()
     {
         base.EnterState();
+
+        if (!TryFindClosestTarget())
+        {
+            player.StateMachine.ChangeState(player.IdleState);
+        }
     }
 
     public override void ExitState()
@@ -30,53 +36,17 @@ public class PlayerLockToTargetState : PlayerState
     {
         base.FrameUpdate();
 
-        Debug.Log("enemy search engaged");
 
-        // Get all colliders within the specified circle
-        //IMPORTANT NOTE: looking for colliders with tag enemy, tag is set on AttackRadius on enemy,
-        //because it cant find enemy as a hole unit
-        Collider2D[] colliders = player.GetAllItemsInCollisionRadius();
-  
-        foreach (Collider2D collider in colliders)
+        if ((player.transform.position - _targetPos).sqrMagnitude < player.AttackRadius.radius)
         {
-            if( Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
-            {
-                Debug.Log("enemy scan disengaged or abandoned");
-                player.StateMachine.ChangeState(player.IdleState);
-            }
-
-            if (collider.gameObject.tag != "Enemy")
-            {
-                //player.StateMachine.ChangeState(player.IdleState);
-                continue;
-            }
-
-            if(collider.CompareTag("Enemy"))
-            {
-                Debug.Log("Enemy detected");
-
-                _targetPos = collider.transform.position;
-
-                if ((player.transform.position - _targetPos).sqrMagnitude < player.AttackRadius.radius) // NOTE: player attack radius
-                {
-                    //player.Attack(collider.gameObject);
-                    //player.StateMachine.ChangeState(player.IdleState);
-                    player.Attack(collider.GetComponentInParent<Npc>());
-                }
-                else
-                {
-                    _direction = (_targetPos - player.transform.position).normalized;
-                    player.Move(_direction * moveSpeed);
-                }
-
-                if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
-                {
-                    player.StateMachine.ChangeState(player.IdleState);
-                }
-            }
+            player.Attack(_targetEnemy);
+            player.StateMachine.ChangeState(player.IdleState);
         }
-
-       
+        else
+        {
+            _direction = (_targetPos - player.transform.position).normalized;
+            player.Move(_direction * moveSpeed);
+        }
     }
 
     public override void PhysicsUpdate()
@@ -89,5 +59,37 @@ public class PlayerLockToTargetState : PlayerState
         base.AnimationTriggerEvent(type);
     }
 
+    private bool TryFindClosestTarget()
+    {
+        // Get all colliders within the specified circle
+        Collider2D[] colliders = player.GetAllItemsInCollisionRadius();
 
+        float minDistance = 0f;
+        Collider2D closestCollider = null;
+
+        // Find closest
+        foreach (var collider in colliders)
+        {
+            if (collider.CompareTag("Enemy"))
+            {
+                float distance = Vector2.Distance(player.transform.position, collider.transform.position);
+                if (distance < minDistance || closestCollider == null)
+                {
+                    minDistance = distance;
+                    closestCollider = collider;
+                }
+            }
+        }
+
+        if (closestCollider == null)
+        {
+            return false;
+        }
+        else
+        {
+            _targetPos = closestCollider.transform.position;
+            _targetEnemy = closestCollider.GetComponentInParent<Npc>();
+            return true;
+        }
+    }
 }
