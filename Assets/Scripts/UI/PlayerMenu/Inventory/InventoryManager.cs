@@ -46,14 +46,18 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void AddItem(ItemSO item, int count)
+    public void AddItem(ItemSO item, int quantity)
     {
-        if(cells is null)
-        {
-            InitCells();
-        }
+        int left = quantity;
 
-        int left = count;
+        for(int i = 0; i < toolsBarCount; i++)
+        {
+            left = toolsBar[i].TryPutItems(item, left);
+            if (left == 0)
+            {
+                return;
+            }
+        }
 
         for (int i = 0; i < cellsCount; i++)
         {
@@ -61,7 +65,7 @@ public class InventoryManager : MonoBehaviour
 
             if (left == 0)
             {
-                break;
+                return;
             }
         }
     }

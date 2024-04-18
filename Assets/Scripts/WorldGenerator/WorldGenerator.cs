@@ -29,6 +29,8 @@ public class WorldGenerator : MonoBehaviour
         biomLayer.ClearAllTiles();
         baseLayer.ClearAllTiles();
         decorLayer.ClearAllTiles();
+
+        Generate();
     }
 
     public void Generate()

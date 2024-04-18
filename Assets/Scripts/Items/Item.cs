@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class Item : MonoBehaviour, IInteractable
 {
-    [SerializeField] ItemSO item;
-    [SerializeField] int quantity;
+    [SerializeField] private ItemSO item;
+    [SerializeField] private int quantity;
 
     [SerializeField] private InventoryManager inventoryManager;
 

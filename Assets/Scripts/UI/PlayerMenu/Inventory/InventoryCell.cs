@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,22 +13,37 @@ public class InventoryCell : MonoBehaviour
     [SerializeField] private TextMeshProUGUI countText;
     [SerializeField] private Image image;
 
-    public int TryPutItems(ItemSO newItem, int countOfNewItem)
+    public int TryPutItems(ItemSO newItem, int quantity)
     {
         if(item is null)
         {
-            PutItem(newItem, countOfNewItem);
-            return 0;
+            int newQuantity = quantity <= newItem.maxPerStack ? quantity : newItem.maxPerStack;
+            PutItem(newItem, newQuantity);
+
+            Debug.Log($"quantity: {quantity} ---- newQuantitiy: {newQuantity}");
+
+            return quantity - newQuantity;
         }
 
         if(item.Title == newItem.Title)
         {
-            count += countOfNewItem;
-            countText.text = count.ToString();
-            return 0;
+            int newQuantity = count + quantity;
+            if(newQuantity <= newItem.maxPerStack)
+            {
+                count = newQuantity;
+                countText.text = count.ToString();
+                return 0;
+            }
+            else
+            {
+                int left = newQuantity - newItem.maxPerStack;
+                count = newItem.maxPerStack;
+                countText.text = count.ToString();
+                return left;
+            }
         }
 
-        return countOfNewItem;
+        return quantity;
     }
 
     public void PutItem(ItemSO newItem, int countOfNewItem)

@@ -19,3 +19,4 @@ MonoBehaviour:
   Type: 4
   Effect: Do default things
   Sprite: {fileID: 21300000, guid: 9a8abbdf384e90441ac00aaea4570e06, type: 3}
+  maxPerStack: 3
