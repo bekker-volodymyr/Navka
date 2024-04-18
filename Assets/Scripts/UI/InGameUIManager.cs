@@ -11,12 +11,14 @@ public class InGameUIManager : MonoBehaviour
     [SerializeField] private GameObject pauseBtn;
     [SerializeField] private GameObject playerMenuBtn;
 
-    [SerializeField] private InventoryManager inventoryManager;
+    [SerializeField] private UIInventoryManager inventoryManager;
 
-    private void Start()
-    {
-        inventoryManager.Initialize();
-    }
+    //[SerializeField] private InventoryManager inventoryManager;
+
+    // private void Start()
+    // {
+    //     inventoryManager.Initialize();
+    // }
 
     private void Update()
     {
@@ -53,6 +55,11 @@ public class InGameUIManager : MonoBehaviour
     {
         playerMenu.SetActive(!GameState.isInPlayerMenu);
         GameState.isInPlayerMenu = !GameState.isInPlayerMenu;
+
+        if (GameState.isInPlayerMenu)
+            inventoryManager.Show();
+        else
+            inventoryManager.Hide();
 
         pauseBtn.SetActive(!GameState.isInPlayerMenu);
         playerMenuBtn.SetActive(!GameState.isInPlayerMenu);

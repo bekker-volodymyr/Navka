@@ -16,12 +16,12 @@ public class UIInventoryManager : MonoBehaviour
     [SerializeField] private GameObject toolsBarParentInMenu;
 
     private List<UIInventoryCell> inventoryCells = new List<UIInventoryCell>();
-    private List<UIInventoryCell> toolbarsCells = new List<UIInventoryCell>();
+    private List<UIInventoryCell> toolsBarCells = new List<UIInventoryCell>();
 
     public void Init(int inventorySize, int toolsBarSize)
     {
         InitCells(inventoryCells, inventoryCellsParent, inventorySize);
-        InitCells(toolbarsCells, toolsBarParentInGame, toolsBarSize);
+        InitCells(toolsBarCells, toolsBarParentInGame, toolsBarSize);
     }
 
     private void InitCells(List<UIInventoryCell> cells, GameObject cellsParent, int size)
@@ -36,21 +36,64 @@ public class UIInventoryManager : MonoBehaviour
     {
         UIInventoryCell cell = Instantiate(cellPrefab);
         cell.transform.SetParent(parent.transform, false);
-        cell.SetEmpty();
         return cell;
     }
 
-    public void UpdateToolsBar(List<InventoryCellModel> toolsBarItems)
+    public void ResetInventory()
     {
-        for(int i = 0; i < toolbarsCells.Count; i++)
+        foreach (UIInventoryCell cell in inventoryCells)
+            cell.SetEmpty();
+    }
+
+    public void ResetToolsBar()
+    {
+        foreach (UIInventoryCell cell in toolsBarCells)
+            cell.SetEmpty();
+    }
+
+    public void UpdateItemInInventory(int index, Sprite sprite, int quantity)
+    {
+        if (inventoryCells.Count > index)
         {
-            if (toolsBarItems[i].IsEmpty)
+            inventoryCells[index].SetItem(sprite, quantity);
+        }
+    }
+
+    public void UpdateItemInToolsBar(int index, Sprite sprite, int quantity)
+    {
+        Debug.Log($"Update item in toolsbar {index} {sprite} {quantity}");
+        if (toolsBarCells.Count > index)
+        {
+            toolsBarCells[index].SetItem(sprite, quantity);
+        }
+    }
+
+    public void Show()
+    {
+        content.gameObject.SetActive(true);
+        ToggleToolsBar(true);
+    }
+
+    public void Hide()
+    {
+        content.gameObject.SetActive(false);
+        ToggleToolsBar(false);
+    }
+
+    private void ToggleToolsBar(bool isMenu)
+    {
+        if(isMenu)
+        {
+            for (int i = 0; i < toolsBarCells.Count; i++)
             {
-                toolbarsCells[i].SetEmpty();
+                toolsBarCells[i].gameObject.transform.SetParent(toolsBarParentInMenu.transform, false);
             }
-            else
+        }
+        else
+        {
+            for (int i = 0; i < toolsBarCells.Count; i++)
             {
-                toolbarsCells[i].SetItem(toolsBarItems[i].Item, toolsBarItems[i].Quantity);
+                toolsBarCells[i].gameObject.transform.SetParent(toolsBarParentInGame.transform, false);
             }
         }
     }
