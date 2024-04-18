@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 public struct InventoryCellModel
 {
     private int quantity;
@@ -41,10 +43,10 @@ public struct InventoryCellModel
         return quantity;
     }
 
-    public void PutItem(ItemSO newItem, int countOfNewItem)
+    public void PutItem(ItemSO newItem, int newQuantity)
     {
         item = newItem;
-        quantity = countOfNewItem;
+        quantity = newQuantity;
     }
 
     public static InventoryCellModel GetEmptyCell()

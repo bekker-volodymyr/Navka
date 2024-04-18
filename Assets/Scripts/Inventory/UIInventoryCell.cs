@@ -9,13 +9,21 @@ public class UIInventoryCell : MonoBehaviour
     [SerializeField] private TextMeshProUGUI quantityText;
     [SerializeField] private Image image;
 
+    private bool empty = true;
+
+    private void Awake()
+    {
+        SetEmpty();
+    }
+
     public void SetEmpty()
     {
         quantityText.gameObject.SetActive(false);
         image.gameObject.SetActive(false);
+        empty = true;
     }
 
-    public void SetItem(ItemSO item, int quantity)
+    public void SetItem(Sprite sprite, int quantity)
     {
         // Set quantity
         quantityText.gameObject.SetActive(true);
@@ -23,6 +31,9 @@ public class UIInventoryCell : MonoBehaviour
 
         // Set image
         image.gameObject.SetActive(true);
-        image.sprite = item.Sprite;
+        image.sprite = sprite;
+
+        // Set empty to false
+        empty = false;
     }
 }

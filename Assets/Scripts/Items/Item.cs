@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System;
 
 public class Item : MonoBehaviour, IInteractable
 {
     [SerializeField] private ItemSO item;
     [SerializeField] private int quantity;
 
-    [SerializeField] private InventoryManager inventoryManager;
+    // [SerializeField] private InventoryManager inventoryManager;
 
     [SerializeField] private TextMeshProUGUI pickUpText;
+    
+    public static event Action<ItemSO, int> OnPickUp;
 
     private bool pickUpAllowed;
 
@@ -19,7 +22,7 @@ public class Item : MonoBehaviour, IInteractable
     {
         pickUpText.gameObject.SetActive(false);
 
-        inventoryManager = FindObjectOfType<InventoryManager>(true);
+        //inventoryManager = FindObjectOfType<InventoryManager>(true);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -42,7 +45,11 @@ public class Item : MonoBehaviour, IInteractable
 
     private void PickUp()
     {
-        inventoryManager.AddItem(item, quantity);
+        // inventoryManager.AddItem(item, quantity);
+        // Debug.Log($"PickUp Item {item.Title} {quantity}");
+        // Debug.Log(OnPickUp.GetInvocationList()[0].Method.Name);
+        OnPickUp?.Invoke(item, quantity);
+        //GameState.OnPickUp?.Invoke(item, quantity);
         Destroy(gameObject);
     }
 

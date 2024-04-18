@@ -1,11 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventoryCell : MonoBehaviour
+public class InventoryCell : MonoBehaviour, IPointerClickHandler
 {
     private ItemSO item = null;
     private int count = 0;
@@ -56,4 +58,21 @@ public class InventoryCell : MonoBehaviour
         image.gameObject.SetActive(true);
     }
 
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (eventData.button == PointerEventData.InputButton.Right)
+        {
+            DropItem();
+        }
+        else
+        {
+            // TODO: 
+            // TAKE ITEM AND DRAG IT
+        }
+    }
+
+    private void DropItem()
+    {
+        
+    }
 }
