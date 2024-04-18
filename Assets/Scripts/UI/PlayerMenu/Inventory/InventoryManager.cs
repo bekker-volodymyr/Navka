@@ -71,14 +71,13 @@ public class InventoryManager : MonoBehaviour
         GameObject cell = Instantiate(cellPrefab);
         cell.transform.SetParent(parent.transform, false);
         return cell.GetComponent<InventoryCell>();
-        //cells.Add(cell.GetComponent<InventoryCell>());
     }
 
     private void OnEnable()
     {
         for(int i = 0; i < toolsBar.Count; i++)
         {
-            toolsBar[i].gameObject.transform.parent = toolsBarParentInMenu.transform;
+            toolsBar[i].gameObject.transform.SetParent(toolsBarParentInMenu.transform, false);
         }
     }
 
@@ -86,7 +85,7 @@ public class InventoryManager : MonoBehaviour
     {
         for (int i = 0; i < toolsBar.Count; i++)
         {
-            toolsBar[i].gameObject.transform.parent = toolsBarParentInGame.transform;
+            toolsBar[i].gameObject.transform.SetParent(toolsBarParentInGame.transform, false);
         }
     }
 }

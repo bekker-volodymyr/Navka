@@ -1,17 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
 
 public class Item : MonoBehaviour, IInteractable
 {
-    [SerializeField] ItemSO itemDescription;
-    [SerializeField] int count;
+    [SerializeField] ItemSO item;
+    [SerializeField] int quantity;
 
     [SerializeField] private InventoryManager inventoryManager;
 
-    [SerializeField]
-    private TMPro.TextMeshProUGUI pickUpText;
+    [SerializeField] private TextMeshProUGUI pickUpText;
 
     private bool pickUpAllowed;
 
@@ -19,13 +19,7 @@ public class Item : MonoBehaviour, IInteractable
     {
         pickUpText.gameObject.SetActive(false);
 
-        // inventoryManager = FindObjectOfType<InventoryManager>();
-    }
-
-    private void Update()
-    {
-        //if (pickUpAllowed && Input.GetKeyDown(KeyCode.R))
-        //    PickUp();
+        inventoryManager = FindObjectOfType<InventoryManager>(true);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -48,7 +42,7 @@ public class Item : MonoBehaviour, IInteractable
 
     private void PickUp()
     {
-        inventoryManager.AddItem(itemDescription, count);
+        inventoryManager.AddItem(item, quantity);
         Destroy(gameObject);
     }
 

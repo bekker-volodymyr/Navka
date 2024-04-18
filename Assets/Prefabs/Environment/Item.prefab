@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: F
+  m_text: R
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -144,6 +144,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4076321593836458909}
   - component: {fileID: 7698120356126641966}
+  - component: {fileID: 7275016242517586155}
   m_Layer: 0
   m_Name: Item
   m_TagString: Item
@@ -203,6 +204,22 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.7
+--- !u!114 &7275016242517586155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2752739238348959327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0c607d21e3d01040be71cbc43e7e461, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 5a246cec4a38d3b4180932bedaa43bd8, type: 2}
+  quantity: 1
+  inventoryManager: {fileID: 0}
+  pickUpText: {fileID: 4889419887395721570}
 --- !u!1 &5250891834800048117
 GameObject:
   m_ObjectHideFlags: 0

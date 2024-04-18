@@ -12,4 +12,5 @@ public class ItemSO : ScriptableObject
     public Enums.ItemType Type;
     public string Effect;
     public Sprite Sprite;
+    public int maxPerStack;
 }

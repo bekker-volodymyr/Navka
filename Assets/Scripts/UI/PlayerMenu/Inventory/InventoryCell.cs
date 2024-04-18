@@ -8,7 +8,6 @@ public class InventoryCell : MonoBehaviour
 {
     private ItemSO item = null;
     private int count = 0;
-    private int maxCount = 0;
 
     [SerializeField] private TextMeshProUGUI countText;
     [SerializeField] private Image image;
