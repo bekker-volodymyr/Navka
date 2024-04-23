@@ -20,7 +20,6 @@ public class InventoryModelSO : ScriptableObject
 
     public void Init()
     {
-        Debug.Log("Model init");
         inventoryCells = new List<InventoryCellModel> ();
 
         for (int i = 0; i < InventorySize; i++)
@@ -38,18 +37,16 @@ public class InventoryModelSO : ScriptableObject
 
     public void AddItem(ItemSO item, int quantity)
     {
-        Debug.Log($"Model {item.Title} {quantity}");
 
         int left = quantity;
 
         for (int i = 0; i < ToolsBarSize; i++)
         {
-            Debug.Log(toolsBarCells[i].Item is null);
             left = toolsBarCells[i].TryPutItems(item, left);
-            Debug.Log(left);
-            Debug.Log(toolsBarCells[i].Item is null);
+
             if (left == 0)
             {
+                NotifyAboutChanges();
                 return;
             }
         }
@@ -60,6 +57,7 @@ public class InventoryModelSO : ScriptableObject
 
             if (left == 0)
             {
+                NotifyAboutChanges();
                 return;
             }
         }
@@ -87,6 +85,8 @@ public class InventoryModelSO : ScriptableObject
 
         for (int i = 0; i < toolsBarCells.Count; i++)
         {
+            Debug.Log($"Class: InventoryModel --- Method: GetCurretnToolsBar --- ToolsBarCell: {toolsBarCells[i].Item?.Title}");
+
             if (toolsBarCells[i].IsEmpty)
                 continue;
 
@@ -97,6 +97,8 @@ public class InventoryModelSO : ScriptableObject
 
     private void NotifyAboutChanges()
     {
+        Debug.Log($"Class: InventoryModel --- Method: NotifyAboutChanges --- CalledMethod: GetCurrentToolsBar --- Result: {GetCurrentToolsBar().Count}");
+
         OnInventoryUpdated?.Invoke(GetCurrentInventory());
         OnToolsBarUpdated?.Invoke(GetCurrentToolsBar());
     }

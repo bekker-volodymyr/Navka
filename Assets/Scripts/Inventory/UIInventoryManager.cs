@@ -61,7 +61,6 @@ public class UIInventoryManager : MonoBehaviour
 
     public void UpdateItemInToolsBar(int index, Sprite sprite, int quantity)
     {
-        Debug.Log($"Update item in toolsbar {index} {sprite} {quantity}");
         if (toolsBarCells.Count > index)
         {
             toolsBarCells[index].SetItem(sprite, quantity);

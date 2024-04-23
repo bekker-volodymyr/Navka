@@ -1,6 +1,4 @@
-using System.Diagnostics;
-
-public struct InventoryCellModel
+public class InventoryCellModel
 {
     private int quantity;
     private ItemSO item;
@@ -12,10 +10,14 @@ public struct InventoryCellModel
 
     public int TryPutItems(ItemSO newItem, int quantity)
     {
+        // If cell is empty - calculate quantity and put an item
         if (IsEmpty)
-        {
+        { 
+            // If quantity less or equal max quantity in stack - new quantity is quantitiy, else - new quantity is max per stack
             int newQuantity = quantity <= newItem.maxPerStack ? quantity : newItem.maxPerStack;
+            // Put item to cell
             PutItem(newItem, newQuantity);
+            // Return left
             return quantity - newQuantity;
         }
 

@@ -26,9 +26,11 @@ public class InventoryController : MonoBehaviour
             inventoryView.UpdateItemInInventory(item.Key, item.Value.Item.Sprite, item.Value.Quantity);
         }
     }
+
     private void UpdateToolsBarUI(Dictionary<int, InventoryCellModel> toolsBarState)
     {
         inventoryView.ResetToolsBar();
+
         foreach (var item in toolsBarState)
         {
             inventoryView.UpdateItemInToolsBar(item.Key, item.Value.Item.Sprite, item.Value.Quantity);
@@ -37,30 +39,6 @@ public class InventoryController : MonoBehaviour
 
     public void AddItem(ItemSO item, int quantity)
     {
-        Debug.Log($"Controller {item.Title} {quantity}");
-        Debug.Log($"{inventoryModel is null}");
-        Debug.Log($"{item is null}");
         inventoryModel.AddItem(item, quantity);
-        UpdateInventoryUI(inventoryModel.GetCurrentInventory());
-        UpdateToolsBarUI(inventoryModel.GetCurrentToolsBar());
-    }
-
-    private void Update()
-    {
-        // if (Input.GetKeyDown(KeyCode.I))
-        // {
-        //     if (inventoryView.isActiveAndEnabled == false)
-        //     {
-        //         inventoryView.Show();
-        //         foreach (var item in inventoryModel.GetCurrentInventory())
-        //         {
-        //             inventoryView.UpdateItemInInventory(item.Key, item.Value.Item.Sprite, item.Value.Quantity);
-        //         }
-        //     }
-        //     else
-        //     {
-        //         inventoryView.Hide();
-        //     }
-        // }
     }
 }
