@@ -218,7 +218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 5a246cec4a38d3b4180932bedaa43bd8, type: 2}
   quantity: 1
-  pickUpText: {fileID: 4889419887395721570}
+  interactionText: {fileID: 4889419887395721570}
 --- !u!1 &5250891834800048117
 GameObject:
   m_ObjectHideFlags: 0
