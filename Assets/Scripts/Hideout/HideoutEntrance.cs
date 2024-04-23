@@ -12,12 +12,10 @@ public class HideoutEntrance : MonoBehaviour, IInteractable
     [SerializeField] private TextMeshProUGUI interactText;
     private bool interactAllowed;
 
-
     private void Start()
     {
         interactText.gameObject.SetActive(false);
     }
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -27,7 +25,6 @@ public class HideoutEntrance : MonoBehaviour, IInteractable
             interactAllowed = true;
         }
     }
-
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag.Equals("Player"))
