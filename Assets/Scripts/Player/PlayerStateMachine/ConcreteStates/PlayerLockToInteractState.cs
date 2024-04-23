@@ -9,7 +9,7 @@ public class PlayerLockToInteractState : PlayerState
 
     private Vector3 _targetPos;
     private Vector3 _direction;
-    private Item _targetItem;
+    private IInteractable _targetItem;
 
     private float moveSpeed = 5f;
 
@@ -63,7 +63,7 @@ public class PlayerLockToInteractState : PlayerState
         // Find closest
         foreach (var collider in colliders)
         {
-            if (collider.CompareTag("Item"))
+            if (collider.CompareTag("IInteractable"))
             {
                 float distance = Vector2.Distance(player.transform.position, collider.transform.position);
                 if (distance < minDistance || closestCollider == null)
@@ -89,6 +89,6 @@ public class PlayerLockToInteractState : PlayerState
     {
 
         _targetPos = targetCollider.transform.position;
-        _targetItem = targetCollider.GetComponent<Item>();
+        _targetItem = targetCollider.GetComponent<IInteractable>();
     }
 }

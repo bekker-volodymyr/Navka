@@ -9,13 +9,13 @@ public class HideoutEntrance : MonoBehaviour, IInteractable
     //[SerializeField] private HideoutStruct hideoutData;
     public string sceneName;
 
-    [SerializeField] private TextMeshProUGUI pickUpText;
-    private bool pickUpAllowed;
+    [SerializeField] private TextMeshProUGUI interactText;
+    private bool interactAllowed;
 
 
     private void Start()
     {
-        pickUpText.gameObject.SetActive(false);
+        interactText.gameObject.SetActive(false);
     }
 
 
@@ -23,8 +23,8 @@ public class HideoutEntrance : MonoBehaviour, IInteractable
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
-            pickUpText.gameObject.SetActive(true);
-            pickUpAllowed = true;
+            interactText.gameObject.SetActive(true);
+            interactAllowed = true;
         }
     }
 
@@ -32,8 +32,8 @@ public class HideoutEntrance : MonoBehaviour, IInteractable
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
-            pickUpText.gameObject.SetActive(false);
-            pickUpAllowed = false;
+            interactText.gameObject.SetActive(false);
+            interactAllowed = false;
         }
     }
 
