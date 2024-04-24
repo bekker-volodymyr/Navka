@@ -13,7 +13,9 @@ public class UIInventoryManager : MonoBehaviour
     [SerializeField] private GameObject inventoryCellsParent;
 
     [SerializeField] private GameObject toolsBarParentInGame;
+    [SerializeField] private GameObject toolsBarPanelInGame;
     [SerializeField] private GameObject toolsBarParentInMenu;
+    [SerializeField] private GameObject toolsBarPanelInMenu;
 
     private List<UIInventoryCell> inventoryCells = new List<UIInventoryCell>();
     private List<UIInventoryCell> toolsBarCells = new List<UIInventoryCell>();
@@ -81,7 +83,10 @@ public class UIInventoryManager : MonoBehaviour
 
     private void ToggleToolsBar(bool isMenu)
     {
-        if(isMenu)
+        toolsBarPanelInGame.SetActive(!isMenu);
+        toolsBarPanelInMenu.SetActive(isMenu);
+
+        if (isMenu)
         {
             for (int i = 0; i < toolsBarCells.Count; i++)
             {
