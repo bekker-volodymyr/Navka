@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu (fileName="InventoryModelSO", menuName="Inventory/InventoryModelSO")]
@@ -35,7 +36,7 @@ public class InventoryModelSO : ScriptableObject
         }
     }
 
-    public void AddItem(ItemSO item, int quantity)
+    public int AddItem(ItemSO item, int quantity)
     {
 
         int left = quantity;
@@ -47,7 +48,7 @@ public class InventoryModelSO : ScriptableObject
             if (left == 0)
             {
                 NotifyAboutChanges();
-                return;
+                return left;
             }
         }
 
@@ -58,12 +59,22 @@ public class InventoryModelSO : ScriptableObject
             if (left == 0)
             {
                 NotifyAboutChanges();
-                return;
+                return left;
+            }
+
+            if (IsInventoryFull())
+            {
+                NotifyAboutChanges();
+                return left;
             }
         }
 
         NotifyAboutChanges();
+        return left;
     }
+
+    private bool IsInventoryFull()
+            => InventoryCells.Where(item => item.IsEmpty).Any() == false;
 
     public Dictionary<int, InventoryCellModel> GetCurrentInventory()
     {

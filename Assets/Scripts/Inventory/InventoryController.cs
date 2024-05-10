@@ -39,6 +39,13 @@ public class InventoryController : MonoBehaviour
 
     public void AddItem(ItemSO item, int quantity)
     {
-        inventoryModel.AddItem(item, quantity);
+        int left = inventoryModel.AddItem(item, quantity);
+        if (left > 0)
+        {
+            Debug.Log("inventory full");
+            Item leftItem = new Item();
+            leftItem.InitItem(item, left);
+            Instantiate(leftItem);
+        }
     }
 }

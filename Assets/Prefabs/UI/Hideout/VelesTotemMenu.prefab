@@ -31,7 +31,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1190928082314338945}
-  - {fileID: 4265281789893175822}
   m_Father: {fileID: 4389449288816696535}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.4, y: 0}
@@ -588,7 +587,7 @@ GameObject:
   - component: {fileID: 3837618159144215155}
   - component: {fileID: 7676314160560845907}
   m_Layer: 5
-  m_Name: Button
+  m_Name: ExitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -601,18 +600,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2138170821467573949}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 529123634135942940}
-  m_Father: {fileID: 7916603878797723796}
+  m_Father: {fileID: 4389449288816696535}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 268.02, y: -71.9119}
-  m_SizeDelta: {x: 60.309, y: 79.5062}
+  m_AnchoredPosition: {x: 654, y: -201.07031}
+  m_SizeDelta: {x: 86.35, y: 79.5062}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5647638021644044769
 CanvasRenderer:
@@ -695,7 +694,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3837618159144215155}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8851104775738718261}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2684341818276551624
 GameObject:
   m_ObjectHideFlags: 0
@@ -1623,7 +1634,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Exit
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1907,6 +1918,7 @@ RectTransform:
   - {fileID: 8114243053688954649}
   - {fileID: 7916603878797723796}
   - {fileID: 106850461780520587}
+  - {fileID: 4265281789893175822}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

@@ -50,4 +50,10 @@ public class Item : MonoBehaviour, IInteractable
     {
         PickUp();
     }
+
+    public void InitItem(ItemSO item, int quantity)
+    {
+        this.item = item;
+        this.quantity = quantity;
+    }
 }

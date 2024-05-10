@@ -8,9 +8,9 @@ public class ItemSO : ScriptableObject
     public string Title;
     public string Lore;
     public List<RecipeSO> Recipes;
-    public List<string> Sources;
+    public string Sources;
     public Enums.ItemType Type;
-    public string Effect;
+    public List<string> Effects;
     public Sprite Sprite;
     public int maxPerStack;
 }
