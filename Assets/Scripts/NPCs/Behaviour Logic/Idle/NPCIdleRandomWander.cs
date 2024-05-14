@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Idle-Random Wander", menuName = "NPC Logic/Idle Logic/Random Wander")]
@@ -10,11 +8,6 @@ public class NpcIdleRandomWander : NPCIdleSOBase
 
     private Vector3 _targetPos;
     private Vector3 _direction;
-
-    public override void DoAnimationTriggerEventLogic(Npc.AnimationTriggerType triggerType)
-    {
-        base.DoAnimationTriggerEventLogic(triggerType);
-    }
 
     public override void DoEnterLogic()
     {
@@ -46,6 +39,11 @@ public class NpcIdleRandomWander : NPCIdleSOBase
         base.DoPhysicsLogic();
     }
 
+    public override void DoAnimationTriggerEventLogic(Npc.AnimationTriggerType triggerType)
+    {
+        base.DoAnimationTriggerEventLogic(triggerType);
+    }
+
     public override void Initialize(GameObject gameObject, Npc npc)
     {
         base.Initialize(gameObject, npc);
@@ -58,6 +56,6 @@ public class NpcIdleRandomWander : NPCIdleSOBase
 
     private Vector3 GetRandomPointInCircle()
     {
-        return npc.transform.position + (Vector3)UnityEngine.Random.insideUnitCircle * RandomMovementRange;
+        return npc.transform.position + (Vector3)Random.insideUnitCircle * RandomMovementRange;
     }
 }

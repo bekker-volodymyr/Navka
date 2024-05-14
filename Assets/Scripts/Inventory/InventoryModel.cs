@@ -8,16 +8,12 @@ using UnityEngine;
 public class InventoryModelSO : ScriptableObject
 {
     private List<InventoryCellModel> inventoryCells;
-    private List<InventoryCellModel> toolsBarCells;
 
     public List<InventoryCellModel> InventoryCells { get { return inventoryCells; } }
-    public List<InventoryCellModel> ToolsBarCells { get { return toolsBarCells; } }
 
     [field: SerializeField] public int InventorySize { get; private set; }
-    [field: SerializeField] public int ToolsBarSize { get; private set; }
 
     public event Action<Dictionary<int, InventoryCellModel>> OnInventoryUpdated;
-    public event Action<Dictionary<int, InventoryCellModel>> OnToolsBarUpdated;
 
     public void Init()
     {
@@ -27,30 +23,11 @@ public class InventoryModelSO : ScriptableObject
         {
             inventoryCells.Add(InventoryCellModel.GetEmptyCell());
         }
-
-        toolsBarCells = new List<InventoryCellModel> ();
-
-        for(int i = 0; i < ToolsBarSize; i++)
-        {
-            toolsBarCells.Add(InventoryCellModel.GetEmptyCell());
-        }
     }
 
     public int AddItem(ItemSO item, int quantity)
     {
-
         int left = quantity;
-
-        for (int i = 0; i < ToolsBarSize; i++)
-        {
-            left = toolsBarCells[i].TryPutItems(item, left);
-
-            if (left == 0)
-            {
-                NotifyAboutChanges();
-                return left;
-            }
-        }
 
         for (int i = 0; i < InventorySize; i++)
         {
@@ -90,27 +67,20 @@ public class InventoryModelSO : ScriptableObject
         return returnValue;
     }
 
-    public Dictionary<int, InventoryCellModel> GetCurrentToolsBar()
-    {
-        Dictionary<int, InventoryCellModel> returnValue = new Dictionary<int, InventoryCellModel>();
-
-        for (int i = 0; i < toolsBarCells.Count; i++)
-        {
-            Debug.Log($"Class: InventoryModel --- Method: GetCurretnToolsBar --- ToolsBarCell: {toolsBarCells[i].Item?.Title}");
-
-            if (toolsBarCells[i].IsEmpty)
-                continue;
-
-            returnValue[i] = toolsBarCells[i];
-        }
-        return returnValue;
-    }
-
     private void NotifyAboutChanges()
     {
-        Debug.Log($"Class: InventoryModel --- Method: NotifyAboutChanges --- CalledMethod: GetCurrentToolsBar --- Result: {GetCurrentToolsBar().Count}");
-
         OnInventoryUpdated?.Invoke(GetCurrentInventory());
-        OnToolsBarUpdated?.Invoke(GetCurrentToolsBar());
+    }
+
+    public void DropItem(int selectedIndex)
+    {
+        if(selectedIndex < inventoryCells.Count)
+        {
+            if (!inventoryCells[selectedIndex].IsEmpty)
+            {
+                inventoryCells[selectedIndex].DropOne();
+                NotifyAboutChanges();
+            }
+        }
     }
 }

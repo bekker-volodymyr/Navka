@@ -12,18 +12,14 @@ public class UIInventoryManager : MonoBehaviour
 
     [SerializeField] private GameObject inventoryCellsParent;
 
-    [SerializeField] private GameObject toolsBarParentInGame;
-    [SerializeField] private GameObject toolsBarPanelInGame;
-    [SerializeField] private GameObject toolsBarParentInMenu;
-    [SerializeField] private GameObject toolsBarPanelInMenu;
+    public event Action<int> SelectItem;
+    public event Action DeselectItemByClick;
 
     private List<UIInventoryCell> inventoryCells = new List<UIInventoryCell>();
-    private List<UIInventoryCell> toolsBarCells = new List<UIInventoryCell>();
 
-    public void Init(int inventorySize, int toolsBarSize)
+    public void Init(int inventorySize)
     {
         InitCells(inventoryCells, inventoryCellsParent, inventorySize);
-        InitCells(toolsBarCells, toolsBarParentInGame, toolsBarSize);
     }
 
     private void InitCells(List<UIInventoryCell> cells, GameObject cellsParent, int size)
@@ -37,6 +33,8 @@ public class UIInventoryManager : MonoBehaviour
     private UIInventoryCell InitCell(GameObject parent)
     {
         UIInventoryCell cell = Instantiate(cellPrefab);
+        cell.ItemSelected += OnSelectItem;
+        cell.ItemDeselectByClick += DeselectItem;
         cell.transform.SetParent(parent.transform, false);
         return cell;
     }
@@ -44,12 +42,6 @@ public class UIInventoryManager : MonoBehaviour
     public void ResetInventory()
     {
         foreach (UIInventoryCell cell in inventoryCells)
-            cell.SetEmpty();
-    }
-
-    public void ResetToolsBar()
-    {
-        foreach (UIInventoryCell cell in toolsBarCells)
             cell.SetEmpty();
     }
 
@@ -61,44 +53,44 @@ public class UIInventoryManager : MonoBehaviour
         }
     }
 
-    public void UpdateItemInToolsBar(int index, Sprite sprite, int quantity)
-    {
-        if (toolsBarCells.Count > index)
-        {
-            toolsBarCells[index].SetItem(sprite, quantity);
-        }
-    }
-
     public void Show()
     {
         content.gameObject.SetActive(true);
-        ToggleToolsBar(true);
     }
-
+    
     public void Hide()
     {
         content.gameObject.SetActive(false);
-        ToggleToolsBar(false);
     }
 
-    private void ToggleToolsBar(bool isMenu)
+    private void DeselectAll()
     {
-        toolsBarPanelInGame.SetActive(!isMenu);
-        toolsBarPanelInMenu.SetActive(isMenu);
+        for(int i = 0; i < inventoryCells.Count; i++)
+        {
+            inventoryCells[i].Deselect();
+        }
+    }
 
-        if (isMenu)
+    private void OnSelectItem(UIInventoryCell selectedCell)
+    {
+        DeselectAll();
+
+        int selectedIndex = inventoryCells.IndexOf(selectedCell);
+
+        SelectItem?.Invoke(selectedIndex);
+    }
+
+    private void DeselectItem(UIInventoryCell deselectedCell)
+    {
+        DeselectItemByClick?.Invoke();
+    }
+
+    public bool TrySelectItem(int index)
+    {
+        if(inventoryCells.Count > index)
         {
-            for (int i = 0; i < toolsBarCells.Count; i++)
-            {
-                toolsBarCells[i].gameObject.transform.SetParent(toolsBarParentInMenu.transform, false);
-            }
+            return inventoryCells[index].TrySelect();
         }
-        else
-        {
-            for (int i = 0; i < toolsBarCells.Count; i++)
-            {
-                toolsBarCells[i].gameObject.transform.SetParent(toolsBarParentInGame.transform, false);
-            }
-        }
+        return false;
     }
 }

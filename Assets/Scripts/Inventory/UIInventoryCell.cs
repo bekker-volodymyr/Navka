@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,8 +7,14 @@ public class UIInventoryCell : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI quantityText;
     [SerializeField] private Image image;
+    [SerializeField] private Image selectedBorder;
 
-    private bool empty = true;
+    public bool empty = true;
+
+    private bool selected = false;
+
+    public event Action<UIInventoryCell> ItemSelected;
+    public event Action<UIInventoryCell> ItemDeselectByClick;
 
     private void Awake()
     {
@@ -21,6 +26,7 @@ public class UIInventoryCell : MonoBehaviour
         quantityText.gameObject.SetActive(false);
         image.gameObject.SetActive(false);
         empty = true;
+        Deselect();
     }
 
     public void SetItem(Sprite sprite, int quantity)
@@ -35,5 +41,46 @@ public class UIInventoryCell : MonoBehaviour
 
         // Set empty to false
         empty = false;
+    }
+
+    private void Select()
+    {
+        if (!empty)
+        {
+            ItemSelected?.Invoke(this);
+            selectedBorder.gameObject.SetActive(true);
+            selected = true;
+        }
+    }
+
+    public bool TrySelect()
+    {
+        if (!empty) Select();
+
+        return !empty;
+    }
+
+    private void DeselectByClick()
+    {
+        ItemDeselectByClick?.Invoke(this);
+        Deselect();
+    }
+
+    public void Deselect()
+    {
+        selectedBorder.gameObject.SetActive(false);
+        selected = false;
+    }
+
+    public void PointerClick()
+    {
+        if (selected)
+        {
+            DeselectByClick();
+        }
+        else
+        {
+            Select();
+        }
     }
 }

@@ -13,13 +13,6 @@ public class InGameUIManager : MonoBehaviour
 
     [SerializeField] private UIInventoryManager inventoryManager;
 
-    //[SerializeField] private InventoryManager inventoryManager;
-
-    // private void Start()
-    // {
-    //     inventoryManager.Initialize();
-    // }
-
     private void Update()
     {
         if (Input.GetKeyUp(KeyCode.Escape))

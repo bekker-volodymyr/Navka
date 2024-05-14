@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Npc : MonoBehaviour, IDamageable, IAttack, IMoveable, ITriggerCheckable
 {
+    [SerializeField] private NPCDescriptionSO description;
+
     [SerializeField] Indicator healthIndicator;
     public float CurrentHealth { get; set; }
     public float MaxHealth { get; set; }
@@ -13,18 +15,12 @@ public class Npc : MonoBehaviour, IDamageable, IAttack, IMoveable, ITriggerCheck
     public bool IsPlayerNoticed { get; set; }
     public bool IsWithinAttackDistance { get; set; }
 
-    [SerializeField] private NPCDescriptionSO description;
-
     #region State Machine Fields
 
     public NPCStateMachine StateMachine { get; set; }
     public NPCIdleState IdleState { get; set; }
     public NPCPlayerNoticedState PlayerNoticedState { get; set; }
     public NPCAttackState AttackState { get; set; }
-
-    #endregion
-
-    #region Scriptable Object Fields
 
     [SerializeField] private NPCIdleSOBase idleBase;
     [SerializeField] private PlayerNoticedSOBase playerNoticedBase;

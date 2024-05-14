@@ -50,6 +50,15 @@ public class InventoryCellModel
         item = newItem;
         quantity = newQuantity;
     }
+    
+    public void DropOne()
+    {
+        quantity--;
+        if(quantity == 0) 
+        {
+            item = null;
+        }
+    }
 
     public static InventoryCellModel GetEmptyCell()
     {
@@ -59,4 +68,5 @@ public class InventoryCellModel
             item = null
         };
     }
+
 }
