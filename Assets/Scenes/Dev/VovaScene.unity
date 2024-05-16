@@ -1829,6 +1829,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inventory_Pnl
       objectReference: {fileID: 0}
+    - target: {fileID: 4138260000837195006, guid: a906a5b964b4fb242b90c20c8b7ec3b4, type: 3}
+      propertyPath: m_CellSize.x
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 4138260000837195006, guid: a906a5b964b4fb242b90c20c8b7ec3b4, type: 3}
+      propertyPath: m_CellSize.y
+      value: 70
+      objectReference: {fileID: 0}
     - target: {fileID: 4837733610312580663, guid: a906a5b964b4fb242b90c20c8b7ec3b4, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1847,11 +1855,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4837733610312580663, guid: a906a5b964b4fb242b90c20c8b7ec3b4, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.85
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 4837733610312580663, guid: a906a5b964b4fb242b90c20c8b7ec3b4, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.2
+      value: 0.13
       objectReference: {fileID: 0}
     - target: {fileID: 4837733610312580663, guid: a906a5b964b4fb242b90c20c8b7ec3b4, type: 3}
       propertyPath: m_SizeDelta.x
