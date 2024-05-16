@@ -232,12 +232,14 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
 
     public void UseSelectedItem()
     {
-        if(selectedItem is not null)
+        if(selectedItem is not null && selectedItem.Effect is not null)
         {
-            switch(selectedItem.Effect.EffectProperty)
+            switch (selectedItem.Effect.EffectProperty)
             {
                 case Enums.EffectProperty.Hunger:
-                    ChangeHunger(selectedItem.Effect.Value); break;
+                    ChangeHunger(selectedItem.Effect.Value);
+                    inventory.ConsumeSelectedItem();
+                    break;
                 default:
                     Debug.Log($"No effect or not implemented: {selectedItem.Effect.EffectProperty}");
                     break;
