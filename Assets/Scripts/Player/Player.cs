@@ -9,8 +9,42 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
 
     [SerializeField] private float moveSpeed = 5f;
 
+    [Space]
     [SerializeField] public CircleCollider2D AttackRadius;
     [SerializeField] public CircleCollider2D TargetNoticeRadius;
+
+    #region IDamageable Fields
+
+    public float CurrentHealth { get; set; }
+    [field: SerializeField] public float MaxHealth { get; set; }
+
+    #endregion
+
+    #region IAttack Fields
+
+    [field: SerializeField] public float Damage { get; set; }
+    public float cooldown { get; set; }
+    public float delayBeforeDamage { get; set; }
+
+    #endregion
+
+    #region Hunger
+
+    [Space]
+    [SerializeField] private float secondsToReduce;
+    private float MaxHunger = 100;
+    private float CurrentHunger;
+
+    #endregion
+
+    #region Indicators
+
+    [Space]
+    [SerializeField] private Indicator healthIndicator;
+    [SerializeField] private Indicator hungerIndicator;
+    [SerializeField] private Indicator manaIndicator;
+
+    #endregion
 
     #region State Machine Fields
 
@@ -37,9 +71,13 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
     {
         CurrentHealth = MaxHealth;
 
+        CurrentHunger = MaxHunger;
+
         objectRB = GetComponent<Rigidbody2D>();
 
         StateMachine.Initialize(IdleState);
+
+        StartCoroutine("HungerCountdown");
     }
 
     private void Update()
@@ -51,29 +89,6 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
     {
         StateMachine.CurrentState.PhysicsUpdate();
     }
-
-    #region IDamageable Fields
-
-    public float CurrentHealth { get; set; }
-    [field: SerializeField] public float MaxHealth { get; set; }
-
-    #endregion
-
-    #region Indicators
-
-    [SerializeField] private Indicator healthIndicator;
-    [SerializeField] private Indicator hungerIndicator;
-    [SerializeField] private Indicator manaIndicator;
-
-    #endregion
-
-    #region IAttack Fields
-
-    [field: SerializeField] public float Damage { get; set; }
-    public float cooldown { get; set ; }
-    public float delayBeforeDamage { get ; set; }
-
-    #endregion
 
     #region IDamageable Methods
 
@@ -152,4 +167,33 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
 
     #endregion
 
+    private IEnumerator HungerCountdown()
+    {
+        while(CurrentHunger > 0)
+        {
+            yield return new WaitForSeconds(secondsToReduce);
+
+            float reduceValue = 1;
+
+            // TODO: Застосувати послаблення/посилення
+
+            ReduceHunger(reduceValue);
+        }
+    }
+
+    private void ReduceHunger(float reduceValue)
+    {
+        float newValue = CurrentHunger - reduceValue;
+
+        if(newValue < 0)
+        {
+            CurrentHunger = 0;
+            hungerIndicator.SetValue(CurrentHunger, MaxHunger);
+        }
+        else
+        {
+            CurrentHunger = newValue;
+            hungerIndicator.SetValue(CurrentHunger, MaxHunger);
+        }
+    }
 }
