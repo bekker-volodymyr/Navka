@@ -72,13 +72,13 @@ public class InventoryModelSO : ScriptableObject
         OnInventoryUpdated?.Invoke(GetCurrentInventory());
     }
 
-    public void DropItem(int selectedIndex)
+    public void ReduceItemQuantity(int selectedIndex, int quantity)
     {
         if(selectedIndex < inventoryCells.Count)
         {
             if (!inventoryCells[selectedIndex].IsEmpty)
             {
-                inventoryCells[selectedIndex].DropOne();
+                inventoryCells[selectedIndex].ReduceQuantity(quantity);
                 NotifyAboutChanges();
             }
         }

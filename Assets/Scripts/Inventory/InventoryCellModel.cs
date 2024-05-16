@@ -51,12 +51,13 @@ public class InventoryCellModel
         quantity = newQuantity;
     }
     
-    public void DropOne()
+    public void ReduceQuantity(int quantity)
     {
-        quantity--;
-        if(quantity == 0) 
+        this.quantity -= quantity;
+        if(this.quantity <= 0) 
         {
             item = null;
+            this.quantity = 0;
         }
     }
 

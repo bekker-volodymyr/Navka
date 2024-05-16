@@ -77,8 +77,13 @@ public class InventoryController : MonoBehaviour
         if(selectedItemIndex != -1)
         {
             ItemSO droppedItem = inventoryModel.InventoryCells[selectedItemIndex].Item;
-            inventoryModel.DropItem(selectedItemIndex);
+            inventoryModel.ReduceItemQuantity(selectedItemIndex, 1);
             Instantiate(defaultItemPrefab).GetComponent<Item>().InitItem(droppedItem, 1);
         }
+    }
+
+    public void ConsumeSelectedItem()
+    {
+        inventoryModel.ReduceItemQuantity(selectedItemIndex, 1);
     }
 }
