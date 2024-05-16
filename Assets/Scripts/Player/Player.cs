@@ -135,6 +135,7 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
     {
         objectRB.velocity = velocity;
     }
+
     public void CheckFacing(Vector2 velocity)
     {
         // TODO: повертання відповідно до напрямку руху
