@@ -25,4 +25,9 @@ public class Enums
         Potion = 3,
         Component = 4
     }
+
+    public enum EffectProperty
+    {
+        Health, Hunger, Mana, Speed, Nothing
+    }
 }

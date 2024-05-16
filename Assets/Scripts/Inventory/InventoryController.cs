@@ -12,6 +12,9 @@ public class InventoryController : MonoBehaviour
 
     private int selectedItemIndex = -1;
 
+    public event Action<ItemSO> ItemSelectedEvent;
+    public event Action ItemDeselectedEvent;
+
     private void Start()
     {
         inventoryModel.Init();
@@ -58,11 +61,15 @@ public class InventoryController : MonoBehaviour
     private void OnItemSelected(int selectedIndex)
     {
         selectedItemIndex = selectedIndex;
+
+        ItemSelectedEvent?.Invoke(inventoryModel.GetItemByIndex(selectedItemIndex).Item);
     }
 
     private void OnItemDeselected()
     {
         selectedItemIndex = -1;
+
+        ItemDeselectedEvent?.Invoke();
     }
 
     private void DropSelectedItem()

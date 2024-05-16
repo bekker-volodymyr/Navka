@@ -10,7 +10,8 @@ public class ItemSO : ScriptableObject
     public List<RecipeSO> Recipes;
     public string Sources;
     public Enums.ItemType Type;
-    public List<string> Effects;
+    public List<string> EffectsDescriptions;
+    public ItemEffectSO Effect;
     public Sprite Sprite;
     public int maxPerStack;
 }

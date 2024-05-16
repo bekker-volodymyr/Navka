@@ -83,4 +83,13 @@ public class InventoryModelSO : ScriptableObject
             }
         }
     }
+
+    public InventoryCellModel GetItemByIndex(int index)
+    {
+        if(index < inventoryCells.Count)
+        {
+            return inventoryCells[index];
+        }
+        return InventoryCellModel.GetEmptyCell();
+    }
 }

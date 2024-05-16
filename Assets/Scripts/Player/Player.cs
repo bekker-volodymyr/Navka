@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,13 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
     [Space]
     [SerializeField] public CircleCollider2D AttackRadius;
     [SerializeField] public CircleCollider2D TargetNoticeRadius;
+
+    #region Inventory
+
+    [SerializeField] private InventoryController inventory;
+    private ItemSO selectedItem = null;
+
+    #endregion
 
     #region IDamageable Fields
 
@@ -77,6 +85,9 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
 
         StateMachine.Initialize(IdleState);
 
+        inventory.ItemSelectedEvent += OnItemSelected;
+        inventory.ItemDeselectedEvent += OnItemDeselected;
+
         StartCoroutine("HungerCountdown");
     }
 
@@ -88,6 +99,12 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
     private void FixedUpdate()
     {
         StateMachine.CurrentState.PhysicsUpdate();
+    }
+
+    private void OnDestroy()
+    {
+        inventory.ItemSelectedEvent -= OnItemSelected;
+        inventory.ItemDeselectedEvent -= OnItemDeselected;
     }
 
     #region IDamageable Methods
@@ -173,27 +190,58 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
         {
             yield return new WaitForSeconds(secondsToReduce);
 
-            float reduceValue = 1;
+            float reduceValue = -1;
 
             // TODO: Застосувати послаблення/посилення
 
-            ReduceHunger(reduceValue);
+            ChangeHunger(reduceValue);
         }
     }
 
-    private void ReduceHunger(float reduceValue)
+    private void ChangeHunger(float changeValue)
     {
-        float newValue = CurrentHunger - reduceValue;
+        float newValue = CurrentHunger + changeValue;
 
         if(newValue < 0)
         {
             CurrentHunger = 0;
-            hungerIndicator.SetValue(CurrentHunger, MaxHunger);
+        }
+        else if(newValue > 100)
+        {
+            CurrentHunger = 100;
         }
         else
         {
             CurrentHunger = newValue;
-            hungerIndicator.SetValue(CurrentHunger, MaxHunger);
+        }
+
+        hungerIndicator.SetValue(CurrentHunger, MaxHunger);
+    }
+
+    private void OnItemSelected(ItemSO item)
+    {
+        selectedItem = item;
+
+        Debug.Log(item.Title);
+    }
+
+    private void OnItemDeselected()
+    {
+        selectedItem = null;
+    }
+
+    public void UseSelectedItem()
+    {
+        if(selectedItem is not null)
+        {
+            switch(selectedItem.Effect.EffectProperty)
+            {
+                case Enums.EffectProperty.Hunger:
+                    ChangeHunger(selectedItem.Effect.Value); break;
+                default:
+                    Debug.Log($"No effect or not implemented: {selectedItem.Effect.EffectProperty}");
+                    break;
+            }
         }
     }
 }

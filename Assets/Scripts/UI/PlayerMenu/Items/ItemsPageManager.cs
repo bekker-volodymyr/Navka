@@ -95,6 +95,6 @@ public class ItemsPageManager: MonoBehaviour
         //Item_Recepies.textComponent.SetText(item.); -- missing
         Item_Sources.SetText(item.Sources);
         Item_Type.SetText(item.Type.ToString());
-        Item_Effect.SetText(item.Effects[0]);
+        //Item_Effect.SetText(item.Effects[0]);
     }
 }

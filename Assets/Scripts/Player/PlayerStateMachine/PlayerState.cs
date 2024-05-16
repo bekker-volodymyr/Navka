@@ -17,7 +17,6 @@ public class PlayerState
     public virtual void EnterState() { }
     public virtual void ExitState() { }
     public virtual void FrameUpdate() {
-        //TODO: sensor input abstraction
 
         if (!GameState.isPaused && !GameState.isInPlayerMenu)
         {
@@ -40,6 +39,11 @@ public class PlayerState
             if (Input.GetKeyDown(KeyCode.R) && player.StateMachine.CurrentState != player.LockToInteractState) /*|| Input.GetMouseButtonDown(1)*/ //interact
             {
                 player.StateMachine.ChangeState(player.LockToInteractState);
+            }
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                player.UseSelectedItem();
             }
         }
 

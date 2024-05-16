@@ -27,10 +27,10 @@ public class InGameUIManager : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyUp(KeyCode.E) && !GameState.isPaused)
-        {
-            TogglePlayerMenu();
-        }
+        //if (Input.GetKeyUp(KeyCode.E) && !GameState.isPaused)
+        //{
+        //    TogglePlayerMenu();
+        //}
     }
 
     public void TogglePause()
