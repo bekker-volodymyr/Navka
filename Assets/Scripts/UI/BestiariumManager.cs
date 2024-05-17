@@ -18,12 +18,8 @@ public class BestiariumManager: MonoBehaviour
     [SerializeField] private Image NPC_Picture;
     [SerializeField] private TextMeshProUGUI NPC_Name;
     [SerializeField] private TextMeshProUGUI NPC_Lore;
-    [SerializeField] private TextMeshProUGUI NPC_HealthPoints;
-    [SerializeField] private TextMeshProUGUI NPC_Type;
-    [SerializeField] private TextMeshProUGUI NPC_Approach;
-    [SerializeField] private TextMeshProUGUI NPC_Loot;
+    // [SerializeField] private TextMeshProUGUI NPC_Loot;
     [SerializeField] private TextMeshProUGUI NPC_Weaknesses;
-    [SerializeField] private TextMeshProUGUI NPC_Behaviour;
     
     private void Start()
     {
@@ -85,16 +81,23 @@ public class BestiariumManager: MonoBehaviour
                 throw new Exception("uknown type exception");
         }
     }
-    public void SwitchNPC(NPCDescriptionSO Name)
+    public void SwitchNPC(NPCDescriptionSO npc)
     {
-        NPC_Picture.sprite = Name.Picture;
-        NPC_Name.SetText(Name.Name);
-        NPC_Lore.SetText(Name.Lore);
-        NPC_HealthPoints.SetText(Name.HealthPoints.ToString());
-        NPC_Type.SetText(Name.Type.ToString());
-        NPC_Approach.SetText(Name.Approach.ToString());
-        NPC_Loot.SetText(Name.Loot.ToString());
-        NPC_Weaknesses.SetText(Name.Weaknesses);
-        NPC_Behaviour.SetText(Name.Behaviour);
+        NPC_Picture.sprite = npc.Picture;
+        NPC_Name.SetText(npc.Name);
+
+        if (npc.Type == Enums.NPCType.Animal)
+        {
+            NPC_Lore.SetText(npc.Befriending);
+        }
+        else
+        {
+            NPC_Lore.SetText(npc.Lore);
+        }
+        
+        //NPC_Loot.SetText(Name.Loot.ToString());
+        // TODO: SHOW ICONS OF LOOT ITEMS
+
+        NPC_Weaknesses.SetText(npc.Weaknesses);
     }
 }

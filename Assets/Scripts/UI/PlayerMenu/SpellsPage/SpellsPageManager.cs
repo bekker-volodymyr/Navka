@@ -31,12 +31,12 @@ public class SpellsPageManager : MonoBehaviour
             newButton.GetComponent<SpellsPageButton>().InitButton(item, this); 
         }
     }
-    public void SwitchSpell(SpellSO Name)
+    public void SwitchSpell(SpellSO spell)
     {
-        Spell_Picture.sprite = Name.Picture;
-        Spell_Title.SetText(Name.Title);
-        Spell_Description.SetText(Name.Description);
-        Spell_ManaCost.SetText(Name.ManaCost.ToString());
-        Spell_Cooldown.SetText(Name.Cooldown.ToString());
+        Spell_Picture.sprite = spell.Picture;
+        Spell_Title.SetText(spell.Title);
+        Spell_Description.SetText(spell.Description);
+        Spell_ManaCost.SetText(spell.ManaCost.ToString());
+        Spell_Cooldown.SetText(spell.Cooldown.ToString());
     }
 }

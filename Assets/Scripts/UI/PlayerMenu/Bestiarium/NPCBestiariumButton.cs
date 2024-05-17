@@ -14,7 +14,7 @@ public class NPCBestiariumButton: MonoBehaviour
         this.NPCDescription = item;
         bestiariumManager = manager;
         TextMeshProUGUI text = GetComponentInChildren<TextMeshProUGUI>();
-        text.SetText(item.name);
+        text.SetText(item.Name);
     }
     public void OnClick()
     {

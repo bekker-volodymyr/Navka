@@ -55,7 +55,7 @@ public class InGameUIManager : MonoBehaviour
             inventoryManager.Hide();
 
         pauseBtn.SetActive(!GameState.isInPlayerMenu);
-        playerMenuBtn.SetActive(!GameState.isInPlayerMenu);
+        //playerMenuBtn.SetActive(!GameState.isInPlayerMenu);
 
         Time.timeScale = GameState.isInPlayerMenu ? 0f : 1f;
     }

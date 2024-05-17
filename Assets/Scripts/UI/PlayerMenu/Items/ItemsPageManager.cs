@@ -19,10 +19,7 @@ public class ItemsPageManager: MonoBehaviour
     [SerializeField] private Image Item_Image;
     [SerializeField] private TextMeshProUGUI Item_Name;
     [SerializeField] private TextMeshProUGUI Item_Description;
-    [SerializeField] private TextMeshProUGUI Item_Recepies;
     [SerializeField] private TextMeshProUGUI Item_Sources;
-    [SerializeField] private TextMeshProUGUI Item_Type;
-    [SerializeField] private TextMeshProUGUI Item_Effect;
 
     private void Start()
     {
@@ -31,7 +28,6 @@ public class ItemsPageManager: MonoBehaviour
 
     public void Initialize()
     {
-
         foreach (var item in itemsStorage.items)
         {
             GameObject newButton; //get item page button
@@ -91,10 +87,7 @@ public class ItemsPageManager: MonoBehaviour
     {
         Item_Image.sprite = item.Sprite;
         Item_Name.SetText(item.Title);
-        Item_Description.SetText(item.Lore); //?
-        //Item_Recepies.textComponent.SetText(item.); -- missing
+        Item_Description.SetText(item.Lore);
         Item_Sources.SetText(item.Sources);
-        Item_Type.SetText(item.Type.ToString());
-        //Item_Effect.SetText(item.Effects[0]);
     }
 }

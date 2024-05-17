@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56079a0405736d2439c577160ffeb229, type: 3}
   m_Name: SpellsStorageSO
   m_EditorClassIdentifier: 
-  Spells: []
+  Spells:
+  - {fileID: 11400000, guid: fec07baa76ecbf44192cab4a8b8c66fd, type: 2}
