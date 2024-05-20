@@ -744,6 +744,14 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 958448904346657322, guid: 10262515c51564c4a97019ace17f309f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 958448904346657322, guid: 10262515c51564c4a97019ace17f309f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 289
+      objectReference: {fileID: 0}
     - target: {fileID: 2153325653474510601, guid: 10262515c51564c4a97019ace17f309f, type: 3}
       propertyPath: m_Size
       value: 1
@@ -1420,6 +1428,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5611331371842320265, guid: 10262515c51564c4a97019ace17f309f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1125865375}
+    - targetCorrespondingSourceObject: {fileID: 7877386525909574571, guid: 10262515c51564c4a97019ace17f309f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1557365304}
+    - targetCorrespondingSourceObject: {fileID: 7877386525909574571, guid: 10262515c51564c4a97019ace17f309f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1557365303}
   m_SourcePrefab: {fileID: 100100000, guid: 10262515c51564c4a97019ace17f309f, type: 3}
 --- !u!1 &1125865374 stripped
 GameObject:
@@ -1601,11 +1615,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1454805170}
   m_CullTransparentMesh: 1
+--- !u!1 &1557365298 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7877386525909574571, guid: 10262515c51564c4a97019ace17f309f, type: 3}
+  m_PrefabInstance: {fileID: 1125865373}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1557365299 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 958448904346657322, guid: 10262515c51564c4a97019ace17f309f, type: 3}
   m_PrefabInstance: {fileID: 1125865373}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1557365303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1557365298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78c5b57cb2f502f4e853b0146936e5a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1557365304}
+--- !u!95 &1557365304
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1557365298}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ef922ee05c97d2544872844e348a0463, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!58 &1573534424 stripped
 CircleCollider2D:
   m_CorrespondingSourceObject: {fileID: 5180903090763136110, guid: dd7fe38d3a8b258428c793f90050af41, type: 3}
@@ -1799,7 +1852,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1851639272}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1557365303}
+        m_TargetAssemblyTypeName: InventoryToggler, Assembly-CSharp
+        m_MethodName: ToggleMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1851639272
 MonoBehaviour:
   m_ObjectHideFlags: 0
