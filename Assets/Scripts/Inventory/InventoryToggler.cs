@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
-public class PlayerMenu : MonoBehaviour
+public class InventoryToggler : MonoBehaviour
 {
     [SerializeField] private Animator animator;
 
@@ -22,5 +21,4 @@ public class PlayerMenu : MonoBehaviour
 
         isOpened = !isOpened;
     }
-
 }
