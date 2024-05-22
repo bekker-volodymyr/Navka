@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: BearSO
   m_EditorClassIdentifier: 
   HealthPoints: 70
+  BasicDamage: 25
   Type: 3
   Approach: 2
   Loot:
@@ -82,3 +83,5 @@ MonoBehaviour:
     \u0437\u0430\u0445\u0438\u0441\u0442\u0438\u0442\u0438 \u0441\u0432\u0456\u0439
     \u0434\u0456\u043C \u0432\u0456\u0434 \u043D\u0435\u0431\u0435\u0437\u043F\u0435\u043A\u0438. "
   Picture: {fileID: 21300000, guid: 40c2f1ada9a484742bb31edbaa9590e6, type: 3}
+  AttackTargets:
+  - {fileID: 11400000, guid: 0df55425f86f2d24aa359f1b1af5422a, type: 2}

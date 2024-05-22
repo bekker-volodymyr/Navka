@@ -5,7 +5,6 @@ using UnityEngine.EventSystems;
 
 public class PlayerIdleState : PlayerState
 {
-
     public PlayerIdleState(Player player, StateMachine playerStateMachine) : base(player, playerStateMachine) { }
     private float moveSpeed = 5f;
     public override void EnterState()
@@ -32,10 +31,5 @@ public class PlayerIdleState : PlayerState
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-    }
-
-    public override void AnimationTriggerEvent(Npc.AnimationTriggerType type)
-    {
-        base.AnimationTriggerEvent(type);
     }
 }

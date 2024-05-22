@@ -28,12 +28,12 @@ public class NPCAttackSOBase : ScriptableObject
     public virtual void DoExitLogic() { ResetValues(); }
     public virtual void DoFrameUpdateLogic()
     {
-        if (!npc.IsWithinAttackDistance && !npc.isOnCooldown)
-        {
-            npc.StateMachine.ChangeState(npc.PlayerNoticedState);
-        }
+        //if (!npc.IsWithinAttackDistance && !npc.isOnCooldown)
+        //{
+        //    npc.StateMachine.ChangeState(npc.PlayerNoticedState);
+        //}
     }
     public virtual void DoPhysicsLogic() { }
-    public virtual void DoAnimationTriggerEventLogic(Npc.AnimationTriggerType triggerType) { }
+    public virtual void DoAnimationTriggerEventLogic(NPCBase.AnimationTriggerType triggerType) { }
     public virtual void ResetValues() { }
 }

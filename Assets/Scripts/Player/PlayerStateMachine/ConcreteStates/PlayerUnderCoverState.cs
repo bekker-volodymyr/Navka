@@ -27,8 +27,4 @@ public class PlayerUnderCoverState : PlayerState
         base.PhysicsUpdate();
     }
 
-    public override void AnimationTriggerEvent(Npc.AnimationTriggerType type)
-    {
-        base.AnimationTriggerEvent(type);
-    }
 }

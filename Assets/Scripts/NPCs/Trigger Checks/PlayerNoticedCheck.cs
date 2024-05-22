@@ -18,7 +18,7 @@ public class PlayerNoticedCheck : MonoBehaviour
     {
         if(collision.gameObject == PlayerTarget)
         {
-            _npc.SetPlayerNoticedStatus(true);
+            //_npc.SetPlayerNoticedStatus(true);
         }
     }
 
@@ -26,7 +26,7 @@ public class PlayerNoticedCheck : MonoBehaviour
     {
         if (collision.gameObject == PlayerTarget)
         {
-            _npc.SetPlayerNoticedStatus(false);
+            //_npc.SetPlayerNoticedStatus(false);
         }
     }
 }

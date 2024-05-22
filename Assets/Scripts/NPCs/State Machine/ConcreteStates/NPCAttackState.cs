@@ -4,42 +4,42 @@ using UnityEngine;
 
 public class NPCAttackState : NPCState
 {
-    public NPCAttackState(Npc npc, NPCStateMachine npcStateMachine) : base(npc, npcStateMachine)
+    public NPCAttackState(NPCBase npc, NPCStateMachine npcStateMachine) : base(npc, npcStateMachine)
     {
     }
 
-    public override void AnimationTriggerEvent(Npc.AnimationTriggerType type)
+    public override void AnimationTriggerEvent(NPCBase.AnimationTriggerType type)
     {
         base.AnimationTriggerEvent(type);
 
-        npc.AttackBaseInstance.DoAnimationTriggerEventLogic(type);
+        //npc.AttackBaseInstance.DoAnimationTriggerEventLogic(type);
     }
 
     public override void EnterState()
     {
         base.EnterState();
 
-        npc.AttackBaseInstance.DoEnterLogic();
+       // npc.AttackBaseInstance.DoEnterLogic();
     }
 
     public override void ExitState()
     {
         base.ExitState();
 
-        npc.AttackBaseInstance.DoExitLogic();
+        //npc.AttackBaseInstance.DoExitLogic();
     }
 
     public override void FrameUpdate()
     {
         base.FrameUpdate();
 
-        npc.AttackBaseInstance.DoFrameUpdateLogic();
+       // npc.AttackBaseInstance.DoFrameUpdateLogic();
     }
 
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
 
-        npc.AttackBaseInstance.DoPhysicsLogic();
+       // npc.AttackBaseInstance.DoPhysicsLogic();
     }
 }

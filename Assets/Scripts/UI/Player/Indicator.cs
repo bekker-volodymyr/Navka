@@ -9,7 +9,5 @@ public class Indicator: MonoBehaviour
     public void SetValue(float currentValue, float maxValue)
     {
         image.fillAmount = currentValue / maxValue;
-
-        Debug.Log(image.fillAmount);
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 public class NPCAttack : NPCAttackSOBase
 {
 
-    public override void DoAnimationTriggerEventLogic(Npc.AnimationTriggerType triggerType)
+    public override void DoAnimationTriggerEventLogic(NPCBase.AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);
     }
@@ -25,7 +25,7 @@ public class NPCAttack : NPCAttackSOBase
     {
         base.DoFrameUpdateLogic();
 
-        npc.Attack(playerScript);
+        //npc.Attack(playerScript);
     }
 
     public override void DoPhysicsLogic()

@@ -7,12 +7,9 @@ public class PlayerLockToTargetState : PlayerState
 {
     public PlayerLockToTargetState(Player player, StateMachine playerStateMachine) : base(player, playerStateMachine) { }
 
-    //private float cooldown;
-    //private float delayBeforeDamage;
-
     private Vector3 _targetPos;
     private Vector3 _direction;
-    private Npc _targetEnemy;
+    private IDamageable _targetEnemy;
 
     private float moveSpeed = 5f;
 
@@ -54,10 +51,6 @@ public class PlayerLockToTargetState : PlayerState
         base.PhysicsUpdate();
     }
 
-    public override void AnimationTriggerEvent(Npc.AnimationTriggerType type)
-    {
-        base.AnimationTriggerEvent(type);
-    }
 
     private bool TryFindClosestTarget()
     {
@@ -70,7 +63,7 @@ public class PlayerLockToTargetState : PlayerState
         // Find closest
         foreach (var collider in colliders)
         {
-            if (collider.CompareTag("Enemy"))
+            if (collider.CompareTag("IDamageable"))
             {
                 float distance = Vector2.Distance(player.transform.position, collider.transform.position);
                 if (distance < minDistance || closestCollider == null)
@@ -95,6 +88,6 @@ public class PlayerLockToTargetState : PlayerState
     private void SetTarget(Collider2D targetCollider)
     {
         _targetPos = targetCollider.transform.position;
-        _targetEnemy = targetCollider.GetComponentInParent<Npc>();
+        _targetEnemy = targetCollider.GetComponent<NPCBase>();
     }
 }

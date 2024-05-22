@@ -18,7 +18,7 @@ public class AttackDistanceCheck : MonoBehaviour
     {
         if (collision.gameObject == PlayerTarget)
         {
-            _npc.SetAttackDistanceBool(true);
+            //_npc.SetAttackDistanceBool(true);
         }
     }
 
@@ -26,7 +26,7 @@ public class AttackDistanceCheck : MonoBehaviour
     {
         if (collision.gameObject == PlayerTarget)
         {
-            _npc.SetAttackDistanceBool(false);
+            //_npc.SetAttackDistanceBool(false);
         }
     }
 }

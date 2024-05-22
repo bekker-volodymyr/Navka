@@ -49,7 +49,6 @@ public class PlayerState
 
     }
     public virtual void PhysicsUpdate() { }
-    public virtual void AnimationTriggerEvent(Npc.AnimationTriggerType type) { }
 
     private bool IsPointerOverUIObject()
     {

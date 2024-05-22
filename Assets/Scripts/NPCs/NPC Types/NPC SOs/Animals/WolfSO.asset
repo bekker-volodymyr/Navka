@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: WolfSO
   m_EditorClassIdentifier: 
   HealthPoints: 35
+  BasicDamage: 5
   Type: 3
   Approach: 2
   Loot: []
@@ -72,3 +73,5 @@ MonoBehaviour:
     \u0441\u0435\u0440\u0446\u044F, \u0430 \u043D\u0435 \u0437\u0430\u043F\u043B\u0443\u0442\u0430\u0454
     \u0432 \u0441\u0442\u0440\u0430\u0445\u0443. "
   Picture: {fileID: 21300000, guid: aec773d83603acb439c3abfd5ea9a03a, type: 3}
+  AttackTargets:
+  - {fileID: 11400000, guid: 0df55425f86f2d24aa359f1b1af5422a, type: 2}

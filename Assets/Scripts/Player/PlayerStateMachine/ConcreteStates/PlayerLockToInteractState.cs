@@ -47,10 +47,6 @@ public class PlayerLockToInteractState : PlayerState
         base.PhysicsUpdate();
     }
 
-    public override void AnimationTriggerEvent(Npc.AnimationTriggerType type)
-    {
-        base.AnimationTriggerEvent(type);
-    }
 
     private bool TryFindClosestTarget()
     {

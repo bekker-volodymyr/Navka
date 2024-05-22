@@ -1,185 +1,237 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Npc : MonoBehaviour, IDamageable, IAttack, IMoveable, ITriggerCheckable
+public class Npc : MonoBehaviour /*, IDamageable, IAttack, IMoveable, ITriggerCheckable*/
 {
-    [SerializeField] private NPCDescriptionSO description;
+    //[SerializeField] private NPCDescriptionSO description;
+    //public NPCDescriptionSO DescriptionSO { get { return description; } }
 
-    [SerializeField] Indicator healthIndicator;
-    public float CurrentHealth { get; set; }
-    public float MaxHealth { get; set; }
-    public Rigidbody2D objectRB { get; set; }
-    public bool IsFacingRight { get; set; } = true;
-    public bool IsPlayerNoticed { get; set; }
-    public bool IsWithinAttackDistance { get; set; }
+    //[SerializeField] Indicator healthIndicator;
+    //public float CurrentHealth { get; set; }
+    //public float MaxHealth { get; set; }
+    //public Rigidbody2D objectRB { get; set; }
+    //public bool IsFacingRight { get; set; } = true;
+    //public bool IsPlayerNoticed { get; set; }
+    //public bool IsWithinAttackDistance { get; set; }
+    //public bool isAggroed { get; set; }
+    //public bool IsTargetNoticed { get; set; }
+    //public List<Npc> targets;
+    //public List<Npc> pack;
+    //private GameObject chaseTarget;
+    //public GameObject ChaseTarget { get {  return chaseTarget; } }
 
-    #region State Machine Fields
+    //#region State Machine Fields
 
-    public NPCStateMachine StateMachine { get; set; }
-    public NPCIdleState IdleState { get; set; }
-    public NPCPlayerNoticedState PlayerNoticedState { get; set; }
-    public NPCAttackState AttackState { get; set; }
+    //public NPCStateMachine StateMachine { get; set; }
+    //public NPCIdleState IdleState { get; set; }
+    //public NPCPlayerNoticedState PlayerNoticedState { get; set; }
+    //public NPCAttackState AttackState { get; set; }
+    //public NPCChaseState ChaseState { get; set; }
 
-    [SerializeField] private NPCIdleSOBase idleBase;
-    [SerializeField] private PlayerNoticedSOBase playerNoticedBase;
-    [SerializeField] private NPCAttackSOBase attackBase;
+    //[SerializeField] private NPCIdleSOBase idleBase;
+    //[SerializeField] private PlayerNoticedSOBase playerNoticedBase;
+    //[SerializeField] private NPCAttackSOBase attackBase;
+    //[SerializeField] private NPCChaseStateSOBase chaseStateBase;
 
-    public NPCIdleSOBase IdleBaseInstance { get; set; }
-    public PlayerNoticedSOBase PlayerNoticedBaseInstance { get; set; }
-    public NPCAttackSOBase AttackBaseInstance { get; set; }
+    //public NPCIdleSOBase IdleBaseInstance { get; set; }
+    //public PlayerNoticedSOBase PlayerNoticedBaseInstance { get; set; }
+    //public NPCAttackSOBase AttackBaseInstance { get; set; }
+    //public NPCChaseStateSOBase ChaseStateInstance { get; set; }
 
-    #endregion
+    //#endregion
 
-    private void Awake()
-    {
-        IdleBaseInstance            = Instantiate(idleBase);
-        PlayerNoticedBaseInstance   = Instantiate(playerNoticedBase);
-        AttackBaseInstance          = Instantiate(attackBase);
+    //private void Awake()
+    //{
+    //    IdleBaseInstance            = Instantiate(idleBase);
+    //    PlayerNoticedBaseInstance   = Instantiate(playerNoticedBase);
+    //    AttackBaseInstance          = Instantiate(attackBase);
+    //    ChaseStateInstance          = Instantiate(chaseStateBase);
 
-        StateMachine                = new NPCStateMachine();
-        IdleState                   = new NPCIdleState(this, StateMachine);
-        PlayerNoticedState          = new NPCPlayerNoticedState(this, StateMachine);
-        AttackState                 = new NPCAttackState(this, StateMachine);
-    }
+    //    StateMachine                = new NPCStateMachine();
+    //    //IdleState                   = new NPCIdleState(this, StateMachine);
+    //    //PlayerNoticedState          = new NPCPlayerNoticedState(this, StateMachine);
+    //    //AttackState                 = new NPCAttackState(this, StateMachine);
+    //    //ChaseState                  = new NPCChaseState(this, StateMachine);
+    //}
 
-    private void Start()
-    {
-        MaxHealth = description.HealthPoints;
-        CurrentHealth = MaxHealth;
+    //private void Start()
+    //{
+    //    MaxHealth = description.HealthPoints;
+    //    CurrentHealth = MaxHealth;
 
-        objectRB = GetComponent<Rigidbody2D>();
+    //    isAggroed = description.Approach == Enums.NPCApproach.Agressive ? true : false;
 
-        IdleBaseInstance.Initialize(gameObject, this);
-        PlayerNoticedBaseInstance.Initialize(gameObject, this);
-        AttackBaseInstance.Initialize(gameObject, this);
+    //    targets = new List<Npc>();
+    //    pack = new List<Npc>();
 
-        StateMachine.Initialize(IdleState);
-    }
+    //    objectRB = GetComponent<Rigidbody2D>();
 
-    private void Update()
-    {
-        StateMachine.CurrentState.FrameUpdate();
-    }
+    //    //IdleBaseInstance.Initialize(gameObject, this);
+    //    //PlayerNoticedBaseInstance.Initialize(gameObject, this);
+    //    //AttackBaseInstance.Initialize(gameObject, this);
+    //    //ChaseStateInstance.Initialize(gameObject, this);
 
-    private void FixedUpdate()
-    {
-        StateMachine.CurrentState.PhysicsUpdate();
-    }
+    //    StateMachine.Initialize(IdleState);
+    //}
 
-    #region Attack Logic
+    //private void Update()
+    //{
+    //    StateMachine.CurrentState.FrameUpdate();
+    //}
 
-    [field: SerializeField] public float Damage { get; set; } = 5f;
-    [field: SerializeField] public float cooldown { get; set; } = 5f;
-    [field: SerializeField] public float delayBeforeDamage { get; set; } = 3f;
+    //private void FixedUpdate()
+    //{
+    //    StateMachine.CurrentState.PhysicsUpdate();
+    //}
 
-    public bool isOnCooldown = false;
+    //#region Attack Logic
 
-    public void Attack(IDamageable target)
-    {
-        objectRB.velocity = Vector2.zero;
+    //[field: SerializeField] public float Damage { get; set; } = 5f;
+    //[field: SerializeField] public float cooldown { get; set; } = 5f;
+    //[field: SerializeField] public float delayBeforeDamage { get; set; } = 3f;
 
-        if (!isOnCooldown)
-        {
-            StartCoroutine(DelayedAttack(target));
-        }
-    }
+    //public bool isOnCooldown = false;
 
-    private IEnumerator DelayedAttack(IDamageable target)
-    {
-        isOnCooldown = true;
-        Debug.Log("Attack started");
+    //public void Attack(IDamageable target)
+    //{
+    //    objectRB.velocity = Vector2.zero;
 
-        yield return new WaitForSeconds(delayBeforeDamage);
+    //    if (!isOnCooldown)
+    //    {
+    //        StartCoroutine(DelayedAttack(target));
+    //    }
+    //}
 
-        if (IsWithinAttackDistance)
-        {
-            ApplyDamage(target);
-        }
+    //private IEnumerator DelayedAttack(IDamageable target)
+    //{
+    //    isOnCooldown = true;
+    //    Debug.Log("Attack started");
 
-        yield return new WaitForSeconds(cooldown - delayBeforeDamage);
+    //    yield return new WaitForSeconds(delayBeforeDamage);
 
-        isOnCooldown = false;
-        Debug.Log("Attack ended");
-    }
+    //    if (IsWithinAttackDistance)
+    //    {
+    //        ApplyDamage(target);
+    //    }
 
-    public void ApplyDamage(IDamageable target)
-    {
-        target.GetDamage(Damage);
-    }
+    //    yield return new WaitForSeconds(cooldown - delayBeforeDamage);
 
-    #endregion
+    //    isOnCooldown = false;
+    //    Debug.Log("Attack ended");
+    //}
 
-    #region Health / Death
+    //public void ApplyDamage(IDamageable target)
+    //{
+    //    target.GetDamage(Damage);
+    //}
 
-    public void Death()
-    {
-        Destroy(gameObject);
-    }
+    //#endregion
 
-    public void GetDamage(float damage)
-    {
-        CurrentHealth -= damage;
+    //#region Health / Death
 
-        healthIndicator.SetValue(CurrentHealth, MaxHealth);
+    //public void Death()
+    //{
+    //    Destroy(gameObject);
+    //}
 
-        if (CurrentHealth < 0f) Death();
-    }
+    //public void GetDamage(float damage)
+    //{
+    //    CurrentHealth -= damage;
 
-    #endregion
+    //    //healthIndicator.SetValue(CurrentHealth, MaxHealth);
 
-    #region Movement
+    //    if (CurrentHealth < 0f) Death();
+    //}
 
-    public void Move(Vector2 velocity)
-    {
-        objectRB.velocity = velocity;
-        CheckFacing(velocity);
-    }
+    //#endregion
 
-    public void CheckFacing(Vector2 velocity)
-    {
-        if (IsFacingRight && velocity.x < 0f)
-        {
-            Vector3 rotator = new Vector3(transform.rotation.x, 180f, transform.rotation.z);
-            transform.rotation = Quaternion.Euler(rotator);
-            IsFacingRight = !IsFacingRight;
-        }
-        else if (!IsFacingRight && velocity.x > 0f)
-        {
-            Vector3 rotator = new Vector3(transform.rotation.x, 0f, transform.rotation.z);
-            transform.rotation = Quaternion.Euler(rotator);
-            IsFacingRight = !IsFacingRight;
-        }
-    }
+    //#region Movement
 
-    #endregion
+    //public void Move(Vector2 velocity)
+    //{
+    //    objectRB.velocity = velocity;
+    //    CheckFacing(velocity);
+    //}
 
-    #region Animation Triggers
-    private void AnimationTriggerEvent(AnimationTriggerType type)
-    {
-        // TODO
-    }
+    //public void CheckFacing(Vector2 velocity)
+    //{
+    //    if (IsFacingRight && velocity.x < 0f)
+    //    {
+    //        Vector3 rotator = new Vector3(transform.rotation.x, 180f, transform.rotation.z);
+    //        transform.rotation = Quaternion.Euler(rotator);
+    //        IsFacingRight = !IsFacingRight;
+    //    }
+    //    else if (!IsFacingRight && velocity.x > 0f)
+    //    {
+    //        Vector3 rotator = new Vector3(transform.rotation.x, 0f, transform.rotation.z);
+    //        transform.rotation = Quaternion.Euler(rotator);
+    //        IsFacingRight = !IsFacingRight;
+    //    }
+    //}
 
-    public enum AnimationTriggerType
-    {
-        NpcDamaged,
-        PlayFootstepsSound
-    }
+    //#endregion
 
-    #endregion
+    //#region Animation Triggers
+    //private void AnimationTriggerEvent(AnimationTriggerType type)
+    //{
+    //    // TODO
+    //}
 
-    #region Distance Checks
+    //public enum AnimationTriggerType
+    //{
+    //    NpcDamaged,
+    //    PlayFootstepsSound
+    //}
 
-    public void SetPlayerNoticedStatus(bool isPlayerNoticed)
-    {
-        IsPlayerNoticed = isPlayerNoticed;
-    }
+    //#endregion
 
-    public void SetAttackDistanceBool(bool isWithinAttackDistance)
-    {
-        IsWithinAttackDistance = isWithinAttackDistance;
-    }
+    //#region Distance Checks
 
-    #endregion
+    //public void AddTarget(Npc target)
+    //{
+    //    targets.Add(target);
+
+    //    if(target.DescriptionSO == DescriptionSO)
+    //    {
+    //        pack.Add(target);
+    //    }
+    //}
+
+    //public void RemoveTarget(Npc target)
+    //{
+    //    targets.Remove(target);
+
+    //    if (target.DescriptionSO == DescriptionSO)
+    //    {
+    //        pack.Remove(target);
+    //    }
+    //}
+
+    //public void SetPlayerNoticedStatus(bool isPlayerNoticed)
+    //{
+    //    IsPlayerNoticed = isPlayerNoticed;
+    //}
+
+    //public void SetAttackDistanceBool(bool isWithinAttackDistance)
+    //{
+    //    IsWithinAttackDistance = isWithinAttackDistance;
+    //}
+
+    //#endregion
+
+    //public Enums.TargetDecisions DecideTarget(Npc target)
+    //{
+    //    if(DescriptionSO.AttackTargets.Contains(target.DescriptionSO))
+    //    {
+    //        return Enums.TargetDecisions.Chase;
+    //    }
+    //    else
+    //    {
+    //        return Enums.TargetDecisions.Ignore;
+    //    }
+    //}
+
+    //public void SetChaseTarget(GameObject target)
+    //{
+    //    chaseTarget = target;
+    //}
 }

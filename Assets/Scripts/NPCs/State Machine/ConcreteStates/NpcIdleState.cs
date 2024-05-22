@@ -1,47 +1,41 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class NPCIdleState : NPCState
 {
-    
-    public NPCIdleState(Npc npc, NPCStateMachine npcStateMachine) : base(npc, npcStateMachine)
+    public NPCIdleState(NPCBase npc, NPCStateMachine npcStateMachine) : base(npc, npcStateMachine)
     {
-    }
-
-    public override void AnimationTriggerEvent(Npc.AnimationTriggerType type)
-    {
-        base.AnimationTriggerEvent(type);
-
-        npc.IdleBaseInstance.DoAnimationTriggerEventLogic(type);
     }
 
     public override void EnterState()
     {
         base.EnterState();
 
-        npc.IdleBaseInstance.DoEnterLogic();
+        npc.IdleStateInstance.DoEnterLogic();
     }
 
     public override void ExitState()
     {
         base.ExitState();
 
-        npc.IdleBaseInstance.DoExitLogic();
+        npc.IdleStateInstance.DoExitLogic();
     }
 
     public override void FrameUpdate()
     {
         base.FrameUpdate();
 
-        npc.IdleBaseInstance.DoFrameUpdateLogic();
+        npc.IdleStateInstance.DoFrameUpdateLogic();
     }
 
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
 
-        npc.IdleBaseInstance.DoPhysicsLogic();
+        npc.IdleStateInstance.DoPhysicsLogic();
+    }
+
+    public override void AnimationTriggerEvent(NPCBase.AnimationTriggerType type)
+    {
+        base.AnimationTriggerEvent(type);
+
+        npc.IdleStateInstance.DoAnimationTriggerEventLogic(type);
     }
 }

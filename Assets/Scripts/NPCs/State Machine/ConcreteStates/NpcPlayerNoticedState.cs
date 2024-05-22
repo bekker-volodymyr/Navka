@@ -4,42 +4,42 @@ using UnityEngine;
 
 public class NPCPlayerNoticedState : NPCState
 {
-    public NPCPlayerNoticedState(Npc npc, NPCStateMachine npcStateMachine) : base(npc, npcStateMachine)
+    public NPCPlayerNoticedState(NPCBase npc, NPCStateMachine npcStateMachine) : base(npc, npcStateMachine)
     {
     }
 
-    public override void AnimationTriggerEvent(Npc.AnimationTriggerType type)
+    public override void AnimationTriggerEvent(NPCBase.AnimationTriggerType type)
     {
         base.AnimationTriggerEvent(type);
 
-        npc.PlayerNoticedBaseInstance.DoAnimationTriggerEventLogic(type);
+        //npc.PlayerNoticedBaseInstance.DoAnimationTriggerEventLogic(type);
     }
 
     public override void EnterState()
     {
         base.EnterState();
 
-        npc.PlayerNoticedBaseInstance.DoEnterLogic();
+        //npc.PlayerNoticedBaseInstance.DoEnterLogic();
     }
 
     public override void ExitState()
     {
         base.ExitState();
 
-        npc.PlayerNoticedBaseInstance.DoExitLogic();
+        //npc.PlayerNoticedBaseInstance.DoExitLogic();
     }
 
     public override void FrameUpdate()
     {
         base.FrameUpdate();
 
-        npc.PlayerNoticedBaseInstance.DoFrameUpdateLogic();
+        //npc.PlayerNoticedBaseInstance.DoFrameUpdateLogic();
     }
 
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
 
-        npc.PlayerNoticedBaseInstance.DoPhysicsLogic();
+        //npc.PlayerNoticedBaseInstance.DoPhysicsLogic();
     }
 }

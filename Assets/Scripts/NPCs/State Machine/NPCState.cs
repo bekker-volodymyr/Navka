@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class NPCState
-{protected Npc npc;
+{
+    protected NPCBase npc;
     protected NPCStateMachine npcStateMachine;
 
-    public NPCState(Npc npc, NPCStateMachine npcStateMachine)
+    public NPCState(NPCBase npc, NPCStateMachine npcStateMachine)
     {
         this.npc = npc;
         this.npcStateMachine = npcStateMachine;
@@ -16,7 +13,5 @@ public class NPCState
     public virtual void ExitState() { }
     public virtual void FrameUpdate() { }
     public virtual void PhysicsUpdate() { }
-    public virtual void AnimationTriggerEvent(Npc.AnimationTriggerType type) { }
-    
-
+    public virtual void AnimationTriggerEvent(NPCBase.AnimationTriggerType type) { }
 }

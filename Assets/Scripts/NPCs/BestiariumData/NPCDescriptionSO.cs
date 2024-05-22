@@ -7,6 +7,7 @@ using UnityEngine;
 public class NPCDescriptionSO : ScriptableObject
 {
     [SerializeField] public int HealthPoints;
+    [SerializeField] public float BasicDamage;
     [SerializeField] public Enums.NPCType Type;
     [SerializeField] public Enums.NPCApproach Approach;
     [SerializeField] public ItemSO[] Loot;
@@ -16,4 +17,5 @@ public class NPCDescriptionSO : ScriptableObject
     [SerializeField] public string Befriending;
     [SerializeField] public string Lore;
     [SerializeField] public Sprite Picture;
+    [SerializeField] public List<NPCDescriptionSO> AttackTargets;
 }

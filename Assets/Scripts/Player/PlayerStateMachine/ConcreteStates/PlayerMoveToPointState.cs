@@ -51,10 +51,6 @@ public class PlayerMoveToPointState : PlayerState
         base.PhysicsUpdate();
     }
 
-    public override void AnimationTriggerEvent(Npc.AnimationTriggerType type)
-    {
-        base.AnimationTriggerEvent(type);
-    }
 
     private Vector3 GetEndPoint()
     {

@@ -4,31 +4,36 @@ using UnityEngine;
 
 public class NPCIdleSOBase : ScriptableObject
 {
-    protected Npc npc;
-    protected Transform transform;
-    protected GameObject gameObject;
+    protected NPCBase npc;
 
-    protected Transform playerTransform;
-
-    public virtual void Initialize(GameObject gameObject, Npc npc)
+    public virtual void Initialize(NPCBase npc)
     {
-        this.gameObject = gameObject;
-        transform = gameObject.transform;
         this.npc = npc;
-
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     public virtual void DoEnterLogic() { }
     public virtual void DoExitLogic() { ResetValues(); }
     public virtual void DoFrameUpdateLogic() 
     {
-        if (npc.IsPlayerNoticed)
-        {
-            npc.StateMachine.ChangeState(npc.PlayerNoticedState);
-        }
+        //if (npc.targets.Count > 0)
+        //{
+        //    foreach(var target in npc.targets)
+        //    {
+        //        switch (npc.DecideTarget(target))
+        //        {
+        //            default:
+        //                break;
+        //            case Enums.TargetDecisions.Chase:
+        //                npc.SetChaseTarget(target.gameObject);
+        //                npc.StateMachine.ChangeState(npc.ChaseState);
+        //                break;
+        //        }
+        //    }
+        //
+        //    // npc.StateMachine.ChangeState(npc.PlayerNoticedState);
+        //}
     }
     public virtual void DoPhysicsLogic() { }
-    public virtual void DoAnimationTriggerEventLogic(Npc.AnimationTriggerType triggerType) { }
+    public virtual void DoAnimationTriggerEventLogic(NPCBase.AnimationTriggerType triggerType) { }
     public virtual void ResetValues() { }
 }

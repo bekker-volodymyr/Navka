@@ -23,17 +23,17 @@ public class PlayerNoticedSOBase : ScriptableObject
     public virtual void DoExitLogic() { ResetValues(); }
     public virtual void DoFrameUpdateLogic()
     {
-        if (!npc.IsPlayerNoticed)
-        {
-            npc.StateMachine.ChangeState(npc.IdleState);
-        }
-
-        if(npc.IsWithinAttackDistance)
-        {
-            npc.StateMachine.ChangeState(npc.AttackState);
-        }
+        //if (!npc.IsPlayerNoticed)
+        //{
+        //    npc.StateMachine.ChangeState(npc.IdleState);
+        //}
+        //
+        //if(npc.IsWithinAttackDistance)
+        //{
+        //    npc.StateMachine.ChangeState(npc.AttackState);
+        //}
     }
     public virtual void DoPhysicsLogic() { }
-    public virtual void DoAnimationTriggerEventLogic(Npc.AnimationTriggerType triggerType) { }
+    public virtual void DoAnimationTriggerEventLogic(NPCBase.AnimationTriggerType triggerType) { }
     public virtual void ResetValues() { }
 }

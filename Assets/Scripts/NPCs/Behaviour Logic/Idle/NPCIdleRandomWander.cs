@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Idle-Random Wander", menuName = "NPC Logic/Idle Logic/Random Wander")]
-public class NpcIdleRandomWander : NPCIdleSOBase
+public class NPCIdleRandomWander : NPCIdleSOBase
 {
     [SerializeField] private float RandomMovementRange = 5f;
     [SerializeField] private float RandomMovementSpeed = 1f;
@@ -9,18 +9,21 @@ public class NpcIdleRandomWander : NPCIdleSOBase
     private Vector3 _targetPos;
     private Vector3 _direction;
 
+    public override void Initialize(NPCBase npc)
+    {
+        base.Initialize(npc);
+    }
+
     public override void DoEnterLogic()
     {
         base.DoEnterLogic();
 
         _targetPos = GetRandomPointInCircle();
     }
-
     public override void DoExitLogic()
     {
         base.DoExitLogic();
     }
-
     public override void DoFrameUpdateLogic()
     {
         base.DoFrameUpdateLogic();
@@ -33,20 +36,13 @@ public class NpcIdleRandomWander : NPCIdleSOBase
             _targetPos = GetRandomPointInCircle();
         }
     }
-
     public override void DoPhysicsLogic()
     {
         base.DoPhysicsLogic();
     }
-
-    public override void DoAnimationTriggerEventLogic(Npc.AnimationTriggerType triggerType)
+    public override void DoAnimationTriggerEventLogic(NPCBase.AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);
-    }
-
-    public override void Initialize(GameObject gameObject, Npc npc)
-    {
-        base.Initialize(gameObject, npc);
     }
 
     public override void ResetValues()

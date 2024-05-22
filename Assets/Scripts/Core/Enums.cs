@@ -30,4 +30,9 @@ public class Enums
     {
         Health, Hunger, Mana, Speed, Nothing
     }
+
+    public enum TargetDecisions
+    {
+        Ignore, Chase, Runaway
+    }
 }

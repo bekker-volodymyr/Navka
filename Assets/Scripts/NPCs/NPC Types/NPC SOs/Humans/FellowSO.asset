@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: FellowSO
   m_EditorClassIdentifier: 
   HealthPoints: 15
+  BasicDamage: 1
   Type: 1
   Approach: 1
   Loot: []
@@ -48,3 +49,4 @@ MonoBehaviour:
     \u0432\u0456\u0440\u0448 \u043F\u0440\u043E \u0434\u0443\u0440\u043D\u0438\u0445
     \u043F\u0430\u0440\u0443\u0431\u043A\u0456\u0432>"
   Picture: {fileID: 21300000, guid: 38f36241b0a5a10479466d125c225bae, type: 3}
+  AttackTargets: []

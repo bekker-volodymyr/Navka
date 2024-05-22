@@ -1,12 +1,9 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
 {
-    public Rigidbody2D objectRB { get; set; }
+    public Rigidbody2D ObjectRB { get; set; }
 
     [SerializeField] private float moveSpeed = 5f;
 
@@ -30,9 +27,10 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
 
     #region IAttack Fields
 
-    [field: SerializeField] public float Damage { get; set; }
-    public float cooldown { get; set; }
-    public float delayBeforeDamage { get; set; }
+    [SerializeField] private float damage;
+    public float Damage { get { return damage; } }
+    //public float cooldown { get; set; }
+    //public float delayBeforeDamage { get; set; }
 
     #endregion
 
@@ -81,7 +79,7 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
 
         CurrentHunger = MaxHunger;
 
-        objectRB = GetComponent<Rigidbody2D>();
+        ObjectRB = GetComponent<Rigidbody2D>();
 
         StateMachine.Initialize(IdleState);
 
@@ -148,11 +146,6 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
         target.GetDamage(Damage);
     }
 
-    public void ApplyDamage(IDamageable target)
-    {
-        throw new System.NotImplementedException();
-    }
-
     public Collider2D[] GetAllItemsInCollisionRadius()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, TargetNoticeRadius.radius);
@@ -165,7 +158,7 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
 
     public void Move(Vector2 velocity)
     {
-        objectRB.velocity = velocity;
+        ObjectRB.velocity = velocity;
     }
 
     public void CheckFacing(Vector2 velocity)
