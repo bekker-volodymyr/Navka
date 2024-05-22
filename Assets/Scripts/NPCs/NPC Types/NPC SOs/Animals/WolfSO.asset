@@ -16,7 +16,12 @@ MonoBehaviour:
   BasicDamage: 5
   Type: 3
   Approach: 2
-  Loot: []
+  Loot:
+  - {fileID: 11400000, guid: 8264f5e1d1ce98f46ab563db595881f0, type: 2}
+  - {fileID: 11400000, guid: a088fd07307d7b04c89100b750ed9907, type: 2}
+  LootChance:
+  - 1
+  - 0.4
   Name: "\u0412\u043E\u0432\u043A"
   Weaknesses: "\u041D\u0435 \u0441\u0442\u0430\u043D\u043E\u0432\u043B\u044F\u0442\u044C
     \u0432\u0435\u043B\u0438\u043A\u043E\u0457 \u0437\u0430\u0433\u0440\u043E\u0437\u0438

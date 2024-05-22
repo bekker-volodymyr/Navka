@@ -21,6 +21,9 @@ public class ItemsPageManager: MonoBehaviour
     [SerializeField] private TextMeshProUGUI Item_Description;
     [SerializeField] private TextMeshProUGUI Item_Sources;
 
+    private int selectedButtonList;
+    private ItemSO selectedItem;
+
     private void Start()
     {
         Initialize();
@@ -55,14 +58,19 @@ public class ItemsPageManager: MonoBehaviour
                     newButton.GetComponent<ItemsPageButton>().InitButton(item, this);
                     break;
                 default:
-                    throw new Exception("uknown type exception");
+                    throw new Exception($"uknown type exception {item.Title}");
                     
             }
         }
+
+        SwitchButtonList(1);
+        SwitchItem(itemsStorage.items[0]);
     }
 
     public void SwitchButtonList(int type)
     {
+        selectedButtonList = type;
+
         buttonsAmulets.SetActive(false);
         buttonsComponents.SetActive(false);
         buttonsFood.SetActive(false);
@@ -85,6 +93,8 @@ public class ItemsPageManager: MonoBehaviour
 
     public void SwitchItem(ItemSO item)
     {
+        selectedItem = item;
+
         Item_Image.sprite = item.Sprite;
         Item_Name.SetText(item.Title);
         Item_Description.SetText(item.Lore);

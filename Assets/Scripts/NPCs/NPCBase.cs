@@ -6,6 +6,9 @@ public class NPCBase : MonoBehaviour, IMoveable, IDamageable, IAttack
     public NPCDescriptionSO DescriptionSO { get { return description; } }
 
     [Space]
+    [SerializeField] private Item itemPrefab;
+
+    [Space]
     [SerializeField] private Indicator healthIndicator;
 
     [Space]
@@ -90,8 +93,21 @@ public class NPCBase : MonoBehaviour, IMoveable, IDamageable, IAttack
     public void Death()
     {
         // TODO: DROP LOOT
+        DropLoot();
 
         Destroy(gameObject);
+    }
+    public void DropLoot()
+    {
+        for(int i = 0; i < description.Loot.Count; i++)
+        {
+            if (Random.value <= description.LootChance[i])
+            {
+                Item loot = Instantiate(itemPrefab);
+                loot.InitItem(description.Loot[i], 1);
+                loot.gameObject.transform.position = transform.position;
+            }
+        }
     }
     #endregion
 

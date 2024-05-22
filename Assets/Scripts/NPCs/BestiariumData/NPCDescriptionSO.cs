@@ -10,7 +10,8 @@ public class NPCDescriptionSO : ScriptableObject
     [SerializeField] public float BasicDamage;
     [SerializeField] public Enums.NPCType Type;
     [SerializeField] public Enums.NPCApproach Approach;
-    [SerializeField] public ItemSO[] Loot;
+    [SerializeField] public List<ItemSO> Loot;
+    [SerializeField] public List<float> LootChance;
     [SerializeField] public string Name;
     [SerializeField] public string Weaknesses;
     [SerializeField] public string Behaviour;
@@ -18,4 +19,5 @@ public class NPCDescriptionSO : ScriptableObject
     [SerializeField] public string Lore;
     [SerializeField] public Sprite Picture;
     [SerializeField] public List<NPCDescriptionSO> AttackTargets;
+
 }
