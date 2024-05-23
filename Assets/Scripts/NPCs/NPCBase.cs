@@ -181,7 +181,7 @@ public class NPCBase : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
         }
     }
 
-    public void OnInteraction()
+    virtual public void OnInteraction()
     {
         Debug.Log("No interaction with this NPC or not implemented");
     }

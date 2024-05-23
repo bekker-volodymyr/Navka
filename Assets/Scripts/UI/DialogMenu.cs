@@ -2,18 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SocialPlatforms;
 
 public class DialogMenu : MonoBehaviour
 {
+    public GameObject dialog_menu;
     public TextMeshProUGUI textComponent;
     public string[] lines;
     public float textSpeed;
 
     private int index;
+    private int counter = 0;
 
     // Start is called before the first frame update
     void Start()
     {
+        
+    }
+    public void InitDialog()
+    {
+        
+        dialog_menu.SetActive(true);
+        this.enabled = true;
         textComponent.text = string.Empty;
         StartDialogue();
     }
@@ -35,7 +45,7 @@ public class DialogMenu : MonoBehaviour
         }
     }
 
-    void StartDialogue()
+    public void StartDialogue()
     {
         index = 0;
         StartCoroutine(TypeLine());
@@ -56,9 +66,25 @@ public class DialogMenu : MonoBehaviour
             textComponent.text = string.Empty;
             StartCoroutine(TypeLine());
         }
-        else
+    }
+    public void CloseDialog()
+    {
+        counter = 0;
+        index = 0;
+        textComponent.text = string.Empty;
+        dialog_menu.SetActive(false);
+        this.enabled = false;
+    }
+    public void ConfirmDialog()
+    {
+        counter++;
+        if (counter == lines.Length && index == lines.Length - 1)
         {
-        gameObject.SetActive(false);
+            counter = 0;
+            index = 0;
+            textComponent.text = string.Empty;
+            dialog_menu.SetActive(false);
+            this.enabled = false;
         }
     }
 }   
