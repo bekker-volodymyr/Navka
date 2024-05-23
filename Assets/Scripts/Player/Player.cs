@@ -113,7 +113,7 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
         Time.timeScale = 0f;
     }
 
-    public void GetDamage(float damage)
+    public void GetDamage(float damage, GameObject attacker)
     {
         // TODO: застосування підсилень та послаблень показника шкоди
 
@@ -143,7 +143,7 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
     {
         // TODO: застосування підсилень та послаблень для показника шкоди
 
-        target.GetDamage(Damage);
+        target.GetDamage(Damage, gameObject);
     }
 
     public Collider2D[] GetAllItemsInCollisionRadius()

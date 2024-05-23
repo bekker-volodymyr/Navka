@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class NPCBase : MonoBehaviour, IMoveable, IDamageable, IAttack
@@ -30,6 +31,7 @@ public class NPCBase : MonoBehaviour, IMoveable, IDamageable, IAttack
 
     private GameObject chaseTarget;
     public GameObject ChaseTarget { get { return chaseTarget; } }
+    private List<NPCBase> pack;
 
     #region Colliders
     [Space]
@@ -76,7 +78,7 @@ public class NPCBase : MonoBehaviour, IMoveable, IDamageable, IAttack
     #endregion
 
     #region Damage / Death Logic
-    public void GetDamage(float damage)
+    public void GetDamage(float damage, GameObject attacker)
     {
         float newHealth = currentHealth;
 
@@ -87,6 +89,11 @@ public class NPCBase : MonoBehaviour, IMoveable, IDamageable, IAttack
         healthIndicator.SetValue(currentHealth, maxHealth);
 
         Debug.Log(currentHealth);
+
+        foreach(var npc in pack)
+        {
+            npc.SetTarget(attacker);
+        }
 
         if (currentHealth == 0f) Death();
     }
@@ -113,7 +120,7 @@ public class NPCBase : MonoBehaviour, IMoveable, IDamageable, IAttack
 
     public void Attack(IDamageable target)
     {
-        target.GetDamage(damage);
+        target.GetDamage(damage, gameObject);
     }
 
     private void Awake()
@@ -132,6 +139,8 @@ public class NPCBase : MonoBehaviour, IMoveable, IDamageable, IAttack
         healthIndicator.SetValue(currentHealth, maxHealth);
 
         damage = description.BasicDamage;
+
+        pack = new List<NPCBase> { this };
 
         IdleStateInstance.Initialize(this);
         ChaseStateInstance.Initialize(this);
@@ -152,7 +161,21 @@ public class NPCBase : MonoBehaviour, IMoveable, IDamageable, IAttack
     {
         if(description.AttackTargets.Contains(target.DescriptionSO))
         {
-            chaseTarget = target.gameObject;
+            foreach (var npc in pack)
+            {
+                npc.SetTarget(target.gameObject);
+            }
+        }
+        else if(description == target.DescriptionSO)
+        {
+            pack.Add(target);
+        }
+    }
+    public void SetTarget(GameObject target)
+    {
+        if (chaseTarget == null)
+        {
+            chaseTarget = target;
             StateMachine.ChangeState(ChaseState);
         }
     }

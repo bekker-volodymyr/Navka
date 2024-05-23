@@ -7,6 +7,10 @@ public class NPCDefaultChase : NPCChaseSOBase
     private IDamageable attackTarget;
     private float moveSpeed = 5f;
 
+    private bool attackStarted;
+    private float attackDelay;
+    private float attackTimer;
+
     public override void Initialize(NPCBase npc)
     {
         base.Initialize(npc);
@@ -17,6 +21,10 @@ public class NPCDefaultChase : NPCChaseSOBase
         base.DoEnterLogic();
 
         attackTarget = chaseTarget.GetComponent<IDamageable>();
+
+        attackStarted = false;
+        attackDelay = 1f;
+        attackTimer = attackDelay;
 
     }
     public override void DoExitLogic()
@@ -32,14 +40,29 @@ public class NPCDefaultChase : NPCChaseSOBase
             npc.StateMachine.ChangeState(npc.IdleState);
         }
 
-        if ((npc.transform.position - chaseTarget.transform.position).sqrMagnitude < npc.AttackRadius.radius)
+        if (!attackStarted)
         {
-            npc.Attack(attackTarget);
+            if ((npc.transform.position - chaseTarget.transform.position).sqrMagnitude < npc.AttackRadius.radius)
+            {
+                attackStarted = true;
+                attackTimer = attackDelay;
+                npc.Move(Vector2.zero);
+            }
+            else
+            {
+                _direction = (chaseTarget.transform.position - npc.transform.position).normalized;
+                npc.Move(_direction * moveSpeed);
+            }
         }
         else
         {
-            _direction = (chaseTarget.transform.position - npc.transform.position).normalized;
-            npc.Move(_direction * moveSpeed);
+            attackTimer -= Time.deltaTime;
+            if(attackTimer <= 0)
+            {
+                if ((npc.transform.position - chaseTarget.transform.position).sqrMagnitude < npc.AttackRadius.radius)
+                    npc.Attack(attackTarget);
+                attackStarted = false;
+            }
         }
     }
     public override void DoPhysicsLogic()
