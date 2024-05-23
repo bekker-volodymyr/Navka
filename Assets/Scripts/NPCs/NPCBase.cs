@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class NPCBase : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteractable
 {
+    [Space]
     [SerializeField] private NPCDescriptionSO description;
     public NPCDescriptionSO DescriptionSO { get { return description; } }
 
