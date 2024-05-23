@@ -63,7 +63,10 @@ public class PlayerLockToTargetState : PlayerState
         // Find closest
         foreach (var collider in colliders)
         {
-            if (collider.CompareTag("IDamageable"))
+            IDamageable target = collider.GetComponent<IDamageable>();
+
+            //if (collider.CompareTag("IDamageable"))
+            if(target != null && !target.Equals(player)) 
             {
                 float distance = Vector2.Distance(player.transform.position, collider.transform.position);
                 if (distance < minDistance || closestCollider == null)
@@ -88,6 +91,6 @@ public class PlayerLockToTargetState : PlayerState
     private void SetTarget(Collider2D targetCollider)
     {
         _targetPos = targetCollider.transform.position;
-        _targetEnemy = targetCollider.GetComponent<NPCBase>();
+        _targetEnemy = targetCollider.GetComponent<IDamageable>();
     }
 }

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPCBase : MonoBehaviour, IMoveable, IDamageable, IAttack
+public class NPCBase : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteractable
 {
     [SerializeField] private NPCDescriptionSO description;
     public NPCDescriptionSO DescriptionSO { get { return description; } }
@@ -178,6 +178,11 @@ public class NPCBase : MonoBehaviour, IMoveable, IDamageable, IAttack
             chaseTarget = target;
             StateMachine.ChangeState(ChaseState);
         }
+    }
+
+    public void OnInteraction()
+    {
+        Debug.Log("No interaction with this NPC or not implemented");
     }
 
     #region Triggers
