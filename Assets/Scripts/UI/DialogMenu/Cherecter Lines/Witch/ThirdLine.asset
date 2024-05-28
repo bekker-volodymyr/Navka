@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55bb9fb6671578045b6e21e7256f6079, type: 3}
+  m_Name: ThirdLine
+  m_EditorClassIdentifier: 
+  line: Third line
+  answers:
+  - player_response: SMTH
+    next_line: {fileID: 0}
+    isFinalLine: 1
