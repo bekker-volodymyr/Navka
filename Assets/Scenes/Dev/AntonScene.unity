@@ -1900,6 +1900,26 @@ PrefabInstance:
       propertyPath: dialog_menu
       value: 
       objectReference: {fileID: 575627355}
+    - target: {fileID: 1019976961545247000, guid: 0db8d318213a75541b93f5583c560e33, type: 3}
+      propertyPath: dialogStateBase
+      value: 
+      objectReference: {fileID: 11400000, guid: 6dfde8399f83a5b4f9e90818594cac18, type: 2}
+    - target: {fileID: 1019976961545247000, guid: 0db8d318213a75541b93f5583c560e33, type: 3}
+      propertyPath: lines.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1019976961545247000, guid: 0db8d318213a75541b93f5583c560e33, type: 3}
+      propertyPath: lines.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: f52661b0aef70a3449e4fbae2b4f34e0, type: 2}
+    - target: {fileID: 1019976961545247000, guid: 0db8d318213a75541b93f5583c560e33, type: 3}
+      propertyPath: lines.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: b086d9bc96556a04ebe63a34d6ec4702, type: 2}
+    - target: {fileID: 1019976961545247000, guid: 0db8d318213a75541b93f5583c560e33, type: 3}
+      propertyPath: lines.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: c4d45ffcc54659340a5f93459ffc0a0d, type: 2}
     - target: {fileID: 1916447473191742845, guid: 0db8d318213a75541b93f5583c560e33, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.7988167
@@ -1944,6 +1964,10 @@ PrefabInstance:
       propertyPath: firstLine
       value: 
       objectReference: {fileID: 11400000, guid: f52661b0aef70a3449e4fbae2b4f34e0, type: 2}
+    - target: {fileID: 3407927735851127014, guid: 0db8d318213a75541b93f5583c560e33, type: 3}
+      propertyPath: dialogMenu
+      value: 
+      objectReference: {fileID: 575627355}
     - target: {fileID: 3407927735851127014, guid: 0db8d318213a75541b93f5583c560e33, type: 3}
       propertyPath: dialog_menu
       value: 

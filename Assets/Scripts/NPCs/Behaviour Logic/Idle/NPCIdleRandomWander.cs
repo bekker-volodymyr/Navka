@@ -23,6 +23,7 @@ public class NPCIdleRandomWander : NPCIdleSOBase
     public override void DoExitLogic()
     {
         base.DoExitLogic();
+        npc.Move(Vector2.zero);
     }
     public override void DoFrameUpdateLogic()
     {

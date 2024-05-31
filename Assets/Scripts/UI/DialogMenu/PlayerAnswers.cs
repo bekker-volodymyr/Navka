@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerAnswers
 {
-    public string player_response;
-    public CherecterLine next_line;
+    public string playerResponse;
+    public CherecterLine nextLine;
     public bool isFinalLine;
 }

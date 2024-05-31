@@ -9,11 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55bb9fb6671578045b6e21e7256f6079, type: 3}
-  m_Name: SecondLine
+  m_Script: {fileID: 11500000, guid: 1f8e2d734dde88949b301b9c610047c8, type: 3}
+  m_Name: Dialog-Default Dialog
   m_EditorClassIdentifier: 
-  line: Second line
-  answers:
-  - playerResponse: Smth
-    nextLine: {fileID: 0}
-    isFinalLine: 1

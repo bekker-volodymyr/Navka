@@ -6,6 +6,5 @@ using UnityEngine;
 public class DialogLine 
 {
     public string response;
-    public PlayerAnswers[] player_answers;
-
+    public PlayerAnswers[] playerAnswers;
 }

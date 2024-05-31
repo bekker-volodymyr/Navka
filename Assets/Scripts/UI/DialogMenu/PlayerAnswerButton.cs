@@ -18,10 +18,10 @@ public class PlayerAnswerButton : MonoBehaviour
         this.playerAnswer = playerAnswer;
         answerButton.transform.SetParent(parent.transform, false);
         answerButton.onClick.AddListener(OnClick);
-        answerButton.GetComponentInChildren<TextMeshProUGUI>().text = playerAnswer.player_response;
+        answerButton.GetComponentInChildren<TextMeshProUGUI>().text = playerAnswer.playerResponse;
     }
     public void OnClick()
     {
-        menu.NextLine(playerAnswer.next_line);
+        menu.NextLine(playerAnswer.nextLine);
     }
 }

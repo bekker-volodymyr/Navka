@@ -16,18 +16,20 @@ public class DialogMenu : MonoBehaviour
     [SerializeField]
     private CherecterLine firstLine;
     private CherecterLine currentLine;
-    public GameObject dialog_menu;
-    public TextMeshProUGUI textComponent;
-    public List<CherecterLine> lines; 
+    private NPCBase NPC;
+    private IDialog npcDialog;
+    public GameObject dialogMenu;
+    public TextMeshProUGUI textComponent; 
     public float textSpeed;
 
     private int index;
     private int counter = 0;
 
-    public void InitDialog()
+    public void InitDialog(NPCBase NPC, IDialog npcDialog) 
     {
-        
-        dialog_menu.SetActive(true);
+        this.NPC = NPC;
+        this.npcDialog = npcDialog;
+        dialogMenu.SetActive(true);
         this.enabled = true;
         textComponent.text = string.Empty;
         InitAnswerParent();
@@ -36,7 +38,7 @@ public class DialogMenu : MonoBehaviour
 
     public void StartDialogue()
     {
-        currentLine = firstLine;
+        currentLine = npcDialog.Lines[0];
         StartCoroutine(TypeLine());
     }
     IEnumerator TypeLine()
@@ -65,9 +67,10 @@ public class DialogMenu : MonoBehaviour
         counter = 0;
         index = 0;
         textComponent.text = string.Empty;
-        dialog_menu.SetActive(false);
+        dialogMenu.SetActive(false);
         this.enabled = false;
         Destroy(answersParent);
+        NPC.StateMachine.ChangeState(NPC.IdleState);
     }
 
     private void CreatePlayerAnswerButton(PlayerAnswers playerAnswer)
@@ -79,7 +82,7 @@ public class DialogMenu : MonoBehaviour
     void InitAnswerParent()
     {
         answersParent = Instantiate(answersParentPrefab);
-        answersParent.transform.SetParent(dialog_menu.transform, false);
+        answersParent.transform.SetParent(dialogMenu.transform, false);
         answersParent.GetComponentInChildren<Button>().onClick.AddListener(CloseDialog);
     }
 }   

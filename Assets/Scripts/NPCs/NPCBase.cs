@@ -46,13 +46,16 @@ public class NPCBase : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
     public NPCStateMachine StateMachine { get; set; }
     public NPCIdleState IdleState { get; set; }
     public NPCChaseState ChaseState { get; set; }
+    public NPCDialogState DialogState { get; set; }
 
     [Space]
     [SerializeField] private NPCIdleSOBase idleStateBase;
     [SerializeField] private NPCChaseSOBase chaseStateBase;
+    [SerializeField] private NPCDialogSOBase dialogStateBase;
 
     public NPCIdleSOBase IdleStateInstance { get; set; }
     public NPCChaseSOBase ChaseStateInstance { get; set; }
+    public NPCDialogSOBase DialogStateInstance { get; set; }
     #endregion
 
     #region Movement Logic
@@ -128,10 +131,12 @@ public class NPCBase : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
     {
         IdleStateInstance = Instantiate(idleStateBase);
         ChaseStateInstance = Instantiate(chaseStateBase);
+        DialogStateInstance = Instantiate(dialogStateBase);
 
         StateMachine = new NPCStateMachine();
         IdleState = new NPCIdleState(this, StateMachine);
         ChaseState = new NPCChaseState(this, StateMachine);
+        DialogState = new NPCDialogState(this, StateMachine);
     }
     private void Start()
     {
@@ -145,6 +150,7 @@ public class NPCBase : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
 
         IdleStateInstance.Initialize(this);
         ChaseStateInstance.Initialize(this);
+        DialogStateInstance.Initialize(this);
 
         StateMachine.Initialize(IdleState);
     }
