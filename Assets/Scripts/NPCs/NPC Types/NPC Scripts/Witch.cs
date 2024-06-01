@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Witch : NPCBase
+public class Witch : NPCBase, IDialog
 {
     public GameObject dialog_menu;
     public DialogMenu dialog_script;
+    [SerializeField]
+    private List<CherecterLine> lines;
+    public List<CherecterLine> Lines { get { return lines; } }
     private bool in_range = false;
 
    // void Update()
@@ -20,7 +23,8 @@ public class Witch : NPCBase
     {
         //dialog_menu.SetActive(true);
         //dialog_script.enabled = true;
-        dialog_script.InitDialog();
+        StateMachine.ChangeState(DialogState);
+        dialog_script.InitDialog(this, this);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

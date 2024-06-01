@@ -65,6 +65,7 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
     public PlayerLockToTargetState LockToTargetState { get; set; }
     public PlayerMoveToPointState MoveToPointState { get; set; }
     public PlayerUnderCoverState UnderCoverState { get; set; }
+    public PlayerDialogState DialogState { get; set; }
     #endregion
 
     private void Awake()
@@ -75,6 +76,7 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
         LockToInteractState = new PlayerLockToInteractState(this, StateMachine);
         LockToTargetState = new PlayerLockToTargetState(this, StateMachine);
         UnderCoverState = new PlayerUnderCoverState(this, StateMachine);
+        DialogState = new PlayerDialogState(this, StateMachine);
     }
 
     private void Start()
@@ -117,7 +119,7 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
     }
     public void GetDamage(float damage, GameObject attacker)
     {
-        // TODO: застосування підсилень та послаблень показника шкоди
+        // TODO: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 
         float newHealth = currentHealth - damage;
 
@@ -140,7 +142,7 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
     #region Attack Logic
     public void Attack(IDamageable target)
     {
-        // TODO: застосування підсилень та послаблень для показника шкоди
+        // TODO: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 
         target.GetDamage(damage, gameObject);
     }
@@ -196,7 +198,7 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
 
             float reduceValue = -1;
 
-            // TODO: Застосувати послаблення/посилення
+            // TODO: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
             ChangeHunger(reduceValue);
         }
