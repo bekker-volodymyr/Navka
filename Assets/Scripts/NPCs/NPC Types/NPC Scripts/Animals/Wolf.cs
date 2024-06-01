@@ -21,11 +21,11 @@ public class Wolf : NPCBase
                 if(befriendingItemsList.Contains(selectedItem))
                 {
                     befriendingItemsList.Remove(selectedItem);
-                    
-                    if(befriendingItemsList.Count == 0)
+                    player.FeedItem();
+
+                    if (befriendingItemsList.Count == 0)
                     {
                         Befriend(player);
-                        GameManager.Instance.InventoryController.ConsumeSelectedItem();
                     }
                 }
             }

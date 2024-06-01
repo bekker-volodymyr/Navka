@@ -266,4 +266,11 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
         }
     }
     #endregion
+
+    #region Feeding Logic
+    public void FeedItem()
+    {
+        inventory.ConsumeSelectedItem();
+    }
+    #endregion
 }
