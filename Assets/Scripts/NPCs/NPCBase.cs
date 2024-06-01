@@ -22,6 +22,10 @@ public class NPCBase : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
     [Space]
     [SerializeField] private GameObject spriteGO;
 
+    [Space]
+    [SerializeField] private Enums.InteractionType interactType;
+    public Enums.InteractionType InteractionType { get { return interactType; } }
+
     private float currentHealth;
     private float maxHealth;
     public float CurrentHealth { get { return currentHealth; } }

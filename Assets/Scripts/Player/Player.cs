@@ -178,6 +178,10 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
 
     public void Interact(IInteractable target)
     {
+        if(target.InteractionType == Enums.InteractionType.Dialog)
+        {
+            //StateMachine.ChangeState()
+        }
         target.OnInteraction();
     }
 

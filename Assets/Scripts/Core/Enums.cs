@@ -31,6 +31,11 @@ public class Enums
         Health, Hunger, Mana, Speed, Nothing
     }
 
+    public enum InteractionType
+    {
+        Dialog, Feed, TakeItem, EnvironmentObject, Special, None
+    }
+
     public enum TargetDecisions
     {
         Ignore, Chase, Runaway

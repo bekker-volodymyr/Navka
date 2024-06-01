@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 4075330127890350945}
   - component: {fileID: 6619047157567832380}
   m_Layer: 0
-  m_Name: EnvironmentObject
+  m_Name: HideoutEntrance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
