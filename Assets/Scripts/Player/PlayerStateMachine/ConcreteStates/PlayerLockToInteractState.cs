@@ -47,7 +47,6 @@ public class PlayerLockToInteractState : PlayerState
         base.PhysicsUpdate();
     }
 
-
     private bool TryFindClosestTarget()
     {
         // Get all colliders within the specified circle
@@ -59,7 +58,7 @@ public class PlayerLockToInteractState : PlayerState
         // Find closest
         foreach (var collider in colliders)
         {
-            if (collider.CompareTag("IInteractable"))
+            if (collider.CompareTag("Interactable"))
             {
                 float distance = Vector2.Distance(player.transform.position, collider.transform.position);
                 if (distance < minDistance || closestCollider == null)
@@ -83,8 +82,7 @@ public class PlayerLockToInteractState : PlayerState
 
     private void SetTarget(Collider2D targetCollider)
     {
-
         _targetPos = targetCollider.transform.position;
-        _targetItem = targetCollider.GetComponent<IInteractable>();
+        _targetItem = targetCollider.GetComponentInParent<IInteractable>();
     }
 }

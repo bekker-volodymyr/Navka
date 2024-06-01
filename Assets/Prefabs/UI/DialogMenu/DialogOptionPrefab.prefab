@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 7145128528392882816}
   - component: {fileID: -2653206823198315549}
   m_Layer: 5
-  m_Name: DialogOption1
+  m_Name: DialogOptionPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

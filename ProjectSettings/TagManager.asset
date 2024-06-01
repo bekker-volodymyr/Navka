@@ -9,6 +9,9 @@ TagManager:
   - Item
   - IInteractable
   - IDamageable
+  - Interactable
+  - NPC
+  - Damageable
   layers:
   - Default
   - TransparentFX

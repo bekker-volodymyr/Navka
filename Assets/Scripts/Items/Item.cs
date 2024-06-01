@@ -49,7 +49,7 @@ public class Item : MonoBehaviour, IInteractable
         Destroy(gameObject);
     }
 
-    public void OnInteraction()
+    public void OnInteraction(Player player)
     {
         PickUp();
     }

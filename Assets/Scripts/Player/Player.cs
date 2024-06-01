@@ -90,6 +90,9 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
         inventory.ItemSelectedEvent += OnItemSelected;
         inventory.ItemDeselectedEvent += OnItemDeselected;
 
+        GameManager.DialogStartEvent += OnDialogStart;
+        GameManager.DialogStopEvent += OnDialogEnd;
+
         StartCoroutine("HungerCountdown");
     }
 
@@ -107,6 +110,9 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
     {
         inventory.ItemSelectedEvent -= OnItemSelected;
         inventory.ItemDeselectedEvent -= OnItemDeselected;
+
+        GameManager.DialogStartEvent -= OnDialogStart;
+        GameManager.DialogStopEvent -= OnDialogEnd;
 
         StopAllCoroutines();
     }
@@ -142,7 +148,7 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
     #region Attack Logic
     public void Attack(IDamageable target)
     {
-        // TODO: ������������ �������� �� ���������� ��� ��������� �����
+        // TODO: apply bonuses and debufs to damage value
 
         target.GetDamage(damage, gameObject);
     }
@@ -180,11 +186,21 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
 
     public void Interact(IInteractable target)
     {
-        if(target.InteractionType == Enums.InteractionType.Dialog)
-        {
-            //StateMachine.ChangeState()
-        }
-        target.OnInteraction();
+        // if(target.InteractionType == Enums.InteractionType.Dialog)
+        // {
+        //     StateMachine.ChangeState(DialogState);
+        // }
+        target.OnInteraction(this);
+    }
+
+    private void OnDialogStart()
+    {
+        StateMachine.ChangeState(DialogState);
+    }
+
+    private void OnDialogEnd()
+    {
+        StateMachine.ChangeState(IdleState);
     }
 
     #endregion
@@ -228,8 +244,6 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
     private void OnItemSelected(ItemSO item)
     {
         selectedItem = item;
-
-        Debug.Log(item.Title);
     }
     private void OnItemDeselected()
     {

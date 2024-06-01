@@ -10,7 +10,6 @@ public class PlayerLockToTargetState : PlayerState
 
     private float moveSpeed = 5f;
 
-
     public override void EnterState()
     {
         base.EnterState();
@@ -48,7 +47,6 @@ public class PlayerLockToTargetState : PlayerState
         base.PhysicsUpdate();
     }
 
-
     private bool TryFindClosestTarget()
     {
         // Get all colliders within the specified circle
@@ -60,10 +58,7 @@ public class PlayerLockToTargetState : PlayerState
         // Find closest
         foreach (var collider in colliders)
         {
-            IDamageable target = collider.GetComponent<IDamageable>();
-
-            //if (collider.CompareTag("IDamageable"))
-            if(target != null && !target.Equals(player)) 
+            if (collider.CompareTag("Damageable"))
             {
                 float distance = Vector2.Distance(player.transform.position, collider.transform.position);
                 if (distance < minDistance || closestCollider == null)
@@ -88,6 +83,6 @@ public class PlayerLockToTargetState : PlayerState
     private void SetTarget(Collider2D targetCollider)
     {
         _targetPos = targetCollider.transform.position;
-        _targetEnemy = targetCollider.GetComponent<IDamageable>();
+        _targetEnemy = targetCollider.GetComponentInParent<IDamageable>();
     }
 }

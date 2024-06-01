@@ -9,13 +9,10 @@ public class DialogMenu : MonoBehaviour
 {
     [SerializeField]
     private Button answerButtonPrefab;
-    [SerializeField]
     private GameObject answersParent;
     [SerializeField]
     private GameObject answersParentPrefab;
-    [SerializeField]
-    private CherecterLine firstLine;
-    private CherecterLine currentLine;
+    private CharacterLine currentLine;
     private NPCBase NPC;
     private IDialog npcDialog;
     public GameObject dialogMenu;
@@ -32,6 +29,7 @@ public class DialogMenu : MonoBehaviour
         dialogMenu.SetActive(true);
         this.enabled = true;
         textComponent.text = string.Empty;
+        GameManager.DialogStartEvent?.Invoke();
         InitAnswerParent();
         StartDialogue();
     }
@@ -54,7 +52,7 @@ public class DialogMenu : MonoBehaviour
         }
 
     }
-    public void NextLine(CherecterLine nextLine)
+    public void NextLine(CharacterLine nextLine)
     {  
         Destroy(answersParent);
         InitAnswerParent();
@@ -70,6 +68,7 @@ public class DialogMenu : MonoBehaviour
         dialogMenu.SetActive(false);
         this.enabled = false;
         Destroy(answersParent);
+        GameManager.DialogStopEvent?.Invoke();
         NPC.StateMachine.ChangeState(NPC.IdleState);
     }
 

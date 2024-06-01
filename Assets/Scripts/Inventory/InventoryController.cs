@@ -86,4 +86,11 @@ public class InventoryController : MonoBehaviour
     {
         inventoryModel.ReduceItemQuantity(selectedItemIndex, 1);
     }
+
+    public ItemSO GetSelectedItem()
+    {
+        if(selectedItemIndex == -1) return null;
+
+        return inventoryModel.GetItemByIndex(selectedItemIndex).Item;
+    }
 }

@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class Witch : NPCBase, IDialog
 {
+    [Space]
+    [SerializeField]
     public GameObject dialog_menu;
     public DialogMenu dialog_script;
+    [Space]
     [SerializeField]
-    private List<CherecterLine> lines;
-    public List<CherecterLine> Lines { get { return lines; } }
+    private List<CharacterLine> lines;
+    public List<CharacterLine> Lines { get { return lines; } }
     private bool in_range = false;
 
    // void Update()
@@ -19,7 +22,7 @@ public class Witch : NPCBase, IDialog
        //     dialog_script.enabled = true;
        // }
    // }
-    public override void OnInteraction()
+    public override void OnInteraction(Player player)
     {
         //dialog_menu.SetActive(true);
         //dialog_script.enabled = true;

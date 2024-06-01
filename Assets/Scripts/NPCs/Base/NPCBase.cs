@@ -38,6 +38,9 @@ public class NPCBase : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
     public GameObject ChaseTarget { get { return chaseTarget; } }
     private List<NPCBase> pack;
 
+    protected Player befriendedPlayer;
+    public Player BefriendedPlayer => befriendedPlayer;
+
     #region Colliders
     [Space]
     [SerializeField] private CircleCollider2D noticeRadius;
@@ -51,15 +54,18 @@ public class NPCBase : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
     public NPCIdleState IdleState { get; set; }
     public NPCChaseState ChaseState { get; set; }
     public NPCDialogState DialogState { get; set; }
+    public NPCBefriendedState BefriendedState { get; set; }
 
     [Space]
     [SerializeField] private NPCIdleSOBase idleStateBase;
     [SerializeField] private NPCChaseSOBase chaseStateBase;
     [SerializeField] private NPCDialogSOBase dialogStateBase;
+    [SerializeField] private NPCBefriendedSOBase befriendedStateBase;
 
     public NPCIdleSOBase IdleStateInstance { get; set; }
     public NPCChaseSOBase ChaseStateInstance { get; set; }
     public NPCDialogSOBase DialogStateInstance { get; set; }
+    public NPCBefriendedSOBase BefriendedStateInstance { get; set; }
     #endregion
 
     #region Movement Logic
@@ -136,11 +142,13 @@ public class NPCBase : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
         IdleStateInstance = Instantiate(idleStateBase);
         ChaseStateInstance = Instantiate(chaseStateBase);
         DialogStateInstance = Instantiate(dialogStateBase);
+        BefriendedStateInstance = Instantiate(befriendedStateBase);
 
         StateMachine = new NPCStateMachine();
         IdleState = new NPCIdleState(this, StateMachine);
         ChaseState = new NPCChaseState(this, StateMachine);
         DialogState = new NPCDialogState(this, StateMachine);
+        BefriendedState = new NPCBefriendedState(this, StateMachine);
     }
     private void Start()
     {
@@ -155,6 +163,7 @@ public class NPCBase : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
         IdleStateInstance.Initialize(this);
         ChaseStateInstance.Initialize(this);
         DialogStateInstance.Initialize(this);
+        BefriendedStateInstance.Initialize(this);
 
         StateMachine.Initialize(IdleState);
     }
@@ -191,9 +200,9 @@ public class NPCBase : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
         }
     }
 
-    virtual public void OnInteraction()
+    virtual public void OnInteraction(Player player)
     {
-        Debug.Log("No interaction with this NPC or not implemented");
+        Debug.Log($"No interaction with this NPC or not implemented. {player.name}.");
     }
 
     #region Triggers

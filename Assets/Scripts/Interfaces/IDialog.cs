@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IDialog
 {
-    List<CherecterLine> Lines { get; }
+    List<CharacterLine> Lines { get; }
 }

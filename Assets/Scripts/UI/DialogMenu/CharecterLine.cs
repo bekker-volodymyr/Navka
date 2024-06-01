@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName ="Cherecter Line", menuName ="Dialog System/Cherecter Line")]
-public class CherecterLine : ScriptableObject
+[CreateAssetMenu(fileName ="Character Line", menuName ="Dialog System/Character Line")]
+public class CharacterLine : ScriptableObject
 {
     [SerializeField]
     public string line;

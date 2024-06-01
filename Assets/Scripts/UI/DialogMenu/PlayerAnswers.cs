@@ -6,6 +6,6 @@ using UnityEngine;
 public class PlayerAnswers
 {
     public string playerResponse;
-    public CherecterLine nextLine;
+    public CharacterLine nextLine;
     public bool isFinalLine;
 }

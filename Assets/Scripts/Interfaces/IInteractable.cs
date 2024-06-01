@@ -5,5 +5,5 @@ using UnityEngine;
 public interface IInteractable
 {
     Enums.InteractionType InteractionType { get; }
-    void OnInteraction();
+    void OnInteraction(Player player);
 }

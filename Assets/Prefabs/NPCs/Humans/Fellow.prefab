@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 7191215432801975100}
   m_Layer: 0
   m_Name: Fellow
-  m_TagString: IInteractable
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -191,10 +191,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8789305688923210312}
   - {fileID: 8566468233690957635}
   - {fileID: 2607772337184836286}
   - {fileID: 614367351443313397}
-  - {fileID: 8789305688923210312}
+  - {fileID: 9051757180235238696}
+  - {fileID: 5340408261368896009}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &7138392328373181313
@@ -276,10 +278,13 @@ MonoBehaviour:
   healthIndicator: {fileID: 6311462870558044066}
   npcRB: {fileID: 8615701856571217016}
   spriteGO: {fileID: 1019037758352699843}
+  interactType: 4
   noticeRadius: {fileID: 7243255650358053099}
   attackRadius: {fileID: 3280689417011575447}
   idleStateBase: {fileID: 11400000, guid: 6c1bb018be1494848a221bc6b552dd06, type: 2}
   chaseStateBase: {fileID: 11400000, guid: 4d773fc59a131e842bfe878f73d52008, type: 2}
+  dialogStateBase: {fileID: 11400000, guid: 6dfde8399f83a5b4f9e90818594cac18, type: 2}
+  befriendedStateBase: {fileID: 11400000, guid: 2a66445a8a19fc04cb13768991399006, type: 2}
 --- !u!1 &1879841326328782294
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,6 +558,68 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 9102304254574744309}
+--- !u!1 &4559124499663836244
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5340408261368896009}
+  m_Layer: 0
+  m_Name: DamageCollider
+  m_TagString: Damageable
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5340408261368896009
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4559124499663836244}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2693107388977658203}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6674382324373161737
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9051757180235238696}
+  m_Layer: 0
+  m_Name: InteractCollider
+  m_TagString: Interactable
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &9051757180235238696
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6674382324373161737}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2693107388977658203}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6937159571586844819
 GameObject:
   m_ObjectHideFlags: 0
