@@ -5,18 +5,20 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
-    private void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            Instance = this;
-        }
-    }
+    #region To be or not to be...
+    // public static GameManager Instance { get; private set; }
+    // private void Awake()
+    //{
+    //    if (Instance != null && Instance != this)
+    //    {
+    //        Destroy(this);
+    //    }
+    //    else
+    //    {
+    //        Instance = this;
+    //    }
+    //}
+    #endregion
 
     #region Game State Values
     public static bool isPaused = false;
