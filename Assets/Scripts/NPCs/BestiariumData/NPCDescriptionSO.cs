@@ -6,18 +6,37 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NPCDescriptionSO", menuName = "NPC Description/NPCDescriptionSO")]
 public class NPCDescriptionSO : ScriptableObject
 {
-    [SerializeField] public int HealthPoints;
-    [SerializeField] public float BasicDamage;
-    [SerializeField] public Enums.NPCType Type;
-    [SerializeField] public Enums.NPCApproach Approach;
-    [SerializeField] public List<ItemSO> Loot;
-    [SerializeField] public List<float> LootChance;
-    [SerializeField] public string Name;
-    [SerializeField] public string Weaknesses;
-    [SerializeField] public string Behaviour;
-    [SerializeField] public string Befriending;
-    [SerializeField] public string Lore;
-    [SerializeField] public Sprite Picture;
-    [SerializeField] public List<NPCDescriptionSO> AttackTargets;
+    [Space]
+    [SerializeField] private int healthPoints;
+    public int HealthPoints => healthPoints;
+    [SerializeField] private float basicDamage;
+    public float BasicDamage => basicDamage;
+    
+    [Space]
+    [SerializeField] private Enums.NPCType type;
+    public Enums.NPCType Type => type;
+    [SerializeField] private Enums.NPCApproach approach;
+    public Enums.NPCApproach Approach => approach;
+    [SerializeField] private List<NPCDescriptionSO> attackTargets;
+    public List<NPCDescriptionSO> AttackTargets => attackTargets;
+
+    [Space]
+    [SerializeField] private List<ItemSO> loot;
+    public List<ItemSO> Loot => loot;
+    [SerializeField] private List<float> lootChance;
+    public List<float> LootChance => lootChance;
+
+
+    [Space]
+    [SerializeField] private string _name;
+    public string Name => _name;
+    [SerializeField] public string description;
+    public string Description => description;
+    [SerializeField] public string befriending;
+    public string Befriending => befriending;
+    [SerializeField] public string lore;
+    public string Lore => lore;
+    [SerializeField] private Sprite picture;
+    public Sprite Picture => picture;
 
 }

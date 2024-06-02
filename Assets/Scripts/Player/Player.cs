@@ -31,7 +31,8 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
 
     #region Health Variables
     private float currentHealth;
-    private float maxHealth;
+    [Space]
+    [SerializeField] private float maxHealth;
     public float CurrentHealth { get { return currentHealth; } }
     public float MaxHealth { get { return maxHealth; } }
     #endregion

@@ -7,20 +7,41 @@ using UnityEngine.UI;
 
 public class BestiariumManager: MonoBehaviour 
 {
-    [SerializeField] private NPCDescriptionStorageSO NPCStorage;
-    [SerializeField] private GameObject buttonsHumanNPC;
-    [SerializeField] private GameObject buttonsUnholyEntityNPC;
-    [SerializeField] private GameObject buttonsAnimalNPC;
-    [SerializeField] private GameObject buttonsGodNPC;
+    [Space]
+    [SerializeField] private NPCDescriptionStorageSO Storage;
 
+    [Space]
+    [SerializeField] private GameObject buttonsHuman;
+    [SerializeField] private GameObject buttonsUnholyEntity;
+    [SerializeField] private GameObject buttonsAnimal;
+    [SerializeField] private GameObject buttonsGod;
+
+    [Space]
     [SerializeField] private GameObject buttonPrefab;
 
-    [SerializeField] private Image NPC_Picture;
-    [SerializeField] private TextMeshProUGUI NPC_Name;
-    [SerializeField] private TextMeshProUGUI NPC_Lore;
-    // [SerializeField] private TextMeshProUGUI NPC_Loot;
-    [SerializeField] private TextMeshProUGUI NPC_Weaknesses;
-    
+    [Space]
+    [SerializeField] private Image picture;
+    [SerializeField] private TextMeshProUGUI _name;
+    [SerializeField] private TextMeshProUGUI description;
+    [SerializeField] private TextMeshProUGUI loreOrBefriending;
+
+    [Space]
+    [SerializeField] private GameObject lootParentPrefab;
+    [SerializeField] private GameObject descriptionParent;
+    private GameObject lootParentGO;
+
+    [Space]
+    [SerializeField] private Sprite selectedButtonSprite;
+    [SerializeField] private Sprite unselectedButtonSprite;
+
+    [Space]
+    [SerializeField] private List<Button> npcTypeButtons;
+
+    private NPCDescriptionSO defaultHuman = null;
+    private NPCDescriptionSO defaultUnholy = null;
+    private NPCDescriptionSO defaultAnimal = null;
+    private NPCDescriptionSO defaultGod = null;
+
     private void Start()
     {
         Initialize();
@@ -28,76 +49,97 @@ public class BestiariumManager: MonoBehaviour
 
     public void Initialize()
     {
-        foreach (var item in NPCStorage.NPCDescriptions)
+        foreach (var item in Storage.NPCDescriptions)
         {
-            GameObject newButton; 
+            GameObject newButton = Instantiate(buttonPrefab);
+            newButton.GetComponent<NPCBestiariumButton>().InitButton(item, this);
 
             switch (item.Type)
             {
                 case Enums.NPCType.Human:
-                    newButton = Instantiate(buttonPrefab);
-                    newButton.transform.SetParent(buttonsHumanNPC.transform, false);
-                    newButton.GetComponent<NPCBestiariumButton>().InitButton(item, this);
+                    newButton.transform.SetParent(buttonsHuman.transform, false);
+                    if (defaultHuman is null) defaultHuman = item;
                     break;
                 case Enums.NPCType.UnholyEntitiy:
-                    newButton = Instantiate(buttonPrefab);
-                    newButton.transform.SetParent(buttonsUnholyEntityNPC.transform, false);
-                    newButton.GetComponent<NPCBestiariumButton>().InitButton(item, this);
+                    newButton.transform.SetParent(buttonsUnholyEntity.transform, false);
+                    if(defaultUnholy is null) defaultUnholy = item;
                     break;
                 case Enums.NPCType.Animal:
-                    newButton = Instantiate(buttonPrefab);
-                    newButton.transform.SetParent(buttonsAnimalNPC.transform, false);
-                    newButton.GetComponent<NPCBestiariumButton>().InitButton(item, this);
+                    newButton.transform.SetParent(buttonsAnimal.transform, false);
+                    if(defaultAnimal is null) defaultAnimal = item;
                     break;
                 case Enums.NPCType.God:
-                    newButton = Instantiate(buttonPrefab);
-                    newButton.transform.SetParent(buttonsGodNPC.transform, false);
-                    newButton.GetComponent<NPCBestiariumButton>().InitButton(item, this);
+                    newButton.transform.SetParent(buttonsGod.transform, false);
+                    if (defaultGod is null) defaultGod = item;
                     break;
                 default:
                     throw new Exception("uknown type exception");
                     
             }
         }
+
+        SwitchButtonList(1);
+        SwitchNPC(defaultHuman);
     }
     public void SwitchButtonList(int type)
     {
-        buttonsHumanNPC.SetActive(false);
-        buttonsUnholyEntityNPC.SetActive(false);
-        buttonsAnimalNPC.SetActive(false);
-        buttonsGodNPC.SetActive(false);
+        buttonsHuman.SetActive(false);
+        buttonsUnholyEntity.SetActive(false);
+        buttonsAnimal.SetActive(false);
+        buttonsGod.SetActive(false);
 
         switch (type)
         {
             case 1:
-                buttonsHumanNPC.SetActive(true); break;
+                buttonsHuman.SetActive(true);
+                SwitchNPC(defaultHuman);
+                break;
             case 2:
-                buttonsUnholyEntityNPC.SetActive(true); break;
+                buttonsUnholyEntity.SetActive(true);
+                SwitchNPC(defaultUnholy);
+                break;
             case 3:
-                buttonsAnimalNPC.SetActive(true); break;
+                buttonsAnimal.SetActive(true);
+                SwitchNPC(defaultAnimal);
+                break;
             case 4:
-                buttonsGodNPC.SetActive(true); break;
+                buttonsGod.SetActive(true);
+                SwitchNPC(defaultGod);
+                break;
             default:
                 throw new Exception("uknown type exception");
         }
     }
     public void SwitchNPC(NPCDescriptionSO npc)
     {
-        NPC_Picture.sprite = npc.Picture;
-        NPC_Name.SetText(npc.Name);
+        _name.SetText(npc.Name);
+
+        picture.sprite = npc.Picture;
+        picture.SetNativeSize();
+
+        description.SetText(npc.description);
 
         if (npc.Type == Enums.NPCType.Animal)
         {
-            NPC_Lore.SetText(npc.Befriending);
+            loreOrBefriending.SetText(npc.Befriending);
         }
         else
         {
-            NPC_Lore.SetText(npc.Lore);
+            loreOrBefriending.SetText(npc.Lore);
         }
-        
-        //NPC_Loot.SetText(Name.Loot.ToString());
-        // TODO: SHOW ICONS OF LOOT ITEMS
 
-        NPC_Weaknesses.SetText(npc.Weaknesses);
+        Destroy(lootParentGO);
+
+        lootParentGO = Instantiate(lootParentPrefab, descriptionParent.transform, false);
+
+        foreach(var item in npc.Loot)
+        {
+            GameObject lootItemGO = new GameObject();
+            Image lootIcon = lootItemGO.AddComponent<Image>();
+            lootIcon.sprite = item.Sprite;
+            lootIcon.SetNativeSize();
+            Instantiate(lootIcon);
+            lootIcon.transform.SetParent(lootParentGO.transform, false);
+        }
     }
 }
