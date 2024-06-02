@@ -8,21 +8,33 @@ using UnityEngine.UI;
 
 public class ItemsPageManager: MonoBehaviour
 {
+    [Space]
     [SerializeField] private ItemStorageSO itemsStorage;
+
+    [Space]
     [SerializeField] private GameObject buttonsFood;
     [SerializeField] private GameObject buttonsAmulets;
     [SerializeField] private GameObject buttonsPotions;
     [SerializeField] private GameObject buttonsComponents;
 
+    [Space]
     [SerializeField] private GameObject buttonPrefab;
 
-    [SerializeField] private Image Item_Image;
-    [SerializeField] private TextMeshProUGUI Item_Name;
-    [SerializeField] private TextMeshProUGUI Item_Description;
-    [SerializeField] private TextMeshProUGUI Item_Sources;
+    [Space]
+    [SerializeField] private GameObject descriptionParent;
+    [SerializeField] private GameObject recipeParentPrefab;
+    private GameObject recipeParentGO;
 
-    private int selectedButtonList;
-    private ItemSO selectedItem;
+    [Space]
+    [SerializeField] private Image picture;
+    [SerializeField] private TextMeshProUGUI title;
+    [SerializeField] private TextMeshProUGUI description;
+    [SerializeField] private TextMeshProUGUI lore;
+
+    private ItemSO defaultComponent;
+    private ItemSO defaultFood;
+    private ItemSO defaultAmulet;
+    private ItemSO defaultPotion;
 
     private void Start()
     {
@@ -33,44 +45,38 @@ public class ItemsPageManager: MonoBehaviour
     {
         foreach (var item in itemsStorage.items)
         {
-            GameObject newButton; //get item page button
+            GameObject newButton = Instantiate(buttonPrefab);
+            newButton.GetComponent<ItemsPageButton>().InitButton(item, this);
 
             switch (item.Type)
             {
                 case Enums.ItemType.Food:
-                    newButton = Instantiate(buttonPrefab);
                     newButton.transform.SetParent(buttonsFood.transform, false);
-                    newButton.GetComponent<ItemsPageButton>().InitButton(item, this);
+                    if (defaultFood is null) defaultFood = item;
                     break;
                 case Enums.ItemType.Amulet:
-                    newButton = Instantiate(buttonPrefab);
                     newButton.transform.SetParent(buttonsAmulets.transform, false);
-                    newButton.GetComponent<ItemsPageButton>().InitButton(item, this);
+                    if (defaultAmulet is null) defaultAmulet = item;
                     break;
                 case Enums.ItemType.Potion:
-                    newButton = Instantiate(buttonPrefab);
                     newButton.transform.SetParent(buttonsPotions.transform, false);
-                    newButton.GetComponent<ItemsPageButton>().InitButton(item, this);
+                    if (defaultPotion is null) defaultPotion = item;
                     break;
                 case Enums.ItemType.Component:
-                    newButton = Instantiate(buttonPrefab);
                     newButton.transform.SetParent(buttonsComponents.transform, false);
-                    newButton.GetComponent<ItemsPageButton>().InitButton(item, this);
+                    if (defaultComponent is null) defaultComponent = item;
                     break;
                 default:
-                    throw new Exception($"uknown type exception {item.Title}");
+                    throw new Exception($"uknown type exception {item}");
                     
             }
         }
 
         SwitchButtonList(1);
-        SwitchItem(itemsStorage.items[0]);
+        SwitchItem(defaultComponent);
     }
-
     public void SwitchButtonList(int type)
     {
-        selectedButtonList = type;
-
         buttonsAmulets.SetActive(false);
         buttonsComponents.SetActive(false);
         buttonsFood.SetActive(false);
@@ -79,25 +85,47 @@ public class ItemsPageManager: MonoBehaviour
         switch (type)
         {
             case 1:
-                buttonsComponents.SetActive(true); break;
+                buttonsComponents.SetActive(true);
+                SwitchItem(defaultComponent);
+                break;
             case 2:
-                buttonsFood.SetActive(true); break;
+                buttonsFood.SetActive(true);
+                SwitchItem(defaultFood);
+                break;
             case 3:
-                buttonsAmulets.SetActive(true); break;
+                buttonsAmulets.SetActive(true);
+                SwitchItem(defaultAmulet); 
+                break;
             case 4:
-                buttonsPotions.SetActive(true); break;
+                buttonsPotions.SetActive(true);
+                SwitchItem(defaultPotion);
+                break;
             default:
                 throw new Exception("uknown type exception");
         }
     }
-
     public void SwitchItem(ItemSO item)
     {
-        selectedItem = item;
+        picture.sprite = item.Sprite;
+        title.SetText(item.Name);
+        description.SetText(item.Description);
+        lore.SetText(item.Lore);
 
-        Item_Image.sprite = item.Sprite;
-        Item_Name.SetText(item.Title);
-        Item_Description.SetText(item.Lore);
-        Item_Sources.SetText(item.Sources);
+        Destroy(recipeParentGO);
+        recipeParentGO = Instantiate(recipeParentPrefab);
+        recipeParentGO.transform.SetParent(descriptionParent.transform, false);
+
+        if (item.Type == Enums.ItemType.Amulet || item.Type == Enums.ItemType.Potion)
+        {
+            foreach (var component in item.Recipe.recipe)
+            {
+                GameObject componentItemGO = new GameObject();
+                Image componentIcon = componentItemGO.AddComponent<Image>();
+                componentIcon.sprite = item.Sprite;
+                componentIcon.SetNativeSize();
+                Instantiate(componentIcon);
+                componentIcon.transform.SetParent(recipeParentGO.transform, false);
+            }
+        }
     }
 }

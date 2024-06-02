@@ -19,7 +19,7 @@ public class InventoryCell : MonoBehaviour, IPointerClickHandler
     {
         if(item is null)
         {
-            int newQuantity = quantity <= newItem.maxPerStack ? quantity : newItem.maxPerStack;
+            int newQuantity = quantity <= newItem.MaxPerStack ? quantity : newItem.MaxPerStack;
             PutItem(newItem, newQuantity);
 
             Debug.Log($"quantity: {quantity} ---- newQuantitiy: {newQuantity}");
@@ -27,10 +27,10 @@ public class InventoryCell : MonoBehaviour, IPointerClickHandler
             return quantity - newQuantity;
         }
 
-        if(item.Title == newItem.Title)
+        if(item.Name == newItem.Name)
         {
             int newQuantity = count + quantity;
-            if(newQuantity <= newItem.maxPerStack)
+            if(newQuantity <= newItem.MaxPerStack)
             {
                 count = newQuantity;
                 countText.text = count.ToString();
@@ -38,8 +38,8 @@ public class InventoryCell : MonoBehaviour, IPointerClickHandler
             }
             else
             {
-                int left = newQuantity - newItem.maxPerStack;
-                count = newItem.maxPerStack;
+                int left = newQuantity - newItem.MaxPerStack;
+                count = newItem.MaxPerStack;
                 countText.text = count.ToString();
                 return left;
             }

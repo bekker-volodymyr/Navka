@@ -20,10 +20,7 @@ public class Enums
 
     public enum ItemType
     {
-        Food = 1,
-        Amulet = 2,
-        Potion = 3,
-        Component = 4
+        Component, Food, Amulet, Potion
     }
 
     public enum EffectProperty

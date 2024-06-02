@@ -12,12 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc59ad142cfb7364ca399ddddc978a15, type: 3}
   m_Name: ForestBerriesSO
   m_EditorClassIdentifier: 
-  Title: 
-  Lore: 
-  Recipes: []
-  Sources: 
-  Type: 0
-  EffectsDescriptions: []
-  Effect: {fileID: 0}
-  Sprite: {fileID: 0}
-  maxPerStack: 0
+  _name: "\u041B\u0456\u0441\u043E\u0432\u0456 \u044F\u0433\u043E\u0434\u0438"
+  description: "\u0442\u0435\u043A\u0441\u0442"
+  lore: "\u0442\u0435\u043A\u0441\u0442"
+  recipe: {fileID: 0}
+  type: 1
+  effect: {fileID: 0}
+  sprite: {fileID: 0}
+  maxPerStack: 75

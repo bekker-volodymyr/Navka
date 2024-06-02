@@ -14,20 +14,20 @@ public class InventoryCellModel
         if (IsEmpty)
         { 
             // If quantity less or equal max quantity in stack - new quantity is quantitiy, else - new quantity is max per stack
-            int newQuantity = quantity <= newItem.maxPerStack ? quantity : newItem.maxPerStack;
+            int newQuantity = quantity <= newItem.MaxPerStack ? quantity : newItem.MaxPerStack;
             // Put item to cell
             PutItem(newItem, newQuantity);
             // Return left
             return quantity - newQuantity;
         }
 
-        if (item.Title == newItem.Title)
+        if (item.Name == newItem.Name)
         {
             // Calculate new quantity
             int newQuantity = this.quantity + quantity;
 
             // Check if there enough room for all items
-            if (newQuantity <= newItem.maxPerStack)
+            if (newQuantity <= newItem.MaxPerStack)
             {
                 // If yes - set new quantity and return 0
                 this.quantity = newQuantity;
@@ -36,8 +36,8 @@ public class InventoryCellModel
             else
             {
                 // If no - calculate how much items left and return it
-                int left = newQuantity - newItem.maxPerStack;
-                this.quantity = newItem.maxPerStack;
+                int left = newQuantity - newItem.MaxPerStack;
+                this.quantity = newItem.MaxPerStack;
                 return left;
             }
         }

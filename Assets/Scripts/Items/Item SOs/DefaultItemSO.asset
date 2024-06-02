@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc59ad142cfb7364ca399ddddc978a15, type: 3}
   m_Name: DefaultItemSO
   m_EditorClassIdentifier: 
-  Title: Default Item
-  Lore: Lorem ipsum had created this item
-  Recipes: []
-  Sources: []
-  Type: 4
-  Effect: Do default things
-  Sprite: {fileID: 21300000, guid: 9a8abbdf384e90441ac00aaea4570e06, type: 3}
+  _name: Default Item
+  description: Basic item for test
+  lore: Lorem ipsum
+  recipe: {fileID: 0}
+  type: 0
+  effect: {fileID: 0}
+  sprite: {fileID: 0}
   maxPerStack: 3

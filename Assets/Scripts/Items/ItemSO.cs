@@ -8,18 +8,25 @@ public class ItemSO : ScriptableObject
     [Space]
     [SerializeField] private string _name;
     public string Name => _name;
-    [Space]
     [SerializeField] private string description;
     public string Description => description;
     [SerializeField] private string lore;
     public string Lore => lore;
+
     [Space]
-    [SerializeField] private List<RecipeSO> recipes;
-    public List<RecipeSO> Recipes => recipes;
-    public string Sources;
-    public Enums.ItemType Type;
-    public List<string> EffectsDescriptions;
-    public ItemEffectSO Effect;
-    public Sprite Sprite;
-    public int maxPerStack;
+    [SerializeField] private RecipeSO recipe;
+    public RecipeSO Recipe => recipe;
+
+    [Space]
+    [SerializeField] private Enums.ItemType type;
+    public Enums.ItemType Type => type;
+    [SerializeField] private ItemEffectSO effect;
+    public ItemEffectSO Effect => effect;
+
+    [Space]
+    [SerializeField] private Sprite sprite;
+    public Sprite Sprite => sprite;
+    [SerializeField] private int maxPerStack;
+    public int MaxPerStack => maxPerStack;
+
 }
