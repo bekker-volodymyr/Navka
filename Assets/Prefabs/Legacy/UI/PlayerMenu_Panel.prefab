@@ -4499,6 +4499,7 @@ GameObject:
   - component: {fileID: 8291130076362777688}
   - component: {fileID: 8660268472805041418}
   - component: {fileID: 2595262972639859373}
+  - component: {fileID: 1925682927630631865}
   m_Layer: 5
   m_Name: Picture
   m_TagString: Untagged
@@ -4520,10 +4521,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2936767320586723276}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 112.890625, y: 240.625}
+  m_SizeDelta: {x: 0, y: -76.00044}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8660268472805041418
 CanvasRenderer:
@@ -4563,6 +4564,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1925682927630631865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5882229716343616154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AspectMode: 3
+  m_AspectRatio: 1
 --- !u!1 &6101162575982560385
 GameObject:
   m_ObjectHideFlags: 0
@@ -6716,6 +6731,7 @@ GameObject:
   - component: {fileID: 4269023052563026410}
   - component: {fileID: 8746597558732382771}
   - component: {fileID: 3320678562175015399}
+  - component: {fileID: 627101402582030879}
   m_Layer: 5
   m_Name: Picture
   m_TagString: Untagged
@@ -6737,10 +6753,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 3121751378519594511}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 112.890625, y: 240.625}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8746597558732382771
 CanvasRenderer:
@@ -6780,6 +6796,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &627101402582030879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8300830344003222793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AspectMode: 3
+  m_AspectRatio: 1
 --- !u!1 &8309049232460345578
 GameObject:
   m_ObjectHideFlags: 0

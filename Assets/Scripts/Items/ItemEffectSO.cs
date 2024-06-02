@@ -5,7 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ItemEffectSO", menuName = "Items/ItemEffectSO")]
 public class ItemEffectSO : ScriptableObject
 {
-    public Enums.EffectProperty EffectProperty;
-
-    public float Value;
+    [Space]
+    [SerializeField] private Enums.EffectProperty effectProperty;
+    public Enums.EffectProperty EffectProperty => effectProperty;
+    [SerializeField] private float value;
+    public float Value => value;
 }

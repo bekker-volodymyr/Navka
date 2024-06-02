@@ -117,11 +117,11 @@ public class ItemsPageManager: MonoBehaviour
 
         if (item.Type == Enums.ItemType.Amulet || item.Type == Enums.ItemType.Potion)
         {
-            foreach (var component in item.Recipe.recipe)
+            foreach (var component in item.Recipe.Recipe)
             {
                 GameObject componentItemGO = new GameObject();
                 Image componentIcon = componentItemGO.AddComponent<Image>();
-                componentIcon.sprite = item.Sprite;
+                componentIcon.sprite = component.Sprite;
                 componentIcon.SetNativeSize();
                 Instantiate(componentIcon);
                 componentIcon.transform.SetParent(recipeParentGO.transform, false);

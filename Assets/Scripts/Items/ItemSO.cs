@@ -20,8 +20,8 @@ public class ItemSO : ScriptableObject
     [Space]
     [SerializeField] private Enums.ItemType type;
     public Enums.ItemType Type => type;
-    [SerializeField] private ItemEffectSO effect;
-    public ItemEffectSO Effect => effect;
+    [SerializeField] private List<ItemEffectSO> effects;
+    public List<ItemEffectSO> Effects => effects;
 
     [Space]
     [SerializeField] private Sprite sprite;

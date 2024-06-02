@@ -9,15 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc59ad142cfb7364ca399ddddc978a15, type: 3}
-  m_Name: HumanHeartSO
+  m_Script: {fileID: 11500000, guid: 6b7ceaf5560703349a90ae94de50b770, type: 3}
+  m_Name: HealthDamageHugeSO
   m_EditorClassIdentifier: 
-  Title: 
-  Lore: 
-  Recipes: []
-  Sources: 
-  Type: 0
-  EffectsDescriptions: []
-  Effect: {fileID: 0}
-  Sprite: {fileID: 0}
-  maxPerStack: 0
+  effectProperty: 0
+  value: -40

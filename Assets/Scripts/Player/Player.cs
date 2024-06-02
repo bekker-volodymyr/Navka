@@ -252,17 +252,20 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
     }
     public void UseSelectedItem()
     {
-        if(selectedItem is not null && selectedItem.Effect is not null)
+        if(selectedItem is not null && selectedItem.Effects is not null)
         {
-            switch (selectedItem.Effect.EffectProperty)
+            foreach (var effect in selectedItem.Effects)
             {
-                case Enums.EffectProperty.Hunger:
-                    ChangeHunger(selectedItem.Effect.Value);
-                    inventory.ConsumeSelectedItem();
-                    break;
-                default:
-                    Debug.Log($"No effect or not implemented: {selectedItem.Effect.EffectProperty}");
-                    break;
+                switch (effect.EffectProperty)
+                {
+                    case Enums.EffectProperty.Hunger:
+                        ChangeHunger(effect.Value);
+                        inventory.ConsumeSelectedItem();
+                        break;
+                    default:
+                        Debug.Log($"No effect or not implemented: {effect.name}");
+                        break;
+                }
             }
         }
     }
