@@ -25,9 +25,24 @@ public class Bush : ItemDropper
 
     private void Start()
     {
-        stage = Stage.Berries;
-        spriteRenderer.sprite = berriesSprite;
-        item = berriesSO;
+        stage = (Stage)Random.Range(0, 3);
+        switch (stage)
+        {
+            case Stage.Berries:
+                spriteRenderer.sprite = berriesSprite;
+                item = berriesSO;
+                break;
+            case Stage.Leaves:
+                spriteRenderer.sprite = leavesSprite;
+                item = leavesSO; break;
+            case Stage.NoLeaves:
+                spriteRenderer.sprite = noLeavesSprite;
+                item = null;
+                break;
+            default:
+                Debug.Log($"Unknown stage type {stage}");
+                break;
+        }
     }
 
     override public void OnInteraction(Player player)
@@ -51,6 +66,4 @@ public class Bush : ItemDropper
                 break;
         }
     }
-
-
 }
