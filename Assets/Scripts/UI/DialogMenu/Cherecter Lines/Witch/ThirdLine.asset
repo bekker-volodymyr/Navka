@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   line: Third line
   answers:
-  - player_response: SMTH
-    next_line: {fileID: 0}
+  - playerResponse: Smth
+    nextLine: {fileID: 0}
     isFinalLine: 1

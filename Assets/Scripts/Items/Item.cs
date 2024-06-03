@@ -10,6 +10,9 @@ public class Item : MonoBehaviour, IInteractable
     [SerializeField] private ItemSO item;
     [SerializeField] private int quantity;
 
+    private Enums.InteractionType interactType = Enums.InteractionType.TakeItem;
+    public Enums.InteractionType InteractionType { get { return interactType; } }
+
     [SerializeField] private TextMeshProUGUI interactionText;
     
     public static event Action<ItemSO, int> OnPickUp;
@@ -46,7 +49,7 @@ public class Item : MonoBehaviour, IInteractable
         Destroy(gameObject);
     }
 
-    public void OnInteraction()
+    public void OnInteraction(Player player)
     {
         PickUp();
     }

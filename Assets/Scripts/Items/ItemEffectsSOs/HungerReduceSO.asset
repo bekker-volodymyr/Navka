@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b7ceaf5560703349a90ae94de50b770, type: 3}
   m_Name: HungerReduceSO
   m_EditorClassIdentifier: 
-  EffectProperty: 1
-  Value: 5
+  effectProperty: 1
+  value: 5

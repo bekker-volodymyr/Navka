@@ -13,7 +13,14 @@ MonoBehaviour:
   m_Name: ItemsStorageSO
   m_EditorClassIdentifier: 
   items:
-  - {fileID: 11400000, guid: 5a246cec4a38d3b4180932bedaa43bd8, type: 2}
   - {fileID: 11400000, guid: 8264f5e1d1ce98f46ab563db595881f0, type: 2}
-  - {fileID: 11400000, guid: caa983e143c0bdf438362b1b73974652, type: 2}
   - {fileID: 11400000, guid: a088fd07307d7b04c89100b750ed9907, type: 2}
+  - {fileID: 11400000, guid: 7cecc77b8dadac5498854403c578e301, type: 2}
+  - {fileID: 11400000, guid: 7c1fc77952c790c46abe479db8b3a992, type: 2}
+  - {fileID: 11400000, guid: 05a72826f9207bd48be102471dc95f06, type: 2}
+  - {fileID: 11400000, guid: d9bc92fbd33a93f458326f8674fdfd6b, type: 2}
+  - {fileID: 11400000, guid: e467883e1c2740a439ff69ee5c148919, type: 2}
+  - {fileID: 11400000, guid: 2f14c8a340748d44fb00e9ab9476857a, type: 2}
+  - {fileID: 11400000, guid: f22b8bcb9cdfd6443a2eb7c365901cc7, type: 2}
+  - {fileID: 11400000, guid: c2f059bdbaecce342b09057d5c196704, type: 2}
+  - {fileID: 11400000, guid: 9cdd905183146154b9387a49e4def6b9, type: 2}

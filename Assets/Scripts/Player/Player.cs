@@ -31,7 +31,8 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
 
     #region Health Variables
     private float currentHealth;
-    private float maxHealth;
+    [Space]
+    [SerializeField] private float maxHealth;
     public float CurrentHealth { get { return currentHealth; } }
     public float MaxHealth { get { return maxHealth; } }
     #endregion
@@ -65,6 +66,7 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
     public PlayerLockToTargetState LockToTargetState { get; set; }
     public PlayerMoveToPointState MoveToPointState { get; set; }
     public PlayerUnderCoverState UnderCoverState { get; set; }
+    public PlayerDialogState DialogState { get; set; }
     #endregion
 
     private void Awake()
@@ -75,6 +77,7 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
         LockToInteractState = new PlayerLockToInteractState(this, StateMachine);
         LockToTargetState = new PlayerLockToTargetState(this, StateMachine);
         UnderCoverState = new PlayerUnderCoverState(this, StateMachine);
+        DialogState = new PlayerDialogState(this, StateMachine);
     }
 
     private void Start()
@@ -87,6 +90,9 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
 
         inventory.ItemSelectedEvent += OnItemSelected;
         inventory.ItemDeselectedEvent += OnItemDeselected;
+
+        GameManager.DialogStartEvent += OnDialogStart;
+        GameManager.DialogStopEvent += OnDialogEnd;
 
         StartCoroutine("HungerCountdown");
     }
@@ -106,6 +112,9 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
         inventory.ItemSelectedEvent -= OnItemSelected;
         inventory.ItemDeselectedEvent -= OnItemDeselected;
 
+        GameManager.DialogStartEvent -= OnDialogStart;
+        GameManager.DialogStopEvent -= OnDialogEnd;
+
         StopAllCoroutines();
     }
 
@@ -117,7 +126,7 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
     }
     public void GetDamage(float damage, GameObject attacker)
     {
-        // TODO: застосування підсилень та послаблень показника шкоди
+        // TODO: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 
         float newHealth = currentHealth - damage;
 
@@ -140,7 +149,7 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
     #region Attack Logic
     public void Attack(IDamageable target)
     {
-        // TODO: застосування підсилень та послаблень для показника шкоди
+        // TODO: apply bonuses and debufs to damage value
 
         target.GetDamage(damage, gameObject);
     }
@@ -178,7 +187,21 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
 
     public void Interact(IInteractable target)
     {
-        target.OnInteraction();
+        // if(target.InteractionType == Enums.InteractionType.Dialog)
+        // {
+        //     StateMachine.ChangeState(DialogState);
+        // }
+        target.OnInteraction(this);
+    }
+
+    private void OnDialogStart()
+    {
+        StateMachine.ChangeState(DialogState);
+    }
+
+    private void OnDialogEnd()
+    {
+        StateMachine.ChangeState(IdleState);
     }
 
     #endregion
@@ -192,7 +215,7 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
 
             float reduceValue = -1;
 
-            // TODO: Застосувати послаблення/посилення
+            // TODO: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
             ChangeHunger(reduceValue);
         }
@@ -222,8 +245,6 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
     private void OnItemSelected(ItemSO item)
     {
         selectedItem = item;
-
-        Debug.Log(item.Title);
     }
     private void OnItemDeselected()
     {
@@ -231,19 +252,29 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
     }
     public void UseSelectedItem()
     {
-        if(selectedItem is not null && selectedItem.Effect is not null)
+        if(selectedItem is not null && selectedItem.Effects is not null)
         {
-            switch (selectedItem.Effect.EffectProperty)
+            foreach (var effect in selectedItem.Effects)
             {
-                case Enums.EffectProperty.Hunger:
-                    ChangeHunger(selectedItem.Effect.Value);
-                    inventory.ConsumeSelectedItem();
-                    break;
-                default:
-                    Debug.Log($"No effect or not implemented: {selectedItem.Effect.EffectProperty}");
-                    break;
+                switch (effect.EffectProperty)
+                {
+                    case Enums.EffectProperty.Hunger:
+                        ChangeHunger(effect.Value);
+                        inventory.ConsumeSelectedItem();
+                        break;
+                    default:
+                        Debug.Log($"No effect or not implemented: {effect.name}");
+                        break;
+                }
             }
         }
+    }
+    #endregion
+
+    #region Feeding Logic
+    public void FeedItem()
+    {
+        inventory.ConsumeSelectedItem();
     }
     #endregion
 }

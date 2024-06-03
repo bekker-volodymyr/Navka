@@ -5,13 +5,28 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ItemSO", menuName = "Items/ItemSO")]
 public class ItemSO : ScriptableObject
 {
-    public string Title;
-    public string Lore;
-    public List<RecipeSO> Recipes;
-    public string Sources;
-    public Enums.ItemType Type;
-    public List<string> EffectsDescriptions;
-    public ItemEffectSO Effect;
-    public Sprite Sprite;
-    public int maxPerStack;
+    [Space]
+    [SerializeField] private string _name;
+    public string Name => _name;
+    [SerializeField] private string description;
+    public string Description => description;
+    [SerializeField] private string lore;
+    public string Lore => lore;
+
+    [Space]
+    [SerializeField] private RecipeSO recipe;
+    public RecipeSO Recipe => recipe;
+
+    [Space]
+    [SerializeField] private Enums.ItemType type;
+    public Enums.ItemType Type => type;
+    [SerializeField] private List<ItemEffectSO> effects;
+    public List<ItemEffectSO> Effects => effects;
+
+    [Space]
+    [SerializeField] private Sprite sprite;
+    public Sprite Sprite => sprite;
+    [SerializeField] private int maxPerStack;
+    public int MaxPerStack => maxPerStack;
+
 }

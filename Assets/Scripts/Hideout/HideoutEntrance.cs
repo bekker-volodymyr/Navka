@@ -9,6 +9,9 @@ public class HideoutEntrance : MonoBehaviour, IInteractable
     //[SerializeField] private HideoutStruct hideoutData;
     public string sceneName;
 
+    private Enums.InteractionType interactType = Enums.InteractionType.EnvironmentObject;
+    public Enums.InteractionType InteractionType { get { return interactType; } }
+
     [SerializeField] private TextMeshProUGUI interactText;
     private bool interactAllowed;
 
@@ -39,7 +42,7 @@ public class HideoutEntrance : MonoBehaviour, IInteractable
         SceneManager.LoadScene(sceneName);
     }
 
-    public void OnInteraction()
+    public void OnInteraction(Player player)
     {
         EnterHideout(); // - crash here - says no reference for an object 
     }
