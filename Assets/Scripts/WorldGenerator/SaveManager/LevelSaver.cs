@@ -29,7 +29,7 @@ public class LevelSaver : MonoBehaviour
             }
         }
 
-        BiomsEnum[,] biomsEnums  = WorldGeneratorInstance.biomsGrid;
+        //BiomsEnum[,] biomsEnums  = WorldGeneratorInstance.biomsGrid;
         
 
         string json = JsonUtility.ToJson(levelData, true);

@@ -20,17 +20,17 @@ public class WorldGenerator : MonoBehaviour
 
     //private BiomsEnum[,] biomsGrid;
 
-    public BiomsEnum[,] biomsGrid
-    {
-        get
-        {
-            return biomsGrid;
-        }
-        set
-        {
-            biomsGrid = value;
-        }
-    }
+    public BiomsEnum[,] biomsGrid;
+    //{
+    //    get
+    //    {
+    //        return biomsGrid;
+    //    }
+    //    set
+    //    {
+    //        biomsGrid = value;
+    //    }
+    //}
 
     private void Start()
     {
