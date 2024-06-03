@@ -18,7 +18,19 @@ public class WorldGenerator : MonoBehaviour
 
     [SerializeField] private TileBase[] biomTiles;
 
-    private BiomsEnum[,] biomsGrid;
+    //private BiomsEnum[,] biomsGrid;
+
+    public BiomsEnum[,] biomsGrid
+    {
+        get
+        {
+            return biomsGrid;
+        }
+        set
+        {
+            biomsGrid = value;
+        }
+    }
 
     private void Start()
     {
