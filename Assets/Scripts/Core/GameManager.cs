@@ -39,6 +39,4 @@ public class GameManager : MonoBehaviour
     [SerializeField] private InventoryController inventoryController;
     public InventoryController InventoryController => inventoryController;
     #endregion
-
-
 }

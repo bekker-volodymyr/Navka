@@ -113,7 +113,6 @@ public class NPCBase : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
     }
     public void Death()
     {
-        // TODO: DROP LOOT
         DropLoot();
 
         Destroy(gameObject);
