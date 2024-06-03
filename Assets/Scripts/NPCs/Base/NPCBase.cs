@@ -34,7 +34,7 @@ public class NPCBase : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
     private float damage;
     public float Damage { get { return damage; } }
 
-    private GameObject chaseTarget;
+    private GameObject chaseTarget = null;
     public GameObject ChaseTarget { get { return chaseTarget; } }
     private List<NPCBase> pack;
 
@@ -101,8 +101,6 @@ public class NPCBase : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
         currentHealth = newHealth <= 0f ? 0f : newHealth;
 
         healthIndicator.SetValue(currentHealth, maxHealth);
-
-        Debug.Log(currentHealth);
 
         foreach(var npc in pack)
         {

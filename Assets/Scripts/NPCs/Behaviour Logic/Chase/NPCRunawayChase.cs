@@ -1,0 +1,55 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "Chase-Runaway Chase", menuName = "NPC Logic/Chase Logic/Runaway Chase")]
+public class NPCRunawayChase : NPCChaseSOBase
+{
+    private Vector3 _direction;
+    private Transform runawayTargetPosition;
+    private float moveSpeed = 5f;
+    private float stopRunawayDistance = 46f;
+
+    public override void Initialize(NPCBase npc)
+    {
+        base.Initialize(npc);
+    }
+
+    public override void DoEnterLogic()
+    {
+        base.DoEnterLogic();
+
+        runawayTargetPosition = chaseTarget.transform;
+    }
+    public override void DoExitLogic()
+    {
+        base.DoExitLogic();
+    }
+    public override void DoFrameUpdateLogic()
+    {
+        base.DoFrameUpdateLogic();
+
+        if(Vector3.Distance(runawayTargetPosition.position, npc.transform.position) > stopRunawayDistance) 
+        {
+            chaseTarget = null;
+            npc.StateMachine.ChangeState(npc.IdleState);
+        }
+
+        Vector2 moveDirection = -(runawayTargetPosition.position - npc.transform.position).normalized;
+
+        npc.Move(moveDirection * moveSpeed);
+    }
+    public override void DoPhysicsLogic()
+    {
+        base.DoPhysicsLogic();
+    }
+    public override void DoAnimationTriggerEventLogic(NPCBase.AnimationTriggerType triggerType)
+    {
+        base.DoAnimationTriggerEventLogic(triggerType);
+    }
+
+    public override void ResetValues()
+    {
+        base.ResetValues();
+    }
+}
