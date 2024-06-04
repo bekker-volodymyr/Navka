@@ -73,7 +73,6 @@ public class PlayerState
             return;
         }
     }
-    
     public virtual void PhysicsUpdate() { }
 
     private bool IsPointerOverUIObject()

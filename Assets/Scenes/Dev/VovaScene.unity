@@ -183,6 +183,10 @@ PrefabInstance:
       propertyPath: textComponent
       value: 
       objectReference: {fileID: 491954132}
+    - target: {fileID: 7481618419444836457, guid: 0db8d318213a75541b93f5583c560e33, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8893388455828385125, guid: 0db8d318213a75541b93f5583c560e33, type: 3}
       propertyPath: m_Name
       value: Witch
@@ -2486,10 +2490,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2290389838962689895, guid: 12cdba18c9918f34cbeda969e198b45e, type: 3}
-      propertyPath: dropItem
-      value: 
-      objectReference: {fileID: 11400000, guid: 9cdd905183146154b9387a49e4def6b9, type: 2}
     - target: {fileID: 2929894439913075762, guid: 12cdba18c9918f34cbeda969e198b45e, type: 3}
       propertyPath: m_Camera
       value: 
@@ -2623,6 +2623,10 @@ PrefabInstance:
     - target: {fileID: 1391589936093648790, guid: 42baa23d791ccd74290236d37b8717a4, type: 3}
       propertyPath: m_Name
       value: Cow
+      objectReference: {fileID: 0}
+    - target: {fileID: 3953197608745246256, guid: 42baa23d791ccd74290236d37b8717a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4456675825318970739, guid: 42baa23d791ccd74290236d37b8717a4, type: 3}
       propertyPath: m_Camera

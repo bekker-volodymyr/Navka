@@ -186,10 +186,6 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract
 
     public void Interact(IInteractable target)
     {
-        // if(target.InteractionType == Enums.InteractionType.Dialog)
-        // {
-        //     StateMachine.ChangeState(DialogState);
-        // }
         target.OnInteraction(this);
     }
 

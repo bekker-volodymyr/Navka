@@ -11,9 +11,6 @@ public class Bush : ItemDropper, IInteractable
 
     private Stage stage;
 
-    private Enums.InteractionType interactType = Enums.InteractionType.EnvironmentObject;
-    public Enums.InteractionType InteractionType => interactType;
-
     [Space]
     [SerializeField] private Sprite berriesSprite;
     [SerializeField] private Sprite leavesSprite;

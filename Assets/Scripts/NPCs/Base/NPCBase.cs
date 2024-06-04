@@ -9,6 +9,7 @@ public class NPCBase : ItemDropper, IMoveable, IDamageable, IAttack, IInteractab
 
     [Space]
     [SerializeField] private Indicator healthIndicator;
+    public Indicator HealthIndicator { get {  return healthIndicator; } }
 
     [Space]
     [SerializeField] private Rigidbody2D npcRB;
@@ -18,10 +19,6 @@ public class NPCBase : ItemDropper, IMoveable, IDamageable, IAttack, IInteractab
 
     [Space]
     [SerializeField] private GameObject spriteGO;
-
-    [Space]
-    [SerializeField] private Enums.InteractionType interactType;
-    public Enums.InteractionType InteractionType { get { return interactType; } }
 
     [Space]
     [SerializeField] private AudioSource audioSource;
@@ -154,6 +151,7 @@ public class NPCBase : ItemDropper, IMoveable, IDamageable, IAttack, IInteractab
         maxHealth = description.HealthPoints;
         currentHealth = maxHealth;
         healthIndicator.SetValue(currentHealth, maxHealth);
+        healthIndicator.gameObject.SetActive(false);
 
         damage = description.BasicDamage;
 

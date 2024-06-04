@@ -18,6 +18,8 @@ public class NPCChaseSOBase : ScriptableObject
     public virtual void DoEnterLogic() 
     {
         target = npc.ChaseTarget;
+
+        npc.HealthIndicator.gameObject.SetActive(true);
     }
     public virtual void DoExitLogic() { ResetValues(); }
     public virtual void DoFrameUpdateLogic()
@@ -34,5 +36,8 @@ public class NPCChaseSOBase : ScriptableObject
     }
     public virtual void DoPhysicsLogic() { }
     public virtual void DoAnimationTriggerEventLogic(NPCBase.AnimationTriggerType triggerType) { }
-    public virtual void ResetValues() { }
+    public virtual void ResetValues() 
+    {
+        npc.HealthIndicator.gameObject.SetActive(false);
+    }
 }
