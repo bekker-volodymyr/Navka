@@ -766,6 +766,7 @@ GameObject:
   - component: {fileID: 1209503213986225530}
   - component: {fileID: 1019976961545247000}
   - component: {fileID: 3407927735851127014}
+  - component: {fileID: 5978364964585780791}
   m_Layer: 0
   m_Name: Witch
   m_TagString: NPC
@@ -839,6 +840,10 @@ MonoBehaviour:
   npcRB: {fileID: 1209503213986225530}
   spriteGO: {fileID: 1714741261145490088}
   interactType: 0
+  audioSource: {fileID: 5978364964585780791}
+  footsteps:
+  - {fileID: 8300000, guid: e6056a35cf0b6404499611441c2e977b, type: 3}
+  - {fileID: 8300000, guid: d51dd5a2a0cfbbb4bb5fd8890f3fac18, type: 3}
   noticeRadius: {fileID: 583613052936812161}
   attackRadius: {fileID: 8452414509492050331}
   idleStateBase: {fileID: 11400000, guid: 6c1bb018be1494848a221bc6b552dd06, type: 2}
@@ -861,8 +866,104 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57d05e18b4db14345a46906c665ad61b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  answerButtonPrefab: {fileID: 0}
-  answersParentPrefab: {fileID: 0}
+  answerButtonPrefab: {fileID: 7145128528392882816, guid: 5bf7f1414186fa74286a5c7983cb9a34, type: 3}
+  answersParentPrefab: {fileID: 8557704008049681654, guid: 20b97a954ccd7ce4ea753537e8e1444a, type: 3}
   dialogMenu: {fileID: 0}
   textComponent: {fileID: 0}
   textSpeed: 0.1
+--- !u!82 &5978364964585780791
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8893388455828385125}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 4585666450891355105, guid: eb782043435f27547a7fcbe56810ff65, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

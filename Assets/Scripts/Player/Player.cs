@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
+public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract
 {
     [Space]
     [SerializeField] private GameObject spriteGO;
@@ -10,7 +10,6 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
     [Space]
     [SerializeField] private Rigidbody2D playerRB;
     public Rigidbody2D ObjectRB { get { return playerRB; } }
-    [SerializeField] private float moveSpeed = 5f;
     private bool isFacingRight = true;
     #endregion
 
@@ -121,7 +120,7 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
     #region Damage / Death Logic
     public void Death()
     {
-        GameState.isDead = true;
+        GameManager.isDead = true;
         Time.timeScale = 0f;
     }
     public void GetDamage(float damage, GameObject attacker)
@@ -268,6 +267,14 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
                 }
             }
         }
+    }
+    public void DropItem()
+    {
+        if (selectedItem == null) return;
+
+        inventory.DropSelectedItem();
+        SpawnItem(selectedItem, 1);
+        selectedItem = inventory.GetSelectedItem();
     }
     #endregion
 

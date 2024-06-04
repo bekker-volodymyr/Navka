@@ -9,6 +9,6 @@ public class Cow : NPCBase
 
     public override void OnInteraction(Player player)
     {
-        DropItem(dropItem, 1);
+        SpawnItem(dropItem, 1);
     }
 }

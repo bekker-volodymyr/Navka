@@ -22,7 +22,6 @@ public class GameManager : MonoBehaviour
 
     #region Game State Values
     public static bool isPaused = false;
-    public static bool isInPlayerMenu = false;
     public static bool isDead = false;
     #endregion
 

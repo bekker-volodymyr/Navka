@@ -27,10 +27,7 @@ public class InventoryController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            DropSelectedItem();
-        }
+
     }
 
     private void UpdateInventoryUI(Dictionary<int, InventoryCellModel> inventoryState)
@@ -72,13 +69,11 @@ public class InventoryController : MonoBehaviour
         ItemDeselectedEvent?.Invoke();
     }
 
-    private void DropSelectedItem()
+    public void DropSelectedItem()
     {
         if(selectedItemIndex != -1)
         {
-            ItemSO droppedItem = inventoryModel.InventoryCells[selectedItemIndex].Item;
             inventoryModel.ReduceItemQuantity(selectedItemIndex, 1);
-            Instantiate(defaultItemPrefab).GetComponent<Item>().InitItem(droppedItem, 1);
         }
     }
 

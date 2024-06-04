@@ -7,6 +7,9 @@ public class Wolf : NPCBase
     [SerializeField] private List<ItemSO> befriendingItemsList;
     [SerializeField] private List<ItemSO> feedingList;
 
+    [Space]
+    [SerializeField] private ItemSO dropItem;
+
     private bool isBefriended = false;
     public bool IsBefriended => isBefriended;
     override public void OnInteraction(Player player)
@@ -28,6 +31,10 @@ public class Wolf : NPCBase
                     }
                 }
             }
+        }
+        else
+        {
+            SpawnItem(dropItem, 1);
         }
     }
 

@@ -1,14 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPCBase : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteractable
+public class NPCBase : ItemDropper, IMoveable, IDamageable, IAttack, IInteractable
 {
     [Space]
     [SerializeField] private NPCDescriptionSO description;
     public NPCDescriptionSO DescriptionSO { get { return description; } }
-
-    [Space]
-    [SerializeField] private Item itemPrefab;
 
     [Space]
     [SerializeField] private Indicator healthIndicator;
@@ -128,30 +125,9 @@ public class NPCBase : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
         {
             if (Random.value <= description.LootChance[i])
             {
-                DropItem(description.Loot[i], 1);
+                SpawnItem(description.Loot[i], 1);
             }
         }
-    }
-    public void DropItem(ItemSO item, int quantity)
-    {
-        Item newItem = Instantiate(itemPrefab);
-        newItem.InitItem(item, quantity);
-        newItem.gameObject.transform.position = transform.position + GetRandomPointInBottomSemiCircle();
-    }
-    public Vector3 GetRandomPointInBottomSemiCircle()
-    {
-        // Generate a random angle between 180 and 360 degrees
-        float angle = Random.Range(180f, 360f);
-
-        // Convert the angle to radians
-        float angleInRadians = angle * Mathf.Deg2Rad;
-
-        // Calculate the x and y coordinates using trigonometric functions
-        float x = Mathf.Cos(angleInRadians);
-        float y = Mathf.Sin(angleInRadians);
-
-        // Return the point as a Vector2
-        return new Vector3(x, y, transform.position.z);
     }
     #endregion
 
@@ -257,7 +233,6 @@ public class NPCBase : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
         if(!audioSource.isPlaying)
         {
             audioSource.clip = footsteps[Random.Range(0, footsteps.Count)];
-            //audioSource.volume = GameManager.sfxVolume;
             audioSource.Play();
         }
     }
