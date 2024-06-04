@@ -35,7 +35,7 @@ public class PlayerUnderCoverState : PlayerState
     {
         base.FrameUpdate();
 
-        if(!Input.GetKeyDown(KeyCode.None))
+        if(Input.anyKeyDown)
         {
             player.StateMachine.ChangeState(player.IdleState);
         }
