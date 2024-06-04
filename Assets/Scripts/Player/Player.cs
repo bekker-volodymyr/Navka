@@ -1,10 +1,14 @@
 using System.Collections;
 using UnityEngine;
 
-public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract
+public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, ICoverable
 {
     [Space]
     [SerializeField] private GameObject spriteGO;
+    public GameObject SpriteGO { get { return spriteGO; } }
+
+    private ICover cover = null;
+    public ICover CoverGetter { get { return cover; } }
 
     #region Movement Variables
     [Space]
@@ -19,6 +23,11 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract
     public CircleCollider2D AttackRadius { get { return attackRadius; } }
     [SerializeField] private CircleCollider2D noticeRadius;
     public  CircleCollider2D NoticeRadius { get { return noticeRadius; } }
+    [SerializeField] private CircleCollider2D interactCollider;
+    public CircleCollider2D InteractCollider { get {  return interactCollider; } }
+    [SerializeField] private CircleCollider2D damageCollider;
+    public CircleCollider2D DamageCollider { get { return damageCollider; } }
+
     #endregion
 
     #region Inventory Variables
@@ -278,6 +287,21 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract
     public void FeedItem()
     {
         inventory.ConsumeSelectedItem();
+    }
+    #endregion
+
+    #region Cover
+    public void Cover(ICover cover)
+    {
+        transform.position = cover.Position;
+        this.cover = cover;
+
+        StateMachine.ChangeState(UnderCoverState);
+    }
+    public void LeaveCover()
+    {
+        cover.LeaveCover();
+        cover = null;
     }
     #endregion
 }

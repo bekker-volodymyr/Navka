@@ -7,11 +7,10 @@ TagManager:
   - Enemy
   - Ground
   - Item
-  - IInteractable
-  - IDamageable
   - Interactable
   - NPC
   - Damageable
+  - EnvironmentObject
   layers:
   - Default
   - TransparentFX

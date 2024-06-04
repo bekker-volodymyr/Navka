@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface ICover
+public interface ICoverable
 {
-    bool CanCover();
-    void Cover();
+    void Cover(ICover position);
 }
