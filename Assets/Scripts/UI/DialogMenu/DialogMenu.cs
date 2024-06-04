@@ -8,49 +8,50 @@ using Unity.VisualScripting;
 
 public class DialogMenu : MonoBehaviour
 {
-    [SerializeField]
-    private Button answerButtonPrefab;
+    [Space]
+    [SerializeField] private Button answerButtonPrefab;
+    [SerializeField] private GameObject answersParentPrefab;
     private GameObject answersParent;
-    [SerializeField]
-    private GameObject answersParentPrefab;
-    private CharacterLine currentLine;
-    private NPCBase NPC;
-    private IDialog npcDialog;
-    public GameObject dialogMenu;
-    public TextMeshProUGUI textComponent; 
-    public float textSpeed;
 
-    private int index;
-    private int counter = 0;
+    private CharacterLine currentLine;
+    private IDialog npc;
+
+    [Space]
+    [SerializeField] private GameObject dialogMenu;
+    [SerializeField] private TextMeshProUGUI textComponent; 
+    [SerializeField] private float textSpeed;
 
     void Start()
     {
-        GameManager.DialogStartEvent+=InitDialog;
+        GameManager.DialogStartEvent += InitDialog;
         this.gameObject.SetActive(false);
     }
 
     private void OnDestroy()
     {
-        GameManager.DialogStartEvent-=InitDialog;
+        GameManager.DialogStartEvent -= InitDialog;
     }
 
-    public void InitDialog(IDialog npcDialog) 
+    public void InitDialog(IDialog npc) 
     {
-        this.NPC = npcDialog.npc;
-        this.npcDialog = npcDialog;
+        this.npc = npc;
+        
         dialogMenu.SetActive(true);
+
         this.enabled = true;
         textComponent.text = string.Empty;
-        //GameManager.DialogStartEvent?.Invoke();
-        InitAnswerParent();
+
+        RefreshAnswersParent();
+
         StartDialogue();
     }
 
     public void StartDialogue()
     {
-        currentLine = npcDialog.Lines[0];
+        currentLine = npc.Lines[0];
         StartCoroutine(TypeLine());
     }
+
     IEnumerator TypeLine()
     {
         foreach (char c in currentLine.line.ToCharArray())
@@ -58,30 +59,34 @@ public class DialogMenu : MonoBehaviour
             textComponent.text += c;
             yield return new WaitForSeconds(textSpeed);
         }
+
         foreach (var answer in currentLine.answers)
         {
             CreatePlayerAnswerButton(answer);
         }
 
     }
+
     public void NextLine(CharacterLine nextLine)
-    {  
-        Destroy(answersParent);
-        InitAnswerParent();
+    {
+        RefreshAnswersParent();
+
         textComponent.text = string.Empty;
         currentLine = nextLine;
+
         StartCoroutine(TypeLine());
     }
+
     public void CloseDialog()
     {
-        counter = 0;
-        index = 0;
         textComponent.text = string.Empty;
         dialogMenu.SetActive(false);
         this.enabled = false;
-        Destroy(answersParent);
+        RefreshAnswersParent();
+
         GameManager.DialogStopEvent?.Invoke();
-        NPC.StateMachine.ChangeState(NPC.IdleState);
+
+        npc.npc.StateMachine.ChangeState(npc.npc.IdleState);
     }
 
     private void CreatePlayerAnswerButton(PlayerAnswers playerAnswer)
@@ -90,8 +95,11 @@ public class DialogMenu : MonoBehaviour
         newButton = Instantiate(answerButtonPrefab);
         newButton.GetComponent<PlayerAnswerButton>().InitButton(playerAnswer, answersParent, this);
     }
-    void InitAnswerParent()
+    
+    private void RefreshAnswersParent()
     {
+        if (answersParent != null) Destroy(answersParent);
+
         answersParent = Instantiate(answersParentPrefab);
         answersParent.transform.SetParent(dialogMenu.transform, false);
         answersParent.GetComponentInChildren<Button>().onClick.AddListener(CloseDialog);

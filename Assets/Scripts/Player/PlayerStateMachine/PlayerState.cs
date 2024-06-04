@@ -26,6 +26,7 @@ public class PlayerState
         // If current state is dialog state - do nothing
         if (player.StateMachine.CurrentState == player.DialogState)
         {
+            Debug.Log("player dialog state");
             return;
         }
 

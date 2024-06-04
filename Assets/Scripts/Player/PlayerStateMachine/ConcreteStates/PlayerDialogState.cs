@@ -8,6 +8,8 @@ public class PlayerDialogState : PlayerState
     public override void EnterState()
     {
         base.EnterState();
+
+        Debug.Log("Enter Dialog State");
     }
 
     public override void ExitState()
@@ -19,6 +21,8 @@ public class PlayerDialogState : PlayerState
     public override void FrameUpdate()
     {
         base.FrameUpdate();
+
+        Debug.Log("Dialog State Frame Update");
     }
 
     public override void PhysicsUpdate()
