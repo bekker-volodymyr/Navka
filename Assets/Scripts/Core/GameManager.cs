@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region Dialog System
-    public static Action DialogStartEvent;
+    public static Action<IDialog> DialogStartEvent;
     public static Action DialogStopEvent;
     #endregion
 

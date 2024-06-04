@@ -779,7 +779,6 @@ GameObject:
   - component: {fileID: 1916447473191742845}
   - component: {fileID: 1209503213986225530}
   - component: {fileID: 1019976961545247000}
-  - component: {fileID: 3407927735851127014}
   - component: {fileID: 5978364964585780791}
   m_Layer: 0
   m_Name: Witch
@@ -853,7 +852,6 @@ MonoBehaviour:
   healthIndicator: {fileID: 5988399817349211168}
   npcRB: {fileID: 1209503213986225530}
   spriteGO: {fileID: 1714741261145490088}
-  interactType: 0
   audioSource: {fileID: 5978364964585780791}
   footsteps:
   - {fileID: 8300000, guid: e6056a35cf0b6404499611441c2e977b, type: 3}
@@ -865,26 +863,9 @@ MonoBehaviour:
   dialogStateBase: {fileID: 11400000, guid: 6dfde8399f83a5b4f9e90818594cac18, type: 2}
   befriendedStateBase: {fileID: 11400000, guid: 2a66445a8a19fc04cb13768991399006, type: 2}
   dialog_menu: {fileID: 0}
-  dialog_script: {fileID: 3407927735851127014}
+  dialog_script: {fileID: 0}
   lines:
   - {fileID: 11400000, guid: f52661b0aef70a3449e4fbae2b4f34e0, type: 2}
---- !u!114 &3407927735851127014
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8893388455828385125}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57d05e18b4db14345a46906c665ad61b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  answerButtonPrefab: {fileID: 7145128528392882816, guid: 5bf7f1414186fa74286a5c7983cb9a34, type: 3}
-  answersParentPrefab: {fileID: 8557704008049681654, guid: 20b97a954ccd7ce4ea753537e8e1444a, type: 3}
-  dialogMenu: {fileID: 0}
-  textComponent: {fileID: 0}
-  textSpeed: 0.1
 --- !u!82 &5978364964585780791
 AudioSource:
   m_ObjectHideFlags: 0
