@@ -8,22 +8,20 @@ public class TargetNoticedCheck : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        NPCBase target = collision.GetComponent<NPCBase>();
-
-        if(target != null)
+        if (collision.CompareTag("Damageable"))
         {
-            npc.AddNPCTarget(target);
-        }
+            NPCBase target = collision.GetComponentInParent<NPCBase>();
 
-        //if (collision.CompareTag("IDamageable"))
-        //{
-        //    npc.AddNPCTarget(collision.gameObject.GetComponent<NPCBase>());
-        //}
+            if (target != null)
+            {
+                npc.AddNPCTarget(target);
+            }
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("IDamageable"))
+        if (collision.CompareTag("Damageable"))
         {
             //_npc.RemoveTarget(collision.gameObject.GetComponent<Npc>());
         }

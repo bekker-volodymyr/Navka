@@ -18,8 +18,6 @@ public class NPCRunawayChase : NPCChaseSOBase
     public override void DoEnterLogic()
     {
         base.DoEnterLogic();
-
-        runawayTargetPosition = chaseTarget.transform;
     }
     public override void DoExitLogic()
     {
@@ -29,13 +27,7 @@ public class NPCRunawayChase : NPCChaseSOBase
     {
         base.DoFrameUpdateLogic();
 
-        if(Vector3.Distance(runawayTargetPosition.position, npc.transform.position) > stopRunawayDistance) 
-        {
-            chaseTarget = null;
-            npc.StateMachine.ChangeState(npc.IdleState);
-        }
-
-        Vector2 moveDirection = -(runawayTargetPosition.position - npc.transform.position).normalized;
+        Vector2 moveDirection = -(target.transform.position - npc.transform.position).normalized;
 
         npc.Move(moveDirection * moveSpeed);
     }

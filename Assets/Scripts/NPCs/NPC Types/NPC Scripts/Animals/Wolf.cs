@@ -11,7 +11,6 @@ public class Wolf : NPCBase
     public bool IsBefriended => isBefriended;
     override public void OnInteraction(Player player)
     {
-        // ItemSO selectedItem = GameManager.Instance.InventoryController.GetSelectedItem();
         ItemSO selectedItem = player.SelectedItem;
 
         if(selectedItem != null)

@@ -39,4 +39,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private InventoryController inventoryController;
     public InventoryController InventoryController => inventoryController;
     #endregion
+
+    #region Sound Values
+    public static float sfxVolume = 1f;
+    public static float musicVolume = 1f;
+    #endregion
 }

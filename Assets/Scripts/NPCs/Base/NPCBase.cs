@@ -26,6 +26,10 @@ public class NPCBase : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
     [SerializeField] private Enums.InteractionType interactType;
     public Enums.InteractionType InteractionType { get { return interactType; } }
 
+    [Space]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private List<AudioClip> footsteps;
+
     private float currentHealth;
     private float maxHealth;
     public float CurrentHealth { get { return currentHealth; } }
@@ -225,6 +229,39 @@ public class NPCBase : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
     }
 
     #region Triggers
+    public void PlaySoundTrigger(SoundType type)
+    {
+        switch (type)
+        {
+            case SoundType.Footstep:
+                PlayFootstep();
+                break;
+            case SoundType.Damage:
+                PlayDamage();
+                break;
+            default:
+                Debug.Log($"Unknown sound type or not implemented: {type}"); break;
+        }
+    }
+    public enum SoundType
+    {
+        Footstep, Damage
+    }
+
+    private void PlayDamage()
+    {
+         
+    }
+    private void PlayFootstep()
+    {
+        if(!audioSource.isPlaying)
+        {
+            audioSource.clip = footsteps[Random.Range(0, footsteps.Count)];
+            //audioSource.volume = GameManager.sfxVolume;
+            audioSource.Play();
+        }
+    }
+
     private void AnimationTriggerEvent(AnimationTriggerType type)
     {
         // TODO
