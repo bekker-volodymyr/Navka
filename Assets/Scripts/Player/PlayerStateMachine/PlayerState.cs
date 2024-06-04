@@ -14,7 +14,10 @@ public class PlayerState
     }
 
     public virtual void EnterState() { }
-    public virtual void ExitState() { }
+    public virtual void ExitState() 
+    {
+        player.Move(Vector2.zero);
+    }
     public virtual void FrameUpdate()
     {
         // If game paused - do nothing
@@ -24,7 +27,7 @@ public class PlayerState
         }
 
         // If current state is dialog state - do nothing
-        if (player.StateMachine.CurrentState == player.DialogState)
+        if (player.StateMachine.CurrentState.Equals(player.DialogState))
         {
             Debug.Log("player dialog state");
             return;

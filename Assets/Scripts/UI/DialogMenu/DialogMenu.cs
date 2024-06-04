@@ -1,10 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.SocialPlatforms;
 using UnityEngine.UI;
-using Unity.VisualScripting;
 
 public class DialogMenu : MonoBehaviour
 {
@@ -46,7 +43,7 @@ public class DialogMenu : MonoBehaviour
         StartDialogue();
     }
 
-    public void StartDialogue()
+    private void StartDialogue()
     {
         currentLine = npc.Lines[0];
         StartCoroutine(TypeLine());
