@@ -1727,6 +1727,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7953493798205414117, guid: 10262515c51564c4a97019ace17f309f, type: 3}
+      propertyPath: m_fontSize
+      value: 46.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 7953493798205414117, guid: 10262515c51564c4a97019ace17f309f, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 82be29b161d70bb4b9af7a62e038ee99, type: 2}
+    - target: {fileID: 7953493798205414117, guid: 10262515c51564c4a97019ace17f309f, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 46.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 7953493798205414117, guid: 10262515c51564c4a97019ace17f309f, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 7486814719980963065, guid: 82be29b161d70bb4b9af7a62e038ee99, type: 2}
+    - target: {fileID: 7953493798205414117, guid: 10262515c51564c4a97019ace17f309f, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7995368932417153986, guid: 10262515c51564c4a97019ace17f309f, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
