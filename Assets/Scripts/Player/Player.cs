@@ -189,7 +189,7 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract
         target.OnInteraction(this);
     }
 
-    private void OnDialogStart()
+    private void OnDialogStart(IDialog npc)
     {
         StateMachine.ChangeState(DialogState);
     }

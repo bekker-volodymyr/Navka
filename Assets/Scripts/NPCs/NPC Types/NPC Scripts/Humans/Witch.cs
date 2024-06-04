@@ -6,13 +6,10 @@ public class Witch : NPCBase, IDialog
 {
     [Space]
     [SerializeField]
-    public GameObject dialog_menu;
-    public DialogMenu dialog_script;
-    [Space]
-    [SerializeField]
     private List<CharacterLine> lines;
     public List<CharacterLine> Lines { get { return lines; } }
     private bool in_range = false;
+    public NPCBase npc { get{return this;} }
 
    // void Update()
    // {
@@ -27,7 +24,7 @@ public class Witch : NPCBase, IDialog
         //dialog_menu.SetActive(true);
         //dialog_script.enabled = true;
         StateMachine.ChangeState(DialogState);
-        dialog_script.InitDialog(this, this);
+        GameManager.DialogStartEvent?.Invoke(this);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

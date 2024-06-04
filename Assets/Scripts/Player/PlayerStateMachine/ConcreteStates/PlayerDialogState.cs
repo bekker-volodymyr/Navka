@@ -13,6 +13,7 @@ public class PlayerDialogState : PlayerState
     public override void ExitState()
     {
         base.ExitState();
+        Debug.Log("ExitDialogState");
     }
 
     public override void FrameUpdate()

@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SocialPlatforms;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 public class DialogMenu : MonoBehaviour
 {
@@ -22,14 +23,25 @@ public class DialogMenu : MonoBehaviour
     private int index;
     private int counter = 0;
 
-    public void InitDialog(NPCBase NPC, IDialog npcDialog) 
+    void Start()
     {
-        this.NPC = NPC;
+        GameManager.DialogStartEvent+=InitDialog;
+        this.gameObject.SetActive(false);
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.DialogStartEvent-=InitDialog;
+    }
+
+    public void InitDialog(IDialog npcDialog) 
+    {
+        this.NPC = npcDialog.npc;
         this.npcDialog = npcDialog;
         dialogMenu.SetActive(true);
         this.enabled = true;
         textComponent.text = string.Empty;
-        GameManager.DialogStartEvent?.Invoke();
+        //GameManager.DialogStartEvent?.Invoke();
         InitAnswerParent();
         StartDialogue();
     }
