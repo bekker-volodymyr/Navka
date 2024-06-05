@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cd5656f697df81d458edfca6c509ae8c
+guid: f4daf0394d0d35943990e58ab6a4b31a
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Mavka_capitals
+  - MAVKA
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
