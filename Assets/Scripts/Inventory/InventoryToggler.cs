@@ -10,6 +10,7 @@ public class InventoryToggler : MonoBehaviour
     [SerializeField] private GameObject questsPnl;
 
     private bool isOpened = false;
+    private bool toggler;
 
     public void ToggleInventoryMenu()
     {
@@ -18,13 +19,24 @@ public class InventoryToggler : MonoBehaviour
             animator.SetTrigger("Open");
             inventoryPnl.SetActive(true);
             questsPnl.SetActive(false);
+            toggler = true;
+            isOpened = !isOpened;
+            
         }
         else
         {
-            animator.SetTrigger("Close");
-        }
-
-        isOpened = !isOpened;
+            if (!toggler)
+            {
+                inventoryPnl.SetActive(true);
+                questsPnl.SetActive(false);
+                toggler = true;
+            }
+            else
+            {
+                animator.SetTrigger("Close");
+                isOpened = !isOpened;
+            }
+        }       
     }
 
     public void ToggleQuestsMenu()
@@ -34,12 +46,22 @@ public class InventoryToggler : MonoBehaviour
             animator.SetTrigger("Open");
             inventoryPnl.SetActive(false);
             questsPnl.SetActive(true);
+            toggler = false;
+            isOpened = !isOpened;
         }
         else
         {
-            animator.SetTrigger("Close");
+            if (toggler)
+            {
+                inventoryPnl.SetActive(false);
+                questsPnl.SetActive(true);
+                toggler = false;
+            }
+            else
+            {
+                animator.SetTrigger("Close");
+                isOpened = !isOpened;
+            }
         }
-
-        isOpened = !isOpened;
     }
 }
