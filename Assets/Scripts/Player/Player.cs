@@ -102,6 +102,8 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
         GameManager.DialogStartEvent += OnDialogStart;
         GameManager.DialogStopEvent += OnDialogEnd;
 
+        Item.OnPickUp += OnItemPickedUp;
+
         StartCoroutine("HungerCountdown");
     }
 
@@ -134,8 +136,6 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     }
     public void GetDamage(float damage, GameObject attacker)
     {
-        // TODO: ������������ �������� �� ���������� ��������� �����
-
         float newHealth = currentHealth - damage;
 
         Debug.Log(newHealth);
@@ -246,6 +246,10 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     #endregion
 
     #region Item Logic
+    private void OnItemPickedUp(ItemSO item, int quantity)
+    {
+        StateMachine.ChangeState(IdleState);
+    }
     private void OnItemSelected(ItemSO item)
     {
         selectedItem = item;

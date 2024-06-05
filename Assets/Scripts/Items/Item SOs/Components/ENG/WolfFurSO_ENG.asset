@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc59ad142cfb7364ca399ddddc978a15, type: 3}
   m_Name: WolfFurSO_ENG
   m_EditorClassIdentifier: 
-  _name: "\u0428\u0435\u0440\u0441\u0442\u044C \u0412\u043E\u0432\u043A\u0430"
+  _name: Wolf's Fur
   description: This item you can simply ask from the wolf. I think you'll be surprised,
     but it won't refuse.
   lore: ' The item is useful in creating talismans. Perhaps such an offering will
