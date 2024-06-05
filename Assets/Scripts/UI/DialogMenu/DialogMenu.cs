@@ -15,7 +15,8 @@ public class DialogMenu : MonoBehaviour
 
     [Space]
     [SerializeField] private GameObject dialogMenu;
-    [SerializeField] private TextMeshProUGUI textComponent; 
+    [SerializeField] private TextMeshProUGUI textComponent;
+    [SerializeField] private Image speakerImage;
     [SerializeField] private float textSpeed;
 
     void Start()
@@ -32,6 +33,8 @@ public class DialogMenu : MonoBehaviour
     public void InitDialog(IDialog npc) 
     {
         this.npc = npc;
+
+        speakerImage.sprite = npc.npc.DescriptionSO.Picture;
         
         dialogMenu.SetActive(true);
 
