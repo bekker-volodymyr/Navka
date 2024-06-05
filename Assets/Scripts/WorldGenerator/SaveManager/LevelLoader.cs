@@ -4,49 +4,39 @@ using UnityEngine;
 
 public class LevelLoader : MonoBehaviour
 {
-    public string fileName
-    {
-        get
-        {
-            return fileName;
-        }
-        set
-        {
-            fileName = value;
-        }
-    }
+    public string fileName;
 
     public void LoadLevel()
     {
-        string filePath = GetFilePath();
-        if (System.IO.File.Exists(filePath))
+        string json = System.IO.File.ReadAllText(fileName);
+
+        List<GameObjectData> gameObjects = JsonUtility.FromJson<List<GameObjectData>>(json);
+
+        foreach (GameObjectData gameObjectData in gameObjects)
         {
-            string json = System.IO.File.ReadAllText(filePath);
-            LevelData levelData = JsonUtility.FromJson<LevelData>(json);
+            // Find the parent object by its name (layer name)
+            GameObject parentObject = GameObject.Find(gameObjectData.objectLayerName);
 
-            foreach (GameObjectData data in levelData.gameObjects)
+            // If the parent object is not found, log an error and continue to the next GameObjectData
+            if (parentObject == null)
             {
-                GameObject obj = new GameObject(data.name);
-                obj.transform.position = data.position;
-                obj.transform.eulerAngles = new Vector3(0, 0, data.rotation);
-
-                if (!string.IsNullOrEmpty(data.spriteName))
-                {
-                    SpriteRenderer spriteRenderer = obj.AddComponent<SpriteRenderer>();
-                    spriteRenderer.sprite = Resources.Load<Sprite>(data.spriteName);
-                }
+                Debug.LogError("Parent object not found for layer: " + gameObjectData.objectLayerName);
+                continue;
             }
 
-            Debug.Log("Level loaded from " + filePath);
-        }
-        else
-        {
-            Debug.LogError("Save file not found at " + filePath);
+            // Iterate through positions and instantiate GameObjects
+            foreach (Vector2 position in gameObjectData.positions)
+            {
+                GameObject newObject = new GameObject(); // Instantiate your prefab or create a new GameObject as needed
+                newObject.transform.position = position;
+                newObject.transform.parent = parentObject.transform; // Set the parent of the new object
+                // Add more setup for the instantiated GameObject if needed
+            }
         }
     }
 
     private string GetFilePath()
     {
-        return System.IO.Path.Combine(Application.persistentDataPath, fileName);
+        return System.IO.Path.Combine(Application.dataPath + "/Saves", fileName);
     }
 }

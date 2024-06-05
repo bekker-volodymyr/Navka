@@ -27,7 +27,7 @@ public class FolderListManager : MonoBehaviour
 
         if (Directory.Exists(folderPath))
         {
-            string[] files = Directory.GetFiles(folderPath);
+            string[] files = Directory.GetFiles(folderPath, "*.json");
 
             foreach (string file in files)
             {
