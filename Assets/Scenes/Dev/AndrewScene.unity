@@ -1120,7 +1120,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3624248943229621144, guid: 10262515c51564c4a97019ace17f309f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000020898144
+      value: 0.00033313045
       objectReference: {fileID: 0}
     - target: {fileID: 3802207732218504333, guid: 10262515c51564c4a97019ace17f309f, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2197,6 +2197,10 @@ PrefabInstance:
       propertyPath: inventory
       value: 
       objectReference: {fileID: 308778675}
+    - target: {fileID: 5391698044107547519, guid: 539e37987a7ae4b7fb91c7496b60ed36, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: dee345e55faf543148cd9cda9eaabe5c, type: 3}
     - target: {fileID: 8131120478501258222, guid: 539e37987a7ae4b7fb91c7496b60ed36, type: 3}
       propertyPath: sceneViewId
       value: 1
