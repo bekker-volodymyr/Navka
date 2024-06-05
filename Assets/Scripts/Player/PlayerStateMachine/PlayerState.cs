@@ -29,7 +29,6 @@ public class PlayerState
         // If current state is dialog state - do nothing
         if (player.StateMachine.CurrentState.Equals(player.DialogState))
         {
-            Debug.Log("player dialog state");
             return;
         }
 
@@ -64,7 +63,7 @@ public class PlayerState
         }
 
         // If pressed E and selected item - use selected item
-        if (Input.GetKeyDown(KeyCode.E) && player.SelectedItem != null)
+        if (Input.GetKeyDown(KeyCode.R) && player.SelectedItem != null)
         {
             player.UseSelectedItem();
             return;
