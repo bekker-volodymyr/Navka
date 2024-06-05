@@ -23,6 +23,9 @@ public class Bush : ItemDropper, IInteractable
     [Space]
     [SerializeField] private SpriteRenderer spriteRenderer;
 
+    [Space]
+    [SerializeField] private CircleCollider2D interactCollider;
+
     private void Start()
     {
         stage = (Stage)Random.Range(0, 3);
@@ -36,6 +39,7 @@ public class Bush : ItemDropper, IInteractable
                 break;
             case Stage.NoLeaves:
                 spriteRenderer.sprite = noLeavesSprite;
+                interactCollider.gameObject.SetActive(false);
                 break;
             default:
                 Debug.Log($"Unknown stage type {stage}");
@@ -43,8 +47,12 @@ public class Bush : ItemDropper, IInteractable
         }
     }
 
-    public void OnInteraction(Player player)
+    public void OnInteraction(GameObject interactObject)
     {
+        Player player = interactObject.GetComponent<Player>();
+
+        if (player == null) return;
+
         ItemSO itemToDrop = null;
 
         switch (stage)
@@ -58,6 +66,7 @@ public class Bush : ItemDropper, IInteractable
                 spriteRenderer.sprite = noLeavesSprite;
                 itemToDrop = leavesSO;
                 stage = Stage.NoLeaves;
+                interactCollider.gameObject.SetActive(false);
                 break;
             default:
                 // TODO: animation

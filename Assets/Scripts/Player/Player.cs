@@ -195,7 +195,7 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
 
     public void Interact(IInteractable target)
     {
-        target.OnInteraction(this);
+        target.OnInteraction(gameObject);
     }
 
     private void OnDialogStart(IDialog npc)

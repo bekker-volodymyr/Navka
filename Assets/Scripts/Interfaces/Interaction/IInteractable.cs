@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IInteractable
 {
-    void OnInteraction(Player player);
+    void OnInteraction(GameObject interactObject);
 }

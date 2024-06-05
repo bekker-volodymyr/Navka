@@ -54,6 +54,7 @@ MonoBehaviour:
   berriesSO: {fileID: 11400000, guid: 7cecc77b8dadac5498854403c578e301, type: 2}
   leavesSO: {fileID: 11400000, guid: 654096fdf55678d40999b2c988d06893, type: 2}
   spriteRenderer: {fileID: 6325520775488814728}
+  interactCollider: {fileID: 7842635175118205291}
 --- !u!1 &5442494267860142063
 GameObject:
   m_ObjectHideFlags: 0

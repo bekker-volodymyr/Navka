@@ -12,8 +12,15 @@ public class Wolf : NPCBase
 
     private bool isBefriended = false;
     public bool IsBefriended => isBefriended;
-    override public void OnInteraction(Player player)
+    override public void OnInteraction(GameObject interactObject)
     {
+        Player player = interactObject.GetComponent<Player>();
+
+        if (player == null) 
+        {
+            return;        
+        }
+
         ItemSO selectedItem = player.SelectedItem;
 
         if(selectedItem != null)

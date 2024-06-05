@@ -23,8 +23,12 @@ public class Item : MonoBehaviour, IInteractable
         Destroy(gameObject);
     }
 
-    public void OnInteraction(Player player)
+    public void OnInteraction(GameObject interactObject)
     {
+        Player player = interactObject.GetComponent<Player>();
+
+        if (player == null) return;
+
         PickUp();
     }
 

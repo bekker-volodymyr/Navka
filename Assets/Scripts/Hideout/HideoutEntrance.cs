@@ -7,15 +7,15 @@ using UnityEngine.SceneManagement;
 public class HideoutEntrance : MonoBehaviour, IInteractable
 {
     //[SerializeField] private HideoutStruct hideoutData;
-    public string sceneName;
+    private string sceneName = "HideoutScene";
 
-    private void EnterHideout() {
-        //Debug.Log("attempt to enter hideout");
+    private void EnterHideout() 
+    {
         SceneManager.LoadScene(sceneName);
     }
 
-    public void OnInteraction(Player player)
+    public void OnInteraction(GameObject interactObject)
     {
-        EnterHideout(); // - crash here - says no reference for an object 
+        EnterHideout();
     }
 }

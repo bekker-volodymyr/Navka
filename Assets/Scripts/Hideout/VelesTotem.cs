@@ -5,8 +5,8 @@ using UnityEngine;
 public class VelesTotem : MonoBehaviour, IInteractable
 {
     [SerializeField] private GameObject velesTotemMenu;
-    public void OnInteraction(Player player)
+    public void OnInteraction(GameObject interactObject)
     {
-        velesTotemMenu.SetActive(true);
+        //velesTotemMenu.SetActive(true);
     }
 }

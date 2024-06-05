@@ -197,9 +197,9 @@ public class NPCBase : ItemDropper, IMoveable, IDamageable, IAttack, IInteractab
         }
     }
 
-    virtual public void OnInteraction(Player player)
+    virtual public void OnInteraction(GameObject interactObject)
     {
-        Debug.Log($"No interaction with this NPC or not implemented. {player.name}.");
+        Debug.Log($"No interaction with this NPC or not implemented. {interactObject.name}.");
     }
 
     #region Triggers

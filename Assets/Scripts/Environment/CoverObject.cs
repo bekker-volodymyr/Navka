@@ -8,9 +8,13 @@ public class CoverObject : MonoBehaviour, ICover, IInteractable
     private ICoverable coveredObject = null;
     public ICoverable CoveredObject => coveredObject;
 
-    public void OnInteraction(Player player)
+    public void OnInteraction(GameObject iteractObject)
     {
-        player.Cover(this);
+        ICoverable coverable = iteractObject.GetComponent<ICoverable>();
+
+        if (coverable == null) return;
+
+        Cover(coverable);
     }
 
     public bool CanCover()
