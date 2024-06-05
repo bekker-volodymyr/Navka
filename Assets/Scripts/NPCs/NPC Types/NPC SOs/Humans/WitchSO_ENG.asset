@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33444820b1076934da9e621d903e0ca7, type: 3}
+  m_Name: WitchSO_ENG
+  m_EditorClassIdentifier: 
+  healthPoints: 100
+  basicDamage: 0
+  type: 1
+  approach: 2
+  attackTargets: []
+  loot: []
+  lootChance: []
+  _name: Witch
+  description: Living on the border between the human world and the world of spirits,
+    witches possess secret knowledge that enables them to prophesy and cast spells.
+    Perhaps she will share her knowledge with you, but she is unlikely to do so for
+    free.
+  befriending: NONE
+  lore: When she gets younger, she'll put on a white blouse and let her braids loose
+    like a girl, and she'll go milk the cows, sheep, goats, mares, dogs, cats around
+    the village, and through the swamps, she'll milk frogs, lizards, and snakes.
+  picture: {fileID: 21300000, guid: a5cdf06bb61a36745860cdefd84520e1, type: 3}
