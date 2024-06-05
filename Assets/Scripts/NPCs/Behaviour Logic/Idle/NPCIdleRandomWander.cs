@@ -31,6 +31,7 @@ public class NPCIdleRandomWander : NPCIdleSOBase
 
         _direction = (_targetPos - npc.transform.position).normalized;
         npc.Move(_direction * RandomMovementSpeed);
+        npc.PlaySoundTrigger(NPCBase.SoundType.Footstep);
 
         if ((npc.transform.position - _targetPos).sqrMagnitude < 0.01f)
         {

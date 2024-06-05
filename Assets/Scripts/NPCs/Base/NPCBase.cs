@@ -1,17 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPCBase : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteractable
+public class NPCBase : ItemDropper, IMoveable, IDamageable, IAttack, IInteractable
 {
     [Space]
     [SerializeField] private NPCDescriptionSO description;
     public NPCDescriptionSO DescriptionSO { get { return description; } }
 
     [Space]
-    [SerializeField] private Item itemPrefab;
-
-    [Space]
     [SerializeField] private Indicator healthIndicator;
+    public Indicator HealthIndicator { get {  return healthIndicator; } }
 
     [Space]
     [SerializeField] private Rigidbody2D npcRB;
@@ -23,8 +21,8 @@ public class NPCBase : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
     [SerializeField] private GameObject spriteGO;
 
     [Space]
-    [SerializeField] private Enums.InteractionType interactType;
-    public Enums.InteractionType InteractionType { get { return interactType; } }
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private List<AudioClip> footsteps;
 
     private float currentHealth;
     private float maxHealth;
@@ -34,7 +32,7 @@ public class NPCBase : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
     private float damage;
     public float Damage { get { return damage; } }
 
-    private GameObject chaseTarget;
+    private GameObject chaseTarget = null;
     public GameObject ChaseTarget { get { return chaseTarget; } }
     private List<NPCBase> pack;
 
@@ -102,8 +100,6 @@ public class NPCBase : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
 
         healthIndicator.SetValue(currentHealth, maxHealth);
 
-        Debug.Log(currentHealth);
-
         foreach(var npc in pack)
         {
             npc.SetTarget(attacker);
@@ -113,20 +109,20 @@ public class NPCBase : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
     }
     public void Death()
     {
-        // TODO: DROP LOOT
         DropLoot();
 
         Destroy(gameObject);
     }
+    #endregion
+
+    #region Drop Item Logic
     public void DropLoot()
     {
-        for(int i = 0; i < description.Loot.Count; i++)
+        for (int i = 0; i < description.Loot.Count; i++)
         {
             if (Random.value <= description.LootChance[i])
             {
-                Item loot = Instantiate(itemPrefab);
-                loot.InitItem(description.Loot[i], 1);
-                loot.gameObject.transform.position = transform.position;
+                SpawnItem(description.Loot[i], 1);
             }
         }
     }
@@ -155,6 +151,7 @@ public class NPCBase : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
         maxHealth = description.HealthPoints;
         currentHealth = maxHealth;
         healthIndicator.SetValue(currentHealth, maxHealth);
+        healthIndicator.gameObject.SetActive(false);
 
         damage = description.BasicDamage;
 
@@ -206,6 +203,38 @@ public class NPCBase : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
     }
 
     #region Triggers
+    public void PlaySoundTrigger(SoundType type)
+    {
+        switch (type)
+        {
+            case SoundType.Footstep:
+                PlayFootstep();
+                break;
+            case SoundType.Damage:
+                PlayDamage();
+                break;
+            default:
+                Debug.Log($"Unknown sound type or not implemented: {type}"); break;
+        }
+    }
+    public enum SoundType
+    {
+        Footstep, Damage
+    }
+
+    private void PlayDamage()
+    {
+         
+    }
+    private void PlayFootstep()
+    {
+        if(!audioSource.isPlaying)
+        {
+            audioSource.clip = footsteps[Random.Range(0, footsteps.Count)];
+            audioSource.Play();
+        }
+    }
+
     private void AnimationTriggerEvent(AnimationTriggerType type)
     {
         // TODO

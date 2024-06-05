@@ -30,10 +30,15 @@ public class PlayerLockToInteractState : PlayerState
 
     public override void FrameUpdate()
     {
+        if(_targetItem == null)
+        {
+            player.StateMachine.ChangeState(player.IdleState);
+        }
+
         if ((player.transform.position - _targetPos).sqrMagnitude < player.AttackRadius.radius)
         {
             player.Interact(_targetItem);
-            player.StateMachine.ChangeState(player.IdleState);
+            _targetItem = null;
         }
         else
         {

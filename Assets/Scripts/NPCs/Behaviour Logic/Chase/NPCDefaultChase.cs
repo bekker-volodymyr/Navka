@@ -20,7 +20,7 @@ public class NPCDefaultChase : NPCChaseSOBase
     {
         base.DoEnterLogic();
 
-        attackTarget = chaseTarget.GetComponent<IDamageable>();
+        attackTarget = target.GetComponent<IDamageable>();
 
         attackStarted = false;
         attackDelay = 1f;
@@ -35,14 +35,9 @@ public class NPCDefaultChase : NPCChaseSOBase
     {
         base.DoFrameUpdateLogic();
         
-        if (chaseTarget == null)
-        {
-            npc.StateMachine.ChangeState(npc.IdleState);
-        }
-
         if (!attackStarted)
         {
-            if ((npc.transform.position - chaseTarget.transform.position).sqrMagnitude < npc.AttackRadius.radius)
+            if ((npc.transform.position - target.transform.position).sqrMagnitude < npc.AttackRadius.radius)
             {
                 attackStarted = true;
                 attackTimer = attackDelay;
@@ -50,7 +45,7 @@ public class NPCDefaultChase : NPCChaseSOBase
             }
             else
             {
-                _direction = (chaseTarget.transform.position - npc.transform.position).normalized;
+                _direction = (target.transform.position - npc.transform.position).normalized;
                 npc.Move(_direction * moveSpeed);
             }
         }
@@ -59,7 +54,7 @@ public class NPCDefaultChase : NPCChaseSOBase
             attackTimer -= Time.deltaTime;
             if(attackTimer <= 0)
             {
-                if ((npc.transform.position - chaseTarget.transform.position).sqrMagnitude < npc.AttackRadius.radius)
+                if ((npc.transform.position - target.transform.position).sqrMagnitude < npc.AttackRadius.radius)
                     npc.Attack(attackTarget);
                 attackStarted = false;
             }

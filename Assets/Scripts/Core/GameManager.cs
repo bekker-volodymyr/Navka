@@ -22,7 +22,6 @@ public class GameManager : MonoBehaviour
 
     #region Game State Values
     public static bool isPaused = false;
-    public static bool isInPlayerMenu = false;
     public static bool isDead = false;
     #endregion
 
@@ -31,7 +30,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region Dialog System
-    public static Action DialogStartEvent;
+    public static Action<IDialog> DialogStartEvent;
     public static Action DialogStopEvent;
     #endregion
 
@@ -40,5 +39,8 @@ public class GameManager : MonoBehaviour
     public InventoryController InventoryController => inventoryController;
     #endregion
 
-
+    #region Sound Values
+    public static float sfxVolume = 1f;
+    public static float musicVolume = 1f;
+    #endregion
 }

@@ -35,13 +35,13 @@ public class PauseMenu : MonoBehaviour
     {
         content.SetActive(true);
         Time.timeScale = 0f;
-        GameState.isPaused = true;
+        GameManager.isPaused = true;
     }
     private void HideMenu()
     {
         content.SetActive(false);
         Time.timeScale = 1.0f;
-        GameState.isPaused = false;
+        GameManager.isPaused = false;
     }
 
     public void OnMenuButtonClick(int value)

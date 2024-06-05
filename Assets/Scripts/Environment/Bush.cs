@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bush : ItemDropper
+public class Bush : ItemDropper, IInteractable
 {
     private enum Stage
     {
@@ -30,14 +30,12 @@ public class Bush : ItemDropper
         {
             case Stage.Berries:
                 spriteRenderer.sprite = berriesSprite;
-                item = berriesSO;
                 break;
             case Stage.Leaves:
                 spriteRenderer.sprite = leavesSprite;
-                item = leavesSO; break;
+                break;
             case Stage.NoLeaves:
                 spriteRenderer.sprite = noLeavesSprite;
-                item = null;
                 break;
             default:
                 Debug.Log($"Unknown stage type {stage}");
@@ -45,25 +43,27 @@ public class Bush : ItemDropper
         }
     }
 
-    override public void OnInteraction(Player player)
+    public void OnInteraction(Player player)
     {
-        base.OnInteraction(player);
+        ItemSO itemToDrop = null;
 
         switch (stage)
         {
             case Stage.Berries:
                 spriteRenderer.sprite = leavesSprite;
-                item = leavesSO;
+                itemToDrop = berriesSO;
                 stage = Stage.Leaves;
                 break;
             case Stage.Leaves:
                 spriteRenderer.sprite = noLeavesSprite;
-                item = null;
+                itemToDrop = leavesSO;
                 stage = Stage.NoLeaves;
                 break;
             default:
                 // TODO: animation
                 break;
         }
+
+        SpawnItem(itemToDrop, 1);
     }
 }

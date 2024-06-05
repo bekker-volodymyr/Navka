@@ -1,16 +1,19 @@
 using System.Collections;
 using UnityEngine;
 
-public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
+public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, ICoverable
 {
     [Space]
     [SerializeField] private GameObject spriteGO;
+    public GameObject SpriteGO { get { return spriteGO; } }
+
+    private ICover cover = null;
+    public ICover CoverGetter { get { return cover; } }
 
     #region Movement Variables
     [Space]
     [SerializeField] private Rigidbody2D playerRB;
     public Rigidbody2D ObjectRB { get { return playerRB; } }
-    [SerializeField] private float moveSpeed = 5f;
     private bool isFacingRight = true;
     #endregion
 
@@ -20,6 +23,11 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
     public CircleCollider2D AttackRadius { get { return attackRadius; } }
     [SerializeField] private CircleCollider2D noticeRadius;
     public  CircleCollider2D NoticeRadius { get { return noticeRadius; } }
+    [SerializeField] private CircleCollider2D interactCollider;
+    public CircleCollider2D InteractCollider { get {  return interactCollider; } }
+    [SerializeField] private CircleCollider2D damageCollider;
+    public CircleCollider2D DamageCollider { get { return damageCollider; } }
+
     #endregion
 
     #region Inventory Variables
@@ -121,7 +129,7 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
     #region Damage / Death Logic
     public void Death()
     {
-        GameState.isDead = true;
+        GameManager.isDead = true;
         Time.timeScale = 0f;
     }
     public void GetDamage(float damage, GameObject attacker)
@@ -187,14 +195,10 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
 
     public void Interact(IInteractable target)
     {
-        // if(target.InteractionType == Enums.InteractionType.Dialog)
-        // {
-        //     StateMachine.ChangeState(DialogState);
-        // }
         target.OnInteraction(this);
     }
 
-    private void OnDialogStart()
+    private void OnDialogStart(IDialog npc)
     {
         StateMachine.ChangeState(DialogState);
     }
@@ -269,12 +273,35 @@ public class Player : MonoBehaviour, IMoveable, IDamageable, IAttack, IInteract
             }
         }
     }
+    public void DropItem()
+    {
+        if (selectedItem == null) return;
+
+        inventory.DropSelectedItem();
+        SpawnItem(selectedItem, 1);
+        selectedItem = inventory.GetSelectedItem();
+    }
     #endregion
 
     #region Feeding Logic
     public void FeedItem()
     {
         inventory.ConsumeSelectedItem();
+    }
+    #endregion
+
+    #region Cover
+    public void Cover(ICover cover)
+    {
+        transform.position = cover.Position;
+        this.cover = cover;
+
+        StateMachine.ChangeState(UnderCoverState);
+    }
+    public void LeaveCover()
+    {
+        cover.LeaveCover();
+        cover = null;
     }
     #endregion
 }
