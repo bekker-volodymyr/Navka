@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33444820b1076934da9e621d903e0ca7, type: 3}
+  m_Name: FellowSO_ENG
+  m_EditorClassIdentifier: 
+  healthPoints: 10
+  basicDamage: 1
+  type: 1
+  approach: 1
+  attackTargets: []
+  loot:
+  - {fileID: 11400000, guid: 8264f5e1d1ce98f46ab563db595881f0, type: 2}
+  - {fileID: 11400000, guid: d9bc92fbd33a93f458326f8674fdfd6b, type: 2}
+  - {fileID: 11400000, guid: e467883e1c2740a439ff69ee5c148919, type: 2}
+  lootChance:
+  - 1
+  - 0.6
+  - 0.4
+  _name: Fellow
+  description: These foolish youngsters, upon sighting a wood nymph, dash headlong
+    to the village to their own to tell of their find, then they'll come after you,
+    believing that once caught, you'll do their bidding. Their weakness lies in their
+    susceptibility to the allure possessed by every wood mavka.
+  befriending: NONE
+  lore: Some rested in the taverns, some in the straw after such a thrashing, while
+    others headed to the fields to scare the girls.
+  picture: {fileID: 21300000, guid: 38f36241b0a5a10479466d125c225bae, type: 3}

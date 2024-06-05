@@ -218,7 +218,7 @@ MonoBehaviour:
   healthIndicator: {fileID: 9218903418566852806}
   npcRB: {fileID: 4947711639552643121}
   spriteGO: {fileID: 8942565301797632420}
-  interactType: 1
+  interactHintGO: {fileID: 7135358048155371192}
   audioSource: {fileID: 4253850574890041811}
   footsteps:
   - {fileID: 8300000, guid: e6056a35cf0b6404499611441c2e977b, type: 3}

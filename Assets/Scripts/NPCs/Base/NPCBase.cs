@@ -21,6 +21,10 @@ public class NPCBase : ItemDropper, IMoveable, IDamageable, IAttack, IInteractab
     [SerializeField] private GameObject spriteGO;
 
     [Space]
+    [SerializeField] private GameObject interactHintGO;
+    public GameObject InteractHintGO { get {  return interactHintGO; } }
+
+    [Space]
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private List<AudioClip> footsteps;
 
@@ -45,6 +49,8 @@ public class NPCBase : ItemDropper, IMoveable, IDamageable, IAttack, IInteractab
     public CircleCollider2D NoticeRadius { get { return noticeRadius; } }
     [SerializeField] private CircleCollider2D attackRadius;
     public CircleCollider2D AttackRadius { get { return attackRadius; } }
+    [SerializeField] private CircleCollider2D interactCollider;
+    public CircleCollider2D InteractCollider { get { return interactCollider; } }
     #endregion
 
     #region State Machine

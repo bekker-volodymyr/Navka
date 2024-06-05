@@ -20,6 +20,8 @@ public class NPCChaseSOBase : ScriptableObject
         target = npc.ChaseTarget;
 
         npc.HealthIndicator.gameObject.SetActive(true);
+        npc.InteractHintGO.SetActive(false);
+        npc.InteractCollider.gameObject.SetActive(false);
     }
     public virtual void DoExitLogic() { ResetValues(); }
     public virtual void DoFrameUpdateLogic()
@@ -39,5 +41,7 @@ public class NPCChaseSOBase : ScriptableObject
     public virtual void ResetValues() 
     {
         npc.HealthIndicator.gameObject.SetActive(false);
+        npc.InteractHintGO.SetActive(true);
+        npc.InteractCollider.gameObject.SetActive(true);
     }
 }

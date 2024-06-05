@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc59ad142cfb7364ca399ddddc978a15, type: 3}
+  m_Name: MilkSO_ENG
+  m_EditorClassIdentifier: 
+  _name: Milk
+  description: Just ordinary cow's milk, which for some reason people love to drink.
+    People are very strange... You could milk it from human cows.
+  lore: You probably don't need it, but they say witches use it for their rituals.
+  recipe: {fileID: 0}
+  type: 0
+  effects: []
+  sprite: {fileID: 21300000, guid: 0480d89bcd905f447ad6b1115b26a6d1, type: 3}
+  maxPerStack: 5

@@ -84,7 +84,7 @@ MonoBehaviour:
   healthIndicator: {fileID: 7383148936468207674}
   npcRB: {fileID: 3167092753664493211}
   spriteGO: {fileID: 5972737829300653089}
-  interactType: 1
+  interactHintGO: {fileID: 3953197608745246256}
   audioSource: {fileID: 5306853747010139892}
   footsteps:
   - {fileID: 8300000, guid: e6056a35cf0b6404499611441c2e977b, type: 3}
