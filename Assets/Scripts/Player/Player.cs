@@ -1,11 +1,14 @@
 using System.Collections;
 using UnityEngine;
+using Photon.Pun;
 
 public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, ICoverable
 {
     [Space]
     [SerializeField] private GameObject spriteGO;
     public GameObject SpriteGO { get { return spriteGO; } }
+
+    PhotonView view;
 
     private ICover cover = null;
     public ICover CoverGetter { get { return cover; } }
@@ -105,11 +108,15 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
         Item.OnPickUp += OnItemPickedUp;
 
         StartCoroutine("HungerCountdown");
+        view = GetComponent<PhotonView>();
     }
 
     private void Update()
     {
-        StateMachine.CurrentState.FrameUpdate();
+        if (view.IsMine)
+        {
+            StateMachine.CurrentState.FrameUpdate();
+        }
     }
 
     private void FixedUpdate()
