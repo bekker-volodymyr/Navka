@@ -10,16 +10,6 @@ public class WorldManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    public void LoadWorld()
-    {
-
-    }
-
-    public void DeleteWorld()
-    {
-
-    }
-
     public void BackToMainMenu()
     {
         SceneManager.LoadScene(0);

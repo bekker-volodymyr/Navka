@@ -19,7 +19,7 @@ public class WorldGenerator : MonoBehaviour
     [SerializeField] private TileBase[] biomTiles;
 
     public BiomsEnum[,] biomsGrid;
-
+    //public string layerName = "Environment";
 
     private void Start()
     {
@@ -32,6 +32,8 @@ public class WorldGenerator : MonoBehaviour
         decorLayer.ClearAllTiles();
 
         Generate();
+
+       
     }
 
     public void Generate()

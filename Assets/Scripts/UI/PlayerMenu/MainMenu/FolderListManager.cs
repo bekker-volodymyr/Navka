@@ -4,22 +4,31 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class FolderListManager : MonoBehaviour
 {
     private string folderPath = Application.dataPath + "/Saves"; // Path to your folder
     public GameObject listItemPrefab; // Prefab for the list item
     public Transform content; // Reference to the Content object of the ScrollView
-    
+
+    private List<ListItem> items = new List<ListItem>(); // List of items
+    private int selectedIndex = -1; // Index of the selected item
+    public Button selectButton; // Button to show item details
+    public Button deleteButton; // Button to delete item
+
+
     void Start()
     {
         PopulateList();
-        Debug.Log("start");
+        
+        selectButton.onClick.AddListener(OnSelectButtonClicked);
+        deleteButton.onClick.AddListener(OnDeleteButtonClicked);
     }
 
     void PopulateList()
     {
-        //
+        int i = 0;
         foreach (Transform child in content)
         {
             Destroy(child.gameObject);
@@ -32,7 +41,7 @@ public class FolderListManager : MonoBehaviour
             foreach (string file in files)
             {
                 //Debug.Log("file:" + file);
-                CreateListItem(Path.GetFileName(file));
+                CreateListItem(Path.GetFileName(file), i);
             }
         }
         else
@@ -40,30 +49,96 @@ public class FolderListManager : MonoBehaviour
             Debug.Log(folderPath.ToString());
             Debug.LogError("Directory doesnt exist");
         }
+        i++;
     }
 
-    public void AddNewItem()
+    void OnItemSelected(int index)
     {
-        
+        selectedIndex = index;
+        Debug.Log("Item " + index + " selected");
+
     }
 
-    public void DeleteItem(GameObject item)
+    void CreateListItem(string itemName, int index)
     {
-        string itemName = item.GetComponentInChildren<Text>().text;
-        string filePath = Path.Combine(folderPath, itemName);
-        if (File.Exists(filePath))
-        {
-            File.Delete(filePath);
-            Destroy(item);
-        }
-    }
-
-    void CreateListItem(string itemName)
-    {
-        Debug.Log("create item");
+        //Debug.Log("create item");
         GameObject newItem = Instantiate(listItemPrefab, content);
         newItem.GetComponentInChildren<TextMeshProUGUI>().text = itemName;
         newItem.transform.SetParent(content);
-        //newItem.GetComponent<Button>().onClick.AddListener(() => DeleteItem(newItem));
+
+        ListItem listItem = new ListItem();
+        listItem.filePath = folderPath + "/" + itemName;
+        listItem.itemName = itemName;
+        
+        listItem.index = index;
+        items.Add(listItem);
+
+        newItem.GetComponent<Button>().onClick.AddListener(() => OnItemSelected(index));
+
+    }
+
+    void OnSelectButtonClicked()
+    {
+        if (selectedIndex != -1)
+        {
+            //Load new owrld 
+            LoadSelecedItem(selectedIndex);
+        }
+    }
+
+    void OnDeleteButtonClicked()
+    {
+        if (selectedIndex != -1)
+        {
+            DeleteSelectedItem(selectedIndex);
+        }
+    }
+
+    void LoadSelecedItem(int index)
+    {
+        GameManager.isSave = true;
+        GameManager.saveFile = items[index].filePath;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+
+    void DeleteSelectedItem(int index)
+    {
+        string filePath = items[index].filePath;
+
+        // Remove the item from the ScrollView
+        Destroy(content.GetChild(index).gameObject);
+        items.RemoveAt(index);
+
+        // Delete the file associated with the item
+        if (File.Exists(filePath))
+        {
+            File.Delete(filePath);
+            Debug.Log("File deleted: " + filePath);
+        }
+        else
+        {
+            Debug.LogWarning("File not found: " + filePath);
+        }
+
+        // Update remaining items' buttons to have the correct index after deletion
+        for (int i = index; i < content.childCount; i++)
+        {
+            int newIndex = i;
+            content.GetChild(i).GetComponent<Button>().onClick.RemoveAllListeners();
+            content.GetChild(i).GetComponent<Button>().onClick.AddListener(() => OnItemSelected(newIndex));
+        }
+
+        // Hide the details panel if the deleted item was selected
+        selectedIndex = -1;
+    }
+
+
+    [System.Serializable]
+    public class ListItem
+    {
+        public int index;
+        public string itemName;
+        public string filePath; // Path to the associated file
     }
 }

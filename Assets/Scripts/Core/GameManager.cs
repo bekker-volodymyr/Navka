@@ -23,10 +23,12 @@ public class GameManager : MonoBehaviour
     #region Game State Values
     public static bool isPaused = false;
     public static bool isDead = false;
+    public static bool isSave = false;
     #endregion
 
     #region Transition Values
     public static HideoutStruct hideoutStruct;
+    public static string saveFile;
     #endregion
 
     #region Dialog System

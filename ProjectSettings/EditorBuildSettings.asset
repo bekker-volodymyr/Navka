@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Build/HideoutScene.unity
     guid: 67d5999675c815548be4cfeb75738c04
+  - enabled: 1
+    path: Assets/Scenes/Dev/Lobby.unity
+    guid: 6f45a39b946de4d47a400ee3d68402d5
+  - enabled: 1
+    path: Assets/Scenes/Dev/Loading.unity
+    guid: d410848b1bc1b4b79b370a8937fb1c1f
   m_configObjects: {}
