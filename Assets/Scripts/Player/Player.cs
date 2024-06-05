@@ -143,11 +143,15 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     }
     public void GetDamage(float damage, GameObject attacker)
     {
+        ChangeHealth(-damage);
+    }
+    private void ChangeHealth(float value)
+    {
         float newHealth = currentHealth - damage;
 
         Debug.Log(newHealth);
 
-        if(newHealth <= 0)
+        if (newHealth <= 0)
         {
             currentHealth = 0;
             healthIndicator.SetValue(currentHealth, maxHealth);
@@ -227,8 +231,14 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
             float reduceValue = -1;
 
             // TODO: ����������� �����������/���������
-
-            ChangeHunger(reduceValue);
+            if (currentHunger > 0)
+            {
+                ChangeHunger(reduceValue);
+            }
+            else
+            {
+                ChangeHealth(-1);
+            }
         }
     }
     private void ChangeHunger(float changeValue)
