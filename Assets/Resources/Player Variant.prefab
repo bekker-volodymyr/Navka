@@ -16,6 +16,22 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 08ad91191c258ae4c8e0bafc1466b475, type: 3}
+    - target: {fileID: 3734064085535391947, guid: dd7fe38d3a8b258428c793f90050af41, type: 3}
+      propertyPath: sceneViewId
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3734064085535391947, guid: dd7fe38d3a8b258428c793f90050af41, type: 3}
+      propertyPath: ObservedComponents.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3734064085535391947, guid: dd7fe38d3a8b258428c793f90050af41, type: 3}
+      propertyPath: ObservedComponents.Array.data[2]
+      value: 
+      objectReference: {fileID: 7884805578692053041}
+    - target: {fileID: 3734064085535391947, guid: dd7fe38d3a8b258428c793f90050af41, type: 3}
+      propertyPath: ObservedComponents.Array.data[3]
+      value: 
+      objectReference: {fileID: -8192409493051487308}
     - target: {fileID: 4055003447888703468, guid: dd7fe38d3a8b258428c793f90050af41, type: 3}
       propertyPath: m_Radius
       value: 4.5
@@ -102,6 +118,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: -8192409493051487308}
   m_SourcePrefab: {fileID: 100100000, guid: dd7fe38d3a8b258428c793f90050af41, type: 3}
+--- !u!114 &387982451818120272 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6831988076160569005, guid: dd7fe38d3a8b258428c793f90050af41, type: 3}
+  m_PrefabInstance: {fileID: 6607478906837863165}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2193351128979297121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8efc6b1d64977384eb3405357896c656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!58 &2041319098484127379 stripped
 CircleCollider2D:
   m_CorrespondingSourceObject: {fileID: 5180903090763136110, guid: dd7fe38d3a8b258428c793f90050af41, type: 3}
@@ -131,6 +158,8 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
+  - {fileID: 387982451818120272}
+  - {fileID: 8485461418234687033}
   - {fileID: 7884805578692053041}
   - {fileID: -8192409493051487308}
   sceneViewId: 0
@@ -190,3 +219,14 @@ CircleCollider2D:
   m_CorrespondingSourceObject: {fileID: 4055003447888703468, guid: dd7fe38d3a8b258428c793f90050af41, type: 3}
   m_PrefabInstance: {fileID: 6607478906837863165}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8485461418234687033 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3346193478904980676, guid: dd7fe38d3a8b258428c793f90050af41, type: 3}
+  m_PrefabInstance: {fileID: 6607478906837863165}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2193351128979297121}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
