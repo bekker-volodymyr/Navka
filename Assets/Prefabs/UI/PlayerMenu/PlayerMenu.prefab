@@ -1450,7 +1450,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.0010104004}
+  m_AnchoredPosition: {x: 0, y: -0.000041628256}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &2298223069250334512
@@ -2473,7 +2473,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4466945269299869129}
         m_TargetAssemblyTypeName: InventoryToggler, Assembly-CSharp
-        m_MethodName: ToggleMenu
+        m_MethodName: ToggleInventoryMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4088,7 +4088,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4466945269299869129}
         m_TargetAssemblyTypeName: InventoryToggler, Assembly-CSharp
-        m_MethodName: ToggleMenu
+        m_MethodName: ToggleQuestsMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6551,6 +6551,7 @@ MonoBehaviour:
   answersParentPrefab: {fileID: 8557704008049681654, guid: 20b97a954ccd7ce4ea753537e8e1444a, type: 3}
   dialogMenu: {fileID: 8649614169615439214}
   textComponent: {fileID: 2121614566313297405}
+  speakerImage: {fileID: 0}
   textSpeed: 0.1
 --- !u!1 &8759438554644462917
 GameObject:
@@ -7285,7 +7286,7 @@ PrefabInstance:
       objectReference: {fileID: 5106262126563546959, guid: 4c44fa6953900cb40ba2ad2a0cb88749, type: 2}
     - target: {fileID: 1962817681018016183, guid: 9840784e53734c94eb2af304e34caa39, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000030517578
+      value: -0.000091552734
       objectReference: {fileID: 0}
     - target: {fileID: 1981508235525907602, guid: 9840784e53734c94eb2af304e34caa39, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -8091,11 +8092,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4138260000837195006, guid: a906a5b964b4fb242b90c20c8b7ec3b4, type: 3}
       propertyPath: m_CellSize.x
-      value: 70
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 4138260000837195006, guid: a906a5b964b4fb242b90c20c8b7ec3b4, type: 3}
       propertyPath: m_CellSize.y
-      value: 70
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 4837733610312580663, guid: a906a5b964b4fb242b90c20c8b7ec3b4, type: 3}
       propertyPath: m_Pivot.x
@@ -8255,5 +8256,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 830437751018341440}
-  inventoryPnl: {fileID: 0}
-  questsPnl: {fileID: 0}
+  inventoryPnl: {fileID: 9062345121515449037}
+  questsPnl: {fileID: 7205371572933400596}
+--- !u!1 &9062345121515449037 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3723887530949211856, guid: a906a5b964b4fb242b90c20c8b7ec3b4, type: 3}
+  m_PrefabInstance: {fileID: 5651469035470576669}
+  m_PrefabAsset: {fileID: 0}

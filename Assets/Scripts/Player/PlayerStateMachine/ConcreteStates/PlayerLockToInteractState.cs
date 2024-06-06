@@ -38,7 +38,7 @@ public class PlayerLockToInteractState : PlayerState
         if ((player.transform.position - _targetPos).sqrMagnitude < player.AttackRadius.radius)
         {
             player.Interact(_targetItem);
-            _targetItem = null;
+            //_targetItem = null;
         }
         else
         {
@@ -89,5 +89,10 @@ public class PlayerLockToInteractState : PlayerState
     {
         _targetPos = targetCollider.transform.position;
         _targetItem = targetCollider.GetComponentInParent<IInteractable>();
+    }
+
+    public void RemoveTarget()
+    {
+        _targetItem = null;
     }
 }
