@@ -58,7 +58,7 @@ public class PauseMenu : MonoBehaviour
             case 3:  // Exit
                 if (Application.isEditor)
                 {
-                    EditorApplication.ExitPlaymode();
+                    //EditorApplication.ExitPlaymode();
                     // EditorApplication.Exit(0);  // close editor
                 }
                 else
