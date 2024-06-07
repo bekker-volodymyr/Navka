@@ -1,56 +1,50 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Wolf : NPCBase
+public class Wolf : BefriendableNPC
 {
-    [Space]
-    [SerializeField] private List<ItemSO> befriendingItemsList;
-    [SerializeField] private List<ItemSO> feedingList;
-
     [Space]
     [SerializeField] private ItemSO dropItem;
 
-    private bool isBefriended = false;
-    public bool IsBefriended => isBefriended;
-    override public void OnInteraction(GameObject interactObject)
-    {
-        Player player = interactObject.GetComponent<Player>();
+    //override public void OnInteraction(GameObject interactObject)
+    //{
+    //    Player player = interactObject.GetComponent<Player>();
 
-        if (player == null) 
-        {
-            return;        
-        }
+    //    if (player == null) 
+    //    {
+    //        return;        
+    //    }
 
-        ItemSO selectedItem = player.SelectedItem;
+    //    ItemSO selectedItem = player.SelectedItem;
 
-        if(selectedItem != null)
-        {
-            if(befriendingItemsList.Count > 0)
-            {
-                if(befriendingItemsList.Contains(selectedItem))
-                {
-                    befriendingItemsList.Remove(selectedItem);
-                    player.FeedItem();
+    //    if(selectedItem != null)
+    //    {
+    //        if(befriendingItemsList.Count > 0)
+    //        {
+    //            if(befriendingItemsList.Contains(selectedItem))
+    //            {
+    //                befriendingItemsList.Remove(selectedItem);
+    //                player.FeedItem();
 
-                    if (befriendingItemsList.Count == 0)
-                    {
-                        Befriend(player);
-                    }
-                }
-            }
-        }
-        else
-        {
-            SpawnItem(dropItem, 1);
-        }
-    }
+    //                if (befriendingItemsList.Count == 0)
+    //                {
+    //                    Befriend(player);
+    //                }
+    //            }
+    //        }
+    //    }
+    //    else
+    //    {
+    //        SpawnItem(dropItem, 1);
+    //    }
+    //}
 
-    private void Befriend(Player player)
-    {
-        Debug.Log($"{gameObject.name} befriended now");
+    //private void Befriend(Player player)
+    //{
+    //    Debug.Log($"{gameObject.name} befriended now");
 
-        isBefriended = true;
-        befriendedPlayer = player;
-        StateMachine.ChangeState(BefriendedState);
-    }
+    //    isBefriended = true;
+    //    befriendedPlayer = player;
+    //    StateMachine.ChangeState(BefriendedState);
+    //}
 }

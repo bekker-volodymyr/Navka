@@ -225,7 +225,7 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     #region Hunger Logic
     private IEnumerator HungerCountdown()
     {
-        while(CurrentHunger > 0)
+        while(!GameManager.isDead)
         {
             yield return new WaitForSeconds(secondsToReduce);
 

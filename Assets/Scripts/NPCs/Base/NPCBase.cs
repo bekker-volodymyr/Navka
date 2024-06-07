@@ -40,9 +40,6 @@ public class NPCBase : ItemDropper, IMoveable, IDamageable, IAttack, IInteractab
     public GameObject ChaseTarget { get { return chaseTarget; } }
     private List<NPCBase> pack;
 
-    protected Player befriendedPlayer;
-    public Player BefriendedPlayer => befriendedPlayer;
-
     #region Colliders
     [Space]
     [SerializeField] private CircleCollider2D noticeRadius;

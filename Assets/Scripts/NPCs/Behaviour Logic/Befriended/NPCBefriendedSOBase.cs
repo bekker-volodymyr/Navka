@@ -15,7 +15,7 @@ public class NPCBefriendedSOBase : ScriptableObject
 
     public virtual void DoEnterLogic() 
     {
-        player = npc.BefriendedPlayer;
+        //player = npc.BefriendedPlayer;
     }
     public virtual void DoExitLogic() { ResetValues(); }
     public virtual void DoFrameUpdateLogic() { }
