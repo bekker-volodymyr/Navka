@@ -8,7 +8,7 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     [SerializeField] private GameObject spriteGO;
     public GameObject SpriteGO { get { return spriteGO; } }
 
-    PhotonView view;
+    //PhotonView view;
 
     private ICover cover = null;
     public ICover CoverGetter { get { return cover; } }
@@ -108,20 +108,23 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
         Item.OnPickUp += OnItemPickedUp;
 
         StartCoroutine("HungerCountdown");
-        view = GetComponent<PhotonView>();
+        //view = GetComponent<PhotonView>();
     }
 
     private void Update()
     {
-        if (view.IsMine)
-        {
+        //if (view.IsMine)
+        //{
             StateMachine.CurrentState.FrameUpdate();
-        }
+        //}
     }
 
     private void FixedUpdate()
     {
-        StateMachine.CurrentState.PhysicsUpdate();
+        //if (view.IsMine)
+        //{
+            StateMachine.CurrentState.PhysicsUpdate();
+        //}
     }
 
     private void OnDestroy()
