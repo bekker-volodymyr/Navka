@@ -12,6 +12,12 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
 
     private ICover cover = null;
     public ICover CoverGetter { get { return cover; } }
+    private bool isUnderCover = false;
+
+    [Space]
+    [SerializeField] private BefriendedAnimals animals;
+
+    private bool isInDialog = false;
 
     #region Movement Variables
     [Space]
@@ -115,13 +121,19 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     {
         if (view.IsMine)
         {
-            StateMachine.CurrentState.FrameUpdate();
+            if (!isInDialog)
+            {
+                StateMachine.CurrentState.FrameUpdate();
+            }
         }
     }
 
     private void FixedUpdate()
     {
-        StateMachine.CurrentState.PhysicsUpdate();
+        if (!isInDialog)
+        {
+            StateMachine.CurrentState.PhysicsUpdate();
+        }
     }
 
     private void OnDestroy()
@@ -207,17 +219,20 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     public void Interact(IInteractable target)
     {
         target.OnInteraction(gameObject);
-        LockToInteractState.RemoveTarget();
+        if (!isUnderCover)
+        {
+            StateMachine.ChangeState(IdleState);
+        }
     }
 
     private void OnDialogStart(IDialog npc)
     {
-        StateMachine.ChangeState(DialogState);
+        isInDialog = true;
     }
 
     private void OnDialogEnd()
     {
-        StateMachine.ChangeState(IdleState);
+        isInDialog = false;
     }
 
     #endregion
@@ -305,10 +320,15 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     }
     #endregion
 
-    #region Feeding Logic
+    #region Befriending Logic
     public void FeedItem()
     {
         inventory.ConsumeSelectedItem();
+    }
+    public void Befriend(BefriendableNPC npc)
+    {
+        Debug.Log($"{npc.name}");
+        animals.AddAnimal(npc);
     }
     #endregion
 
@@ -318,6 +338,7 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
         transform.position = cover.Position;
         this.cover = cover;
 
+        isUnderCover = true;
         StateMachine.ChangeState(UnderCoverState);
     }
     public void LeaveCover()

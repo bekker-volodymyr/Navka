@@ -9,7 +9,7 @@ public class NPCDefaultBefriended : NPCBefriendedSOBase
     public float followSpeed = 2.0f;
     public float stoppingDistance = 1.0f;
 
-    public override void Initialize(NPCBase npc)
+    public override void Initialize(BefriendableNPC npc)
     {
         base.Initialize(npc);
     }

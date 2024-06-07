@@ -4,42 +4,44 @@ using UnityEngine;
 
 public class NPCBefriendedState : NPCState
 {
-    public NPCBefriendedState(NPCBase npc, NPCStateMachine npcStateMachine) : base(npc, npcStateMachine)
+    protected BefriendableNPC befriendableNpc;
+    public NPCBefriendedState(BefriendableNPC npc, NPCStateMachine npcStateMachine) : base(npc, npcStateMachine)
     {
+        befriendableNpc = npc;
     }
 
     public override void EnterState()
     {
         base.EnterState();
 
-        npc.BefriendedStateInstance.DoEnterLogic();
+        befriendableNpc.CurrentBefriendedStateInstance.DoEnterLogic();
     }
 
     public override void ExitState()
     {
         base.ExitState();
 
-        npc.BefriendedStateInstance.DoExitLogic();
+        befriendableNpc.CurrentBefriendedStateInstance.DoExitLogic();
     }
 
     public override void FrameUpdate()
     {
         base.FrameUpdate();
 
-        npc.BefriendedStateInstance.DoFrameUpdateLogic();
+        befriendableNpc.CurrentBefriendedStateInstance.DoFrameUpdateLogic();
     }
 
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
 
-        npc.BefriendedStateInstance.DoPhysicsLogic();
+        befriendableNpc.CurrentBefriendedStateInstance.DoPhysicsLogic();
     }
 
     public override void AnimationTriggerEvent(NPCBase.AnimationTriggerType type)
     {
         base.AnimationTriggerEvent(type);
 
-        npc.BefriendedStateInstance.DoAnimationTriggerEventLogic(type);
+        befriendableNpc.CurrentBefriendedStateInstance.DoAnimationTriggerEventLogic(type);
     }
 }

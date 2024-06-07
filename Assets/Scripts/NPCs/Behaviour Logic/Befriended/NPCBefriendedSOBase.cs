@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class NPCBefriendedSOBase : ScriptableObject
 {
-    protected NPCBase npc;
+    protected BefriendableNPC npc;
 
     protected Player player;
 
-    public virtual void Initialize(NPCBase npc)
+    public virtual void Initialize(BefriendableNPC npc)
     {
         this.npc = npc;
     }
 
     public virtual void DoEnterLogic() 
     {
-        //player = npc.BefriendedPlayer;
+        player = npc.BefriendedPlayer;
     }
     public virtual void DoExitLogic() { ResetValues(); }
     public virtual void DoFrameUpdateLogic() { }

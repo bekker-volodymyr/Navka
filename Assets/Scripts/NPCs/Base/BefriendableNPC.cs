@@ -14,6 +14,33 @@ public class BefriendableNPC : NPCBase
     protected Player befriendedPlayer;
     public Player BefriendedPlayer => befriendedPlayer;
 
+    [Space]
+    [SerializeField] private NPCBefriendedSOBase defaultBefriendedStateBase;
+    private NPCBefriendedSOBase defaultBefriendedStateInstance;
+    [SerializeField] private NPCBefriendedSOBase secondaryBefriendedStateBase;
+    private NPCBefriendedSOBase secondaryBefriendedStateInstance;
+    public NPCBefriendedSOBase CurrentBefriendedStateInstance { get; set; }
+    public NPCBefriendedState BefriendedState { get; set; }
+
+    override protected void Awake()
+    {
+        base.Awake();
+        defaultBefriendedStateInstance = Instantiate(defaultBefriendedStateBase);
+        secondaryBefriendedStateInstance = Instantiate(secondaryBefriendedStateBase);
+
+        CurrentBefriendedStateInstance = defaultBefriendedStateInstance;
+
+        BefriendedState = new NPCBefriendedState(this, StateMachine);
+    }
+
+    override protected void Start()
+    {
+        base.Start();
+        Debug.Log($"{gameObject.name} befriendable start");
+
+        CurrentBefriendedStateInstance.Initialize(this);
+    }
+
     override public void OnInteraction(GameObject interactObject)
     {
         Player player = interactObject.GetComponent<Player>();
@@ -51,6 +78,17 @@ public class BefriendableNPC : NPCBase
 
         isBefriended = true;
         befriendedPlayer = player;
+        player.Befriend(this);
         StateMachine.ChangeState(BefriendedState);
+    }
+
+    public void SetDafaultState()
+    {
+        CurrentBefriendedStateInstance = defaultBefriendedStateInstance;
+    }
+
+    public void SetSecondaryState()
+    {
+        CurrentBefriendedStateInstance = secondaryBefriendedStateInstance;
     }
 }
