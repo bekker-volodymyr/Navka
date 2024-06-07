@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -38,10 +39,9 @@ public class NPCBase : ItemDropper, IMoveable, IDamageable, IAttack, IInteractab
 
     private GameObject chaseTarget = null;
     public GameObject ChaseTarget { get { return chaseTarget; } }
-    private List<NPCBase> pack;
+    protected List<NPCBase> pack;
 
-    protected Player befriendedPlayer;
-    public Player BefriendedPlayer => befriendedPlayer;
+    public event Action NPCDeathEvent;
 
     #region Colliders
     [Space]
@@ -58,18 +58,18 @@ public class NPCBase : ItemDropper, IMoveable, IDamageable, IAttack, IInteractab
     public NPCIdleState IdleState { get; set; }
     public NPCChaseState ChaseState { get; set; }
     public NPCDialogState DialogState { get; set; }
-    public NPCBefriendedState BefriendedState { get; set; }
+    //public NPCBefriendedState BefriendedState { get; set; }
 
     [Space]
     [SerializeField] private NPCIdleSOBase idleStateBase;
     [SerializeField] private NPCChaseSOBase chaseStateBase;
     [SerializeField] private NPCDialogSOBase dialogStateBase;
-    [SerializeField] private NPCBefriendedSOBase befriendedStateBase;
+    //[SerializeField] private NPCBefriendedSOBase befriendedStateBase;
 
     public NPCIdleSOBase IdleStateInstance { get; set; }
     public NPCChaseSOBase ChaseStateInstance { get; set; }
     public NPCDialogSOBase DialogStateInstance { get; set; }
-    public NPCBefriendedSOBase BefriendedStateInstance { get; set; }
+    //public NPCBefriendedSOBase BefriendedStateInstance { get; set; }
     #endregion
 
     #region Movement Logic
@@ -96,7 +96,7 @@ public class NPCBase : ItemDropper, IMoveable, IDamageable, IAttack, IInteractab
     #endregion
 
     #region Damage / Death Logic
-    public void GetDamage(float damage, GameObject attacker)
+    virtual public void GetDamage(float damage, GameObject attacker)
     {
         float newHealth = currentHealth;
 
@@ -117,6 +117,8 @@ public class NPCBase : ItemDropper, IMoveable, IDamageable, IAttack, IInteractab
     {
         DropLoot();
 
+        NPCDeathEvent?.Invoke();
+
         Destroy(gameObject);
     }
     #endregion
@@ -126,7 +128,7 @@ public class NPCBase : ItemDropper, IMoveable, IDamageable, IAttack, IInteractab
     {
         for (int i = 0; i < description.Loot.Count; i++)
         {
-            if (Random.value <= description.LootChance[i])
+            if (UnityEngine.Random.value <= description.LootChance[i])
             {
                 SpawnItem(description.Loot[i], 1);
             }
@@ -139,21 +141,23 @@ public class NPCBase : ItemDropper, IMoveable, IDamageable, IAttack, IInteractab
         target.GetDamage(damage, gameObject);
     }
 
-    private void Awake()
+    virtual protected void Awake()
     {
         IdleStateInstance = Instantiate(idleStateBase);
         ChaseStateInstance = Instantiate(chaseStateBase);
         DialogStateInstance = Instantiate(dialogStateBase);
-        BefriendedStateInstance = Instantiate(befriendedStateBase);
+        //BefriendedStateInstance = Instantiate(befriendedStateBase);
 
         StateMachine = new NPCStateMachine();
         IdleState = new NPCIdleState(this, StateMachine);
         ChaseState = new NPCChaseState(this, StateMachine);
         DialogState = new NPCDialogState(this, StateMachine);
-        BefriendedState = new NPCBefriendedState(this, StateMachine);
+        //BefriendedState = new NPCBefriendedState(this, StateMachine);
     }
-    private void Start()
+    virtual protected void Start()
     {
+        Debug.Log($"{gameObject.name} npcbase start");
+
         maxHealth = description.HealthPoints;
         currentHealth = maxHealth;
         healthIndicator.SetValue(currentHealth, maxHealth);
@@ -166,7 +170,7 @@ public class NPCBase : ItemDropper, IMoveable, IDamageable, IAttack, IInteractab
         IdleStateInstance.Initialize(this);
         ChaseStateInstance.Initialize(this);
         DialogStateInstance.Initialize(this);
-        BefriendedStateInstance.Initialize(this);
+       // BefriendedStateInstance.Initialize(this);
 
         StateMachine.Initialize(IdleState);
     }
@@ -180,7 +184,7 @@ public class NPCBase : ItemDropper, IMoveable, IDamageable, IAttack, IInteractab
         StateMachine.CurrentState.PhysicsUpdate();
     }
 
-    public void AddNPCTarget(NPCBase target)
+    virtual public void AddNPCTarget(NPCBase target)
     {
         if(description.AttackTargets.Contains(target.DescriptionSO))
         {
@@ -194,7 +198,7 @@ public class NPCBase : ItemDropper, IMoveable, IDamageable, IAttack, IInteractab
             pack.Add(target);
         }
     }
-    public void SetTarget(GameObject target)
+    virtual public void SetTarget(GameObject target)
     {
         if (chaseTarget == null)
         {
@@ -236,7 +240,7 @@ public class NPCBase : ItemDropper, IMoveable, IDamageable, IAttack, IInteractab
     {
         if(!audioSource.isPlaying)
         {
-            audioSource.clip = footsteps[Random.Range(0, footsteps.Count)];
+            audioSource.clip = footsteps[UnityEngine.Random.Range(0, footsteps.Count)];
             audioSource.Play();
         }
     }

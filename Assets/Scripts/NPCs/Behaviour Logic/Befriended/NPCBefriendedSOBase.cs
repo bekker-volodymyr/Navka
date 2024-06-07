@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class NPCBefriendedSOBase : ScriptableObject
 {
-    protected NPCBase npc;
+    protected BefriendableNPC npc;
 
     protected Player player;
 
-    public virtual void Initialize(NPCBase npc)
+    public virtual void Initialize(BefriendableNPC npc)
     {
         this.npc = npc;
     }
