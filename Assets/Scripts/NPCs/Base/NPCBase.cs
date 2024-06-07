@@ -39,7 +39,7 @@ public class NPCBase : ItemDropper, IMoveable, IDamageable, IAttack, IInteractab
 
     private GameObject chaseTarget = null;
     public GameObject ChaseTarget { get { return chaseTarget; } }
-    private List<NPCBase> pack;
+    protected List<NPCBase> pack;
 
     public event Action NPCDeathEvent;
 
@@ -96,7 +96,7 @@ public class NPCBase : ItemDropper, IMoveable, IDamageable, IAttack, IInteractab
     #endregion
 
     #region Damage / Death Logic
-    public void GetDamage(float damage, GameObject attacker)
+    virtual public void GetDamage(float damage, GameObject attacker)
     {
         float newHealth = currentHealth;
 
@@ -184,7 +184,7 @@ public class NPCBase : ItemDropper, IMoveable, IDamageable, IAttack, IInteractab
         StateMachine.CurrentState.PhysicsUpdate();
     }
 
-    public void AddNPCTarget(NPCBase target)
+    virtual public void AddNPCTarget(NPCBase target)
     {
         if(description.AttackTargets.Contains(target.DescriptionSO))
         {
@@ -198,7 +198,7 @@ public class NPCBase : ItemDropper, IMoveable, IDamageable, IAttack, IInteractab
             pack.Add(target);
         }
     }
-    public void SetTarget(GameObject target)
+    virtual public void SetTarget(GameObject target)
     {
         if (chaseTarget == null)
         {

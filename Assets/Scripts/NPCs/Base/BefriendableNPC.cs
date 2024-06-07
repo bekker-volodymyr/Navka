@@ -38,7 +38,8 @@ public class BefriendableNPC : NPCBase
         base.Start();
         Debug.Log($"{gameObject.name} befriendable start");
 
-        CurrentBefriendedStateInstance.Initialize(this);
+        defaultBefriendedStateInstance.Initialize(this);
+        secondaryBefriendedStateInstance.Initialize(this);
     }
 
     override public void OnInteraction(GameObject interactObject)
@@ -78,6 +79,8 @@ public class BefriendableNPC : NPCBase
 
         isBefriended = true;
         befriendedPlayer = player;
+        pack.Clear();
+
         player.Befriend(this);
         StateMachine.ChangeState(BefriendedState);
     }
@@ -90,5 +93,11 @@ public class BefriendableNPC : NPCBase
     public void SetSecondaryState()
     {
         CurrentBefriendedStateInstance = secondaryBefriendedStateInstance;
+        StateMachine.ChangeState(BefriendedState);
+    }
+
+    public override void AddNPCTarget(NPCBase target)
+    {
+        SetTarget(target.gameObject);
     }
 }

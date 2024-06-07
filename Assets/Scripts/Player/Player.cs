@@ -19,6 +19,10 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
 
     private bool isInDialog = false;
 
+    [Space]
+    [SerializeField] private GameObject hideoutGO;
+    public GameObject HideoutGO { get { return hideoutGO; } }
+
     #region Movement Variables
     [Space]
     [SerializeField] private Rigidbody2D playerRB;
