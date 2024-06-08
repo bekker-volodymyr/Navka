@@ -53,38 +53,50 @@ public class LevelLoader : MonoBehaviour
                     // Compare prefab name with the current layer name
                     if (prefab.name == gameObject.objectLayerName)
                     {
-                    //foreach (Vector2 vector2 in gameObject.positions)
-                    //{
-                        //select prefab from prefab list
-                        GameObject instantiatedPrefab = Instantiate(prefab);
+                    //select prefab from prefab list
+                    //GameObject instantiatedPrefab = Instantiate(prefab);
+                        GameObject emptyObject = new GameObject("EmptyObject");
 
                         Debug.Log($"Prefab '{prefab.name}' matches the current layer name '{gameObject.objectLayerName}'.");
 
-                        //set prefabs parent
-                        instantiatedPrefab.transform.SetParent(parentGameObject.transform, false);
-                        //instantiatedPrefab.transform.localPosition = vector2;
+                        //set prefabs parent - environment
+                        //instantiatedPrefab.transform.SetParent(parentGameObject.transform, false);
+                        
+                        //UnityEngine.Vector3 vector3 = new UnityEngine.Vector3(0, 0, 0);
+                        //instantiatedPrefab.transform.localPosition = vector3;
 
-                        int x = Random.Range(50, -50);
-                        int y = Random.Range(50, -50);
-                        UnityEngine.Vector3 vector3 = new UnityEngine.Vector3(10, 10, 0);
-                    instantiatedPrefab.transform.localPosition = vector3;
+                        //instantiatedPrefab.transform.localRotation = UnityEngine.Quaternion.identity;
+                        //instantiatedPrefab.transform.localScale = UnityEngine.Vector3.one;
+                        
 
-                    //instantiatedPrefab.transform.localPosition = UnityEngine.Vector3.zero;
-                    instantiatedPrefab.transform.localRotation = UnityEngine.Quaternion.identity;
-                        instantiatedPrefab.transform.localScale = UnityEngine.Vector3.one;
-                    //}
 
-                        //place children
-                        //foreach (Vector2 vector2 in gameObject.positions)
-                        //{
-                        //    instantiatedPrefab.transform.localPosition = vector2;
-                        //    instantiatedPrefab.transform.localRotation = Quaternion.identity;
 
-                        //}
-                        // Optionally, reset the local position, rotation, and scale
+                        foreach (UnityEngine.Vector2 vector in gameObject.positions)
+                        {
+                            //set a new parent object - layer object
+                            GameObject instantiateChilddPrefab = Instantiate(prefab);
+                            instantiateChilddPrefab.transform.SetParent(emptyObject.transform, false);
 
-                    
-                    }
+                            float x = vector.x;
+                            float y = vector.y;
+                            //UnityEngine.Vector3 childVector = new UnityEngine.Vector3(Mathf.Round(vector.x), Mathf.Round(vector.y), 0);
+                            UnityEngine.Vector3 childVector = new UnityEngine.Vector3(x, y, 0);
+
+                            instantiateChilddPrefab.transform.localPosition = childVector;
+
+                            //UnityEngine.Vector3 childVector3 = new UnityEngine.Vector3(-10, -10, 0);
+                            //instantiatedPrefab.transform.localPosition = childVector3;
+
+
+                            instantiateChilddPrefab.transform.localRotation = UnityEngine.Quaternion.identity;
+                            instantiateChilddPrefab.transform.localScale = UnityEngine.Vector3.one;
+                            Debug.Log("Prefab instantiated and set as 2nd child (copy) ");
+
+                        }
+
+                    //instantiatedPrefab.SetActive(false);
+
+                }
             }
             
             // Set the parent of the instantiated prefab
