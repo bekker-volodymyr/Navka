@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-using Photon.Pun;
+using System.Collections.Generic;
 
 public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, ICoverable
 {
@@ -23,6 +23,10 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     [Space]
     [SerializeField] private GameObject hideoutGO;
     public GameObject HideoutGO { get { return hideoutGO; } }
+
+    [Space]
+    [SerializeField] private List<NPCDescriptionSO> defendFromList;
+    public List<NPCDescriptionSO> DefendFromList { get { return defendFromList; } }
 
     #region Movement Variables
     [Space]
@@ -165,6 +169,8 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     public void GetDamage(float damage, GameObject attacker)
     {
         ChangeHealth(-damage);
+
+        SetTargetForAnimals(attacker);
     }
     private void ChangeHealth(float value)
     {

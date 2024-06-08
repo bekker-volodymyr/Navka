@@ -39,6 +39,8 @@ public class NPCBase : ItemDropper, IMoveable, IDamageable, IAttack, IInteractab
 
     private GameObject chaseTarget = null;
     public GameObject ChaseTarget { get { return chaseTarget; } }
+    protected List<NPCDescriptionSO> attackTargets;
+    
     protected List<NPCBase> pack;
 
     public event Action NPCDeathEvent;
@@ -167,6 +169,8 @@ public class NPCBase : ItemDropper, IMoveable, IDamageable, IAttack, IInteractab
 
         damage = description.BasicDamage;
 
+        attackTargets = description.AttackTargets;
+
         pack = new List<NPCBase> { this };
 
         IdleStateInstance.Initialize(this);
@@ -188,7 +192,7 @@ public class NPCBase : ItemDropper, IMoveable, IDamageable, IAttack, IInteractab
 
     virtual public void AddNPCTarget(NPCBase target)
     {
-        if (description.AttackTargets.Contains(target.DescriptionSO))
+        if (attackTargets.Contains(target.DescriptionSO))
         {
             foreach (var npc in pack)
             {
@@ -200,9 +204,9 @@ public class NPCBase : ItemDropper, IMoveable, IDamageable, IAttack, IInteractab
             pack.Add(target);
         }
     }
-    public void SetTarget(GameObject target)
+    virtual public void SetTarget(GameObject target)
     {
-        Debug.Log($"{target.name}");
+        Debug.Log($"Chaser: {name} --- Target: {target.name}");
 
         if (chaseTarget == null)
         {
@@ -216,7 +220,7 @@ public class NPCBase : ItemDropper, IMoveable, IDamageable, IAttack, IInteractab
         Debug.Log($"No interaction with this NPC or not implemented. {interactObject.name}.");
     }
 
-    virtual public void SetDefaultState()
+    virtual public void ResetState()
     {
         StateMachine.ChangeState(IdleState);
     }

@@ -85,10 +85,25 @@ public class BefriendableNPC : NPCBase
 
         player.Befriend(this);
 
+        attackTargets = player.DefendFromList;
+
+        Debug.Log($"{attackTargets[0].Name}");
+
         SetDefaultState();
     }
 
-    override public void SetDefaultState()
+    public override void ResetState()
+    {
+        if (!isBefriended)
+        {
+            base.ResetState();
+            return;
+        }
+
+        StateMachine.ChangeState(BefriendedState);
+    }
+
+    public void SetDefaultState()
     {
         CurrentBefriendedStateInstance = defaultBefriendedStateInstance;
         StateMachine.ChangeState(BefriendedState);
@@ -100,5 +115,29 @@ public class BefriendableNPC : NPCBase
         CurrentBefriendedStateInstance = secondaryBefriendedStateInstance;
         StateMachine.ChangeState(BefriendedState);
         defendsPlayer = false;
+    }
+
+    public override void AddNPCTarget(NPCBase target)
+    {
+        if(!isBefriended)
+        {
+            base.AddNPCTarget(target);
+            return;
+        }
+
+        Debug.Log($"AddNPCTarget from Wolf");
+        Debug.Log(attackTargets.Contains(target.DescriptionSO));
+        Debug.Log(befriendedPlayer.DefendFromList.Contains(target.DescriptionSO));
+        Debug.Log(target.DescriptionSO.Name);
+
+        if (attackTargets.Contains(target.DescriptionSO))
+        {
+            SetTarget(target.gameObject);
+        }
+    }
+
+    public override void SetTarget(GameObject target)
+    {
+        base.SetTarget(target);
     }
 }

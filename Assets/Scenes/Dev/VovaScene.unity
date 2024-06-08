@@ -214,15 +214,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1121948711286423043, guid: db644756b6c31aa45ad2027826f96c1e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2693107388977658203, guid: db644756b6c31aa45ad2027826f96c1e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.356333
+      value: -13.63
       objectReference: {fileID: 0}
     - target: {fileID: 2693107388977658203, guid: db644756b6c31aa45ad2027826f96c1e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.7960925
+      value: -5.11
       objectReference: {fileID: 0}
     - target: {fileID: 2693107388977658203, guid: db644756b6c31aa45ad2027826f96c1e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -904,12 +904,20 @@ PrefabInstance:
       objectReference: {fileID: 445735253}
     - target: {fileID: 7747693669726521892, guid: dd7fe38d3a8b258428c793f90050af41, type: 3}
       propertyPath: secondsToReduce
-      value: 1
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7747693669726521892, guid: dd7fe38d3a8b258428c793f90050af41, type: 3}
       propertyPath: TargetNoticeRadius
       value: 
       objectReference: {fileID: 1573534424}
+    - target: {fileID: 7747693669726521892, guid: dd7fe38d3a8b258428c793f90050af41, type: 3}
+      propertyPath: defendFromList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747693669726521892, guid: dd7fe38d3a8b258428c793f90050af41, type: 3}
+      propertyPath: defendFromList.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 89d5522538f5e1e4e8402eea5f93812a, type: 2}
     - target: {fileID: 8678889963795942228, guid: dd7fe38d3a8b258428c793f90050af41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1262,7 +1270,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3624248943229621144, guid: 10262515c51564c4a97019ace17f309f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.00064377295
+      value: -0.0000064926217
       objectReference: {fileID: 0}
     - target: {fileID: 3799581467172024210, guid: 10262515c51564c4a97019ace17f309f, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2100,13 +2108,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wolf
       objectReference: {fileID: 0}
+    - target: {fileID: 6546924408939766799, guid: 12cdba18c9918f34cbeda969e198b45e, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8439073954000140262, guid: 12cdba18c9918f34cbeda969e198b45e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.27
+      value: -5.17
       objectReference: {fileID: 0}
     - target: {fileID: 8439073954000140262, guid: 12cdba18c9918f34cbeda969e198b45e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.41
+      value: -5.17
       objectReference: {fileID: 0}
     - target: {fileID: 8439073954000140262, guid: 12cdba18c9918f34cbeda969e198b45e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2226,6 +2238,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cow
       objectReference: {fileID: 0}
+    - target: {fileID: 1391589936093648790, guid: 42baa23d791ccd74290236d37b8717a4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4456675825318970739, guid: 42baa23d791ccd74290236d37b8717a4, type: 3}
       propertyPath: m_Camera
       value: 
@@ -2292,10 +2308,10 @@ SceneRoots:
   - {fileID: 2128654413}
   - {fileID: 8702194646451006934}
   - {fileID: 909734022}
-  - {fileID: 201126548}
-  - {fileID: 1083609851}
-  - {fileID: 418150388}
   - {fileID: 196220463}
+  - {fileID: 1083609851}
+  - {fileID: 201126548}
+  - {fileID: 418150388}
   - {fileID: 948108008}
   - {fileID: 885348195}
   - {fileID: 1988969492}

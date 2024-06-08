@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 7275016242517586155, guid: d35c9f2e9f9ebd04aab3851db6f2790a, type: 3}
-  description: {fileID: 11400000, guid: 5bf8cf1e8b9db2d418806d08fdf92b49, type: 2}
+  description: {fileID: 11400000, guid: 2bc0c17ccbf54e647833050634e0d9ed, type: 2}
   healthIndicator: {fileID: 7383148936468207674}
   npcRB: {fileID: 3167092753664493211}
   spriteGO: {fileID: 5972737829300653089}
@@ -491,7 +491,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: E
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 82be29b161d70bb4b9af7a62e038ee99, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}

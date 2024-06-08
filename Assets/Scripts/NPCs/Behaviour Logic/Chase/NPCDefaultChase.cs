@@ -41,6 +41,7 @@ public class NPCDefaultChase : NPCChaseSOBase
             {
                 attackStarted = true;
                 attackTimer = attackDelay;
+                npc.Attack(attackTarget);
                 npc.Move(Vector2.zero);
             }
             else
@@ -54,8 +55,8 @@ public class NPCDefaultChase : NPCChaseSOBase
             attackTimer -= Time.deltaTime;
             if(attackTimer <= 0)
             {
-                if (Vector3.Distance(npc.transform.position, target.transform.position) <= npc.AttackRadius.radius)
-                    npc.Attack(attackTarget);
+                //if (Vector3.Distance(npc.transform.position, target.transform.position) <= npc.AttackRadius.radius)
+                //    npc.Attack(attackTarget);
                 attackStarted = false;
             }
         }
