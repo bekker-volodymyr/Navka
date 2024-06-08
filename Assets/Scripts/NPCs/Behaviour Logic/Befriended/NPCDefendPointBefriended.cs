@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName ="Befriended-DefendPoint", menuName = "NPC Logic/Befriended Logic/Defend Point Befriended")]
 public class NPCDefendPointBefriended : NPCBefriendedSOBase
 {
-    Transform hideoutTransform;
+    Transform defendPoint;
 
     private float wanderRadius = 5f; // The radius of the wandering area
     private float wanderTimer = 2f;
@@ -20,10 +20,10 @@ public class NPCDefendPointBefriended : NPCBefriendedSOBase
     {
         base.DoEnterLogic();
 
-        hideoutTransform = player.HideoutGO.transform;
-        npc.transform.position = hideoutTransform.position + Vector3.right;
+        defendPoint = player.HideoutGO.transform;
+        npc.transform.position = defendPoint.position + Vector3.right;
 
-        Debug.Log($"{hideoutTransform.transform.position} {npc.transform.position}");
+        Debug.Log($"{defendPoint.transform.position} {npc.transform.position}");
 
         timer = wanderTimer;
     }

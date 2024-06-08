@@ -91,10 +91,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d51dd5a2a0cfbbb4bb5fd8890f3fac18, type: 3}
   noticeRadius: {fileID: 9056518680389729835}
   attackRadius: {fileID: 6021333712285122803}
+  interactCollider: {fileID: 4199000855540557587}
   idleStateBase: {fileID: 11400000, guid: 6c1bb018be1494848a221bc6b552dd06, type: 2}
   chaseStateBase: {fileID: 11400000, guid: 1b8075e9a06728743af8c06e1f6626f6, type: 2}
   dialogStateBase: {fileID: 11400000, guid: 6dfde8399f83a5b4f9e90818594cac18, type: 2}
-  befriendedStateBase: {fileID: 11400000, guid: 2a66445a8a19fc04cb13768991399006, type: 2}
   dropItem: {fileID: 11400000, guid: 79e4c77050aabc24b995eff5773d62d3, type: 2}
 --- !u!82 &5306853747010139892
 AudioSource:
@@ -973,4 +973,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85766a56ace13a74facf084516617051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npc: {fileID: 0}
+  npc: {fileID: 8605646932505992226}

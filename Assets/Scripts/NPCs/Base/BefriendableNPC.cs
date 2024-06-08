@@ -22,6 +22,8 @@ public class BefriendableNPC : NPCBase
     public NPCBefriendedSOBase CurrentBefriendedStateInstance { get; set; }
     public NPCBefriendedState BefriendedState { get; set; }
 
+    public bool defendsPlayer = false;
+
     override protected void Awake()
     {
         base.Awake();
@@ -82,22 +84,21 @@ public class BefriendableNPC : NPCBase
         pack.Clear();
 
         player.Befriend(this);
-        StateMachine.ChangeState(BefriendedState);
+
+        SetDefaultState();
     }
 
-    public void SetDafaultState()
+    override public void SetDefaultState()
     {
         CurrentBefriendedStateInstance = defaultBefriendedStateInstance;
+        StateMachine.ChangeState(BefriendedState);
+        defendsPlayer = true;
     }
 
     public void SetSecondaryState()
     {
         CurrentBefriendedStateInstance = secondaryBefriendedStateInstance;
         StateMachine.ChangeState(BefriendedState);
-    }
-
-    public override void AddNPCTarget(NPCBase target)
-    {
-        SetTarget(target.gameObject);
+        defendsPlayer = false;
     }
 }

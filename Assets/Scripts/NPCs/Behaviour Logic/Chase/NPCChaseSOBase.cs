@@ -7,8 +7,9 @@ public class NPCChaseSOBase : ScriptableObject
     protected NPCBase npc;
 
     protected GameObject target;
+    protected NPCBase targetNPC;
 
-    private float loseTargetDistance = 46f;
+    private float loseTargetDistance = 26f;
 
     public virtual void Initialize(NPCBase npc)
     {
@@ -19,6 +20,13 @@ public class NPCChaseSOBase : ScriptableObject
     {
         target = npc.ChaseTarget;
 
+        targetNPC = target.GetComponent<NPCBase>(); //.NPCDeathEvent += npc.SetDefaultState;
+
+        if(targetNPC != null )
+        {
+            targetNPC.NPCDeathEvent += npc.SetDefaultState;
+        }
+
         npc.HealthIndicator.gameObject.SetActive(true);
         npc.InteractHintGO.SetActive(false);
         npc.InteractCollider.gameObject.SetActive(false);
@@ -26,14 +34,14 @@ public class NPCChaseSOBase : ScriptableObject
     public virtual void DoExitLogic() { ResetValues(); }
     public virtual void DoFrameUpdateLogic()
     {
+        if (target == null)
+        {
+            npc.SetDefaultState();
+        }
+
         if (Vector3.Distance(target.transform.position, npc.transform.position) > loseTargetDistance)
         {
             target = null;
-        }
-
-        if (target == null)
-        {
-            npc.StateMachine.ChangeState(npc.IdleState);
         }
     }
     public virtual void DoPhysicsLogic() { }
@@ -43,5 +51,10 @@ public class NPCChaseSOBase : ScriptableObject
         npc.HealthIndicator.gameObject.SetActive(false);
         npc.InteractHintGO.SetActive(true);
         npc.InteractCollider.gameObject.SetActive(true);
+
+        if(targetNPC != null)
+        {
+            targetNPC.NPCDeathEvent += npc.SetDefaultState;
+        }
     }
 }

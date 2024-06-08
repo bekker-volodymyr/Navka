@@ -8,10 +8,21 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     [SerializeField] private GameObject spriteGO;
     public GameObject SpriteGO { get { return spriteGO; } }
 
-    //PhotonView view;
+    PhotonView view;
 
     private ICover cover = null;
     public ICover CoverGetter { get { return cover; } }
+    private bool isUnderCover = false;
+
+    [Space]
+    [SerializeField] private BefriendedAnimals animals;
+    public BefriendedAnimals Animals { get { return animals; } }
+
+    private bool isInDialog = false;
+
+    [Space]
+    [SerializeField] private GameObject hideoutGO;
+    public GameObject HideoutGO { get { return hideoutGO; } }
 
     #region Movement Variables
     [Space]
@@ -25,9 +36,9 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     [SerializeField] private CircleCollider2D attackRadius;
     public CircleCollider2D AttackRadius { get { return attackRadius; } }
     [SerializeField] private CircleCollider2D noticeRadius;
-    public  CircleCollider2D NoticeRadius { get { return noticeRadius; } }
+    public CircleCollider2D NoticeRadius { get { return noticeRadius; } }
     [SerializeField] private CircleCollider2D interactCollider;
-    public CircleCollider2D InteractCollider { get {  return interactCollider; } }
+    public CircleCollider2D InteractCollider { get { return interactCollider; } }
     [SerializeField] private CircleCollider2D damageCollider;
     public CircleCollider2D DamageCollider { get { return damageCollider; } }
 
@@ -83,7 +94,7 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     private void Awake()
     {
         StateMachine = new StateMachine();
-        IdleState    = new PlayerIdleState(this, StateMachine);
+        IdleState = new PlayerIdleState(this, StateMachine);
         MoveToPointState = new PlayerMoveToPointState(this, StateMachine);
         LockToInteractState = new PlayerLockToInteractState(this, StateMachine);
         LockToTargetState = new PlayerLockToTargetState(this, StateMachine);
@@ -108,23 +119,26 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
         Item.OnPickUp += OnItemPickedUp;
 
         StartCoroutine("HungerCountdown");
-        //view = GetComponent<PhotonView>();
+        view = GetComponent<PhotonView>();
     }
 
     private void Update()
     {
-        //if (view.IsMine)
-        //{
-            StateMachine.CurrentState.FrameUpdate();
-        //}
+        if (view.IsMine)
+        {
+            if (!isInDialog)
+            {
+                StateMachine.CurrentState.FrameUpdate();
+            }
+        }
     }
 
     private void FixedUpdate()
     {
-        //if (view.IsMine)
-        //{
+        if (!isInDialog)
+        {
             StateMachine.CurrentState.PhysicsUpdate();
-        //}
+        }
     }
 
     private void OnDestroy()
@@ -210,17 +224,20 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     public void Interact(IInteractable target)
     {
         target.OnInteraction(gameObject);
-        LockToInteractState.RemoveTarget();
+        if (!isUnderCover)
+        {
+            StateMachine.ChangeState(IdleState);
+        }
     }
 
     private void OnDialogStart(IDialog npc)
     {
-        StateMachine.ChangeState(DialogState);
+        isInDialog = true;
     }
 
     private void OnDialogEnd()
     {
-        StateMachine.ChangeState(IdleState);
+        isInDialog = false;
     }
 
     #endregion
@@ -228,7 +245,7 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     #region Hunger Logic
     private IEnumerator HungerCountdown()
     {
-        while(CurrentHunger > 0)
+        while (!GameManager.isDead)
         {
             yield return new WaitForSeconds(secondsToReduce);
 
@@ -249,11 +266,11 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     {
         float newValue = currentHunger + changeValue;
 
-        if(newValue < 0)
+        if (newValue < 0)
         {
             currentHunger = 0;
         }
-        else if(newValue > 100)
+        else if (newValue > 100)
         {
             currentHunger = 100;
         }
@@ -281,7 +298,7 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     }
     public void UseSelectedItem()
     {
-        if(selectedItem is not null && selectedItem.Effects is not null)
+        if (selectedItem is not null && selectedItem.Effects is not null)
         {
             foreach (var effect in selectedItem.Effects)
             {
@@ -308,10 +325,19 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     }
     #endregion
 
-    #region Feeding Logic
+    #region Befriending Logic
     public void FeedItem()
     {
         inventory.ConsumeSelectedItem();
+    }
+    public void Befriend(BefriendableNPC npc)
+    {
+        Debug.Log($"{npc.name}");
+        animals.AddAnimal(npc);
+    }
+    public void SetTargetForAnimals(GameObject target)
+    {
+        animals.SetTarget(target);
     }
     #endregion
 
@@ -321,6 +347,7 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
         transform.position = cover.Position;
         this.cover = cover;
 
+        isUnderCover = true;
         StateMachine.ChangeState(UnderCoverState);
     }
     public void LeaveCover()

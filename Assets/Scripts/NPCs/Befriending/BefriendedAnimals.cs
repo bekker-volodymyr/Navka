@@ -15,4 +15,15 @@ public class BefriendedAnimals : MonoBehaviour
         animals.Add(animal);
         AddAnimalEvent?.Invoke(animal);
     }
+
+    public void SetTarget(GameObject target)
+    {
+        for (int i = 0; i < animals.Count; i++)
+        {
+            if (animals[i].defendsPlayer)
+            {
+                animals[i].SetTarget(target);
+            }
+        }
+    }
 }

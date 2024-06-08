@@ -98,6 +98,8 @@ public class NPCBase : ItemDropper, IMoveable, IDamageable, IAttack, IInteractab
     #region Damage / Death Logic
     virtual public void GetDamage(float damage, GameObject attacker)
     {
+        Move(Vector2.zero);
+
         float newHealth = currentHealth;
 
         newHealth -= damage;
@@ -186,20 +188,22 @@ public class NPCBase : ItemDropper, IMoveable, IDamageable, IAttack, IInteractab
 
     virtual public void AddNPCTarget(NPCBase target)
     {
-        if(description.AttackTargets.Contains(target.DescriptionSO))
+        if (description.AttackTargets.Contains(target.DescriptionSO))
         {
             foreach (var npc in pack)
             {
                 npc.SetTarget(target.gameObject);
             }
         }
-        else if(description == target.DescriptionSO)
+        else if (description == target.DescriptionSO)
         {
             pack.Add(target);
         }
     }
-    virtual public void SetTarget(GameObject target)
+    public void SetTarget(GameObject target)
     {
+        Debug.Log($"{target.name}");
+
         if (chaseTarget == null)
         {
             chaseTarget = target;
@@ -210,6 +214,11 @@ public class NPCBase : ItemDropper, IMoveable, IDamageable, IAttack, IInteractab
     virtual public void OnInteraction(GameObject interactObject)
     {
         Debug.Log($"No interaction with this NPC or not implemented. {interactObject.name}.");
+    }
+
+    virtual public void SetDefaultState()
+    {
+        StateMachine.ChangeState(IdleState);
     }
 
     #region Triggers

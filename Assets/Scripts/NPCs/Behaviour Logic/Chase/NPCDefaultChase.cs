@@ -8,7 +8,7 @@ public class NPCDefaultChase : NPCChaseSOBase
     private float moveSpeed = 5f;
 
     private bool attackStarted;
-    private float attackDelay;
+    private float attackDelay = 0.2f;
     private float attackTimer;
 
     public override void Initialize(NPCBase npc)
@@ -23,7 +23,7 @@ public class NPCDefaultChase : NPCChaseSOBase
         attackTarget = target.GetComponent<IDamageable>();
 
         attackStarted = false;
-        attackDelay = 1f;
+        //attackDelay = 0.5f;
         attackTimer = attackDelay;
 
     }
@@ -37,7 +37,7 @@ public class NPCDefaultChase : NPCChaseSOBase
         
         if (!attackStarted)
         {
-            if ((npc.transform.position - target.transform.position).sqrMagnitude < npc.AttackRadius.radius)
+            if (Vector3.Distance(npc.transform.position, target.transform.position) < npc.AttackRadius.radius)
             {
                 attackStarted = true;
                 attackTimer = attackDelay;
@@ -54,7 +54,7 @@ public class NPCDefaultChase : NPCChaseSOBase
             attackTimer -= Time.deltaTime;
             if(attackTimer <= 0)
             {
-                if ((npc.transform.position - target.transform.position).sqrMagnitude < npc.AttackRadius.radius)
+                if (Vector3.Distance(npc.transform.position, target.transform.position) <= npc.AttackRadius.radius)
                     npc.Attack(attackTarget);
                 attackStarted = false;
             }

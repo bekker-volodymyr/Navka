@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Chase-Runaway Chase", menuName = "NPC Logic/Chase Logic/Runaway Chase")]
 public class NPCRunawayChase : NPCChaseSOBase
 {
-    private float moveSpeed = 5f;
+    private float moveSpeed = 3f;
 
     public override void Initialize(NPCBase npc)
     {

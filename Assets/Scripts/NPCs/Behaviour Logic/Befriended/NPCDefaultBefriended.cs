@@ -1,13 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 [CreateAssetMenu(fileName ="Befriended-DefaultBefriended", menuName ="NPC Logic/Befriended Logic/Default Befriended")]
 public class NPCDefaultBefriended : NPCBefriendedSOBase
 {
-    public float followSpeed = 2.0f;
-    public float stoppingDistance = 1.5f;
+    private float followSpeed = 2.0f;
+    private float stoppingDistance = 1.5f;
+    private float wanderRadius = 3f;
+    private float wanderTimer = 2f;
+    private float timer;
 
     public override void Initialize(BefriendableNPC npc)
     {
@@ -17,6 +17,8 @@ public class NPCDefaultBefriended : NPCBefriendedSOBase
     public override void DoEnterLogic()
     {
         base.DoEnterLogic();
+
+        timer = wanderTimer;
     }
 
     public override void DoExitLogic()
@@ -39,7 +41,15 @@ public class NPCDefaultBefriended : NPCBefriendedSOBase
         }
         else
         {
-            npc.Move(Vector2.zero);
+            timer += Time.deltaTime;
+
+            if (timer >= wanderTimer)
+            {
+                Vector3 newPos = RandomCircle(player.transform.position, wanderRadius);
+                Vector3 velocity = (newPos - npc.transform.position).normalized * followSpeed;
+                npc.Move(velocity);
+                timer = 0;
+            }
         }
     }
 
@@ -56,5 +66,13 @@ public class NPCDefaultBefriended : NPCBefriendedSOBase
     public override void DoAnimationTriggerEventLogic(NPCBase.AnimationTriggerType triggerType)
     {
         base.DoAnimationTriggerEventLogic(triggerType);
+    }
+
+    Vector2 RandomCircle(Vector2 center, float radius)
+    {
+        float angle = Random.Range(0f, 2f * Mathf.PI);
+        float x = center.x + radius * Mathf.Cos(angle);
+        float y = center.y + radius * Mathf.Sin(angle);
+        return new Vector2(x, y);
     }
 }

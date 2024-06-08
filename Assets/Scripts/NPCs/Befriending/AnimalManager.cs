@@ -34,7 +34,7 @@ public class AnimalManager : MonoBehaviour
 
     public void BaseOrderClick()
     {
-        animal.SetDafaultState();
+        animal.SetDefaultState();
     }
 
     public void SecondaryOrderClick()
