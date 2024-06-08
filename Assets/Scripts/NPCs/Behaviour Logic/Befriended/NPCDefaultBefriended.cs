@@ -3,8 +3,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName ="Befriended-DefaultBefriended", menuName ="NPC Logic/Befriended Logic/Default Befriended")]
 public class NPCDefaultBefriended : NPCBefriendedSOBase
 {
-    private float followSpeed = 2.0f;
-    private float stoppingDistance = 1.5f;
+    private float followSpeed = 3.0f;
+    private float stoppingDistance = 4.5f;
     private float wanderRadius = 3f;
     private float wanderTimer = 2f;
     private float timer;

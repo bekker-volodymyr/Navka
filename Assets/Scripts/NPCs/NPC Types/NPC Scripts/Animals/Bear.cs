@@ -1,4 +1,4 @@
-public class Bear : NPCBase
+public class Bear : BefriendableNPC
 {
-    
+
 }
