@@ -62,13 +62,15 @@ public class LevelLoader : MonoBehaviour
 
                         //set prefabs parent
                         instantiatedPrefab.transform.SetParent(parentGameObject.transform, false);
-                    //instantiatedPrefab.transform.localPosition = vector2;
+                        //instantiatedPrefab.transform.localPosition = vector2;
 
                         int x = Random.Range(50, -50);
                         int y = Random.Range(50, -50);
-                        //UnityEngine.Vector3 vector3 = new UnityEngine.Vector3(x, y, 0);
-                        instantiatedPrefab.transform.localPosition = UnityEngine.Vector3.zero;
-                        instantiatedPrefab.transform.localRotation = UnityEngine.Quaternion.identity;
+                        UnityEngine.Vector3 vector3 = new UnityEngine.Vector3(10, 10, 0);
+                    instantiatedPrefab.transform.localPosition = vector3;
+
+                    //instantiatedPrefab.transform.localPosition = UnityEngine.Vector3.zero;
+                    instantiatedPrefab.transform.localRotation = UnityEngine.Quaternion.identity;
                         instantiatedPrefab.transform.localScale = UnityEngine.Vector3.one;
                     //}
 
