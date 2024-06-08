@@ -42,6 +42,7 @@ public class FolderListManager : MonoBehaviour
             {
                 //Debug.Log("file:" + file);
                 CreateListItem(Path.GetFileName(file), i);
+                i++;
             }
         }
         else
@@ -49,7 +50,7 @@ public class FolderListManager : MonoBehaviour
             Debug.Log(folderPath.ToString());
             Debug.LogError("Directory doesnt exist");
         }
-        i++;
+        
     }
 
     void OnItemSelected(int index)
