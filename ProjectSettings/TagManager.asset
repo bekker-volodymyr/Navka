@@ -11,6 +11,10 @@ TagManager:
   - NPC
   - Damageable
   - EnvironmentObject
+  - IInteractable
+  - HealthPlayer
+  - HungerPlayer
+  - ManaPlayer
   layers:
   - Default
   - TransparentFX

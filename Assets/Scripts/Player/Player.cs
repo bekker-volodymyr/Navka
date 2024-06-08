@@ -8,7 +8,7 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     [SerializeField] private GameObject spriteGO;
     public GameObject SpriteGO { get { return spriteGO; } }
 
-    PhotonView view;
+    //PhotonView view;
 
     private ICover cover = null;
     public ICover CoverGetter { get { return cover; } }
@@ -75,10 +75,9 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     #endregion
 
     #region Indicators
-    [Space]
-    [SerializeField] private Indicator healthIndicator;
-    [SerializeField] private Indicator hungerIndicator;
-    [SerializeField] private Indicator manaIndicator;
+    private Indicator healthIndicator;
+    private Indicator hungerIndicator;
+    private Indicator manaIndicator;
     #endregion
 
     #region State Machine Fields
@@ -119,18 +118,23 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
         Item.OnPickUp += OnItemPickedUp;
 
         StartCoroutine("HungerCountdown");
-        view = GetComponent<PhotonView>();
+
+        healthIndicator = GameObject.FindGameObjectWithTag("HealthPlayer").GetComponent<Indicator>();
+        hungerIndicator = GameObject.FindGameObjectWithTag("HungerPlayer").GetComponent<Indicator>();
+        manaIndicator = GameObject.FindGameObjectWithTag("ManaPlayer").GetComponent<Indicator>();
+
+        //view = GetComponent<PhotonView>();
     }
 
     private void Update()
     {
-        if (view.IsMine)
-        {
+        //if (view.IsMine)
+        //{
             if (!isInDialog)
             {
                 StateMachine.CurrentState.FrameUpdate();
             }
-        }
+        //}
     }
 
     private void FixedUpdate()
