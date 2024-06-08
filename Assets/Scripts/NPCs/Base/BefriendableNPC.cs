@@ -135,9 +135,4 @@ public class BefriendableNPC : NPCBase
             SetTarget(target.gameObject);
         }
     }
-
-    public override void SetTarget(GameObject target)
-    {
-        base.SetTarget(target);
-    }
 }

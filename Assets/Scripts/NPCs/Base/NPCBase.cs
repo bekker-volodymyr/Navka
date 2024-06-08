@@ -204,7 +204,7 @@ public class NPCBase : ItemDropper, IMoveable, IDamageable, IAttack, IInteractab
             pack.Add(target);
         }
     }
-    virtual public void SetTarget(GameObject target)
+    public void SetTarget(GameObject target)
     {
         Debug.Log($"Chaser: {name} --- Target: {target.name}");
 

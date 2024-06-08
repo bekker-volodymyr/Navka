@@ -21,9 +21,11 @@ public class NPCDefendPointBefriended : NPCBefriendedSOBase
         base.DoEnterLogic();
 
         defendPoint = player.HideoutGO.transform;
-        npc.transform.position = defendPoint.position + Vector3.right;
 
-        Debug.Log($"{defendPoint.transform.position} {npc.transform.position}");
+        if (Vector3.Distance(player.transform.position, defendPoint.position) < wanderRadius)
+        {
+            npc.transform.position = defendPoint.position + Vector3.right;
+        }
 
         timer = wanderTimer;
     }
