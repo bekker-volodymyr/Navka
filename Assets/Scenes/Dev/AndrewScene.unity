@@ -759,7 +759,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &966011472
 Transform:
   m_ObjectHideFlags: 0
@@ -928,6 +928,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 770164377715260940, guid: 10262515c51564c4a97019ace17f309f, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 892892934625730654, guid: 10262515c51564c4a97019ace17f309f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 892892934625730654, guid: 10262515c51564c4a97019ace17f309f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 892892934625730654, guid: 10262515c51564c4a97019ace17f309f, type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1146603272933272274, guid: 10262515c51564c4a97019ace17f309f, type: 3}
@@ -1136,7 +1148,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3624248943229621144, guid: 10262515c51564c4a97019ace17f309f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.00078749727
+      value: -0.000008227539
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799581467172024210, guid: 10262515c51564c4a97019ace17f309f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799581467172024210, guid: 10262515c51564c4a97019ace17f309f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3802207732218504333, guid: 10262515c51564c4a97019ace17f309f, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1148,7 +1168,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3898378915582158507, guid: 10262515c51564c4a97019ace17f309f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4340959951034250226, guid: 10262515c51564c4a97019ace17f309f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1985,7 +2005,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   filePath: 
-  parentObject: {fileID: 1732701798}
   layerName: Environment
   prefabsList:
   - {fileID: 4886031037478288704, guid: 22d6ec97e721f4a3f87b867827ca8c62, type: 3}
@@ -1994,6 +2013,7 @@ MonoBehaviour:
   - {fileID: 3251206823055180716, guid: 9721bc8054b974243823bd894309a86c, type: 3}
   - {fileID: 8739127243175631453, guid: 4a1d578e9c0874f88a2e798ccd2175e6, type: 3}
   - {fileID: 829225917883405593, guid: 99835810246d8447fbaa1621eeb36410, type: 3}
+  parentGameObject: {fileID: 1732701797}
 --- !u!1001 &1760736271
 PrefabInstance:
   m_ObjectHideFlags: 0
