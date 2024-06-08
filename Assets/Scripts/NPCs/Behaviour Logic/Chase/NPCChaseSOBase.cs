@@ -20,11 +20,11 @@ public class NPCChaseSOBase : ScriptableObject
     {
         target = npc.ChaseTarget;
 
-        targetNPC = target.GetComponent<NPCBase>(); //.NPCDeathEvent += npc.SetDefaultState;
+        targetNPC = target.GetComponent<NPCBase>();
 
         if(targetNPC != null )
         {
-            targetNPC.NPCDeathEvent += npc.SetDefaultState;
+            targetNPC.NPCDeathEvent += npc.ResetState;
         }
 
         npc.HealthIndicator.gameObject.SetActive(true);
@@ -36,7 +36,7 @@ public class NPCChaseSOBase : ScriptableObject
     {
         if (target == null)
         {
-            npc.SetDefaultState();
+            npc.ResetState();
         }
 
         if (Vector3.Distance(target.transform.position, npc.transform.position) > loseTargetDistance)
@@ -54,7 +54,7 @@ public class NPCChaseSOBase : ScriptableObject
 
         if(targetNPC != null)
         {
-            targetNPC.NPCDeathEvent += npc.SetDefaultState;
+            targetNPC.NPCDeathEvent += npc.ResetState;
         }
     }
 }
