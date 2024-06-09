@@ -275,7 +275,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2752739238348959327, guid: d35c9f2e9f9ebd04aab3851db6f2790a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2752739238348959327, guid: d35c9f2e9f9ebd04aab3851db6f2790a, type: 3}
       propertyPath: m_TagString
@@ -324,7 +324,11 @@ PrefabInstance:
     - target: {fileID: 7275016242517586155, guid: d35c9f2e9f9ebd04aab3851db6f2790a, type: 3}
       propertyPath: item
       value: 
-      objectReference: {fileID: 11400000, guid: d9bc92fbd33a93f458326f8674fdfd6b, type: 2}
+      objectReference: {fileID: 11400000, guid: 97a71477ec8008b46ab606f1d84926ea, type: 2}
+    - target: {fileID: 7275016242517586155, guid: d35c9f2e9f9ebd04aab3851db6f2790a, type: 3}
+      propertyPath: quantity
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7698120356126641966, guid: d35c9f2e9f9ebd04aab3851db6f2790a, type: 3}
     m_RemovedGameObjects: []
@@ -1152,6 +1156,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 958448904346657322, guid: 10262515c51564c4a97019ace17f309f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 386.99997
+      objectReference: {fileID: 0}
     - target: {fileID: 2084770955863381315, guid: 10262515c51564c4a97019ace17f309f, type: 3}
       propertyPath: speakerImage
       value: 
@@ -1270,7 +1278,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3624248943229621144, guid: 10262515c51564c4a97019ace17f309f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.0000064926217
+      value: 0.000053101106
       objectReference: {fileID: 0}
     - target: {fileID: 3799581467172024210, guid: 10262515c51564c4a97019ace17f309f, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1715,11 +1723,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3115010967271730244, guid: dccdbfb0a27c0ca4b815282c7e324f51, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.252468
+      value: 9.09
       objectReference: {fileID: 0}
     - target: {fileID: 3115010967271730244, guid: dccdbfb0a27c0ca4b815282c7e324f51, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.719594
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3115010967271730244, guid: dccdbfb0a27c0ca4b815282c7e324f51, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1753,13 +1761,57 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5799468912586277688, guid: dccdbfb0a27c0ca4b815282c7e324f51, type: 3}
+      propertyPath: description
+      value: 
+      objectReference: {fileID: 11400000, guid: 0c77469575db63649aaf88d179162518, type: 2}
+    - target: {fileID: 5799468912586277688, guid: dccdbfb0a27c0ca4b815282c7e324f51, type: 3}
+      propertyPath: feedingList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5799468912586277688, guid: dccdbfb0a27c0ca4b815282c7e324f51, type: 3}
+      propertyPath: feedingList.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 475dec5caa70ff045988f5284a8c1d68, type: 2}
+    - target: {fileID: 5799468912586277688, guid: dccdbfb0a27c0ca4b815282c7e324f51, type: 3}
+      propertyPath: feedingList.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 97a71477ec8008b46ab606f1d84926ea, type: 2}
+    - target: {fileID: 5799468912586277688, guid: dccdbfb0a27c0ca4b815282c7e324f51, type: 3}
+      propertyPath: feedingList.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 97a71477ec8008b46ab606f1d84926ea, type: 2}
+    - target: {fileID: 5799468912586277688, guid: dccdbfb0a27c0ca4b815282c7e324f51, type: 3}
+      propertyPath: defaultBefriendedStateBase
+      value: 
+      objectReference: {fileID: 11400000, guid: 2a66445a8a19fc04cb13768991399006, type: 2}
+    - target: {fileID: 5799468912586277688, guid: dccdbfb0a27c0ca4b815282c7e324f51, type: 3}
+      propertyPath: secondaryBefriendedStateBase
+      value: 
+      objectReference: {fileID: 11400000, guid: 0a3bed0bf78befd4a8380bf813ddb68c, type: 2}
+    - target: {fileID: 5799468912586277688, guid: dccdbfb0a27c0ca4b815282c7e324f51, type: 3}
+      propertyPath: befriendingItemsList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5799468912586277688, guid: dccdbfb0a27c0ca4b815282c7e324f51, type: 3}
+      propertyPath: befriendingItemsList.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 97a71477ec8008b46ab606f1d84926ea, type: 2}
+    - target: {fileID: 5799468912586277688, guid: dccdbfb0a27c0ca4b815282c7e324f51, type: 3}
+      propertyPath: befriendingItemsList.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 97a71477ec8008b46ab606f1d84926ea, type: 2}
+    - target: {fileID: 5799468912586277688, guid: dccdbfb0a27c0ca4b815282c7e324f51, type: 3}
+      propertyPath: befriendingItemsList.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 97a71477ec8008b46ab606f1d84926ea, type: 2}
     - target: {fileID: 9120763661888451869, guid: dccdbfb0a27c0ca4b815282c7e324f51, type: 3}
       propertyPath: m_Name
       value: Bear
       objectReference: {fileID: 0}
     - target: {fileID: 9120763661888451869, guid: dccdbfb0a27c0ca4b815282c7e324f51, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2240,7 +2292,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1391589936093648790, guid: 42baa23d791ccd74290236d37b8717a4, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4456675825318970739, guid: 42baa23d791ccd74290236d37b8717a4, type: 3}
       propertyPath: m_Camera
@@ -2306,12 +2358,12 @@ SceneRoots:
   - {fileID: 2016028680}
   - {fileID: 42120793}
   - {fileID: 2128654413}
-  - {fileID: 8702194646451006934}
+  - {fileID: 1988969492}
   - {fileID: 909734022}
   - {fileID: 196220463}
-  - {fileID: 1083609851}
   - {fileID: 201126548}
+  - {fileID: 1083609851}
+  - {fileID: 8702194646451006934}
   - {fileID: 418150388}
   - {fileID: 948108008}
   - {fileID: 885348195}
-  - {fileID: 1988969492}

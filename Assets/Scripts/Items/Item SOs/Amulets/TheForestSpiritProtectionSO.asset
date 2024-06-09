@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc59ad142cfb7364ca399ddddc978a15, type: 3}
+  m_Name: TheForestSpiritProtectionSO
+  m_EditorClassIdentifier: 
+  _name: The Forest Spirit's Protection
+  description: The Forest Spirit's Protection is a magical amulet that will shield
+    you from harm. It is crafted from the leaves of sacred trees, the fangs of a
+    forest beast, and the fur of a mighty bear.
+  lore: It is believed that the one who wears this amulet receives the blessing of
+    the forest spirit, which grants protection from all troubles and dangers.
+  recipe: {fileID: 0}
+  type: 2
+  effects: []
+  sprite: {fileID: 21300000, guid: ae039962aa4804048ab8b2fcc35a1420, type: 3}
+  maxPerStack: 0

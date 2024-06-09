@@ -15,6 +15,7 @@ TagManager:
   - HealthPlayer
   - HungerPlayer
   - ManaPlayer
+  - Inventory Controller
   layers:
   - Default
   - TransparentFX

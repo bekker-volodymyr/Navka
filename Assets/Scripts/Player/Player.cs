@@ -113,6 +113,8 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
 
         StateMachine.Initialize(IdleState);
 
+        inventory = GameObject.FindGameObjectWithTag("Inventory Controller").GetComponent<InventoryController>();
+
         inventory.ItemSelectedEvent += OnItemSelected;
         inventory.ItemDeselectedEvent += OnItemDeselected;
 
@@ -339,6 +341,7 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     public void FeedItem()
     {
         inventory.ConsumeSelectedItem();
+        selectedItem = inventory.GetSelectedItem();
     }
     public void Befriend(BefriendableNPC npc)
     {
