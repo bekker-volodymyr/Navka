@@ -135,6 +135,14 @@ PrefabInstance:
       propertyPath: dialog_menu
       value: 
       objectReference: {fileID: 2105923350}
+    - target: {fileID: 1019976961545247000, guid: 0db8d318213a75541b93f5583c560e33, type: 3}
+      propertyPath: lines.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1019976961545247000, guid: 0db8d318213a75541b93f5583c560e33, type: 3}
+      propertyPath: lines.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: f52661b0aef70a3449e4fbae2b4f34e0, type: 2}
     - target: {fileID: 1916447473191742845, guid: 0db8d318213a75541b93f5583c560e33, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.9640496
@@ -1158,7 +1166,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 958448904346657322, guid: 10262515c51564c4a97019ace17f309f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 386.99997
+      value: 386.99994
       objectReference: {fileID: 0}
     - target: {fileID: 2084770955863381315, guid: 10262515c51564c4a97019ace17f309f, type: 3}
       propertyPath: speakerImage
@@ -1278,7 +1286,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3624248943229621144, guid: 10262515c51564c4a97019ace17f309f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000053101106
+      value: 0.00041398124
       objectReference: {fileID: 0}
     - target: {fileID: 3799581467172024210, guid: 10262515c51564c4a97019ace17f309f, type: 3}
       propertyPath: m_AnchorMax.x

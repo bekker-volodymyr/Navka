@@ -13,6 +13,8 @@ public class DialogMenu : MonoBehaviour
     private CharacterLine currentLine;
     private IDialog npc;
 
+    public int currentDialogLine = 0;
+
     [Space]
     [SerializeField] private GameObject dialogMenu;
     [SerializeField] private TextMeshProUGUI textComponent;
@@ -48,7 +50,7 @@ public class DialogMenu : MonoBehaviour
 
     private void StartDialogue()
     {
-        currentLine = npc.Lines[0];
+        currentLine = npc.Lines[currentDialogLine];
         StartCoroutine(TypeLine());
     }
 
