@@ -28,6 +28,9 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     [SerializeField] private List<NPCDescriptionSO> defendFromList;
     public List<NPCDescriptionSO> DefendFromList { get { return defendFromList; } }
 
+    private List<ItemSO> amulets = new List<ItemSO>();
+    private AmuletsManager amuletsManager;
+
     #region Movement Variables
     [Space]
     [SerializeField] private Rigidbody2D playerRB;
@@ -114,6 +117,7 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
         StateMachine.Initialize(IdleState);
 
         inventory = GameObject.FindGameObjectWithTag("Inventory Controller").GetComponent<InventoryController>();
+        amuletsManager = GameObject.FindGameObjectWithTag("Amulets Manager").GetComponent<AmuletsManager>();
 
         inventory.ItemSelectedEvent += OnItemSelected;
         inventory.ItemDeselectedEvent += OnItemDeselected;
@@ -170,9 +174,28 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     }
     public void GetDamage(float damage, GameObject attacker)
     {
-        ChangeHealth(-damage);
+        ChangeHealth(-CalculateDamageValue(damage));
 
         SetTargetForAnimals(attacker);
+    }
+    private float CalculateDamageValue(float damage)
+    {
+        float newDamage = damage;
+        foreach(var amulet in amulets)
+        {
+            if(amulet.Effects.Count > 0)
+            {
+                foreach(var effect in amulet.Effects)
+                {
+                    if(effect.EffectProperty == Enums.EffectProperty.DamageGet)
+                    {
+                        newDamage -= effect.Value;
+                    }
+                }
+            }
+        }
+        return newDamage <= 0f ? 0f : newDamage;
+        
     }
     private void ChangeHealth(float value)
     {
@@ -199,7 +222,25 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     {
         // TODO: apply bonuses and debufs to damage value
 
-        target.GetDamage(damage, gameObject);
+        target.GetDamage(CalculateAttackDamage(damage), gameObject);
+    }
+    private float CalculateAttackDamage(float damage)
+    {
+        float newDamage = damage;
+        foreach (var amulet in amulets)
+        {
+            if (amulet.Effects.Count > 0)
+            {
+                foreach (var effect in amulet.Effects)
+                {
+                    if (effect.EffectProperty == Enums.EffectProperty.DamageAttack)
+                    {
+                        newDamage += effect.Value;
+                    }
+                }
+            }
+        }
+        return newDamage <= 0f ? 0f : newDamage;
     }
     public Collider2D[] GetAllItemsInCollisionRadius()
     {
@@ -310,6 +351,12 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     }
     public void UseSelectedItem()
     {
+        if(selectedItem is not null && selectedItem.Type == Enums.ItemType.Amulet)
+        {
+            WearAmulet(selectedItem);
+            return;
+        }
+
         if (selectedItem is not null && selectedItem.Effects is not null)
         {
             foreach (var effect in selectedItem.Effects)
@@ -326,6 +373,17 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
                 }
             }
         }
+    }
+    private void WearAmulet(ItemSO amulet)
+    {
+        amulets.Add(amulet);
+        amuletsManager.AddAmulet(amulet, this);
+        FeedItem();
+    }
+    public void TakeOffAmulet(ItemSO amulet)
+    {
+        amulets.Remove(amulet);
+        inventory.AddItem(amulet, 1);
     }
     public void DropItem()
     {

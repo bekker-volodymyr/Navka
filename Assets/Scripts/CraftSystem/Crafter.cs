@@ -18,6 +18,8 @@ public class Crafter : ItemDropper, IInteractable
 
         ItemSO item = player.SelectedItem;
 
+        if(item == null) return;
+
         putItems.Add(item);
         player.FeedItem();
 
@@ -51,18 +53,24 @@ public class Crafter : ItemDropper, IInteractable
                 isContains = new List<bool>();
             }
 
-            if(recipe == null)
+            if (recipe == null)
             {
-                foreach(var putItem in putItems)
+                foreach (var putItem in putItems)
                 {
                     SpawnItem(putItem, 1);
                 }
-                //putItems.Clear();
-                putItems = new List<ItemSO>();
-                return;
             }
-
-            SpawnItem(recipe.Result, 1);
+            else
+            {
+                SpawnItem(recipe.Result, 1);
+            }
+            
+            Reset();
         }
+    }
+
+    private void Reset()
+    {
+        putItems = new List<ItemSO>(3);
     }
 }

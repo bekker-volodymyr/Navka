@@ -18,8 +18,9 @@ MonoBehaviour:
     forest beast, and the fur of a mighty bear.
   lore: It is believed that the one who wears this amulet receives the blessing of
     the forest spirit, which grants protection from all troubles and dangers.
-  recipe: {fileID: 0}
+  recipe: {fileID: 11400000, guid: 6bb87c8468050e54a867ec67d5b8b48f, type: 2}
   type: 2
-  effects: []
-  sprite: {fileID: 21300000, guid: ae039962aa4804048ab8b2fcc35a1420, type: 3}
-  maxPerStack: 0
+  effects:
+  - {fileID: 11400000, guid: 95d070435a483274fb63d0827934c313, type: 2}
+  sprite: {fileID: 21300000, guid: aad878627da97cb4882da82f87109766, type: 3}
+  maxPerStack: 1

@@ -79,6 +79,8 @@ public class InventoryController : MonoBehaviour
 
     public void ConsumeSelectedItem()
     {
+        if (selectedItemIndex == -1) return;
+
         inventoryModel.ReduceItemQuantity(selectedItemIndex, 1);
     }
 

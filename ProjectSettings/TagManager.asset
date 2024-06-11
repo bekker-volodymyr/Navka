@@ -16,6 +16,7 @@ TagManager:
   - HungerPlayer
   - ManaPlayer
   - Inventory Controller
+  - Amulets Manager
   layers:
   - Default
   - TransparentFX

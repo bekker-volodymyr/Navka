@@ -25,7 +25,7 @@ public class Enums
 
     public enum EffectProperty
     {
-        Health, Hunger, Mana, Speed, Nothing
+        Health, Hunger, Mana, Speed, HungeringInterval, DamageGet, DamageAttack, Nothing
     }
 
     public enum TargetDecisions

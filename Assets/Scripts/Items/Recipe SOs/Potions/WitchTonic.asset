@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32a23279369c20a40a1546326dc276b9, type: 3}
+  m_Name: WitchTonic
+  m_EditorClassIdentifier: 
+  recipe:
+  - {fileID: 11400000, guid: 00f1996a6a20aa2408cde3a89e6c688f, type: 2}
+  - {fileID: 11400000, guid: 9fb55071d51bb1344a6faa4e5c7f3853, type: 2}
+  - {fileID: 11400000, guid: 501dca964611ee44b84c730d4fa2cc7b, type: 2}
+  result: {fileID: 11400000, guid: 1d6d5fc670881704c824d363359f493d, type: 2}

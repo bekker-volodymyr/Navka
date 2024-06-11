@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc59ad142cfb7364ca399ddddc978a15, type: 3}
+  m_Name: WitchTonicSO
+  m_EditorClassIdentifier: 
+  _name: Witch's Tonic
+  description: This is a simple, basic potion used by witches to maintain their health,
+    consisting of leaves, berries, and milk. It might work for you too.
+  lore: This tonic has long been used by healers and witches, as well as some forest
+    spirits.
+  recipe: {fileID: 0}
+  type: 3
+  effects:
+  - {fileID: 11400000, guid: 32c46ffb72d092447840d55e64d9c109, type: 2}
+  sprite: {fileID: 21300000, guid: 7a21f890080c06644806f612ef3504ac, type: 3}
+  maxPerStack: 1
