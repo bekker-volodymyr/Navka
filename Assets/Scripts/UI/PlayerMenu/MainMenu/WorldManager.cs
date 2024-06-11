@@ -17,6 +17,6 @@ public class WorldManager : MonoBehaviour
 
     public void JoinOnline()
     {
-        SceneManager.LoadScene("Loading");
+        SceneManager.LoadScene("ConnectToServer");
     }
 }
