@@ -15,20 +15,19 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
 
     public void OnClickConnect()
     {
-        //if(usernameInput.text.Length >= 1)
-        //{
-            //PhotonNetwork.NickName = usernameInput.text;
-            //buttonText.text = "Connecting...";
+        if(usernameInput.text.Length >= 1)
+        {
+            PhotonNetwork.NickName = usernameInput.text;
+            buttonText.text = "Connecting...";
             PhotonNetwork.ConnectUsingSettings();
-        //}
+            Debug.Log("joined server");
+        }
     }
 
 
 
-    public override void OnJoinedLobby()
+    public override void OnConnectedToMaster()
     {
         SceneManager.LoadScene("Lobby");
-        //SceneManager.LoadScene(4);
-
     }
 }

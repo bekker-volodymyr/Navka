@@ -20,17 +20,14 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public float timeBetweenUpdates = 1.5f;
     public float nextUpdateTime;
 
+    public int maxPlayerCanJoin =4;
+
     // Start is called before the first frame update
     void Start()
     {
         PhotonNetwork.JoinLobby();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
@@ -65,7 +62,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         if(roomInputField.text.Length >= 1)
         {
-            PhotonNetwork.CreateRoom(roomInputField.text, new RoomOptions() { MaxPlayers =4});
+            PhotonNetwork.CreateRoom(roomInputField.text, new RoomOptions() { MaxPlayers = maxPlayerCanJoin});
         }
     }
 
@@ -73,7 +70,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         lobbyPanel.SetActive(false);
         roomPanel.SetActive(true);
-        roomName.text = "Room Name:" + PhotonNetwork.CurrentLobby.Name;
+        roomName.text = "Room Name:" + PhotonNetwork.CurrentRoom.Name;
     }
 
     public void JoinRoom(string roomName)
