@@ -7,36 +7,55 @@ using UnityEngine.UI;
 
 public class SpellsPageManager : MonoBehaviour
 {
+    [Space]
     [SerializeField] private SpellsStorageSO spellsStorage;
+
+    [Space]
     [SerializeField] private GameObject buttonsParent;
     [SerializeField] private GameObject buttonPrefab;
-    [SerializeField] private Image Spell_Picture;
-    [SerializeField] private TextMeshProUGUI Spell_Title;
-    [SerializeField] private TextMeshProUGUI Spell_Description;
-    [SerializeField] private TextMeshProUGUI Spell_ManaCost;
-    [SerializeField] private TextMeshProUGUI Spell_Cooldown;
+
+    [Space]
+    [SerializeField] private Image picture;
+    [SerializeField] private TextMeshProUGUI title;
+    [SerializeField] private TextMeshProUGUI description;
+    [SerializeField] private TextMeshProUGUI manaCost;
+    [SerializeField] private TextMeshProUGUI cooldown;
+
+    [Space]
+    [SerializeField] private SpellManager spellsManager;
+
+    private SpellSO currentSpell;
 
     private void Start()
     {
         Initialize();
+        SwitchSpell(spellsStorage.Spells[0]);
+
+        spellsManager = GameObject.FindGameObjectWithTag("Spells Manager").GetComponent<SpellManager>();
     }
 
     public void Initialize()
     {
         foreach (var item in spellsStorage.Spells)
         {
-            GameObject newButton; 
-            newButton = Instantiate(buttonPrefab);
+            GameObject newButton = Instantiate(buttonPrefab);
+            newButton.GetComponent<SpellsPageButton>().InitButton(item, this);
             newButton.transform.SetParent(buttonsParent.transform, false);
-            newButton.GetComponent<SpellsPageButton>().InitButton(item, this); 
         }
     }
     public void SwitchSpell(SpellSO spell)
     {
-        Spell_Picture.sprite = spell.Picture;
-        Spell_Title.SetText(spell.Title);
-        Spell_Description.SetText(spell.Description);
-        Spell_ManaCost.SetText(spell.ManaCost.ToString());
-        Spell_Cooldown.SetText(spell.Cooldown.ToString());
+        currentSpell = spell;
+
+        picture.sprite = spell.SpellDescription.Picture;
+        title.SetText(spell.SpellDescription.Name);
+        description.SetText(spell.SpellDescription.Description);
+        manaCost.SetText(spell.SpellDescription.ManaCost.ToString());
+        cooldown.SetText(spell.SpellDescription.Cooldown.ToString());
+    }
+
+    public void ReadyUpSpell()
+    {
+        spellsManager.AddSpell(currentSpell);
     }
 }
