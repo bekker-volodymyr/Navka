@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SpellsStorageSO", menuName = "Spells/SpellsStorageSO")]
+[CreateAssetMenu(fileName = "SpellsStorageSO", menuName = "Spells/Spells Storage")]
 public class SpellsStorageSO : ScriptableObject
 {
-    public List<SpellSO> Spells;
+    [Space]
+    [SerializeField] private List<SpellSO> spells;
+    public List<SpellSO> Spells => spells;
 }

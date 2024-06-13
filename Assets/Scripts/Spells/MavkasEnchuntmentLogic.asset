@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad1fd004bab9d214ba6983a9264f67d7, type: 3}
+  m_Name: MavkasEnchuntmentLogic
+  m_EditorClassIdentifier: 
+  affectedNPC:
+  - {fileID: 11400000, guid: 0c77469575db63649aaf88d179162518, type: 2}
+  - {fileID: 11400000, guid: 8c5d0f63ddb248c4da7b96afe8cb78ce, type: 2}
+  - {fileID: 11400000, guid: 89d5522538f5e1e4e8402eea5f93812a, type: 2}
+  - {fileID: 11400000, guid: 39293c7d0bdc0b44c8686a91e7176be8, type: 2}
+  freezeTime: 1.5

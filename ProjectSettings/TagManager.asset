@@ -17,6 +17,7 @@ TagManager:
   - ManaPlayer
   - Inventory Controller
   - Amulets Manager
+  - Spells Manager
   layers:
   - Default
   - TransparentFX
