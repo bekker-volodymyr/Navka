@@ -4,6 +4,6 @@ using UnityEngine;
 
 public interface IDialog
 {
-    List<CharacterLine> Lines { get; }
+    CharacterLine FirstLine { get; }
     NPCBase npc { get; }
 }

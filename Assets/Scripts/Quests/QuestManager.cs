@@ -1,46 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class QuestManager : MonoBehaviour
 {
-    [Space]
-    [SerializeField] private List<ItemSO> questItemsList;
-    [SerializeField] private DialogMenu dialogMenu;
-    [Space]
-    [SerializeField] private int firstDialog;
-    [SerializeField] private int lastDialog;
+    public List<QuestsSO> questsList;
+    public List<QuestsSO> completedQuestsList;
+    [SerializeField] private GameObject questLog;
+    [SerializeField] private TextMeshProUGUI textPrefab;
 
-
-    public void QuestTake()
+    void Start()
     {
-        dialogMenu.currentDialogLine = firstDialog;
+        questsList = new List<QuestsSO>();
+        completedQuestsList = new List<QuestsSO>();
+        GameManager.QuestStartEvent += QuestTake;
+        GameManager.QuestStopEvent += QuestComplete;
+    }
+    private void OnDestroy()
+    {
+        GameManager.QuestStartEvent -= QuestTake;
+        GameManager.QuestStopEvent += QuestComplete;
     }
 
-    public void QuestComplete(IDialog npc, GameObject interactObject)
+    public void QuestTake(QuestsSO quest)
     {
-        Player player = interactObject.GetComponent<Player>();
+        questsList.Add(quest);
+        TextMeshProUGUI newText = Instantiate(textPrefab);
+        newText.text = $"Quest giver: {quest.QuestGiver}\nDescription: {quest.Description}";
+        newText.transform.SetParent(questLog.transform, false);
+    }
 
-        if (player == null)
-        {
-            return;
-        }
-
-        ItemSO selectedItem = player.SelectedItem;
-
-        if (selectedItem != null)
-        {
-            if (questItemsList.Contains(selectedItem))
-                {
-                    questItemsList.Remove(selectedItem);
-
-                    if (questItemsList.Count == 0)
-                    {
-                        dialogMenu.CloseDialog();
-                        dialogMenu.currentDialogLine = lastDialog;
-                        dialogMenu.InitDialog(npc);
-                    }
-                }
-        }
+    public void QuestComplete(QuestsSO quest)
+    {
+        completedQuestsList.Add(quest);
+        //questsList.Remove(quest);
+        TextMeshProUGUI newText = Instantiate(textPrefab);
+        newText.text = $"Quest giver: {quest.QuestGiver}\nDescription: {quest.Description}\nCompleted!";
+        newText.transform.SetParent(questLog.transform, false);
     }
 }

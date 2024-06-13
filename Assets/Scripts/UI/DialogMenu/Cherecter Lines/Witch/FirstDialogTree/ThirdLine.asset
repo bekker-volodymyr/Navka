@@ -10,10 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55bb9fb6671578045b6e21e7256f6079, type: 3}
-  m_Name: SecondLine
+  m_Name: ThirdLine
   m_EditorClassIdentifier: 
-  line: Second line
-  answers:
-  - playerResponse: Smth
-    nextLine: {fileID: 0}
-    isFinalLine: 1
+  line: Nice, thank you
+  answers: []
+  quest: {fileID: 0}

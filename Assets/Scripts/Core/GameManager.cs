@@ -36,6 +36,11 @@ public class GameManager : MonoBehaviour
     public static Action DialogStopEvent;
     #endregion
 
+    #region Quest System
+    public static Action<QuestsSO> QuestStartEvent;
+    public static Action<QuestsSO> QuestStopEvent;
+    #endregion
+
     #region Inventory System
     [SerializeField] private InventoryController inventoryController;
     public InventoryController InventoryController => inventoryController;

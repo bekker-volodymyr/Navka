@@ -13,8 +13,6 @@ public class DialogMenu : MonoBehaviour
     private CharacterLine currentLine;
     private IDialog npc;
 
-    public int currentDialogLine = 0;
-
     [Space]
     [SerializeField] private GameObject dialogMenu;
     [SerializeField] private TextMeshProUGUI textComponent;
@@ -35,7 +33,7 @@ public class DialogMenu : MonoBehaviour
     public void InitDialog(IDialog npc) 
     {
         this.npc = npc;
-
+        
         speakerImage.sprite = npc.npc.DescriptionSO.Picture;
         
         dialogMenu.SetActive(true);
@@ -50,19 +48,19 @@ public class DialogMenu : MonoBehaviour
 
     private void StartDialogue()
     {
-        currentLine = npc.Lines[currentDialogLine];
+        currentLine = npc.FirstLine;
         StartCoroutine(TypeLine());
     }
 
     IEnumerator TypeLine()
     {
-        foreach (char c in currentLine.line.ToCharArray())
+        foreach (char c in currentLine.Line.ToCharArray())
         {
             textComponent.text += c;
             yield return new WaitForSeconds(textSpeed);
         }
 
-        foreach (var answer in currentLine.answers)
+        foreach (var answer in currentLine.Answers)
         {
             CreatePlayerAnswerButton(answer);
         }

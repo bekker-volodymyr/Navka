@@ -18,10 +18,14 @@ public class PlayerAnswerButton : MonoBehaviour
         this.playerAnswer = playerAnswer;
         answerButton.transform.SetParent(parent.transform, false);
         answerButton.onClick.AddListener(OnClick);
-        answerButton.GetComponentInChildren<TextMeshProUGUI>().text = playerAnswer.playerResponse;
+        answerButton.GetComponentInChildren<TextMeshProUGUI>().text = playerAnswer.PlayerResponse;
     }
     public void OnClick()
     {
-        menu.NextLine(playerAnswer.nextLine);
+        if(playerAnswer.Quest != null)
+        {
+            GameManager.QuestStartEvent?.Invoke(playerAnswer.Quest);
+        }
+        menu.NextLine(playerAnswer.NextLine);
     }
 }

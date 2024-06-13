@@ -10,13 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55bb9fb6671578045b6e21e7256f6079, type: 3}
-  m_Name: FirstLine
+  m_Name: SecondLine
   m_EditorClassIdentifier: 
-  line: First Line
+  line: Would you steal some milk for me?
   answers:
-  - playerResponse: Second Line
-    nextLine: {fileID: 11400000, guid: b086d9bc96556a04ebe63a34d6ec4702, type: 2}
-    isFinalLine: 0
-  - playerResponse: Third Line
+  - playerResponse: Yes, of corse
     nextLine: {fileID: 11400000, guid: c4d45ffcc54659340a5f93459ffc0a0d, type: 2}
-    isFinalLine: 0
+    isFinalLine: 1
+    quest: {fileID: 11400000, guid: 06df2f25e5ea3b14fa331cbed3d72e70, type: 2}
+  - playerResponse: 'No, sorry '
+    nextLine: {fileID: 11400000, guid: eab7b431844abf04b96ab9e6f00b2133, type: 2}
+    isFinalLine: 1
+    quest: {fileID: 0}
+  quest: {fileID: 0}
