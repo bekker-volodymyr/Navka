@@ -14,7 +14,7 @@ public class SpellsPageButton : MonoBehaviour
         this.Spell = item;
         spellsPageManager = manager;
         TextMeshProUGUI text = GetComponentInChildren<TextMeshProUGUI>();
-        text.SetText(item.Title);
+        text.SetText(item.SpellDescription.Name);
     }
     public void OnClick()
     {

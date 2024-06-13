@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -42,6 +43,11 @@ public class NPCBase : ItemDropper, IMoveable, IDamageable, IAttack, IInteractab
     protected List<NPCDescriptionSO> attackTargets;
     
     protected List<NPCBase> pack;
+
+    #region Freezing
+    private bool isFreeze = false;
+    private float freezeTime;
+    #endregion
 
     public event Action NPCDeathEvent;
 
@@ -183,6 +189,8 @@ public class NPCBase : ItemDropper, IMoveable, IDamageable, IAttack, IInteractab
 
     private void Update()
     {
+        if (isFreeze) return;
+
         StateMachine.CurrentState.FrameUpdate();
     }
     private void FixedUpdate()
@@ -224,6 +232,23 @@ public class NPCBase : ItemDropper, IMoveable, IDamageable, IAttack, IInteractab
     {
         StateMachine.ChangeState(IdleState);
     }
+
+    #region Spells
+    public void Freeze(float time)
+    {
+        isFreeze = true;
+        freezeTime = time;
+        Move(Vector2.zero);
+        StartCoroutine(FreezeCountdown());
+    }
+
+    private IEnumerator FreezeCountdown()
+    {
+        yield return new WaitForSeconds(freezeTime);
+
+        isFreeze = false;
+    }
+    #endregion
 
     #region Triggers
     public void PlaySoundTrigger(SoundType type)

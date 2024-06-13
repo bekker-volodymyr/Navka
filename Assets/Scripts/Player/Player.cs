@@ -31,6 +31,8 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     private List<ItemSO> amulets = new List<ItemSO>();
     private AmuletsManager amuletsManager;
 
+    private List<SpellSO> spells = new List<SpellSO>();
+
     #region Movement Variables
     [Space]
     [SerializeField] private Rigidbody2D playerRB;
@@ -81,6 +83,15 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     public float MaxHunger { get { return maxHunger; } }
     #endregion
 
+    #region Mana Variables
+    private float currentMana;
+    public float CurrentMana => currentMana;
+    private float maxMana = 100f;
+    public float MaxMana => maxMana;
+    private float timeToRestore = 10f;
+    private bool manaCanRestore = true;
+    #endregion
+
     #region Indicators
     private Indicator healthIndicator;
     private Indicator hungerIndicator;
@@ -114,6 +125,8 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
 
         currentHunger = maxHunger;
 
+        currentMana = maxMana;
+
         StateMachine.Initialize(IdleState);
 
         inventory = GameObject.FindGameObjectWithTag("Inventory Controller").GetComponent<InventoryController>();
@@ -133,6 +146,10 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
         hungerIndicator = GameObject.FindGameObjectWithTag("HungerPlayer").GetComponent<Indicator>();
         manaIndicator = GameObject.FindGameObjectWithTag("ManaPlayer").GetComponent<Indicator>();
 
+        healthIndicator.SetValue(currentHealth, maxHealth);
+        hungerIndicator.SetValue(currentHunger, maxHunger);
+        manaIndicator.SetValue(currentMana, maxMana);
+        
         //view = GetComponent<PhotonView>();
     }
 
@@ -425,6 +442,68 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     {
         cover.LeaveCover();
         cover = null;
+    }
+    #endregion
+
+    #region Spells
+    public void AddSpell(SpellSO spell)
+    {
+        spells.Add(spell);
+    }
+
+    public void RemoveSpell(SpellSO spell)
+    {
+        spells.Remove(spell);
+    }
+
+    public void ActivateSpell(SpellSO spell)
+    {
+        if(currentMana < spell.SpellDescription.ManaCost)
+        {
+            Debug.Log("Not enough mana");
+            return;
+        }
+
+        spell.SpellLogic.Activate(this);
+
+        ChangeMana(-spell.SpellDescription.ManaCost);
+        if(manaCanRestore)
+        {
+            StartCoroutine(ManaRestore());
+        }
+    }
+
+    private void ChangeMana(float value)
+    {
+        float newValue = currentMana + value;
+
+        if(newValue >= 100f)
+        {
+            currentMana = 100f;
+        }
+        else if(newValue <= 0f)
+        {
+            currentMana = 0f;
+        }
+        else 
+        {
+            currentMana = newValue;
+        }
+
+        manaIndicator.SetValue(currentMana, maxMana);
+    }
+
+    private IEnumerator ManaRestore()
+    {
+        manaCanRestore = false;
+
+        while (currentMana < maxMana)
+        {
+            yield return new WaitForSeconds(timeToRestore);
+            ChangeMana(5f);
+        }
+
+        manaCanRestore = true;
     }
     #endregion
 }
