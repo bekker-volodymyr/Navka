@@ -18,9 +18,13 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public Transform contentObject;
 
     public float timeBetweenUpdates = 1.5f;
-    public float nextUpdateTime;
+    private float nextUpdateTime;
 
-    public int maxPlayerCanJoin =4;
+    public int maxPlayerCanJoin =3;
+
+    private List<PlayerItem> playerItemsList = new List<PlayerItem>();
+    public PlayerItem playerItemPrefab;
+    public Transform playerItemParent;
 
     // Start is called before the first frame update
     void Start()
@@ -57,12 +61,11 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     }
 
 
-
     public void OnClickCreate()
     {
         if(roomInputField.text.Length >= 1)
         {
-            PhotonNetwork.CreateRoom(roomInputField.text, new RoomOptions() { MaxPlayers = maxPlayerCanJoin});
+            PhotonNetwork.CreateRoom(roomInputField.text, new RoomOptions() { MaxPlayers = maxPlayerCanJoin, BroadcastPropsChangeToAll = true});
         }
     }
 
@@ -71,6 +74,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         lobbyPanel.SetActive(false);
         roomPanel.SetActive(true);
         roomName.text = "Room Name:" + PhotonNetwork.CurrentRoom.Name;
+        UpdatePlayerList();
     }
 
     public void JoinRoom(string roomName)
@@ -93,4 +97,43 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.JoinLobby();
     }
+
+
+    void UpdatePlayerList()
+    {
+        foreach(PlayerItem item in playerItemsList)
+        {
+            Destroy(item.gameObject);
+        }
+        playerItemsList.Clear();
+
+        if(PhotonNetwork.CurrentRoom == null)
+        {
+            return;
+        }
+
+        foreach(KeyValuePair<int, Photon.Realtime.Player > player in PhotonNetwork.CurrentRoom.Players)
+        {
+            PlayerItem newPlayerItem = Instantiate(playerItemPrefab, playerItemParent);
+            newPlayerItem.SetPlayerInfo(player.Value);
+
+            if(player.Value == PhotonNetwork.LocalPlayer)
+            {
+                newPlayerItem.ApplyLocalChanges();
+            }
+
+            playerItemsList.Add(newPlayerItem);
+        }
+    }
+
+    public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
+    {
+        UpdatePlayerList();
+    }
+
+    public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
+    {
+        UpdatePlayerList();
+    }
+
 }
