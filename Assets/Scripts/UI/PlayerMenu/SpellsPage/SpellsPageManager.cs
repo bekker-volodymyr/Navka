@@ -38,10 +38,9 @@ public class SpellsPageManager : MonoBehaviour
     {
         foreach (var item in spellsStorage.Spells)
         {
-            GameObject newButton; 
-            newButton = Instantiate(buttonPrefab);
+            GameObject newButton = Instantiate(buttonPrefab);
+            newButton.GetComponent<SpellsPageButton>().InitButton(item, this);
             newButton.transform.SetParent(buttonsParent.transform, false);
-            newButton.GetComponent<SpellsPageButton>().InitButton(item, this); 
         }
     }
     public void SwitchSpell(SpellSO spell)

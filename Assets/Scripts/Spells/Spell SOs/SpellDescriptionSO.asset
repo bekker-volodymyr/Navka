@@ -15,6 +15,6 @@ MonoBehaviour:
   _name: Mavka's Enchantment
   description: Mavka, use your enchantment to freeze all nearby enemies in place
     as if they were bewitched. This will give us time to regroup or escape from danger.
-  manaCost: 0
-  cooldown: 20
+  manaCost: 20
+  cooldown: 10
   picture: {fileID: 21300000, guid: 3ddaeb00d6346bd49a34c0d5bcb51ebe, type: 3}

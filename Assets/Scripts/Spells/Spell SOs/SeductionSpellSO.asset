@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: SeductionSpellSO
   m_EditorClassIdentifier: 
   spellDescription: {fileID: 11400000, guid: e2759c15569cf4d47bfbf3f403528613, type: 2}
+  spellLogic: {fileID: 11400000, guid: fba3ffe5f962eb849b0f92e0daec28c8, type: 2}
