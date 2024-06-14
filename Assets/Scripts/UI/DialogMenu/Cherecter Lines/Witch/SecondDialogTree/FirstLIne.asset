@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55bb9fb6671578045b6e21e7256f6079, type: 3}
   m_Name: FirstLIne
   m_EditorClassIdentifier: 
-  line: 
+  line: Hello again! Thank you for milk
   answers: []
   quest: {fileID: 0}
