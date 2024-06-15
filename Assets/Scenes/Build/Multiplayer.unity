@@ -410,7 +410,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPrefab: {fileID: 4886031037478288704, guid: 22d6ec97e721f4a3f87b867827ca8c62, type: 3}
   Density: 150
-  spawnAreaSize: {x: 2500, y: 250}
+  spawnAreaSize: {x: 250, y: 250}
   collisionLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -1140,7 +1140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3624248943229621144, guid: 10262515c51564c4a97019ace17f309f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.0007103987
+      value: 0.0000895681
       objectReference: {fileID: 0}
     - target: {fileID: 3799581467172024210, guid: 10262515c51564c4a97019ace17f309f, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2220,6 +2220,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2858502123118278106, guid: 177cf0a95e2e6ff489d4fb024bad61a0, type: 3}
+      propertyPath: m_CellLayout
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2858502123118278106, guid: 177cf0a95e2e6ff489d4fb024bad61a0, type: 3}
+      propertyPath: m_CellSize.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3023393942690319295, guid: 177cf0a95e2e6ff489d4fb024bad61a0, type: 3}
       propertyPath: m_SortingLayer
       value: 0

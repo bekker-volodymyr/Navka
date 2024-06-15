@@ -158,4 +158,9 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.LoadLevel("Multiplayer");
     }
+
+    public void Disconnect()
+    {
+        PhotonNetwork.Disconnect();
+    }
 }
