@@ -37,7 +37,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
-        if(Time.time >= nextUpdateTime)
+
+        if (Time.time >= nextUpdateTime)
         {
             UpdateRoomList(roomList);
             nextUpdateTime = Time.time + timeBetweenUpdates;
@@ -48,7 +49,9 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     private void UpdateRoomList(List<RoomInfo> list)
     {
-        foreach(RoomItem item in roomItemsList)
+        Debug.Log("new room update");
+
+        foreach (RoomItem item in roomItemsList)
         {
             Destroy(item.gameObject);
         }
@@ -56,6 +59,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
         foreach(RoomInfo room in list)
         {
+            Debug.Log("adding new room - name:" + room.Name);   
             RoomItem newRoom = Instantiate(roomItemPrefab, contentObject);
             newRoom.SetRoomName(room.Name);
             roomItemsList.Add(newRoom);

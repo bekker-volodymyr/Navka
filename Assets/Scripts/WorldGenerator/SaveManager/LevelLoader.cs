@@ -4,7 +4,7 @@ using System.IO;
 using System.Numerics;
 using UnityEditor;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
+//using static UnityEditor.PlayerSettings;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
 
