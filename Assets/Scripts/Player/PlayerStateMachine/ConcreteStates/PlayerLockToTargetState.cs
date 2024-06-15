@@ -34,7 +34,7 @@ public class PlayerLockToTargetState : PlayerState
     {
         base.FrameUpdate();
 
-        if ((player.transform.position - _targetPos).sqrMagnitude < player.AttackRadius.radius)
+        if ((player.transform.position - _targetPos).sqrMagnitude < player.InteractRadius)
         {
             player.Attack(_targetEnemy);
             player.StateMachine.ChangeState(player.IdleState);

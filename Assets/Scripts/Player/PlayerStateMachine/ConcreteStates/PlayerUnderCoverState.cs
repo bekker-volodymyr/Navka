@@ -11,22 +11,18 @@ public class PlayerUnderCoverState : PlayerState
     {
         base.EnterState();
 
-        player.SpriteGO.SetActive(false);
+        player.SpriteRenderer.gameObject.SetActive(false);
 
         player.DamageCollider.enabled = false;
-        //player.InteractCollider.enabled = false;
     }
 
     public override void ExitState()
     {
         base.ExitState();
 
-        Debug.Log("Leave cover");
-
-        player.SpriteGO.SetActive(true);
+        player.SpriteRenderer.gameObject.SetActive(true);
 
         player.DamageCollider.enabled = true;
-        //player.InteractCollider.enabled = true;
 
         player.LeaveCover();
     }

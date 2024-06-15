@@ -35,10 +35,9 @@ public class PlayerLockToInteractState : PlayerState
             player.StateMachine.ChangeState(player.IdleState);
         }
 
-        if ((player.transform.position - _targetPos).sqrMagnitude < player.AttackRadius.radius)
+        if ((player.transform.position - _targetPos).sqrMagnitude < player.InteractRadius)
         {
             player.Interact(_targetItem);
-            //_targetItem = null;
         }
         else
         {

@@ -12,8 +12,6 @@ public class TargetNoticedCheck : MonoBehaviour
         {
             NPCBase target = collision.GetComponentInParent<NPCBase>();
 
-            Debug.Log($"Target Noticed On {npc.name} noticed object: {target.name}");
-
             if (target != null)
             {
                 npc.AddNPCTarget(target);
@@ -25,7 +23,7 @@ public class TargetNoticedCheck : MonoBehaviour
     {
         if (collision.CompareTag("Damageable"))
         {
-            //_npc.RemoveTarget(collision.gameObject.GetComponent<Npc>());
+            
         }
     }
 }

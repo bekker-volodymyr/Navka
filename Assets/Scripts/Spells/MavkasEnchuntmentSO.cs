@@ -24,7 +24,7 @@ public class MavkasEnchuntmentSO : SpellLogicSOBase
 
     private void FreezeEnemies()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(player.transform.position, player.NoticeRadius.radius);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(player.transform.position, player.VisionRadius);
 
         foreach (var collider in colliders)
         {

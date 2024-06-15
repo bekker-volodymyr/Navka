@@ -4,22 +4,19 @@ using System.Collections.Generic;
 
 public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, ICoverable
 {
-    [Space]
-    [SerializeField] private GameObject spriteGO;
-    public GameObject SpriteGO => spriteGO;
+    private SpriteRenderer spriteRenderer;
+    public SpriteRenderer SpriteRenderer => spriteRenderer;
 
     private ICover cover = null;
     public ICover CoverGetter => cover;
     private bool isUnderCover = false;
 
-    [Space]
-    [SerializeField] private BefriendedAnimals animals;
+    private BefriendedAnimals animals;
     public BefriendedAnimals Animals => animals;
 
     private bool isInDialog = false;
 
-    [Space]
-    [SerializeField] private GameObject hideoutGO;
+    private GameObject hideoutGO;
     public GameObject HideoutGO => hideoutGO;
 
     [Space]
@@ -32,26 +29,23 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     private List<SpellSO> spells = new List<SpellSO>();
 
     #region Movement Variables
-    [Space]
-    [SerializeField] private Rigidbody2D playerRB;
+    private Rigidbody2D playerRB;
     public Rigidbody2D ObjectRB => playerRB;
     private bool isFacingRight = true;
     #endregion
 
-    #region Colliders
-    [Space]
-    [SerializeField] private CircleCollider2D attackRadius;
-    public CircleCollider2D AttackRadius => attackRadius;
-    [SerializeField] private CircleCollider2D noticeRadius;
-    public CircleCollider2D NoticeRadius => noticeRadius;
-    [SerializeField] private CircleCollider2D damageCollider;
-    public CircleCollider2D DamageCollider => damageCollider;
+    #region Radius & Colliders
+    private float visionRadius = 20f;
+    public float VisionRadius => visionRadius;
 
+    private float interactRadius = 4.5f;
+    public float InteractRadius => interactRadius;
+    private CircleCollider2D damageCollider;
+    public CircleCollider2D DamageCollider => damageCollider;
     #endregion
 
     #region Inventory Variables
-    [Space]
-    [SerializeField] private InventoryController inventory;
+    private InventoryController inventory;
     private ItemSO selectedItem = null;
     public ItemSO SelectedItem => selectedItem;
     #endregion
@@ -133,7 +127,6 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
 
         #endregion
 
-        // Initialize StateMachine
         StateMachine.Initialize(IdleState);
 
         amuletsManager = GameObject.FindGameObjectWithTag("Amulets Manager").GetComponent<AmuletsManager>();
@@ -142,6 +135,14 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
 
         inventory.ItemSelectedEvent += OnItemSelected;
         inventory.ItemDeselectedEvent += OnItemDeselected;
+
+        animals = GetComponent<BefriendedAnimals>();
+
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
+        playerRB = GetComponent<Rigidbody2D>();
+
+        damageCollider = GetComponentInChildren<CircleCollider2D>();
 
         GameManager.DialogStartEvent += OnDialogStart;
         GameManager.DialogStopEvent += OnDialogEnd;
@@ -256,7 +257,7 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     }
     public Collider2D[] GetAllItemsInCollisionRadius()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, noticeRadius.radius);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, VisionRadius);
         return colliders;
     }
     #endregion
@@ -271,14 +272,14 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     {
         if (isFacingRight && velocity.x < 0f)
         {
-            Vector3 rotator = new Vector3(spriteGO.transform.rotation.x, 180f, spriteGO.transform.rotation.z);
-            spriteGO.transform.rotation = Quaternion.Euler(rotator);
+            Vector3 rotator = new Vector3(spriteRenderer.transform.rotation.x, 180f, spriteRenderer.transform.rotation.z);
+            spriteRenderer.transform.rotation = Quaternion.Euler(rotator);
             isFacingRight = !isFacingRight;
         }
         else if (!isFacingRight && velocity.x > 0f)
         {
-            Vector3 rotator = new Vector3(spriteGO.transform.rotation.x, 0f, spriteGO.transform.rotation.z);
-            spriteGO.transform.rotation = Quaternion.Euler(rotator);
+            Vector3 rotator = new Vector3(spriteRenderer.transform.rotation.x, 0f, spriteRenderer.transform.rotation.z);
+            spriteRenderer.transform.rotation = Quaternion.Euler(rotator);
             isFacingRight = !isFacingRight;
         }
     }
