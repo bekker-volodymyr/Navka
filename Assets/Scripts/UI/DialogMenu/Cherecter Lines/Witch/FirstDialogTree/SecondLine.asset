@@ -16,10 +16,10 @@ MonoBehaviour:
   answers:
   - playerResponse: Yes, of corse
     nextLine: {fileID: 11400000, guid: c4d45ffcc54659340a5f93459ffc0a0d, type: 2}
-    isFinalLine: 1
+    isFinalLine: 0
     quest: {fileID: 11400000, guid: 06df2f25e5ea3b14fa331cbed3d72e70, type: 2}
   - playerResponse: 'No, sorry '
     nextLine: {fileID: 11400000, guid: eab7b431844abf04b96ab9e6f00b2133, type: 2}
-    isFinalLine: 1
+    isFinalLine: 0
     quest: {fileID: 0}
   quest: {fileID: 0}

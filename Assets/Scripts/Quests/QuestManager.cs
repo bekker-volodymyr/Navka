@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UIElements;
 
 public class QuestManager : MonoBehaviour
 {
     public List<QuestsSO> questsList;
     public List<QuestsSO> completedQuestsList;
     [SerializeField] private GameObject questLog;
-    [SerializeField] private TextMeshProUGUI textPrefab;
+    [SerializeField] private GameObject panelPrefab;
 
     void Start()
     {
@@ -26,17 +27,14 @@ public class QuestManager : MonoBehaviour
     public void QuestTake(QuestsSO quest)
     {
         questsList.Add(quest);
-        TextMeshProUGUI newText = Instantiate(textPrefab);
-        newText.text = $"Quest giver: {quest.QuestGiver}\nDescription: {quest.Description}";
-        newText.transform.SetParent(questLog.transform, false);
+        GameObject newPanel;
+        newPanel = Instantiate(panelPrefab);
+        newPanel.GetComponent<QuestLogPanel>().InitPanel(questLog, quest);
     }
 
     public void QuestComplete(QuestsSO quest)
     {
         completedQuestsList.Add(quest);
         //questsList.Remove(quest);
-        TextMeshProUGUI newText = Instantiate(textPrefab);
-        newText.text = $"Quest giver: {quest.QuestGiver}\nDescription: {quest.Description}\nCompleted!";
-        newText.transform.SetParent(questLog.transform, false);
     }
 }
