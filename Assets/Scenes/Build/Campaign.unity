@@ -169,8 +169,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectPrefab: {fileID: 4560073555322063386, guid: 5e899a214a45ecd41a59282f8cd60369, type: 3}
-  Density: 15
-  spawnAreaSize: {x: 100, y: 100}
+  Density: 50
+  spawnAreaSize: {x: 250, y: 250}
   collisionLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -420,8 +420,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectPrefab: {fileID: 4886031037478288704, guid: 22d6ec97e721f4a3f87b867827ca8c62, type: 3}
-  Density: 50
-  spawnAreaSize: {x: 100, y: 100}
+  Density: 200
+  spawnAreaSize: {x: 250, y: 250}
   collisionLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -523,8 +523,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectPrefab: {fileID: 3251206823055180716, guid: 9721bc8054b974243823bd894309a86c, type: 3}
-  Density: 30
-  spawnAreaSize: {x: 100, y: 100}
+  Density: 100
+  spawnAreaSize: {x: 250, y: 250}
   collisionLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -759,7 +759,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &966011472
 Transform:
   m_ObjectHideFlags: 0
@@ -789,7 +789,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPrefab: {fileID: 829225917883405593, guid: 99835810246d8447fbaa1621eeb36410, type: 3}
   Density: 1
-  spawnAreaSize: {x: 100, y: 100}
+  spawnAreaSize: {x: 200, y: 200}
   collisionLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -1099,7 +1099,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3624248943229621144, guid: 10262515c51564c4a97019ace17f309f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000039678613
+      value: 0.00018061264
       objectReference: {fileID: 0}
     - target: {fileID: 3799581467172024210, guid: 10262515c51564c4a97019ace17f309f, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1567,8 +1567,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectPrefab: {fileID: 8739127243175631453, guid: 4a1d578e9c0874f88a2e798ccd2175e6, type: 3}
-  Density: 30
-  spawnAreaSize: {x: 100, y: 100}
+  Density: 100
+  spawnAreaSize: {x: 250, y: 250}
   collisionLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -1670,8 +1670,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectPrefab: {fileID: 908829862333129034, guid: 20308d5bbb35e42428a3cb92e1ec1497, type: 3}
-  Density: 25
-  spawnAreaSize: {x: 100, y: 100}
+  Density: 70
+  spawnAreaSize: {x: 250, y: 250}
   collisionLayer:
     serializedVersion: 2
     m_Bits: 64

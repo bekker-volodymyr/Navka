@@ -5,17 +5,18 @@ using Photon.Pun;
 
 public class SpawnPlayers : MonoBehaviour
 {
-    public GameObject playerPrefab;
+    [SerializeField] private List<GameObject> playerPrefabs;
 
-    public float minX;
-    public float maxX;
-    public float minY;
-    public float maxY;
+    [SerializeField] private float minX;
+    [SerializeField] private float maxX;
+    [SerializeField] private float minY;
+    [SerializeField] private float maxY;
 
     private void Start()
     {
-        Vector2 randomPosition = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
-        PhotonNetwork.Instantiate(playerPrefab.name, randomPosition, Quaternion.identity);
+        Vector2 spawnPoint = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
+        GameObject playerToSpawn = playerPrefabs[(int)PhotonNetwork.LocalPlayer.CustomProperties["playerAvatars"]];
+        PhotonNetwork.Instantiate(playerToSpawn.name, spawnPoint, Quaternion.identity);
     }
 
 
