@@ -114,7 +114,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
         foreach(KeyValuePair<int, Photon.Realtime.Player > player in PhotonNetwork.CurrentRoom.Players)
         {
-            PlayerItem newPlayerItem = Instantiate(playerItemPrefab, playerItemParent);
+            PlayerItem newPlayerItem = Instantiate(playerItemPrefab, playerItemParent, false);
             newPlayerItem.SetPlayerInfo(player.Value);
 
             if(player.Value == PhotonNetwork.LocalPlayer)
