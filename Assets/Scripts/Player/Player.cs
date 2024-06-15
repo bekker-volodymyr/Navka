@@ -6,27 +6,25 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
 {
     [Space]
     [SerializeField] private GameObject spriteGO;
-    public GameObject SpriteGO { get { return spriteGO; } }
-
-    //PhotonView view;
+    public GameObject SpriteGO => spriteGO;
 
     private ICover cover = null;
-    public ICover CoverGetter { get { return cover; } }
+    public ICover CoverGetter => cover;
     private bool isUnderCover = false;
 
     [Space]
     [SerializeField] private BefriendedAnimals animals;
-    public BefriendedAnimals Animals { get { return animals; } }
+    public BefriendedAnimals Animals => animals;
 
     private bool isInDialog = false;
 
     [Space]
     [SerializeField] private GameObject hideoutGO;
-    public GameObject HideoutGO { get { return hideoutGO; } }
+    public GameObject HideoutGO => hideoutGO;
 
     [Space]
     [SerializeField] private List<NPCDescriptionSO> defendFromList;
-    public List<NPCDescriptionSO> DefendFromList { get { return defendFromList; } }
+    public List<NPCDescriptionSO> DefendFromList => defendFromList;
 
     private List<ItemSO> amulets = new List<ItemSO>();
     private AmuletsManager amuletsManager;
@@ -36,20 +34,18 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     #region Movement Variables
     [Space]
     [SerializeField] private Rigidbody2D playerRB;
-    public Rigidbody2D ObjectRB { get { return playerRB; } }
+    public Rigidbody2D ObjectRB => playerRB;
     private bool isFacingRight = true;
     #endregion
 
     #region Colliders
     [Space]
     [SerializeField] private CircleCollider2D attackRadius;
-    public CircleCollider2D AttackRadius { get { return attackRadius; } }
+    public CircleCollider2D AttackRadius => attackRadius;
     [SerializeField] private CircleCollider2D noticeRadius;
-    public CircleCollider2D NoticeRadius { get { return noticeRadius; } }
-    [SerializeField] private CircleCollider2D interactCollider;
-    public CircleCollider2D InteractCollider { get { return interactCollider; } }
+    public CircleCollider2D NoticeRadius => noticeRadius;
     [SerializeField] private CircleCollider2D damageCollider;
-    public CircleCollider2D DamageCollider { get { return damageCollider; } }
+    public CircleCollider2D DamageCollider => damageCollider;
 
     #endregion
 
@@ -57,30 +53,30 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     [Space]
     [SerializeField] private InventoryController inventory;
     private ItemSO selectedItem = null;
-    public ItemSO SelectedItem { get { return selectedItem; } }
+    public ItemSO SelectedItem => selectedItem;
     #endregion
 
     #region Health Variables
     private float currentHealth;
     [Space]
     [SerializeField] private float maxHealth;
-    public float CurrentHealth { get { return currentHealth; } }
-    public float MaxHealth { get { return maxHealth; } }
+    public float CurrentHealth => currentHealth;
+    public float MaxHealth => maxHealth;
     #endregion
 
     #region Damage Variables
     [Space]
     [SerializeField] private float damage;
-    public float Damage { get { return damage; } }
+    public float Damage => damage;
     #endregion
 
     #region Hunger Variables
     [Space]
     [SerializeField] private float secondsToReduce;
     private float currentHunger;
-    public float CurrentHunger { get { return currentHunger; } }
+    public float CurrentHunger => currentHunger;
     private float maxHunger = 100f;
-    public float MaxHunger { get { return maxHunger; } }
+    public float MaxHunger => maxHunger;
     #endregion
 
     #region Mana Variables
@@ -119,18 +115,30 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
         DialogState = new PlayerDialogState(this, StateMachine);
     }
 
-    private void Start()
+    virtual protected void Start()
     {
+        #region Initialize indicators
+        
         currentHealth = maxHealth;
-
         currentHunger = maxHunger;
-
         currentMana = maxMana;
+        
+        healthIndicator = GameObject.FindGameObjectWithTag("HealthPlayer").GetComponent<Indicator>();
+        hungerIndicator = GameObject.FindGameObjectWithTag("HungerPlayer").GetComponent<Indicator>();
+        manaIndicator = GameObject.FindGameObjectWithTag("ManaPlayer").GetComponent<Indicator>();
 
+        healthIndicator.SetValue(currentHealth, maxHealth);
+        hungerIndicator.SetValue(currentHunger, maxHunger);
+        manaIndicator.SetValue(currentMana, maxMana);
+
+        #endregion
+
+        // Initialize StateMachine
         StateMachine.Initialize(IdleState);
 
-        inventory = GameObject.FindGameObjectWithTag("Inventory Controller").GetComponent<InventoryController>();
         amuletsManager = GameObject.FindGameObjectWithTag("Amulets Manager").GetComponent<AmuletsManager>();
+
+        inventory = GameObject.FindGameObjectWithTag("Inventory Controller").GetComponent<InventoryController>();
 
         inventory.ItemSelectedEvent += OnItemSelected;
         inventory.ItemDeselectedEvent += OnItemDeselected;
@@ -141,30 +149,17 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
         Item.OnPickUp += OnItemPickedUp;
 
         StartCoroutine("HungerCountdown");
-
-        healthIndicator = GameObject.FindGameObjectWithTag("HealthPlayer").GetComponent<Indicator>();
-        hungerIndicator = GameObject.FindGameObjectWithTag("HungerPlayer").GetComponent<Indicator>();
-        manaIndicator = GameObject.FindGameObjectWithTag("ManaPlayer").GetComponent<Indicator>();
-
-        healthIndicator.SetValue(currentHealth, maxHealth);
-        hungerIndicator.SetValue(currentHunger, maxHunger);
-        manaIndicator.SetValue(currentMana, maxMana);
-        
-        //view = GetComponent<PhotonView>();
     }
 
-    private void Update()
+    virtual protected void Update()
     {
-        //if (view.IsMine)
-        //{
-            if (!isInDialog)
-            {
-                StateMachine.CurrentState.FrameUpdate();
-            }
-        //}
+        if (!isInDialog)
+        {
+            StateMachine.CurrentState.FrameUpdate();
+        }
     }
 
-    private void FixedUpdate()
+    virtual protected void FixedUpdate()
     {
         if (!isInDialog)
         {
