@@ -77,17 +77,11 @@ public class BefriendableNPC : NPCBase
 
     private void Befriend(Player player)
     {
-        Debug.Log($"{gameObject.name} befriended now");
-
         isBefriended = true;
         befriendedPlayer = player;
         pack.Clear();
 
         player.Befriend(this);
-
-        attackTargets = player.DefendFromList;
-
-        Debug.Log($"{attackTargets[0].Name}");
 
         SetDefaultState();
     }
@@ -125,12 +119,7 @@ public class BefriendableNPC : NPCBase
             return;
         }
 
-        Debug.Log($"AddNPCTarget from Wolf");
-        Debug.Log(attackTargets.Contains(target.DescriptionSO));
-        Debug.Log(befriendedPlayer.DefendFromList.Contains(target.DescriptionSO));
-        Debug.Log(target.DescriptionSO.Name);
-
-        if (attackTargets.Contains(target.DescriptionSO))
+        if (target.DescriptionSO.Approach == Enums.NPCApproach.Agressive)
         {
             SetTarget(target.gameObject);
         }

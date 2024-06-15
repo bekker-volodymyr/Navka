@@ -19,10 +19,6 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     private GameObject hideoutGO;
     public GameObject HideoutGO => hideoutGO;
 
-    [Space]
-    [SerializeField] private List<NPCDescriptionSO> defendFromList;
-    public List<NPCDescriptionSO> DefendFromList => defendFromList;
-
     private List<ItemSO> amulets = new List<ItemSO>();
     private AmuletsManager amuletsManager;
 
