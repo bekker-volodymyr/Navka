@@ -26,6 +26,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public PlayerItem playerItemPrefab;
     public Transform playerItemParent;
 
+    public GameObject playButton;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -114,7 +116,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
         foreach(KeyValuePair<int, Photon.Realtime.Player > player in PhotonNetwork.CurrentRoom.Players)
         {
-            PlayerItem newPlayerItem = Instantiate(playerItemPrefab, playerItemParent);
+            PlayerItem newPlayerItem = Instantiate(playerItemPrefab, playerItemParent, false);
             newPlayerItem.SetPlayerInfo(player.Value);
 
             if(player.Value == PhotonNetwork.LocalPlayer)
@@ -136,4 +138,20 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         UpdatePlayerList();
     }
 
+    private void Update()
+    {
+        if (PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount >= 2)
+        {
+            playButton.SetActive(true);
+        }
+        else
+        {
+            playButton.SetActive(false);
+        }
+    }
+
+    public void OnClickPlayButton()
+    {
+        PhotonNetwork.LoadLevel("Multiplayer");
+    }
 }

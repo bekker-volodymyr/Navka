@@ -99,7 +99,7 @@ public class FolderListManager : MonoBehaviour
     {
         GameManager.isSave = true;
         GameManager.saveFile = items[index].filePath;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("Campaign");
     }
 
 

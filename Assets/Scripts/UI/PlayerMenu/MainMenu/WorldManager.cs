@@ -7,7 +7,7 @@ public class WorldManager : MonoBehaviour
 {
     public void CreateNewWorld()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("Campaign");
     }
 
     public void BackToMainMenu()
