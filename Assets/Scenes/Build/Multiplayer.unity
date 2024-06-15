@@ -882,10 +882,10 @@ MonoBehaviour:
   - {fileID: 2193351128979297121, guid: 539e37987a7ae4b7fb91c7496b60ed36, type: 3}
   - {fileID: 2193351128979297121, guid: b2153d86825704b519bb42ccccd753b5, type: 3}
   - {fileID: 2193351128979297121, guid: ec70ceb75b533420c89f0697ae18940e, type: 3}
-  minX: -50
-  maxX: 50
-  minY: -50
-  maxY: 50
+  minX: -10
+  maxX: 10
+  minY: -10
+  maxY: 10
 --- !u!1001 &1125865373
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1140,7 +1140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3624248943229621144, guid: 10262515c51564c4a97019ace17f309f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.0000895681
+      value: 0.00028287875
       objectReference: {fileID: 0}
     - target: {fileID: 3799581467172024210, guid: 10262515c51564c4a97019ace17f309f, type: 3}
       propertyPath: m_AnchorMax.x

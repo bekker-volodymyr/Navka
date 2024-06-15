@@ -55,7 +55,7 @@ PrefabInstance:
     - target: {fileID: 7747693669726521892, guid: dd7fe38d3a8b258428c793f90050af41, type: 3}
       propertyPath: AttackRadius
       value: 
-      objectReference: {fileID: 7202451145180505361}
+      objectReference: {fileID: 0}
     - target: {fileID: 7747693669726521892, guid: dd7fe38d3a8b258428c793f90050af41, type: 3}
       propertyPath: manaIndicator
       value: 
@@ -71,7 +71,7 @@ PrefabInstance:
     - target: {fileID: 7747693669726521892, guid: dd7fe38d3a8b258428c793f90050af41, type: 3}
       propertyPath: TargetNoticeRadius
       value: 
-      objectReference: {fileID: 2041319098484127379}
+      objectReference: {fileID: 0}
     - target: {fileID: 8678889963795942228, guid: dd7fe38d3a8b258428c793f90050af41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -130,11 +130,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 6137733950916914412}
   m_SourcePrefab: {fileID: 100100000, guid: dd7fe38d3a8b258428c793f90050af41, type: 3}
---- !u!58 &2041319098484127379 stripped
-CircleCollider2D:
-  m_CorrespondingSourceObject: {fileID: 5180903090763136110, guid: dd7fe38d3a8b258428c793f90050af41, type: 3}
-  m_PrefabInstance: {fileID: 6607478906837863165}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2193351128979297121 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5026617748624923036, guid: dd7fe38d3a8b258428c793f90050af41, type: 3}
@@ -226,20 +221,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 0}
-  spriteGO: {fileID: 0}
-  animals: {fileID: 0}
-  hideoutGO: {fileID: 0}
-  defendFromList: []
-  playerRB: {fileID: 0}
-  attackRadius: {fileID: 0}
-  noticeRadius: {fileID: 0}
-  damageCollider: {fileID: 0}
-  inventory: {fileID: 0}
   maxHealth: 0
   damage: 0
   secondsToReduce: 0
---- !u!58 &7202451145180505361 stripped
-CircleCollider2D:
-  m_CorrespondingSourceObject: {fileID: 4055003447888703468, guid: dd7fe38d3a8b258428c793f90050af41, type: 3}
-  m_PrefabInstance: {fileID: 6607478906837863165}
-  m_PrefabAsset: {fileID: 0}

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Photon.Realtime;
 
 public class SpawnPlayers : MonoBehaviour
 {
@@ -15,7 +16,10 @@ public class SpawnPlayers : MonoBehaviour
     private void Start()
     {
         Vector2 spawnPoint = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
+
         GameObject playerToSpawn = playerPrefabs[(int)PhotonNetwork.LocalPlayer.CustomProperties["playerAvatar"]];
+     
+
         PhotonNetwork.Instantiate(playerToSpawn.name, spawnPoint, Quaternion.identity);
     }
 
