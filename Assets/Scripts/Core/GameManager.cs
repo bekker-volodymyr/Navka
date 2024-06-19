@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     //}
     #endregion
 
+    public static string worldScene;
+
     #region Game State Values
     public static bool isPaused = false;
     public static bool isDead = false;
