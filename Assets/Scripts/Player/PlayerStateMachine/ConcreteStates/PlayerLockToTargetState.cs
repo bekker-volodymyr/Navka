@@ -64,9 +64,9 @@ public class PlayerLockToTargetState : PlayerState
         {
             if (collider.CompareTag("Damageable"))
             {
-                Player player = collider.GetComponentInParent<Player>();
+                Player playerComponent = collider.GetComponentInParent<Player>();
 
-                if (player != null)
+                if (playerComponent != null)
                 {
                     continue;
                 }

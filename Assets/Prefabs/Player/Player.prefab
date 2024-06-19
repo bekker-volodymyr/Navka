@@ -94,10 +94,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8678889963795942228}
   - component: {fileID: 4250092798382962881}
-  - component: {fileID: 6100000035078962135}
-  - component: {fileID: 7747693669726521892}
-  - component: {fileID: 1642851333413275222}
   - component: {fileID: 5052308042394559915}
+  - component: {fileID: 6100000035078962135}
+  - component: {fileID: 1642851333413275222}
+  - component: {fileID: 7747693669726521892}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -157,66 +157,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 5
---- !u!50 &6100000035078962135
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5026617748624923036}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
---- !u!114 &7747693669726521892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5026617748624923036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3c9972fc9ba56441af86588b25e6bb0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemPrefab: {fileID: 7275016242517586155, guid: d35c9f2e9f9ebd04aab3851db6f2790a, type: 3}
-  defendFromList:
-  - {fileID: 11400000, guid: 89d5522538f5e1e4e8402eea5f93812a, type: 2}
-  - {fileID: 11400000, guid: 8c5d0f63ddb248c4da7b96afe8cb78ce, type: 2}
-  noticeRadius: {fileID: 0}
-  damageCollider: {fileID: 6537546225854902485}
-  maxHealth: 50
-  damage: 5
-  secondsToReduce: 15
---- !u!114 &1642851333413275222
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5026617748624923036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc41a1c5687bdfb4791ee7c08b878d38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &5052308042394559915
 AudioSource:
   m_ObjectHideFlags: 0
@@ -313,6 +253,61 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!50 &6100000035078962135
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5026617748624923036}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!114 &1642851333413275222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5026617748624923036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc41a1c5687bdfb4791ee7c08b878d38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7747693669726521892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5026617748624923036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3c9972fc9ba56441af86588b25e6bb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 7275016242517586155, guid: d35c9f2e9f9ebd04aab3851db6f2790a, type: 3}
+  maxHealth: 50
+  damage: 5
+  secondsToReduce: 15
 --- !u!1 &8620205955378161194
 GameObject:
   m_ObjectHideFlags: 0
