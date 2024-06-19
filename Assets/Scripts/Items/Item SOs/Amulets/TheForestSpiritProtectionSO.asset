@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc59ad142cfb7364ca399ddddc978a15, type: 3}
   m_Name: TheForestSpiritProtectionSO
   m_EditorClassIdentifier: 
-  _name: The Forest Spirit's Protection
-  description: The Forest Spirit's Protection is a magical amulet that will shield
-    you from harm. It is crafted from the leaves of sacred trees, the fangs of a
-    forest beast, and the fur of a mighty bear.
+  _name: Forest Spirit
+  description: Forest Spirit is a magical amulet that will shield you from harm.
+    It is crafted from the leaves of sacred trees, the fangs of a forest beast, and
+    the fur of a mighty bear.
   lore: It is believed that the one who wears this amulet receives the blessing of
     the forest spirit, which grants protection from all troubles and dangers.
   recipe: {fileID: 11400000, guid: 6bb87c8468050e54a867ec67d5b8b48f, type: 2}

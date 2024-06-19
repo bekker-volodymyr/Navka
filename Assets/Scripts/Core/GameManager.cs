@@ -26,6 +26,10 @@ public class GameManager : MonoBehaviour
     public static bool isSave = false;
     #endregion
 
+    #region Death Event
+    public static Action DeathEvent;
+    #endregion
+
     #region Transition Values
     public static HideoutStruct hideoutStruct;
     public static string saveFile;

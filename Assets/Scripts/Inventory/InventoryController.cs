@@ -23,11 +23,23 @@ public class InventoryController : MonoBehaviour
         inventoryView.Init(inventoryModel.InventorySize);
         inventoryView.SelectItem += OnItemSelected;
         inventoryView.DeselectItemByClick += OnItemDeselected;
+
+        GameManager.DeathEvent += OnPlayerDeath;
     }
 
     private void Update()
     {
 
+    }
+
+    private void OnDestroy()
+    {
+        inventoryModel.OnInventoryUpdated -= UpdateInventoryUI;
+        Item.OnPickUp -= AddItem;
+        inventoryView.SelectItem -= OnItemSelected;
+        inventoryView.DeselectItemByClick -= OnItemDeselected;
+
+        GameManager.DeathEvent -= OnPlayerDeath;
     }
 
     private void UpdateInventoryUI(Dictionary<int, InventoryCellModel> inventoryState)
@@ -89,5 +101,10 @@ public class InventoryController : MonoBehaviour
         if(selectedItemIndex == -1) return null;
 
         return inventoryModel.GetItemByIndex(selectedItemIndex).Item;
+    }
+
+    private void OnPlayerDeath()
+    {
+        inventoryModel.ResetInventory();
     }
 }

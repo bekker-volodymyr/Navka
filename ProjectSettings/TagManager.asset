@@ -18,6 +18,7 @@ TagManager:
   - Inventory Controller
   - Amulets Manager
   - Spells Manager
+  - Hideout Entrance
   layers:
   - Default
   - TransparentFX

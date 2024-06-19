@@ -92,4 +92,10 @@ public class InventoryModelSO : ScriptableObject
         }
         return InventoryCellModel.GetEmptyCell();
     }
+
+    public void ResetInventory()
+    {
+        Init();
+        NotifyAboutChanges();
+    }
 }

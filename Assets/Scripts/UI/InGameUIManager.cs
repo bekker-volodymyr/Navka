@@ -6,6 +6,19 @@ public class InGameUIManager : MonoBehaviour
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject pauseBtn;
 
+    [Space]
+    [SerializeField] private GameObject deathScreen;
+
+    private void Start()
+    {
+        GameManager.DeathEvent += DeathScreenEnable;
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.DeathEvent -= DeathScreenEnable;
+    }
+
     private void Update()
     {
         if (Input.GetKeyUp(KeyCode.Escape))
@@ -22,5 +35,10 @@ public class InGameUIManager : MonoBehaviour
         pauseBtn.SetActive(!GameManager.isPaused);
 
         Time.timeScale = GameManager.isPaused ? 0f : 1f;
+    }
+
+    private void DeathScreenEnable()
+    {
+        deathScreen.SetActive(true);
     }
 }

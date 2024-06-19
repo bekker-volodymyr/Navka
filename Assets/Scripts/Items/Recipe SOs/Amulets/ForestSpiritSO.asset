@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32a23279369c20a40a1546326dc276b9, type: 3}
+  m_Name: ForestSpiritSO
+  m_EditorClassIdentifier: 
+  recipe:
+  - {fileID: 11400000, guid: 9fb55071d51bb1344a6faa4e5c7f3853, type: 2}
+  - {fileID: 11400000, guid: fe844c1568e7bdb44bb4ddd9a012b6f7, type: 2}
+  - {fileID: 11400000, guid: 67e5c7a1e9b94a54aa126ed4c53e97e1, type: 2}
+  result: {fileID: 11400000, guid: bd188783984e0584c80e861da5d4e857, type: 2}

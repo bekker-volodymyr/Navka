@@ -64,6 +64,13 @@ public class PlayerLockToTargetState : PlayerState
         {
             if (collider.CompareTag("Damageable"))
             {
+                Player player = collider.GetComponentInParent<Player>();
+
+                if (player != null)
+                {
+                    continue;
+                }
+
                 // Checking if this is an befriended NPC
                 BefriendableNPC npc = collider.GetComponentInParent<BefriendableNPC>();
 

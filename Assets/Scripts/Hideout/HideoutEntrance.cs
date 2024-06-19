@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class HideoutEntrance : MonoBehaviour, IInteractable
 {
-    //[SerializeField] private HideoutStruct hideoutData;
     private string sceneName = "HideoutScene";
 
     private void EnterHideout() 

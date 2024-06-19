@@ -129,6 +129,8 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
 
         inventory = GameObject.FindGameObjectWithTag("Inventory Controller").GetComponent<InventoryController>();
 
+        hideoutGO = GameObject.FindGameObjectWithTag("Hideout Entrance");
+
         inventory.ItemSelectedEvent += OnItemSelected;
         inventory.ItemDeselectedEvent += OnItemDeselected;
 
@@ -180,6 +182,8 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     {
         GameManager.isDead = true;
         Time.timeScale = 0f;
+
+        GameManager.DeathEvent?.Invoke();
     }
     public void GetDamage(float damage, GameObject attacker)
     {
