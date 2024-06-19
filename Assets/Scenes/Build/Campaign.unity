@@ -433,7 +433,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 397828193}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 967869518}
+        m_TargetAssemblyTypeName: DeathScreen, Assembly-CSharp
+        m_MethodName: RespawnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &397828193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1252,7 +1264,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 815018403}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 967869518}
+        m_TargetAssemblyTypeName: DeathScreen, Assembly-CSharp
+        m_MethodName: QuitClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &815018403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1747,7 +1771,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3624248943229621144, guid: 10262515c51564c4a97019ace17f309f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000066048604
+      value: 0.000011628005
       objectReference: {fileID: 0}
     - target: {fileID: 3799581467172024210, guid: 10262515c51564c4a97019ace17f309f, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2792,11 +2816,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4170531194609666788, guid: 55cf92ab456cade4c95e5587a7dff527, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.33
+      value: -7.27
       objectReference: {fileID: 0}
     - target: {fileID: 4170531194609666788, guid: 55cf92ab456cade4c95e5587a7dff527, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.73
+      value: -2.67
       objectReference: {fileID: 0}
     - target: {fileID: 4170531194609666788, guid: 55cf92ab456cade4c95e5587a7dff527, type: 3}
       propertyPath: m_LocalPosition.z

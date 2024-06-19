@@ -166,8 +166,6 @@ public class NPCBase : ItemDropper, IMoveable, IDamageable, IAttack, IInteractab
     }
     virtual protected void Start()
     {
-        Debug.Log($"{gameObject.name} npcbase start");
-
         maxHealth = description.HealthPoints;
         currentHealth = maxHealth;
         healthIndicator.SetValue(currentHealth, maxHealth);
@@ -182,7 +180,6 @@ public class NPCBase : ItemDropper, IMoveable, IDamageable, IAttack, IInteractab
         IdleStateInstance.Initialize(this);
         ChaseStateInstance.Initialize(this);
         DialogStateInstance.Initialize(this);
-       // BefriendedStateInstance.Initialize(this);
 
         StateMachine.Initialize(IdleState);
     }

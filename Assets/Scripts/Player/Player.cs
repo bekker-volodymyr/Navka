@@ -233,8 +233,6 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     #region Attack Logic
     public void Attack(IDamageable target)
     {
-        // TODO: apply bonuses and debufs to damage value
-
         target.GetDamage(CalculateAttackDamage(damage), gameObject);
     }
     private float CalculateAttackDamage(float damage)
