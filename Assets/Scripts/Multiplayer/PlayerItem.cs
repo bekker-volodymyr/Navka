@@ -12,6 +12,7 @@ public class PlayerItem : MonoBehaviourPunCallbacks
 
     Image backgrondImage;
     public Color highlightColor;
+    [SerializeField] private Sprite highlightSprite;
     public GameObject leftArrowButton;
     public GameObject rightArrowButton;
 
@@ -35,7 +36,8 @@ public class PlayerItem : MonoBehaviourPunCallbacks
 
     public void ApplyLocalChanges()
     {
-        backgrondImage.color = highlightColor;
+        //backgrondImage.color = highlightColor;
+        backgrondImage.sprite = highlightSprite;
         leftArrowButton.SetActive(true);
         rightArrowButton.SetActive(true);
     }
