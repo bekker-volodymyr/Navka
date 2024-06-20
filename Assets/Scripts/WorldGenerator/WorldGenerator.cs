@@ -54,10 +54,10 @@ public class WorldGenerator : MonoBehaviour
 
                 biomLayer.SetTile(tilePos, biomsGrid[x, y] == BiomsEnum.Field ? biomTiles[0] : biomTiles[1]);
                 
-                if (UnityEngine.Random.Range(0, 500) == 0)
-                {
-                    decorLayer.SetTile(tilePos, fieldBiomeSO.decorLayer[UnityEngine.Random.Range(0, fieldBiomeSO.decorLayer.Length)]);
-                }
+               //if (UnityEngine.Random.Range(0, 500) == 0)
+               //{
+               //    decorLayer.SetTile(tilePos, fieldBiomeSO.decorLayer[UnityEngine.Random.Range(0, fieldBiomeSO.decorLayer.Length)]);
+               //}
 
                 if (biomsGrid[x, y] == BiomsEnum.Field)
                 {
