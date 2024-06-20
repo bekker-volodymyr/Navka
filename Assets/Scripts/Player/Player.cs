@@ -393,6 +393,14 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
                         ChangeHunger(effect.Value);
                         inventory.ConsumeSelectedItem();
                         break;
+                    case Enums.EffectProperty.Health:
+                        ChangeHealth(effect.Value);
+                        inventory.ConsumeSelectedItem();
+                        break;
+                    case Enums.EffectProperty.Mana: 
+                        ChangeMana(effect.Value);
+                        inventory.ConsumeSelectedItem();
+                        break;
                     default:
                         Debug.Log($"No effect or not implemented: {effect.name}");
                         break;
