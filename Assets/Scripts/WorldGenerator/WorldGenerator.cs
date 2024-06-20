@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 
 public class WorldGenerator : MonoBehaviour
@@ -33,7 +34,8 @@ public class WorldGenerator : MonoBehaviour
 
         Generate();
 
-       
+        Scene currentScene = SceneManager.GetActiveScene();
+        GameManager.worldScene = currentScene.name; 
     }
 
     public void Generate()

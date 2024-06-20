@@ -150,6 +150,19 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
         StartCoroutine("HungerCountdown");
     }
 
+    public void Respawn()
+    {
+        currentHealth = maxHealth;
+        currentHunger = maxHunger;
+        currentMana = maxMana;
+
+        healthIndicator.SetValue(currentHealth, maxHealth);
+        hungerIndicator.SetValue(currentHunger, maxHunger);
+        manaIndicator.SetValue(currentMana, maxMana);
+
+        StartCoroutine("HungerCountdown");
+    }
+
     virtual protected void Update()
     {
         if (!isInDialog)
@@ -182,6 +195,8 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     {
         GameManager.isDead = true;
         Time.timeScale = 0f;
+
+        StopAllCoroutines();
 
         GameManager.DeathEvent?.Invoke();
     }
