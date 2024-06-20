@@ -20,5 +20,5 @@ MonoBehaviour:
   recipe: {fileID: 0}
   type: 0
   effects: []
-  sprite: {fileID: 21300000, guid: 5019ef34cf47c124aac56cb218ef651a, type: 3}
+  sprite: {fileID: 21300000, guid: 7ad7ab7694284164b824ae98c9eec262, type: 3}
   maxPerStack: 1
