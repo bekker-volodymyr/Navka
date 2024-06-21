@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05233eef068268d419d182435aff7e44, type: 3}
   m_Name: Base Config
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  maxHunger: 0
-  maxMana: 0
+  maxHealth: 100
+  maxHunger: 100
+  maxMana: 100
+  basicDamage: 5
+  hungerDelay: 10
+  manaRestoreDelay: 0
