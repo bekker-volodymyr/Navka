@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9068532441974125462}
   - component: {fileID: 3235110499184166728}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RockSmall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,7 +80,7 @@ GameObject:
   - component: {fileID: 7172200124842421817}
   - component: {fileID: 6056669333821362995}
   - component: {fileID: 4751853288925747202}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 4567431456703361613}
   - component: {fileID: 6387704086581217762}
   - component: {fileID: 6593883823513715329}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -315,7 +315,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4170834835995686873}
   - component: {fileID: 10345222748035794}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4887274994958967753}
   - component: {fileID: 8215005952759935456}
   - component: {fileID: 4811078944836068021}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 394053055919934422}
   - component: {fileID: 4075330127890350945}
   - component: {fileID: 6619047157567832380}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HideoutEntrance
   m_TagString: EnvironmentObject
   m_Icon: {fileID: 0}
@@ -217,7 +217,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1c7bbb2cd71a3f4db65fec8dfc9b5f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: HideoutScene
 --- !u!1 &6837802000129396332
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,7 +227,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7264145835052012562}
   - component: {fileID: 2806092483672349923}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -313,7 +312,7 @@ GameObject:
   - component: {fileID: 4180711844962417709}
   - component: {fileID: 2284267272989618746}
   - component: {fileID: 2714180114819724062}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: InteractCollider
   m_TagString: Interactable
   m_Icon: {fileID: 0}
@@ -395,7 +394,7 @@ GameObject:
   - component: {fileID: 4661343020397379920}
   - component: {fileID: 7546975572211780927}
   - component: {fileID: 6709935104017670751}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

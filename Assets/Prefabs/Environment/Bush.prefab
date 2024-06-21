@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4253852044862243911}
   - component: {fileID: 2184506911850785982}
-  m_Layer: 0
+  - component: {fileID: 6195199876805348299}
+  m_Layer: 6
   m_Name: Bush
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,6 +56,27 @@ MonoBehaviour:
   leavesSO: {fileID: 11400000, guid: 654096fdf55678d40999b2c988d06893, type: 2}
   spriteRenderer: {fileID: 6325520775488814728}
   interactCollider: {fileID: 7842635175118205291}
+--- !u!65 &6195199876805348299
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4886031037478288704}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2, y: 2, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5442494267860142063
 GameObject:
   m_ObjectHideFlags: 0
@@ -65,7 +87,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7073580780777486877}
   - component: {fileID: 6325520775488814728}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +173,7 @@ GameObject:
   - component: {fileID: 8595271659328032976}
   - component: {fileID: 6720442764976389418}
   - component: {fileID: 2911925223996642589}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,7 +274,7 @@ GameObject:
   - component: {fileID: 171755611719562941}
   - component: {fileID: 257840562230891825}
   - component: {fileID: 257507085274925829}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -386,7 +408,7 @@ GameObject:
   - component: {fileID: 8452640839339469404}
   - component: {fileID: 7842635175118205291}
   - component: {fileID: 4075204400537962692}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: InteractCollider
   m_TagString: Interactable
   m_Icon: {fileID: 0}

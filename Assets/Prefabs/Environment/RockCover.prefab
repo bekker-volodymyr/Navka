@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3621631074813834162}
   - component: {fileID: 8276041125110136464}
-  m_Layer: 0
+  - component: {fileID: 8659175038655483419}
+  m_Layer: 6
   m_Name: RockCover
   m_TagString: EnvironmentObject
   m_Icon: {fileID: 0}
@@ -47,6 +48,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dae7a76064fed94d92e3e00b0c45de8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &8659175038655483419
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 908829862333129034}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.5, y: 3, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3835958451705003029
 GameObject:
   m_ObjectHideFlags: 0
@@ -59,7 +81,7 @@ GameObject:
   - component: {fileID: 318141447902642042}
   - component: {fileID: 8256533103178250134}
   - component: {fileID: 1518533262969601858}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159,7 +181,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9014324385840863160}
   - component: {fileID: 3066475199229692612}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,7 +266,7 @@ GameObject:
   - component: {fileID: 1618767570124863972}
   - component: {fileID: 8157792382220178889}
   - component: {fileID: 820357451599269776}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -378,7 +400,7 @@ GameObject:
   - component: {fileID: 2072727357567943490}
   - component: {fileID: 7650037475865625159}
   - component: {fileID: 5799668440475476470}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: InteractCollider
   m_TagString: Interactable
   m_Icon: {fileID: 0}
