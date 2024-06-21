@@ -22,6 +22,6 @@ public class PlayerConfigStats : ScriptableObject
     private float hungerDelay;
     public float HungerDelay => hungerDelay;
     [SerializeField]
-    private float manaRestorDelay;
+    private float manaRestoreDelay;
     public float ManaRestoreDelay => manaRestorDelay;
 }
