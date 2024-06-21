@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, ICoverable
 {
+    [SerializeField] private PlayerConfigStats stats;
+
     private SpriteRenderer spriteRenderer;
     public SpriteRenderer SpriteRenderer => spriteRenderer;
 
@@ -48,33 +50,30 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
 
     #region Health Variables
     private float currentHealth;
-    [Space]
-    [SerializeField] private float maxHealth;
+    private float maxHealth;
     public float CurrentHealth => currentHealth;
     public float MaxHealth => maxHealth;
     #endregion
 
     #region Damage Variables
-    [Space]
-    [SerializeField] private float damage;
+    private float damage;
     public float Damage => damage;
     #endregion
 
     #region Hunger Variables
-    [Space]
-    [SerializeField] private float secondsToReduce;
+    private float secondsToReduce;
     private float currentHunger;
     public float CurrentHunger => currentHunger;
-    private float maxHunger = 100f;
+    private float maxHunger;
     public float MaxHunger => maxHunger;
     #endregion
 
     #region Mana Variables
     private float currentMana;
     public float CurrentMana => currentMana;
-    private float maxMana = 100f;
+    private float maxMana;
     public float MaxMana => maxMana;
-    private float timeToRestore = 10f;
+    private float timeToRestore;
     private bool manaCanRestore = true;
     #endregion
 
@@ -108,7 +107,11 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     virtual protected void Start()
     {
         #region Initialize indicators
-        
+
+        maxHealth = stats.MaxHealth;
+        maxHunger = stats.MaxHunger;
+        maxMana = stats.MaxMana;
+
         currentHealth = maxHealth;
         currentHunger = maxHunger;
         currentMana = maxMana;
@@ -122,6 +125,12 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
         manaIndicator.SetValue(currentMana, maxMana);
 
         #endregion
+
+        damage = stats.BasicDamage;
+
+        secondsToReduce = stats.HungerDelay;
+
+        timeToRestore = stats.ManaRestoreDelay;
 
         StateMachine.Initialize(IdleState);
 
