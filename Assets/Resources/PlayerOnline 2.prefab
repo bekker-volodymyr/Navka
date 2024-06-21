@@ -216,3 +216,4 @@ MonoBehaviour:
   maxHealth: 0
   damage: 0
   secondsToReduce: 0
+  virtualCamera: {fileID: 0}

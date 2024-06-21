@@ -391,6 +391,7 @@ GameObject:
   m_Component:
   - component: {fileID: 116738386}
   - component: {fileID: 116738387}
+  - component: {fileID: 116738388}
   m_Layer: 5
   m_Name: Chat
   m_TagString: Untagged
@@ -435,6 +436,28 @@ MonoBehaviour:
   inputField: {fileID: 1104829973}
   message: {fileID: 991102842323666094, guid: 8fa9a6a28936d436c96e660c4ce549e1, type: 3}
   content: {fileID: 595342277}
+--- !u!114 &116738388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116738385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 1
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1001 &127441529
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1787,7 +1810,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3624248943229621144, guid: 10262515c51564c4a97019ace17f309f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.0000759669
+      value: 0.00043711174
       objectReference: {fileID: 0}
     - target: {fileID: 3799581467172024210, guid: 10262515c51564c4a97019ace17f309f, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3058,9 +3081,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 116738387}
-        m_TargetAssemblyTypeName: UnityEngine.Component, UnityEngine
-        m_MethodName: SendMessage
-        m_Mode: 5
+        m_TargetAssemblyTypeName: Chat, Assembly-CSharp
+        m_MethodName: SendMyMessage
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

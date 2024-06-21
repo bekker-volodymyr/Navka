@@ -11,7 +11,7 @@ public class Chat : MonoBehaviour
     [SerializeField] private GameObject message;
     [SerializeField] private GameObject content;
 
-    void SendMessage()
+    public void SendMyMessage()
     {
         GetComponent<PhotonView>().RPC("GetMessage", RpcTarget.All, (PhotonNetwork.NickName + " : " + inputField.text));
 

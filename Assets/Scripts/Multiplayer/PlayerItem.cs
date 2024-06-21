@@ -22,9 +22,17 @@ public class PlayerItem : MonoBehaviourPunCallbacks
 
     Photon.Realtime.Player player;
 
+    private void Start()
+    {
+        //testing
+        playerProperties["playerAvatar"] = 0;
+
+    }
+
     private void Awake()
     {
         backgrondImage = GetComponent<Image>();
+
     }
 
     public void SetPlayerInfo(Photon.Realtime.Player _player)
