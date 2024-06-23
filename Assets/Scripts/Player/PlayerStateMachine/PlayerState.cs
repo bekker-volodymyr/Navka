@@ -13,21 +13,19 @@ public class PlayerState
         this.playerStateMachine = playerStateMachine;
     }
 
-    public virtual void EnterState() { }
+    public virtual void EnterState() 
+    {
+        Debug.Log($"Player enters {playerStateMachine.CurrentState}");
+    }
     public virtual void ExitState() 
     {
+        // Stop all previous moves for player
         player.Move(Vector2.zero);
     }
     public virtual void FrameUpdate()
     {
         // If game paused - do nothing
         if (GameManager.isPaused)
-        {
-            return;
-        }
-
-        // If current state is dialog state - do nothing
-        if (player.StateMachine.CurrentState.Equals(player.DialogState))
         {
             return;
         }

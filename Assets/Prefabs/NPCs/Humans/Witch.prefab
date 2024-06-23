@@ -331,10 +331,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 3800483147212505977}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &674638338950878347
 CanvasRenderer:
@@ -636,7 +636,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0, b: 0, a: 0.392}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -859,12 +859,13 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d51dd5a2a0cfbbb4bb5fd8890f3fac18, type: 3}
   noticeRadius: {fileID: 583613052936812161}
   attackRadius: {fileID: 8452414509492050331}
+  interactCollider: {fileID: 0}
   idleStateBase: {fileID: 11400000, guid: 6c1bb018be1494848a221bc6b552dd06, type: 2}
   chaseStateBase: {fileID: 11400000, guid: 4d773fc59a131e842bfe878f73d52008, type: 2}
   dialogStateBase: {fileID: 11400000, guid: 6dfde8399f83a5b4f9e90818594cac18, type: 2}
-  befriendedStateBase: {fileID: 11400000, guid: 2a66445a8a19fc04cb13768991399006, type: 2}
   lines:
   - {fileID: 11400000, guid: f52661b0aef70a3449e4fbae2b4f34e0, type: 2}
+  questItemsList: []
 --- !u!82 &5978364964585780791
 AudioSource:
   m_ObjectHideFlags: 0

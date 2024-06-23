@@ -6,10 +6,13 @@ using UnityEngine.EventSystems;
 public class PlayerIdleState : PlayerState
 {
     public PlayerIdleState(Player player, StateMachine playerStateMachine) : base(player, playerStateMachine) { }
-    private float moveSpeed = 5f;
+    private float _moveSpeed;
+
     public override void EnterState()
     {
         base.EnterState();
+
+        _moveSpeed = player.MoveSpeed;
     }
 
     public override void ExitState()
@@ -24,8 +27,9 @@ public class PlayerIdleState : PlayerState
         float MoveX = Input.GetAxisRaw("Horizontal");
         float MoveY = Input.GetAxisRaw("Vertical");
 
-        player.Move((new Vector2(MoveX, MoveY).normalized) * moveSpeed);
+        Vector2 velocity = (new Vector2(MoveX, MoveY).normalized) * _moveSpeed;
 
+        player.Move(velocity);
     }
 
     public override void PhysicsUpdate()

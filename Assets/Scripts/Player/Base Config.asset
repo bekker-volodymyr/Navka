@@ -17,4 +17,5 @@ MonoBehaviour:
   maxMana: 100
   basicDamage: 5
   hungerDelay: 10
-  manaRestoreDelay: 0
+  manaRestoreDelay: 1.5
+  moveSpeed: 5

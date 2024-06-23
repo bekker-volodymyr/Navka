@@ -15,11 +15,14 @@ public class PlayerMoveToPointState : PlayerState
     private Vector3 _targetPos;
     private Vector3 _direction;
 
-    private float moveSpeed = 5f;
+    private float _moveSpeed;
 
     public override void EnterState()
     {
         base.EnterState();
+
+        _moveSpeed = player.MoveSpeed;
+
         _targetPos = GetEndPoint();
     }
 
@@ -33,14 +36,9 @@ public class PlayerMoveToPointState : PlayerState
         base.FrameUpdate();
 
         _direction = (_targetPos - player.transform.position).normalized;
-        player.Move(_direction * moveSpeed);
+        player.Move(_direction * _moveSpeed);
 
         if ((player.transform.position - _targetPos).sqrMagnitude < 0.01f)
-        {
-            player.StateMachine.ChangeState(player.IdleState);
-        }
-
-        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
         {
             player.StateMachine.ChangeState(player.IdleState);
         }
@@ -51,11 +49,10 @@ public class PlayerMoveToPointState : PlayerState
         base.PhysicsUpdate();
     }
 
-
     private Vector3 GetEndPoint()
     {
         Vector3 mousePosition = Input.mousePosition;
-        float distanceToPlane = 10f;
+        float distanceToPlane = -Camera.main.transform.position.z;
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, distanceToPlane));
 
         return worldPosition;

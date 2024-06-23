@@ -38,7 +38,6 @@ public class BefriendableNPC : NPCBase
     override protected void Start()
     {
         base.Start();
-        Debug.Log($"{gameObject.name} befriendable start");
 
         defaultBefriendedStateInstance.Initialize(this);
         secondaryBefriendedStateInstance.Initialize(this);

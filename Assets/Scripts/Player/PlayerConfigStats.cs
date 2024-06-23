@@ -24,4 +24,7 @@ public class PlayerConfigStats : ScriptableObject
     [SerializeField]
     private float manaRestoreDelay;
     public float ManaRestoreDelay => manaRestoreDelay;
+    [SerializeField]
+    private float moveSpeed;
+    public float MoveSpeed => moveSpeed;
 }

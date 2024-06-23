@@ -30,6 +30,8 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     private Rigidbody2D playerRB;
     public Rigidbody2D ObjectRB => playerRB;
     private bool isFacingRight = true;
+    private float moveSpeed;
+    public float MoveSpeed => moveSpeed;
     #endregion
 
     #region Radius & Colliders
@@ -90,7 +92,6 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     public PlayerLockToTargetState LockToTargetState { get; set; }
     public PlayerMoveToPointState MoveToPointState { get; set; }
     public PlayerUnderCoverState UnderCoverState { get; set; }
-    public PlayerDialogState DialogState { get; set; }
     #endregion
 
     private void Awake()
@@ -101,7 +102,6 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
         LockToInteractState = new PlayerLockToInteractState(this, StateMachine);
         LockToTargetState = new PlayerLockToTargetState(this, StateMachine);
         UnderCoverState = new PlayerUnderCoverState(this, StateMachine);
-        DialogState = new PlayerDialogState(this, StateMachine);
     }
 
     virtual protected void Start()
@@ -131,6 +131,8 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
         secondsToReduce = stats.HungerDelay;
 
         timeToRestore = stats.ManaRestoreDelay;
+
+        moveSpeed = stats.MoveSpeed;
 
         StateMachine.Initialize(IdleState);
 
