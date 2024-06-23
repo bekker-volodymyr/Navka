@@ -151,6 +151,8 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
 
         playerRB = GetComponent<Rigidbody2D>();
 
+        Debug.Log($"Player Start() RB component {playerRB}");
+
         damageCollider = GetComponentInChildren<CircleCollider2D>();
 
         GameManager.DialogStartEvent += OnDialogStart;
@@ -197,6 +199,8 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
 
         GameManager.DialogStartEvent -= OnDialogStart;
         GameManager.DialogStopEvent -= OnDialogEnd;
+
+        Item.OnPickUp -= OnItemPickedUp;
 
         StopAllCoroutines();
     }

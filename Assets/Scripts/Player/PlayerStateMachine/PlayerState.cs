@@ -15,7 +15,7 @@ public class PlayerState
 
     public virtual void EnterState() 
     {
-        Debug.Log($"Player enters {playerStateMachine.CurrentState}");
+
     }
     public virtual void ExitState() 
     {
