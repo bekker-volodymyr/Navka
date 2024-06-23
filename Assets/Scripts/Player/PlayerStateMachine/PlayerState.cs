@@ -53,6 +53,20 @@ public class PlayerState
             return;
         }
 
+        // If pressed E - start interact state
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            player.StateMachine.ChangeState(player.LockToInteractState);
+            return;
+        }
+
+        // If pressed R and selected item - use selected item
+        if (Input.GetKeyDown(KeyCode.R) && player.SelectedItem != null)
+        {
+            player.UseSelectedItem();
+            return;
+        }
+
         // If pressed F - start attack state
         if (Input.GetKeyDown(KeyCode.F) && player.StateMachine.CurrentState != player.LockToTargetState)
         {
@@ -60,19 +74,6 @@ public class PlayerState
             return;
         }
 
-        // If pressed E and selected item - use selected item
-        if (Input.GetKeyDown(KeyCode.R) && player.SelectedItem != null)
-        {
-            player.UseSelectedItem();
-            return;
-        }
-
-        // If pressed E - start interact state
-        if (Input.GetKeyDown(KeyCode.E) && player.StateMachine.CurrentState != player.LockToInteractState)
-        {
-            player.StateMachine.ChangeState(player.LockToInteractState);
-            return;
-        }
     }
     public virtual void PhysicsUpdate() { }
 

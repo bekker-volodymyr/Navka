@@ -35,8 +35,8 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     #endregion
 
     #region Radius & Colliders
-    private float visionRadius = 20f;
-    public float VisionRadius => visionRadius;
+    private float _visionRadius = 20f;
+    public float VisionRadius => _visionRadius;
 
     private float interactRadius = 4.5f;
     public float InteractRadius => interactRadius;
@@ -281,7 +281,7 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     }
     public Collider2D[] GetAllItemsInCollisionRadius()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, VisionRadius);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _visionRadius);
         return colliders;
     }
     #endregion
@@ -314,6 +314,7 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     public void Interact(IInteractable target)
     {
         target.OnInteraction(gameObject);
+
         if (!isUnderCover)
         {
             StateMachine.ChangeState(IdleState);
@@ -470,6 +471,7 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     {
         cover.LeaveCover();
         cover = null;
+        isUnderCover = false;
     }
     #endregion
 

@@ -7,15 +7,18 @@ public class PlayerLockToInteractState : PlayerState
 {
     public PlayerLockToInteractState(Player player, StateMachine playerStateMachine) : base(player, playerStateMachine) { }
 
-    private Vector3 _targetPos;
-    private Vector3 _direction;
-    private IInteractable _targetItem;
+    private Transform _targetTransform;
+    private IInteractable _targetInteractable;
 
-    private float moveSpeed = 5f;
+    private Vector3 _direction;
+
+    private float _moveSpeed;
 
     public override void EnterState()
     {
         base.EnterState();
+
+        _moveSpeed = player.MoveSpeed;
 
         if (!TryFindClosestTarget())
         {
@@ -30,19 +33,14 @@ public class PlayerLockToInteractState : PlayerState
 
     public override void FrameUpdate()
     {
-        if(_targetItem == null)
+        if ((player.transform.position - _targetTransform.position).sqrMagnitude < player.InteractRadius)
         {
-            player.StateMachine.ChangeState(player.IdleState);
-        }
-
-        if ((player.transform.position - _targetPos).sqrMagnitude < player.InteractRadius)
-        {
-            player.Interact(_targetItem);
+            player.Interact(_targetInteractable);
         }
         else
         {
-            _direction = (_targetPos - player.transform.position).normalized;
-            player.Move(_direction * moveSpeed);
+            _direction = (_targetTransform.position - player.transform.position).normalized;
+            player.Move(_direction * _moveSpeed);
         }
     }
 
@@ -86,12 +84,7 @@ public class PlayerLockToInteractState : PlayerState
 
     private void SetTarget(Collider2D targetCollider)
     {
-        _targetPos = targetCollider.transform.position;
-        _targetItem = targetCollider.GetComponentInParent<IInteractable>();
-    }
-
-    public void RemoveTarget()
-    {
-        _targetItem = null;
+        _targetTransform = targetCollider.transform;
+        _targetInteractable = targetCollider.GetComponentInParent<IInteractable>();
     }
 }
