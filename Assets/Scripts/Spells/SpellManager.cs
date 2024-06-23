@@ -34,6 +34,7 @@ public class SpellManager : MonoBehaviour
             SpellButton newSpell = Instantiate(spellButtonPrefab);
             newSpell.InitButton(spell, this);
             newSpell.transform.SetParent(spellParent.transform, false);
+            newSpell.GetComponent<RectTransform>().localPosition = Vector3.zero;
             buttons.Add(newSpell);
             readySpells.Add(spell);
             player.AddSpell(spell);
