@@ -22,6 +22,12 @@ public class Chat : MonoBehaviour
     public void GetMessage(string recievedMessage)
     {
         GameObject rMessage = Instantiate(message, Vector3.zero, Quaternion.identity, content.transform);
+        rMessage.SetActive(true);
         rMessage.GetComponent<Message>().myMessage.text = recievedMessage;
+
+        // Debugging the position and hierarchy
+        Debug.Log($"Message instance created at: {rMessage.transform.position}");
+        Debug.Log($"Message parent: {rMessage.transform.parent.name}");
+        Debug.Log($"Message active state: {rMessage.activeSelf}");
     }
 }

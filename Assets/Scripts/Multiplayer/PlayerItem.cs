@@ -22,12 +22,6 @@ public class PlayerItem : MonoBehaviourPunCallbacks
 
     Photon.Realtime.Player player;
 
-    private void Start()
-    {
-        //testing
-        playerProperties["playerAvatar"] = 0;
-
-    }
 
     private void Awake()
     {
@@ -39,6 +33,8 @@ public class PlayerItem : MonoBehaviourPunCallbacks
     {
         playerName.text = _player.NickName;
         player = _player;
+        //testing
+        //playerProperties["playerAvatar"] = 0;
         UpdatePlayerIteam(player);
     }
 
