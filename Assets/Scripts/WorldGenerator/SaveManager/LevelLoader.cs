@@ -27,6 +27,7 @@ public class LevelLoader : MonoBehaviour
 
             filePath = GameManager.saveFile;
             LoadLevel();
+            GameManager.isPaused = false;
         }
     }
 
