@@ -21,7 +21,7 @@ public class Chat : MonoBehaviour
     [PunRPC]
     public void GetMessage(string recievedMessage)
     {
-        GameObject rMessage = Instantiate(message, Vector3.zero, Quaternion.identity, content.transform);
+        GameObject rMessage = Instantiate(message, content.transform, false);
         rMessage.SetActive(true);
         rMessage.GetComponent<Message>().myMessage.text = recievedMessage;
 
