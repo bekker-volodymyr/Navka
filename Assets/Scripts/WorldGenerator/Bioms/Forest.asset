@@ -13,13 +13,9 @@ MonoBehaviour:
   m_Name: Forest
   m_EditorClassIdentifier: 
   baseLayer:
-  - {fileID: 11400000, guid: 0984eac45fe0ea3488d96eba50ef67f5, type: 2}
-  - {fileID: 11400000, guid: a1c354a59f5c5a149ac38d796a464a10, type: 2}
-  - {fileID: 11400000, guid: df399ef30597c364eab775fecf20873e, type: 2}
-  - {fileID: 11400000, guid: 5c678d313f82d4147bd23095f40b4468, type: 2}
-  - {fileID: 11400000, guid: 4a4eeb2d2a60a2f4db10317676210933, type: 2}
-  - {fileID: 11400000, guid: 77bbf43880872ca4791041eefc23c1b7, type: 2}
-  - {fileID: 11400000, guid: 38f6cde201fd89e4fa7f3bf867c86fab, type: 2}
-  - {fileID: 11400000, guid: 07534c5bde5739b4e9f11635d7a3cf09, type: 2}
-  - {fileID: 11400000, guid: a7d22df4e91578341a22ea4e20d4d48b, type: 2}
+  - {fileID: 11400000, guid: 0570e7b65f7888d47a312da624ad9122, type: 2}
+  - {fileID: 11400000, guid: 92513e1ec786df743ad78cdf967053db, type: 2}
+  - {fileID: 11400000, guid: 92513e1ec786df743ad78cdf967053db, type: 2}
+  - {fileID: 11400000, guid: 92513e1ec786df743ad78cdf967053db, type: 2}
+  - {fileID: 11400000, guid: 92513e1ec786df743ad78cdf967053db, type: 2}
   decorLayer: []

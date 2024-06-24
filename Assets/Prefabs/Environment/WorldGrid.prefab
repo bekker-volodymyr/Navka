@@ -137,7 +137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6836421973022960001
 Transform:
   m_ObjectHideFlags: 0
@@ -231,7 +231,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -100
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -285,9 +285,9 @@ Grid:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6079985746622245239}
   m_Enabled: 1
-  m_CellSize: {x: 1, y: 0.5, z: 1}
+  m_CellSize: {x: 1, y: 1, z: 1}
   m_CellGap: {x: 0, y: 0, z: 0}
-  m_CellLayout: 2
+  m_CellLayout: 0
   m_CellSwizzle: 0
 --- !u!114 &4945030541672753813
 MonoBehaviour:
@@ -312,7 +312,6 @@ MonoBehaviour:
   biomTiles:
   - {fileID: 11400000, guid: 588093eadb9e47641a61183fbbee585d, type: 2}
   - {fileID: 11400000, guid: 03dbb18e5f2c5f54ca1a1740e89c63e5, type: 2}
-  - {fileID: 11400000, guid: db946f4d2f71ea747936b4bf215c98ce, type: 2}
 --- !u!114 &1985983944078447505
 MonoBehaviour:
   m_ObjectHideFlags: 0
