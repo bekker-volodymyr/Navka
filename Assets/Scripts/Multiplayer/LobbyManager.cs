@@ -21,7 +21,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     private float nextUpdateTime;
 
     public int maxPlayerCanJoin =3;
-    public int minPlayersToStart = 2;
+    public int minPlayersToStart = 1;
 
     private List<PlayerItem> playerItemsList = new List<PlayerItem>();
     public PlayerItem playerItemPrefab;
@@ -145,7 +145,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     private void Update()
     {
-        if (PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount >= minPlayersToStart)
+        if (PhotonNetwork.IsMasterClient) //&& PhotonNetwork.CurrentRoom.PlayerCount >= minPlayersToStart
         {
             playButton.SetActive(true);
         }

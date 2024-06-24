@@ -376,7 +376,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1047921261}
   m_HandleRect: {fileID: 1047921260}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -2541,18 +2541,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1864191960}
-        m_TargetAssemblyTypeName: LobbyManager, Assembly-CSharp
-        m_MethodName: Disconnect
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1481122321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2910,6 +2898,7 @@ MonoBehaviour:
   contentObject: {fileID: 756915084}
   timeBetweenUpdates: 1.5
   maxPlayerCanJoin: 3
+  minPlayersToStart: 2
   playerItemPrefab: {fileID: 6305231282790797539, guid: 35fdc32e6965e47458bde8abfff50704, type: 3}
   playerItemParent: {fileID: 932866645}
   playButton: {fileID: 1421939962}

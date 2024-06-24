@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
 
 public class WorldManager : MonoBehaviour
 {
@@ -12,6 +13,10 @@ public class WorldManager : MonoBehaviour
 
     public void BackToMainMenu()
     {
+        if (PhotonNetwork.IsConnected)
+        {
+            PhotonNetwork.Disconnect();
+        }
         SceneManager.LoadScene(0);
     }
 
