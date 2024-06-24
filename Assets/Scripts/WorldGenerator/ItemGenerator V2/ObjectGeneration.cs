@@ -9,7 +9,7 @@ public class ObjectGenerator : MonoBehaviour
     public Vector2 spawnAreaSize = new Vector2(10f, 10f);
     public LayerMask collisionLayer; // Define the layer mask for collision checking
 
-    void Start()
+    virtual protected void Start()
     {
         GenerateObjects();
     }

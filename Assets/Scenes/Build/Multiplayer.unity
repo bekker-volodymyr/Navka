@@ -134,6 +134,8 @@ GameObject:
   - component: {fileID: 8166459}
   - component: {fileID: 8166461}
   - component: {fileID: 8166460}
+  - component: {fileID: 8166463}
+  - component: {fileID: 8166462}
   m_Layer: 6
   m_Name: HideoutEntrance
   m_TagString: Untagged
@@ -226,6 +228,43 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8166462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8166458}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49ee3f0a208f3438a892c03fbf921bbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentPrefab: {fileID: 8166458}
+  objectPrefab: {fileID: 4560073555322063386, guid: 5e899a214a45ecd41a59282f8cd60369, type: 3}
+  myPV: {fileID: 8166463}
+--- !u!114 &8166463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8166458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 3
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1001 &40113100
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -708,6 +747,8 @@ GameObject:
   - component: {fileID: 398518090}
   - component: {fileID: 398518092}
   - component: {fileID: 398518091}
+  - component: {fileID: 398518094}
+  - component: {fileID: 398518093}
   m_Layer: 6
   m_Name: Bush
   m_TagString: Untagged
@@ -800,6 +841,43 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &398518093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 398518089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 2
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &398518094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 398518089}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49ee3f0a208f3438a892c03fbf921bbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentPrefab: {fileID: 398518089}
+  objectPrefab: {fileID: 4886031037478288704, guid: 22d6ec97e721f4a3f87b867827ca8c62, type: 3}
+  myPV: {fileID: 398518093}
 --- !u!1 &452591591
 GameObject:
   m_ObjectHideFlags: 0
@@ -811,6 +889,8 @@ GameObject:
   - component: {fileID: 452591592}
   - component: {fileID: 452591594}
   - component: {fileID: 452591593}
+  - component: {fileID: 452591596}
+  - component: {fileID: 452591595}
   m_Layer: 6
   m_Name: RockSmall
   m_TagString: Untagged
@@ -903,6 +983,43 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &452591595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452591591}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49ee3f0a208f3438a892c03fbf921bbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentPrefab: {fileID: 452591591}
+  objectPrefab: {fileID: 3251206823055180716, guid: 9721bc8054b974243823bd894309a86c, type: 3}
+  myPV: {fileID: 452591596}
+--- !u!114 &452591596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452591591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 5
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &499878125
 GameObject:
   m_ObjectHideFlags: 0
@@ -1340,6 +1457,8 @@ GameObject:
   - component: {fileID: 966011472}
   - component: {fileID: 966011474}
   - component: {fileID: 966011473}
+  - component: {fileID: 966011476}
+  - component: {fileID: 966011475}
   m_Layer: 6
   m_Name: Village
   m_TagString: Untagged
@@ -1432,6 +1551,43 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &966011475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966011471}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49ee3f0a208f3438a892c03fbf921bbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentPrefab: {fileID: 966011471}
+  objectPrefab: {fileID: 829225917883405593, guid: 99835810246d8447fbaa1621eeb36410, type: 3}
+  myPV: {fileID: 966011476}
+--- !u!114 &966011476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966011471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 7
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1099319179
 GameObject:
   m_ObjectHideFlags: 0
@@ -1705,7 +1861,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 844092269400872940, guid: 10262515c51564c4a97019ace17f309f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.00045445937
+      value: 0.000033313776
       objectReference: {fileID: 0}
     - target: {fileID: 892892934625730654, guid: 10262515c51564c4a97019ace17f309f, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2442,6 +2598,8 @@ GameObject:
   - component: {fileID: 1170001133}
   - component: {fileID: 1170001136}
   - component: {fileID: 1170001135}
+  - component: {fileID: 1170001138}
+  - component: {fileID: 1170001137}
   m_Layer: 6
   m_Name: Tree
   m_TagString: Untagged
@@ -2534,6 +2692,43 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1170001137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1170001132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 6
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &1170001138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1170001132}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49ee3f0a208f3438a892c03fbf921bbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentPrefab: {fileID: 1170001132}
+  objectPrefab: {fileID: 8739127243175631453, guid: 4a1d578e9c0874f88a2e798ccd2175e6, type: 3}
+  myPV: {fileID: 1170001137}
 --- !u!1 &1215685434
 GameObject:
   m_ObjectHideFlags: 0
@@ -2652,6 +2847,8 @@ GameObject:
   - component: {fileID: 1251741468}
   - component: {fileID: 1251741471}
   - component: {fileID: 1251741470}
+  - component: {fileID: 1251741473}
+  - component: {fileID: 1251741472}
   m_Layer: 6
   m_Name: RockCover
   m_TagString: Untagged
@@ -2744,6 +2941,43 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1251741472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251741467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 4
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &1251741473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251741467}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49ee3f0a208f3438a892c03fbf921bbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentPrefab: {fileID: 1251741467}
+  objectPrefab: {fileID: 908829862333129034, guid: 20308d5bbb35e42428a3cb92e1ec1497, type: 3}
+  myPV: {fileID: 1251741472}
 --- !u!114 &1455227128 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4945030541672753813, guid: 177cf0a95e2e6ff489d4fb024bad61a0, type: 3}
