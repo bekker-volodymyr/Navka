@@ -12,15 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33444820b1076934da9e621d903e0ca7, type: 3}
   m_Name: WitchSO
   m_EditorClassIdentifier: 
-  healthPoints: 0
+  healthPoints: 100
   basicDamage: 0
-  type: 0
-  approach: 0
+  type: 1
+  approach: 2
   attackTargets: []
   loot: []
   lootChance: []
-  _name: 
-  description: 
+  _name: Witch
+  description: Witches possess secret knowledge that enables them to prophesy and
+    cast spells. Perhaps she will share her knowledge with you, but she is unlikely
+    to do so for free.
   befriending: 
-  lore: 
-  picture: {fileID: 0}
+  lore: "\u2026she'll put on a white blouse \u2026 and she'll go milk the cows, sheep,
+    goats, mares, dogs, cats around the village, and through the swamps, she'll milk
+    frogs, lizards, and snakes\u2026"
+  picture: {fileID: 21300000, guid: a5cdf06bb61a36745860cdefd84520e1, type: 3}
