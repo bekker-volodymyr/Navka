@@ -14,6 +14,8 @@ public class PlayerOnline : Player
     {
         base.Start();
         view = GetComponent<PhotonView>();
+        PhotonNetwork.AutomaticallySyncScene = false;
+
 
         if (view.IsMine)
         {
