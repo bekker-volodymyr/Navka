@@ -35,7 +35,8 @@ public class WorldGenerator : MonoBehaviour
         Generate();
 
         Scene currentScene = SceneManager.GetActiveScene();
-        GameManager.worldScene = currentScene.name; 
+        GameManager.worldScene = currentScene.name;
+        GameManager.isPaused = false;
     }
 
     public void Generate()

@@ -105,6 +105,9 @@ public class FolderListManager : MonoBehaviour
 
     void DeleteSelectedItem(int index)
     {
+ 
+        Debug.Log("current selected index :" + index);
+
         string filePath = items[index].filePath;
 
         // Remove the item from the ScrollView
@@ -122,13 +125,8 @@ public class FolderListManager : MonoBehaviour
             Debug.LogWarning("File not found: " + filePath);
         }
 
-        // Update remaining items' buttons to have the correct index after deletion
-        for (int i = index; i < content.childCount; i++)
-        {
-            int newIndex = i;
-            content.GetChild(i).GetComponent<Button>().onClick.RemoveAllListeners();
-            content.GetChild(i).GetComponent<Button>().onClick.AddListener(() => OnItemSelected(newIndex));
-        }
+        //update list
+        PopulateList();
 
         // Hide the details panel if the deleted item was selected
         selectedIndex = -1;
