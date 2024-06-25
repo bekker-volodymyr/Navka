@@ -30,4 +30,4 @@ MonoBehaviour:
   befriending: ' Taming a cow is unlikely for you since people have already done
     it first. However, you can still ask it for milk without any trouble.'
   lore: 
-  picture: {fileID: 21300000, guid: dc155f3343fb45144b832dafda8732fe, type: 3}
+  picture: {fileID: 21300000, guid: 1625bf0c09ba1404d9a7a8aae9a04cd0, type: 3}
