@@ -15,6 +15,7 @@ public class DialogMenu : MonoBehaviour
 
     [Space]
     [SerializeField] private GameObject dialogMenu;
+    [SerializeField] private GameObject dialogMenuChild;
     [SerializeField] private TextMeshProUGUI textComponent;
     [SerializeField] private Image speakerImage;
     [SerializeField] private float textSpeed;
@@ -101,7 +102,7 @@ public class DialogMenu : MonoBehaviour
         if (answersParent != null) Destroy(answersParent);
 
         answersParent = Instantiate(answersParentPrefab);
-        answersParent.transform.SetParent(dialogMenu.transform, false);
+        answersParent.transform.SetParent(dialogMenuChild.transform, false);
         answersParent.GetComponentInChildren<Button>().onClick.AddListener(CloseDialog);
     }
 }   
