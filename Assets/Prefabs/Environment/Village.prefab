@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7951287662128735562}
   - component: {fileID: 6574142174881863961}
   - component: {fileID: -7874661207697525203}
-  - component: {fileID: 3748192524798987047}
   m_Layer: 6
   m_Name: Village
   m_TagString: Untagged
@@ -137,22 +136,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 12, y: 10.21}
   m_EdgeRadius: 0
---- !u!114 &3748192524798987047
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 829225917883405593}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01c522b042bb848ea9627d811d375b2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 1121948711286423043, guid: db644756b6c31aa45ad2027826f96c1e, type: 3}
-  spawnPoint: {fileID: 7951287662128735562}
-  maxEnemies: 5
-  spawnInterval: 2
 --- !u!1 &999492401079027485
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,6 +147,7 @@ GameObject:
   - component: {fileID: 8388791296567738991}
   - component: {fileID: 8368572167652735482}
   - component: {fileID: 7001342134393731491}
+  - component: {fileID: 6917415274051481141}
   m_Layer: 6
   m_Name: FarmHouse
   m_TagString: Untagged
@@ -283,6 +267,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 19.67, y: 12.4}
   m_EdgeRadius: 0
+--- !u!114 &6917415274051481141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999492401079027485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01c522b042bb848ea9627d811d375b2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 1121948711286423043, guid: db644756b6c31aa45ad2027826f96c1e, type: 3}
+  spawnPoint: {fileID: 8388791296567738991}
+  maxEnemies: 5
+  spawnInterval: 2
 --- !u!1 &4135607243229882469
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,6 +294,7 @@ GameObject:
   - component: {fileID: 8456435315851394280}
   - component: {fileID: 548362477898338450}
   - component: {fileID: 64217824958356877}
+  - component: {fileID: 426285451472234506}
   m_Layer: 6
   m_Name: AnimalHouse (1)
   m_TagString: Untagged
@@ -413,6 +414,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 21.66, y: 11.5}
   m_EdgeRadius: 0
+--- !u!114 &426285451472234506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4135607243229882469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01c522b042bb848ea9627d811d375b2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 1391589936093648790, guid: 42baa23d791ccd74290236d37b8717a4, type: 3}
+  spawnPoint: {fileID: 8456435315851394280}
+  maxEnemies: 2
+  spawnInterval: 2
 --- !u!1 &4311115436830522067
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,6 +441,7 @@ GameObject:
   - component: {fileID: 933103710874857725}
   - component: {fileID: 234444925461865011}
   - component: {fileID: 8182106383441916979}
+  - component: {fileID: 4727540127983364693}
   m_Layer: 6
   m_Name: AnimalHouse
   m_TagString: Untagged
@@ -543,6 +561,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 22.12, y: 11.5}
   m_EdgeRadius: 0
+--- !u!114 &4727540127983364693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4311115436830522067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01c522b042bb848ea9627d811d375b2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 1391589936093648790, guid: 42baa23d791ccd74290236d37b8717a4, type: 3}
+  spawnPoint: {fileID: 933103710874857725}
+  maxEnemies: 2
+  spawnInterval: 2
 --- !u!1 &4470098384058515271
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,6 +588,7 @@ GameObject:
   - component: {fileID: 3587416719080295264}
   - component: {fileID: 4265875640369057709}
   - component: {fileID: 6990481881895429751}
+  - component: {fileID: 3014494495083191993}
   m_Layer: 6
   m_Name: FarmHouse (1)
   m_TagString: Untagged
@@ -673,6 +708,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 20.83, y: 13}
   m_EdgeRadius: 0
+--- !u!114 &3014494495083191993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4470098384058515271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01c522b042bb848ea9627d811d375b2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 1121948711286423043, guid: db644756b6c31aa45ad2027826f96c1e, type: 3}
+  spawnPoint: {fileID: 3587416719080295264}
+  maxEnemies: 5
+  spawnInterval: 2
 --- !u!1 &8830682524300726123
 GameObject:
   m_ObjectHideFlags: 0
@@ -814,6 +865,7 @@ GameObject:
   - component: {fileID: 4704473984767056211}
   - component: {fileID: 5964272454623012337}
   - component: {fileID: 398324579365368378}
+  - component: {fileID: 1556691055609964079}
   m_Layer: 6
   m_Name: FarmHouse (2)
   m_TagString: Untagged
@@ -933,3 +985,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 20.44, y: 12.9}
   m_EdgeRadius: 0
+--- !u!114 &1556691055609964079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9176109791920623763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01c522b042bb848ea9627d811d375b2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 1121948711286423043, guid: db644756b6c31aa45ad2027826f96c1e, type: 3}
+  spawnPoint: {fileID: 4704473984767056211}
+  maxEnemies: 5
+  spawnInterval: 2
