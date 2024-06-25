@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdca82ba27783f440bbdf8caab895528, type: 3}
   m_Name: SpellDescriptionSO
   m_EditorClassIdentifier: 
-  _name: Mavka's Enchantment
+  _name: Enchantment
   description: Mavka, use your enchantment to freeze all nearby enemies in place
     as if they were bewitched. This will give us time to regroup or escape from danger.
   manaCost: 20
