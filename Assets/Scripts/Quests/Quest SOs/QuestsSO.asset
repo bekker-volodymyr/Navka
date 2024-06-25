@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: QuestsSO
   m_EditorClassIdentifier: 
   questGiver: Witch
-  description: Witch quest
+  description: Bring milk to the witch
