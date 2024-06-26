@@ -5,109 +5,42 @@ using UnityEngine;
 public class WalkingSound : MonoBehaviour
 {
     [SerializeField] private GameObject sound;
-    //[SerializeField] private Player player;
+    [SerializeField] private Player player;
     [SerializeField] private List<string> keyNames;
 
+    private Vector3 lastPosition;
 
     // Start is called before the first frame update
     void Start()
     {
         sound.SetActive(false);
-
+        //lastPosition = player.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        //if (Input.GetKey("w"))
-        //{
-        //    PlaySound();
-        //}
 
-        //if (Input.GetKeyDown("s"))
-        //{
-        //    PlaySound();
-        //}
-
-        //if (Input.GetKeyDown("a"))
-        //{
-        //    PlaySound();
-        //}
-
-        //if (Input.GetKeyDown("d"))
-        //{
-        //    PlaySound();
-        //}
-
-        //if (Input.GetKeyUp("w"))
-        //{
-        //    StopSound();
-        //}
-
-        //if (Input.GetKeyUp("s"))
-        //{
-        //    StopSound();
-        //}
-
-        //if (Input.GetKeyUp("a"))
-        //{
-        //    StopSound();
-        //}
-
-        //if (Input.GetKeyUp("d"))
-        //{
-        //    StopSound();
-        //}
+        foreach (string keys in keyNames)
+        {
+            if (Input.GetKeyDown(keys))
+            {
+                PlaySound();
+                //lastPosition = player.transform.position;
+            }
+            if (Input.GetKeyUp(keys))
+            {
+                StopSound();
+            }
+        }
 
 
-
-        if (Input.GetKey(keyNames[0]))
+        if (player.StateMachine.CurrentState == player.MoveToPointState)
         {
             PlaySound();
         }
-
-        if (Input.GetKeyDown(keyNames[1]))
-        {
-            PlaySound();
-        }
-
-        if (Input.GetKeyDown(keyNames[2]))
-        {
-            PlaySound();
-        }
-
-        if (Input.GetKeyDown(keyNames[3]))
-        {
-            PlaySound();
-        }
-
-        if (Input.GetKeyUp(keyNames[0]))
-        {
-            StopSound();
-        }
-
-        if (Input.GetKeyUp(keyNames[1]))
-        {
-            StopSound();
-        }
-
-        if (Input.GetKeyUp(keyNames[2]))
-        {
-            StopSound();
-        }
-
-        if (Input.GetKeyUp(keyNames[3]))
-        {
-            StopSound();
-        }
-
-
-        //if (player.StateMachine.CurrentState == player.MoveToPointState)
-        //{
-        //PlaySound();
-        //}
-        //else
+        //if (player.StateMachine.CurrentState != player.MoveToPointState)
         //{
         //    StopSound();
         //}
