@@ -17,7 +17,7 @@ MonoBehaviour:
     consisting of leaves, berries, and milk. It might work for you too.
   lore: This tonic has long been used by healers and witches, as well as some forest
     spirits.
-  recipe: {fileID: 0}
+  recipe: {fileID: 11400000, guid: 3b320ceb019b2624ba311c3c13815779, type: 2}
   type: 3
   effects:
   - {fileID: 11400000, guid: 32c46ffb72d092447840d55e64d9c109, type: 2}
