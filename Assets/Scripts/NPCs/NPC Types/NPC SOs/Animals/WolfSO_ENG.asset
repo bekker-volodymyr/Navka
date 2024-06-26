@@ -20,10 +20,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 89d5522538f5e1e4e8402eea5f93812a, type: 2}
   - {fileID: 11400000, guid: 2bc0c17ccbf54e647833050634e0d9ed, type: 2}
   loot:
-  - {fileID: 11400000, guid: 8264f5e1d1ce98f46ab563db595881f0, type: 2}
-  - {fileID: 11400000, guid: 9cdd905183146154b9387a49e4def6b9, type: 2}
-  - {fileID: 11400000, guid: a088fd07307d7b04c89100b750ed9907, type: 2}
-  - {fileID: 11400000, guid: c2f059bdbaecce342b09057d5c196704, type: 2}
+  - {fileID: 11400000, guid: 475dec5caa70ff045988f5284a8c1d68, type: 2}
+  - {fileID: 11400000, guid: 92534ce959bd4a7458c0a802e8502f0f, type: 2}
+  - {fileID: 11400000, guid: 67e5c7a1e9b94a54aa126ed4c53e97e1, type: 2}
+  - {fileID: 11400000, guid: 10b6be1e9e6a92447a6f7befe58f7d1e, type: 2}
   lootChance:
   - 1
   - 1

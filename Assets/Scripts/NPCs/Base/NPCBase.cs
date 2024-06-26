@@ -66,18 +66,15 @@ public class NPCBase : ItemDropper, IMoveable, IDamageable, IAttack, IInteractab
     public NPCIdleState IdleState { get; set; }
     public NPCChaseState ChaseState { get; set; }
     public NPCDialogState DialogState { get; set; }
-    //public NPCBefriendedState BefriendedState { get; set; }
 
     [Space]
     [SerializeField] private NPCIdleSOBase idleStateBase;
     [SerializeField] private NPCChaseSOBase chaseStateBase;
     [SerializeField] private NPCDialogSOBase dialogStateBase;
-    //[SerializeField] private NPCBefriendedSOBase befriendedStateBase;
 
     public NPCIdleSOBase IdleStateInstance { get; set; }
     public NPCChaseSOBase ChaseStateInstance { get; set; }
     public NPCDialogSOBase DialogStateInstance { get; set; }
-    //public NPCBefriendedSOBase BefriendedStateInstance { get; set; }
     #endregion
 
     #region Movement Logic

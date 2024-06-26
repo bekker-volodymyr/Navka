@@ -52,8 +52,8 @@ MonoBehaviour:
   berriesSprite: {fileID: 21300000, guid: d4443b1d635a627459a15342ce4f252e, type: 3}
   leavesSprite: {fileID: 21300000, guid: db7445f6b81d0a84cb757faaca958263, type: 3}
   noLeavesSprite: {fileID: 21300000, guid: f0a883e53c624444a9380d5f984aa559, type: 3}
-  berriesSO: {fileID: 11400000, guid: 7cecc77b8dadac5498854403c578e301, type: 2}
-  leavesSO: {fileID: 11400000, guid: 654096fdf55678d40999b2c988d06893, type: 2}
+  berriesSO: {fileID: 11400000, guid: 501dca964611ee44b84c730d4fa2cc7b, type: 2}
+  leavesSO: {fileID: 11400000, guid: 9fb55071d51bb1344a6faa4e5c7f3853, type: 2}
   spriteRenderer: {fileID: 6325520775488814728}
   interactCollider: {fileID: 7842635175118205291}
 --- !u!65 &6195199876805348299

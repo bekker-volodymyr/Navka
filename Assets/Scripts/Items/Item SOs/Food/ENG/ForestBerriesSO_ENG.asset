@@ -23,5 +23,5 @@ MonoBehaviour:
   effects:
   - {fileID: 11400000, guid: 7fb81a5d9943b22438665081931d737f, type: 2}
   - {fileID: 11400000, guid: 73694159e3a400642ab5032c52787178, type: 2}
-  sprite: {fileID: 21300000, guid: e1f8ad60db428cf469c3ccea0bc8b2c1, type: 3}
+  sprite: {fileID: 21300000, guid: 1cdc506db8a8321409ce6e751d87ffcc, type: 3}
   maxPerStack: 75

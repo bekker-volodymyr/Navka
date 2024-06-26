@@ -18,9 +18,9 @@ MonoBehaviour:
   approach: 1
   attackTargets: []
   loot:
-  - {fileID: 11400000, guid: 8264f5e1d1ce98f46ab563db595881f0, type: 2}
-  - {fileID: 11400000, guid: d9bc92fbd33a93f458326f8674fdfd6b, type: 2}
-  - {fileID: 11400000, guid: e467883e1c2740a439ff69ee5c148919, type: 2}
+  - {fileID: 11400000, guid: 475dec5caa70ff045988f5284a8c1d68, type: 2}
+  - {fileID: 11400000, guid: decd479ab77d45a4a9cda4c36dbcb656, type: 2}
+  - {fileID: 11400000, guid: d6b21656784d80746b0d38a821981223, type: 2}
   lootChance:
   - 1
   - 0.6

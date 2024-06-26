@@ -22,8 +22,6 @@ public class AmuletsManager : MonoBehaviour
         _amuletsCapacity = _amuletsParentGOs.Count;
 
         _amuletsParentGOs.Reverse();
-
-        Debug.Log(_amuletsCapacity);
     }
 
     public void AddAmulet(ItemSO amulet, Player player)

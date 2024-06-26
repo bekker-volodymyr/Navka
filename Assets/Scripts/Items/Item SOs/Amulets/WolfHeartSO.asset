@@ -16,8 +16,7 @@ MonoBehaviour:
   description: Wolf's Heart is a powerful amulet that enhances your strength. It
     is made from a wolf's claw, a wild beast's fang, and a bear's paw.
   lore: The wolf with the heart of a warrior and the soul of a beast, gifted by the
-    gods, united with the great bear to create this amulet. Their alliance manifested
-    in the Power of the Wolf's Heart, granting warriors unbeatable strength in battle.
+    gods, united with the great bear to create this amulet.
   recipe: {fileID: 11400000, guid: c78670386fc423a48a647caab5c2bdab, type: 2}
   type: 2
   effects:

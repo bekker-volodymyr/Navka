@@ -95,7 +95,7 @@ MonoBehaviour:
   idleStateBase: {fileID: 11400000, guid: 6c1bb018be1494848a221bc6b552dd06, type: 2}
   chaseStateBase: {fileID: 11400000, guid: 1b8075e9a06728743af8c06e1f6626f6, type: 2}
   dialogStateBase: {fileID: 11400000, guid: 6dfde8399f83a5b4f9e90818594cac18, type: 2}
-  dropItem: {fileID: 11400000, guid: 79e4c77050aabc24b995eff5773d62d3, type: 2}
+  dropItem: {fileID: 11400000, guid: 00f1996a6a20aa2408cde3a89e6c688f, type: 2}
 --- !u!82 &5306853747010139892
 AudioSource:
   m_ObjectHideFlags: 0
