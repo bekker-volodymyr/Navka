@@ -14,4 +14,9 @@ public class SpellSO : ScriptableObject
     [SerializeField] private SpellLogicSOBase spellLogic;
     public SpellLogicSOBase SpellLogic => spellLogic;
 
+    [Space]
+    [SerializeField] private GameObject sound;
+    public GameObject Sound => sound;
+
+
 }

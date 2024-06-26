@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellDescription: {fileID: 11400000, guid: e2759c15569cf4d47bfbf3f403528613, type: 2}
   spellLogic: {fileID: 11400000, guid: fba3ffe5f962eb849b0f92e0daec28c8, type: 2}
+  sound: {fileID: 1564256394448330739, guid: 168e2f28499ee4f40b7f601cb8745798, type: 3}

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,8 @@ public class SpellButton : MonoBehaviour
     [SerializeField] private Button button;
     private SpellSO spell;
     public SpellSO Spell => spell;
+
+    [SerializeField] private AudioSource spellSound;
 
     private SpellManager manager;
 
@@ -25,6 +28,8 @@ public class SpellButton : MonoBehaviour
         button.interactable = false;
         StartCoroutine(CooldownCoroutine());
 
+        PlaySound();
+        Invoke("StopSound", 3.0f);
     }
 
     private IEnumerator CooldownCoroutine()
@@ -32,5 +37,18 @@ public class SpellButton : MonoBehaviour
         yield return new WaitForSeconds(spell.SpellDescription.Cooldown);
         button.interactable = true;
     }
-    
+
+    void PlaySound()
+    {
+        spellSound.enabled = true;
+        spellSound.Play();
+    }
+
+    void StopSound()
+    {
+        spellSound.Stop();
+        spellSound.enabled = false;
+
+    }
+
 }
