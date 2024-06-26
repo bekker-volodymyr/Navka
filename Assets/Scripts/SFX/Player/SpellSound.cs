@@ -10,18 +10,18 @@ public class SpellSound : MonoBehaviour
 {
     [SerializeField] private GameObject sound;
     //[SerializeField] private Player player;
-    [SerializeField] private UnityEngine.UI.Button spellButton;
+    private UnityEngine.UI.Button spellButton;
 
     // Start is called before the first frame update
     void Start()
     {
+        //spellButton = GameObject.FindAnyObject<>
         sound.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
         spellButton.onClick.AddListener(OnButtonClick);
         Invoke("StopSound", 3.0f);
 
