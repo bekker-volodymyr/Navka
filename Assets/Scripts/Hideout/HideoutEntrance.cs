@@ -8,13 +8,20 @@ public class HideoutEntrance : MonoBehaviour, IInteractable
 {
     private string sceneName = "HideoutScene";
 
-    private void EnterHideout() 
+    private void EnterHideout(GameObject interactObject) 
     {
-        SceneManager.LoadScene(sceneName);
+        Player player = interactObject.GetComponent<Player>();
+        if (player != null)
+        {
+            GameManager.health = player.CurrentHealth;
+            GameManager.hunger = player.CurrentHunger;
+            GameManager.mana = player.CurrentMana;
+            SceneManager.LoadScene(sceneName);
+        }
     }
 
     public void OnInteraction(GameObject interactObject)
     {
-        EnterHideout();
+        EnterHideout(interactObject);
     }
 }

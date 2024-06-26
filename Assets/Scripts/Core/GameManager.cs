@@ -22,6 +22,10 @@ public class GameManager : MonoBehaviour
 
     public static string worldScene;
 
+    public static float health = 0;
+    public static float hunger = 0;
+    public static float mana = 0;
+
     #region Game State Values
     public static bool isPaused = false;
     public static bool isDead = false;

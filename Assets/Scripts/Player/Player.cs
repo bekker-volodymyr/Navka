@@ -112,9 +112,9 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
         maxHunger = stats.MaxHunger;
         maxMana = stats.MaxMana;
 
-        currentHealth = maxHealth;
-        currentHunger = maxHunger;
-        currentMana = maxMana;
+        currentHealth = GameManager.health == 0 ? maxHealth : GameManager.health;
+        currentHunger = GameManager.hunger == 0 ? maxHunger : GameManager.hunger;
+        currentMana = GameManager.mana == 0 ? maxMana : GameManager.mana;
         
         healthIndicator = GameObject.FindGameObjectWithTag("HealthPlayer").GetComponent<Indicator>();
         hungerIndicator = GameObject.FindGameObjectWithTag("HungerPlayer").GetComponent<Indicator>();
