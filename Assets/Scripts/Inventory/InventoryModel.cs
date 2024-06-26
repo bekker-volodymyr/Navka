@@ -9,7 +9,7 @@ public class InventoryModelSO : ScriptableObject
 {
     private List<InventoryCellModel> inventoryCells;
 
-    public List<InventoryCellModel> InventoryCells { get { return inventoryCells; } }
+    public List<InventoryCellModel> InventoryCells => inventoryCells;
 
     [field: SerializeField] public int InventorySize { get; private set; }
 
@@ -17,11 +17,17 @@ public class InventoryModelSO : ScriptableObject
 
     public void Init()
     {
-        inventoryCells = new List<InventoryCellModel> ();
-
-        for (int i = 0; i < InventorySize; i++)
+        if (GameManager.inventoryModel == null)
         {
-            inventoryCells.Add(InventoryCellModel.GetEmptyCell());
+            inventoryCells = new List<InventoryCellModel>();
+            for (int i = 0; i < InventorySize; i++)
+            {
+                inventoryCells.Add(InventoryCellModel.GetEmptyCell());
+            }
+        }
+        else
+        {
+            NotifyAboutChanges();
         }
     }
 
@@ -95,6 +101,7 @@ public class InventoryModelSO : ScriptableObject
 
     public void ResetInventory()
     {
+        GameManager.inventoryModel = null;
         Init();
         NotifyAboutChanges();
     }

@@ -16,6 +16,9 @@ public class HideoutEntrance : MonoBehaviour, IInteractable
             GameManager.health = player.CurrentHealth;
             GameManager.hunger = player.CurrentHunger;
             GameManager.mana = player.CurrentMana;
+
+            player.Inventory.CacheInventory();
+
             SceneManager.LoadScene(sceneName);
         }
     }

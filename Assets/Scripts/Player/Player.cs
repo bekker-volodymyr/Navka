@@ -46,6 +46,7 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
 
     #region Inventory Variables
     private InventoryController inventory;
+    public InventoryController Inventory => inventory;
     private ItemSO selectedItem = null;
     public ItemSO SelectedItem => selectedItem;
     #endregion

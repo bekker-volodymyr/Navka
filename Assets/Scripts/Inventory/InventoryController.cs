@@ -25,6 +25,8 @@ public class InventoryController : MonoBehaviour
         inventoryView.DeselectItemByClick += OnItemDeselected;
 
         GameManager.DeathEvent += OnPlayerDeath;
+
+        UpdateInventoryUI(inventoryModel.GetCurrentInventory());
     }
 
     private void Update()
@@ -106,5 +108,10 @@ public class InventoryController : MonoBehaviour
     private void OnPlayerDeath()
     {
         inventoryModel.ResetInventory();
+    }
+
+    public void CacheInventory()
+    {
+        GameManager.inventoryModel = inventoryModel;
     }
 }

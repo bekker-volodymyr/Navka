@@ -22,7 +22,7 @@ public class SpellSound : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        spellButton.onClick.AddListener(OnButtonClick);
+        //spellButton.onClick.AddListener(OnButtonClick);
         Invoke("StopSound", 3.0f);
 
     }
