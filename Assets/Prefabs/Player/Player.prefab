@@ -582,6 +582,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound: {fileID: 2505427196699483152}
   player: {fileID: 7747693669726521892}
+  rb: {fileID: 6100000035078962135}
   keyNames:
   - a
   - w
