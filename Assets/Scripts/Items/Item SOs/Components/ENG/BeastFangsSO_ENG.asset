@@ -12,14 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc59ad142cfb7364ca399ddddc978a15, type: 3}
   m_Name: BeastFangsSO_ENG
   m_EditorClassIdentifier: 
-  _name: Beast Fangs
+  _name: Beast's Fangs
   description: The fang of a predatory beast is an object endowed with a special
     and dangerous force of nature, and when combined with other artifacts, it can
     serve as a useful talisman.
-  lore: "I think figuring out where to get them isn't very difficult \u2014 you just
-    need to hunt down a predator. But if you don't want to anger the spirits of the
-    forest, perhaps you'll be lucky enough to find the fangs of a deceased beast
-    or to exchange them with someone."
+  lore: I think guessing where to get them isn't too hard - you need to hunt a predator.
+    But this may anger the gods. Be careful.
   recipe: {fileID: 0}
   type: 0
   effects: []

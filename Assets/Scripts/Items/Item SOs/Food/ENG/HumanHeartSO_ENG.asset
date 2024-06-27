@@ -13,14 +13,13 @@ MonoBehaviour:
   m_Name: HumanHeartSO_ENG
   m_EditorClassIdentifier: 
   _name: Human's Heart
-  description: ' A sweet heart saturated with human blood and soul. What could be
-    tastier?'
-  lore: ' A human heart is a very beneficial product for the spirit. In addition
-    to its healing properties, when combined with the right ingredients, it can have
-    various magical effects.'
+  description: A sweet heart saturated with human blood and soul. What could be tastier?
+  lore: A human heart is a very beneficial product for the spirit. In addition to
+    its healing properties, when combined with the right ingredients, it can have
+    various magical effects.
   recipe: {fileID: 0}
   type: 1
   effects:
   - {fileID: 11400000, guid: 99c25e98edd93964182bf8df25779293, type: 2}
-  sprite: {fileID: 21300000, guid: 9cf4dd48275246f45b724121a3ed2854, type: 3}
+  sprite: {fileID: 21300000, guid: 590f11f887c602e49950b2361b0b5a52, type: 3}
   maxPerStack: 1

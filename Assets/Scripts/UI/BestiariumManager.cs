@@ -138,7 +138,7 @@ public class BestiariumManager: MonoBehaviour
             Image lootIcon = lootItemGO.AddComponent<Image>();
             lootIcon.sprite = item.Sprite;
             lootIcon.SetNativeSize();
-            Instantiate(lootIcon);
+            lootIcon.preserveAspect = true;
             lootIcon.transform.SetParent(lootParentGO.transform, false);
         }
     }

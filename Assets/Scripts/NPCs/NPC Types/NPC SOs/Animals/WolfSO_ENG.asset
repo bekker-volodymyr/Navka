@@ -30,13 +30,11 @@ MonoBehaviour:
   - 0.4
   - 0.4
   _name: Wolf
-  description: 'Wolves hunt in forests and fields in packs. There is real strength
-    in a pack. They are hostile towards people but neutral towards forest spirits,
+  description: They are hostile towards people but neutral towards forest spirits,
     as long as you do not threaten their pack. If a wolf becomes your friend, it
-    will protect you and your home well. '
-  befriending: 'Like their descendants, the dogs, these creatures are not very picky
-    about friends. It''s enough to feed them meat, and they will stay with you until
-    the end. Once you befriend them, don''t forget to continue feeding the wolf with
-    the same meat, or it will get offended. '
+    will protect you and your home well.
+  befriending: Like their descendants, the dogs, these creatures are not very picky
+    about friends. It's enough to feed them meat, and they will stay with you until
+    the end.
   lore: NONE
   picture: {fileID: 21300000, guid: aec773d83603acb439c3abfd5ea9a03a, type: 3}

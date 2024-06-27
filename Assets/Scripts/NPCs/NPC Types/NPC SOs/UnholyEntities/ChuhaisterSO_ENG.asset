@@ -20,11 +20,9 @@ MonoBehaviour:
   loot: []
   lootChance: []
   _name: Chuhaister
-  description: Chugaisters are your main enemies in the forest. They are disgusting,
-    treacherous, and cunning old men who live in the forest and hunt mavkas. Be careful,
-    as soon as they sense you, they will immediately hide in ambush and attack as
-    soon as you approach.
+  description: Chuhaisters are your main enemies in the forest. They are disgusting,
+    treacherous, and cunning old men who live in the forest and hunt mavkas. Be careful.
   befriending: 
   lore: 'It was a cheerful ... , a kind forest spirit who protects people from the
     nymphs. He was death for them: he would catch and tear them apart.'
-  picture: {fileID: 0}
+  picture: {fileID: 21300000, guid: fe70ce5401449dc4ab243280b176541d, type: 3}

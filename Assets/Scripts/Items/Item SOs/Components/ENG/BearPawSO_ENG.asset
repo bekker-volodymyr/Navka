@@ -12,13 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc59ad142cfb7364ca399ddddc978a15, type: 3}
   m_Name: BearPawSO_ENG
   m_EditorClassIdentifier: 
-  _name: Bear Paw
+  _name: Bear's Paw
   description: Besides, trying to take a bear's paw can anger the spirits, apart
     from the fact that a bear itself is dangerous and resistant. But you can still
     try...
-  lore: A similar artifact can become a powerful talisman if you know what to combine
-    it with. While the gods do love nature, they will empower a properly crafted
-    talisman with their strength.
+  lore: This artifact can become a powerful amulet if you know what to combine it
+    with. The gods will empower a properly crafted talisman with their strength.
   recipe: {fileID: 0}
   type: 0
   effects: []

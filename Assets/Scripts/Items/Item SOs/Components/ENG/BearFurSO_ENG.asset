@@ -13,11 +13,10 @@ MonoBehaviour:
   m_Name: BearFurSO_ENG
   m_EditorClassIdentifier: 
   _name: Bear's Fur
-  description: ' Bear fur. Grows on bears. I''m not sure if it will give it to you
-    willingly, but you can try asking.'
-  lore: "The bear is associated with many gods, but most of all it is linked with
-    Veles \u2014 the god of wealth, trade, knowledge, and domesticity. Useful talismans
-    can be made from this association."
+  description: Bear fur. Grows on bears. I'm not sure if it will give it to you willingly,
+    but you can try asking.
+  lore: "The bear is associated with Veles \u2014 the god of wealth, trade, knowledge,
+    and domesticity. Useful talismans can be made from this association."
   recipe: {fileID: 0}
   type: 0
   effects: []

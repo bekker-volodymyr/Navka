@@ -19,19 +19,17 @@ MonoBehaviour:
   attackTargets:
   - {fileID: 11400000, guid: 0df55425f86f2d24aa359f1b1af5422a, type: 2}
   loot:
-  - {fileID: 11400000, guid: 7cecc77b8dadac5498854403c578e301, type: 2}
-  - {fileID: 11400000, guid: 2f14c8a340748d44fb00e9ab9476857a, type: 2}
-  - {fileID: 11400000, guid: f22b8bcb9cdfd6443a2eb7c365901cc7, type: 2}
+  - {fileID: 11400000, guid: 501dca964611ee44b84c730d4fa2cc7b, type: 2}
+  - {fileID: 11400000, guid: d6f2bfeb25510534c93a9cc47bca2301, type: 2}
+  - {fileID: 11400000, guid: 7a789db889e8a3e44ae779096fe5895c, type: 2}
   lootChance:
   - 1
   - 0.2
   - 0.1
   _name: Mavka
-  description: 'Sure, you''re not the only mavka in this forest! There are many girls
-    like you, and all of you are destined to protect the spirit world. If you meet
-    other mavkas, you can give them something, and maybe they will thank you in return. '
+  description: Sure, you're not the only mavka in this forest! There are many girls
+    like you, and all of you are destined to protect the spirit world.
   befriending: NONE
-  lore: From behind the trunk of an old, split willow, half-withered, emerges a Mavka
-    in bright green clothing, with loose black hair that has a green sheen. She spreads
-    her arms and runs her hand over her eyes.
+  lore: "\u2026a Mavka comes out, in bright green clothes, with loose black hair
+    with a green sheen\u2026"
   picture: {fileID: 21300000, guid: 3e472d138dfbebc49af5d516543c816c, type: 3}

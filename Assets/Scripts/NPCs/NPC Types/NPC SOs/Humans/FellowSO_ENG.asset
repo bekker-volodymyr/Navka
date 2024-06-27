@@ -26,10 +26,8 @@ MonoBehaviour:
   - 0.6
   - 0.4
   _name: Fellow
-  description: These foolish youngsters, upon sighting a wood nymph, dash headlong
-    to the village to their own to tell of their find, then they'll come after you,
-    believing that once caught, you'll do their bidding. Their weakness lies in their
-    susceptibility to the allure possessed by every wood mavka.
+  description: These silly guys run away as soon as they see evil spirits. You can
+    catch them with magic.
   befriending: NONE
   lore: Some rested in the taverns, some in the straw after such a thrashing, while
     others headed to the fields to scare the girls.
