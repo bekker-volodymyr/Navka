@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 4075330127890350945}
   - component: {fileID: 6619047157567832380}
   - component: {fileID: 1695236264846320465}
+  - component: {fileID: 6244416893271733899}
   m_Layer: 6
   m_Name: HideoutEntrance
   m_TagString: EnvironmentObject
@@ -264,6 +265,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 10.72, y: 6.67}
   m_EdgeRadius: 0
+--- !u!114 &6244416893271733899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4560073555322063386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50900c8f2ba3943f9a3e1797847b84b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeDuration: 1
+  spriteRenderer: {fileID: 2806092483672349923}
+  targetOpacity: 0.2
 --- !u!1 &6837802000129396332
 GameObject:
   m_ObjectHideFlags: 0

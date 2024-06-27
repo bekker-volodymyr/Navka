@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9068532441974125462}
   - component: {fileID: 3235110499184166728}
   - component: {fileID: 402469985912961451}
+  - component: {fileID: 8939133351167656221}
   m_Layer: 6
   m_Name: RockSmall
   m_TagString: Untagged
@@ -115,6 +116,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.11, y: 1.56}
   m_EdgeRadius: 0
+--- !u!114 &8939133351167656221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3251206823055180716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50900c8f2ba3943f9a3e1797847b84b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeDuration: 1
+  spriteRenderer: {fileID: 10345222748035794}
+  targetOpacity: 0.2
 --- !u!1 &7715178124475832815
 GameObject:
   m_ObjectHideFlags: 0
