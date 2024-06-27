@@ -15,11 +15,11 @@ MonoBehaviour:
   _name: Mavka Heart
   description: Obtaining this artifact will be difficult... More morally than physically...
     I don't think I'll be able to communicate with you after that...
-  lore: ' Discussing this is dreadful, but... This artifact is very powerful and
-    can become an ingredient for some potions... But I strongly advise against consuming
-    it just like that...'
+  lore: Discussing this is dreadful, but... This artifact is very powerful and can
+    become an ingredient for some potions... But I strongly advise against consuming
+    it just like that...
   recipe: {fileID: 0}
   type: 0
   effects: []
-  sprite: {fileID: 21300000, guid: f2912668512ebdc44a4371e960512ffb, type: 3}
+  sprite: {fileID: 21300000, guid: 1900277a4eb874c4cbffa150bdbe9cd7, type: 3}
   maxPerStack: 1
