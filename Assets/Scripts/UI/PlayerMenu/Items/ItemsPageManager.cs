@@ -123,7 +123,7 @@ public class ItemsPageManager: MonoBehaviour
                 Image componentIcon = componentItemGO.AddComponent<Image>();
                 componentIcon.sprite = component.Sprite;
                 componentIcon.SetNativeSize();
-                Instantiate(componentIcon);
+                componentIcon.preserveAspect = true;
                 componentIcon.transform.SetParent(recipeParentGO.transform, false);
             }
         }
