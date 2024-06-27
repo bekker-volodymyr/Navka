@@ -129,8 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeDuration: 1
-  spriteRenderer: {fileID: 10345222748035794}
-  targetOpacity: 0.2
+  targetOpacity: 0.5
 --- !u!1 &7715178124475832815
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,7 +315,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: a889d39e0386d974b9e6fc6aa907906b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
