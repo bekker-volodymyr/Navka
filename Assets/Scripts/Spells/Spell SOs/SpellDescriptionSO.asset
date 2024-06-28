@@ -17,4 +17,4 @@ MonoBehaviour:
     as if they were bewitched. This will give us time to regroup or escape from danger.
   manaCost: 20
   cooldown: 10
-  picture: {fileID: 21300000, guid: 3ddaeb00d6346bd49a34c0d5bcb51ebe, type: 3}
+  picture: {fileID: 21300000, guid: c2e9bd583247b7743904012b2df6da48, type: 3}

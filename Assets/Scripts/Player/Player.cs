@@ -159,7 +159,7 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
 
         Item.OnPickUp += OnItemPickedUp;
 
-        StartCoroutine("HungerCountdown");
+        StartCoroutine(HungerCountdown());
     }
 
     public void Respawn()
