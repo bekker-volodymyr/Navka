@@ -59,7 +59,7 @@ public class FadeOnCollision : MonoBehaviour
         {
             time += Time.deltaTime;
 
-            for (int i = 0; i < spriteRenderers.Count; i++)
+            for (int i = 0; i < spriteRenderers.Count -1; i++)
             {
                 if (spriteRenderers[i] != null)
                 {
