@@ -241,7 +241,7 @@ public class Player : ItemDropper, IMoveable, IDamageable, IAttack, IInteract, I
     }
     private void ChangeHealth(float value)
     {
-        float newHealth = currentHealth - damage;
+        float newHealth = currentHealth + value;
 
         Debug.Log(newHealth);
 
