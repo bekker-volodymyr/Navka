@@ -169,7 +169,7 @@ MonoBehaviour:
   feedingList:
   - {fileID: 11400000, guid: 8264f5e1d1ce98f46ab563db595881f0, type: 2}
   defaultBefriendedStateBase: {fileID: 11400000, guid: 2a66445a8a19fc04cb13768991399006, type: 2}
-  secondaryBefriendedStateBase: {fileID: 11400000, guid: 2a66445a8a19fc04cb13768991399006, type: 2}
+  secondaryBefriendedStateBase: {fileID: 11400000, guid: 0a3bed0bf78befd4a8380bf813ddb68c, type: 2}
   defendsPlayer: 0
   dropItem: {fileID: 11400000, guid: 92534ce959bd4a7458c0a802e8502f0f, type: 2}
 --- !u!82 &4253850574890041811
